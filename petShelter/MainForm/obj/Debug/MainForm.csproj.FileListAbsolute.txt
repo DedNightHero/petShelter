@@ -2,10 +2,10 @@ L:\petShelter\petShelter\MainForm\bin\Debug\MainForm.exe.config
 D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.exe.config
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.csprojResolveAssemblyReference.cache
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.Authorization.resources
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.Form1.resources
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.Properties.Resources.resources
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.GenerateResource.Cache
 D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.exe
 D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.pdb
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.exe
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.pdb
+D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.EmployeeForm.resources

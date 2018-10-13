@@ -10,15 +10,14 @@ using System.Windows.Forms;
 
 namespace MainForm
 {
-    public partial class Form1 : Form
+    public partial class EmployeeForm : Form
     {
-        public Form1()
+        public EmployeeForm()
         {
             InitializeComponent();
-            this.Hide();
-            Authorization au1 = new Authorization();
-            au1.Show();
-
+            int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
+            tabMain.ItemSize = new Size(tabWidth, tabMain.ItemSize.Height);
         }
+
     }
 }

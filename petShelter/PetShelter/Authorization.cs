@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -110,8 +112,8 @@ namespace MainForm
             string password = CreateMD5(textBoxPass.Text);
             textBoxLogin.Text = password;
             //Проверка и открытие формы сотрудника
-            EmployeeForm ef1 = new EmployeeForm();
-            ef1.Show();
+            var sf = new employeeForm();
+            sf.
             this.Hide();
         }
 
