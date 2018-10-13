@@ -15,6 +15,10 @@ namespace MainForm
         public Form1()
         {
             InitializeComponent();
+            this.Hide();
+            Authorization au1 = new Authorization();
+            au1.Show();
+
         }
     }
 }
