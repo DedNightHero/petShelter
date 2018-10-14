@@ -93,8 +93,6 @@
             this.dataGridViewStaffCharity = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonStaffOk = new System.Windows.Forms.Button();
-            this.tabReports = new System.Windows.Forms.TabPage();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelStaffRightMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelEmployeeInfo = new System.Windows.Forms.TableLayoutPanel();
             this.label21 = new System.Windows.Forms.Label();
@@ -110,12 +108,54 @@
             this.textBoxStaffVacancy = new System.Windows.Forms.TextBox();
             this.textBoxStaffPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxStaffAddress = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonStaffSave = new System.Windows.Forms.Button();
             this.buttonStaffDelete = new System.Windows.Forms.Button();
             this.checkBoxStaffNewMember = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tabGoods = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelGoodsMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tabReports = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tableLayoutPanelGoodsTopPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBoxGoodsSortNameofGoods = new System.Windows.Forms.TextBox();
+            this.radioButtonGoodsSortIsCure = new System.Windows.Forms.RadioButton();
+            this.radioButtonGoodsSortIsEat = new System.Windows.Forms.RadioButton();
+            this.radioButtonGoodsSortIsOther = new System.Windows.Forms.RadioButton();
+            this.dataGridViewGoodsAllGoods = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanelAfterGoodTable = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxGoodsName = new System.Windows.Forms.TextBox();
+            this.textBoxGoodsAmount = new System.Windows.Forms.TextBox();
+            this.textBoxGoodsNeeded = new System.Windows.Forms.TextBox();
+            this.textBoxGoodsArrivalDate = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanelGoodsButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonGoodsWriteOff = new System.Windows.Forms.Button();
+            this.buttonGoodsAdd = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tableLayoutPanelPickChariter = new System.Windows.Forms.TableLayoutPanel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.comboBoxGoodsVolunteer = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanelReportsMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelReportsSpent = new System.Windows.Forms.TableLayoutPanel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.checkBoxReportsEat = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportsCure = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportsOther = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportsMoney = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportsOutCome = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportsInCome = new System.Windows.Forms.CheckBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.buttonReportsForm = new System.Windows.Forms.Button();
+            this.dateTimePickerReportsFrom = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerReportsTo = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.labelReportsMoneyAmount = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.textBoxReportsMoneyToSpend = new System.Windows.Forms.TextBox();
+            this.textBoxReportsComment = new System.Windows.Forms.TextBox();
+            this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
+            this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -135,11 +175,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaffAllMembers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaffCharity)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tabReports.SuspendLayout();
             this.tableLayoutPanelStaffRightMain.SuspendLayout();
             this.tableLayoutPanelEmployeeInfo.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabGoods.SuspendLayout();
+            this.tableLayoutPanelGoodsMain.SuspendLayout();
+            this.tabReports.SuspendLayout();
+            this.tableLayoutPanelGoodsTopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoodsAllGoods)).BeginInit();
+            this.tableLayoutPanelAfterGoodTable.SuspendLayout();
+            this.tableLayoutPanelGoodsButtons.SuspendLayout();
+            this.tableLayoutPanelPickChariter.SuspendLayout();
+            this.tableLayoutPanelReportsMain.SuspendLayout();
+            this.tableLayoutPanelReportsSpent.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -273,7 +323,7 @@
             this.textBoxPetsSortSpecies.Location = new System.Drawing.Point(43, 40);
             this.textBoxPetsSortSpecies.Name = "textBoxPetsSortSpecies";
             this.textBoxPetsSortSpecies.Size = new System.Drawing.Size(166, 30);
-            this.textBoxPetsSortSpecies.TabIndex = 4;
+            this.textBoxPetsSortSpecies.TabIndex = 1;
             // 
             // textBoxPetsSortBreed
             // 
@@ -281,7 +331,7 @@
             this.textBoxPetsSortBreed.Location = new System.Drawing.Point(285, 40);
             this.textBoxPetsSortBreed.Name = "textBoxPetsSortBreed";
             this.textBoxPetsSortBreed.Size = new System.Drawing.Size(166, 30);
-            this.textBoxPetsSortBreed.TabIndex = 5;
+            this.textBoxPetsSortBreed.TabIndex = 2;
             // 
             // textBoxPetsSortNickName
             // 
@@ -289,7 +339,7 @@
             this.textBoxPetsSortNickName.Location = new System.Drawing.Point(517, 40);
             this.textBoxPetsSortNickName.Name = "textBoxPetsSortNickName";
             this.textBoxPetsSortNickName.Size = new System.Drawing.Size(166, 30);
-            this.textBoxPetsSortNickName.TabIndex = 6;
+            this.textBoxPetsSortNickName.TabIndex = 3;
             // 
             // checkBoxPetsIsAtShelter
             // 
@@ -298,7 +348,7 @@
             this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(689, 41);
             this.checkBoxPetsIsAtShelter.Name = "checkBoxPetsIsAtShelter";
             this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(94, 27);
-            this.checkBoxPetsIsAtShelter.TabIndex = 7;
+            this.checkBoxPetsIsAtShelter.TabIndex = 4;
             this.checkBoxPetsIsAtShelter.Text = "В приюте";
             this.checkBoxPetsIsAtShelter.UseVisualStyleBackColor = true;
             // 
@@ -309,7 +359,7 @@
             this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(789, 41);
             this.checkBoxPetsIsAtHome.Name = "checkBoxPetsIsAtHome";
             this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(75, 27);
-            this.checkBoxPetsIsAtHome.TabIndex = 8;
+            this.checkBoxPetsIsAtHome.TabIndex = 5;
             this.checkBoxPetsIsAtHome.Text = "Дома";
             this.checkBoxPetsIsAtHome.UseVisualStyleBackColor = true;
             // 
@@ -323,7 +373,7 @@
             this.dataGridViewPetsAllPets.RowTemplate.Height = 24;
             this.dataGridViewPetsAllPets.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPetsAllPets.Size = new System.Drawing.Size(861, 251);
-            this.dataGridViewPetsAllPets.TabIndex = 9;
+            this.dataGridViewPetsAllPets.TabIndex = 6;
             // 
             // tableLayoutPanel3
             // 
@@ -358,7 +408,7 @@
             this.dataGridViewPetsHistory.Name = "dataGridViewPetsHistory";
             this.dataGridViewPetsHistory.RowTemplate.Height = 24;
             this.dataGridViewPetsHistory.Size = new System.Drawing.Size(861, 114);
-            this.dataGridViewPetsHistory.TabIndex = 1;
+            this.dataGridViewPetsHistory.TabIndex = 7;
             // 
             // tableLayoutPanel4
             // 
@@ -381,10 +431,10 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 29);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 26);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(193, 31);
-            this.comboBoxPetsCure.TabIndex = 0;
+            this.comboBoxPetsCure.TabIndex = 8;
             // 
             // textBoxPetsComment
             // 
@@ -393,7 +443,7 @@
             this.textBoxPetsComment.Multiline = true;
             this.textBoxPetsComment.Name = "textBoxPetsComment";
             this.textBoxPetsComment.Size = new System.Drawing.Size(591, 77);
-            this.textBoxPetsComment.TabIndex = 1;
+            this.textBoxPetsComment.TabIndex = 9;
             // 
             // buttonPetsAddCure
             // 
@@ -401,7 +451,7 @@
             this.buttonPetsAddCure.Location = new System.Drawing.Point(799, 9);
             this.buttonPetsAddCure.Name = "buttonPetsAddCure";
             this.buttonPetsAddCure.Size = new System.Drawing.Size(65, 65);
-            this.buttonPetsAddCure.TabIndex = 2;
+            this.buttonPetsAddCure.TabIndex = 10;
             this.buttonPetsAddCure.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelPhotoAndInfo
@@ -463,7 +513,7 @@
             this.textBoxPetsArrivalDate.Location = new System.Drawing.Point(163, 132);
             this.textBoxPetsArrivalDate.Name = "textBoxPetsArrivalDate";
             this.textBoxPetsArrivalDate.Size = new System.Drawing.Size(197, 30);
-            this.textBoxPetsArrivalDate.TabIndex = 8;
+            this.textBoxPetsArrivalDate.TabIndex = 14;
             // 
             // textBoxPetsNickName
             // 
@@ -471,7 +521,7 @@
             this.textBoxPetsNickName.Location = new System.Drawing.Point(163, 99);
             this.textBoxPetsNickName.Name = "textBoxPetsNickName";
             this.textBoxPetsNickName.Size = new System.Drawing.Size(197, 30);
-            this.textBoxPetsNickName.TabIndex = 7;
+            this.textBoxPetsNickName.TabIndex = 13;
             // 
             // textBoxPetsBreed
             // 
@@ -479,7 +529,7 @@
             this.textBoxPetsBreed.Location = new System.Drawing.Point(163, 66);
             this.textBoxPetsBreed.Name = "textBoxPetsBreed";
             this.textBoxPetsBreed.Size = new System.Drawing.Size(197, 30);
-            this.textBoxPetsBreed.TabIndex = 6;
+            this.textBoxPetsBreed.TabIndex = 12;
             // 
             // label6
             // 
@@ -538,7 +588,7 @@
             this.textBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
             this.textBoxPetsSpecies.Name = "textBoxPetsSpecies";
             this.textBoxPetsSpecies.Size = new System.Drawing.Size(197, 30);
-            this.textBoxPetsSpecies.TabIndex = 5;
+            this.textBoxPetsSpecies.TabIndex = 11;
             // 
             // tableLayoutPanelMasterInfo
             // 
@@ -623,7 +673,7 @@
             this.textBoxPetsFIO.Location = new System.Drawing.Point(163, 33);
             this.textBoxPetsFIO.Name = "textBoxPetsFIO";
             this.textBoxPetsFIO.Size = new System.Drawing.Size(203, 30);
-            this.textBoxPetsFIO.TabIndex = 5;
+            this.textBoxPetsFIO.TabIndex = 15;
             // 
             // textBoxPetsPhoneNumber
             // 
@@ -631,7 +681,7 @@
             this.textBoxPetsPhoneNumber.Location = new System.Drawing.Point(163, 63);
             this.textBoxPetsPhoneNumber.Name = "textBoxPetsPhoneNumber";
             this.textBoxPetsPhoneNumber.Size = new System.Drawing.Size(203, 30);
-            this.textBoxPetsPhoneNumber.TabIndex = 6;
+            this.textBoxPetsPhoneNumber.TabIndex = 16;
             // 
             // textBoxPetsAddress
             // 
@@ -639,7 +689,7 @@
             this.textBoxPetsAddress.Location = new System.Drawing.Point(163, 93);
             this.textBoxPetsAddress.Name = "textBoxPetsAddress";
             this.textBoxPetsAddress.Size = new System.Drawing.Size(203, 30);
-            this.textBoxPetsAddress.TabIndex = 7;
+            this.textBoxPetsAddress.TabIndex = 17;
             // 
             // textBoxPetsGivingDate
             // 
@@ -647,7 +697,7 @@
             this.textBoxPetsGivingDate.Location = new System.Drawing.Point(163, 123);
             this.textBoxPetsGivingDate.Name = "textBoxPetsGivingDate";
             this.textBoxPetsGivingDate.Size = new System.Drawing.Size(203, 30);
-            this.textBoxPetsGivingDate.TabIndex = 8;
+            this.textBoxPetsGivingDate.TabIndex = 18;
             // 
             // tableLayoutPanel1
             // 
@@ -672,7 +722,7 @@
             this.buttonPetsDelete.Location = new System.Drawing.Point(113, 19);
             this.buttonPetsDelete.Name = "buttonPetsDelete";
             this.buttonPetsDelete.Size = new System.Drawing.Size(104, 44);
-            this.buttonPetsDelete.TabIndex = 1;
+            this.buttonPetsDelete.TabIndex = 21;
             this.buttonPetsDelete.Text = "Удалить";
             this.buttonPetsDelete.UseVisualStyleBackColor = true;
             // 
@@ -682,7 +732,7 @@
             this.buttonPetsSave.Location = new System.Drawing.Point(3, 19);
             this.buttonPetsSave.Name = "buttonPetsSave";
             this.buttonPetsSave.Size = new System.Drawing.Size(104, 44);
-            this.buttonPetsSave.TabIndex = 0;
+            this.buttonPetsSave.TabIndex = 20;
             this.buttonPetsSave.Text = "Сохранить";
             this.buttonPetsSave.UseVisualStyleBackColor = true;
             // 
@@ -693,7 +743,7 @@
             this.checkBoxPetsNewAnimal.Location = new System.Drawing.Point(223, 28);
             this.checkBoxPetsNewAnimal.Name = "checkBoxPetsNewAnimal";
             this.checkBoxPetsNewAnimal.Size = new System.Drawing.Size(143, 27);
-            this.checkBoxPetsNewAnimal.TabIndex = 2;
+            this.checkBoxPetsNewAnimal.TabIndex = 19;
             this.checkBoxPetsNewAnimal.Text = "Новое животное";
             this.checkBoxPetsNewAnimal.UseVisualStyleBackColor = true;
             // 
@@ -772,7 +822,7 @@
             this.textBoxStaffComment.Multiline = true;
             this.textBoxStaffComment.Name = "textBoxStaffComment";
             this.textBoxStaffComment.Size = new System.Drawing.Size(669, 68);
-            this.textBoxStaffComment.TabIndex = 1;
+            this.textBoxStaffComment.TabIndex = 7;
             // 
             // label16
             // 
@@ -832,7 +882,7 @@
             this.textBoxStaffSortLastName.Location = new System.Drawing.Point(83, 35);
             this.textBoxStaffSortLastName.Name = "textBoxStaffSortLastName";
             this.textBoxStaffSortLastName.Size = new System.Drawing.Size(149, 30);
-            this.textBoxStaffSortLastName.TabIndex = 7;
+            this.textBoxStaffSortLastName.TabIndex = 1;
             // 
             // textBoxStafSortfFirstName
             // 
@@ -840,7 +890,7 @@
             this.textBoxStafSortfFirstName.Location = new System.Drawing.Point(288, 35);
             this.textBoxStafSortfFirstName.Name = "textBoxStafSortfFirstName";
             this.textBoxStafSortfFirstName.Size = new System.Drawing.Size(149, 30);
-            this.textBoxStafSortfFirstName.TabIndex = 8;
+            this.textBoxStafSortfFirstName.TabIndex = 2;
             // 
             // textBoxStaffSortMiddleName
             // 
@@ -848,7 +898,7 @@
             this.textBoxStaffSortMiddleName.Location = new System.Drawing.Point(523, 35);
             this.textBoxStaffSortMiddleName.Name = "textBoxStaffSortMiddleName";
             this.textBoxStaffSortMiddleName.Size = new System.Drawing.Size(149, 30);
-            this.textBoxStaffSortMiddleName.TabIndex = 9;
+            this.textBoxStaffSortMiddleName.TabIndex = 3;
             // 
             // checkBoxStaffIsOnStaff
             // 
@@ -857,7 +907,7 @@
             this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(678, 36);
             this.checkBoxStaffIsOnStaff.Name = "checkBoxStaffIsOnStaff";
             this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(105, 27);
-            this.checkBoxStaffIsOnStaff.TabIndex = 10;
+            this.checkBoxStaffIsOnStaff.TabIndex = 4;
             this.checkBoxStaffIsOnStaff.Text = "Сотрудники";
             this.checkBoxStaffIsOnStaff.UseVisualStyleBackColor = true;
             // 
@@ -870,7 +920,7 @@
             this.dataGridViewStaffAllMembers.Name = "dataGridViewStaffAllMembers";
             this.dataGridViewStaffAllMembers.RowTemplate.Height = 24;
             this.dataGridViewStaffAllMembers.Size = new System.Drawing.Size(780, 256);
-            this.dataGridViewStaffAllMembers.TabIndex = 11;
+            this.dataGridViewStaffAllMembers.TabIndex = 5;
             // 
             // dataGridViewStaffCharity
             // 
@@ -881,7 +931,7 @@
             this.dataGridViewStaffCharity.Name = "dataGridViewStaffCharity";
             this.dataGridViewStaffCharity.RowTemplate.Height = 24;
             this.dataGridViewStaffCharity.Size = new System.Drawing.Size(780, 135);
-            this.dataGridViewStaffCharity.TabIndex = 12;
+            this.dataGridViewStaffCharity.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 
@@ -906,26 +956,8 @@
             this.buttonStaffOk.Location = new System.Drawing.Point(26, 23);
             this.buttonStaffOk.Name = "buttonStaffOk";
             this.buttonStaffOk.Size = new System.Drawing.Size(59, 59);
-            this.buttonStaffOk.TabIndex = 0;
+            this.buttonStaffOk.TabIndex = 8;
             this.buttonStaffOk.UseVisualStyleBackColor = true;
-            // 
-            // tabReports
-            // 
-            this.tabReports.Controls.Add(this.textBox4);
-            this.tabReports.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tabReports.Location = new System.Drawing.Point(4, 39);
-            this.tabReports.Name = "tabReports";
-            this.tabReports.Size = new System.Drawing.Size(1254, 630);
-            this.tabReports.TabIndex = 3;
-            this.tabReports.Text = "Отчёты";
-            this.tabReports.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(615, 82);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 30);
-            this.textBox4.TabIndex = 0;
             // 
             // tableLayoutPanelStaffRightMain
             // 
@@ -1057,7 +1089,7 @@
             this.textBoxStaffLastName.Location = new System.Drawing.Point(113, 35);
             this.textBoxStaffLastName.Name = "textBoxStaffLastName";
             this.textBoxStaffLastName.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffLastName.TabIndex = 8;
+            this.textBoxStaffLastName.TabIndex = 9;
             // 
             // textBoxStaffFirstName
             // 
@@ -1066,7 +1098,7 @@
             this.textBoxStaffFirstName.Location = new System.Drawing.Point(113, 75);
             this.textBoxStaffFirstName.Name = "textBoxStaffFirstName";
             this.textBoxStaffFirstName.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffFirstName.TabIndex = 9;
+            this.textBoxStaffFirstName.TabIndex = 10;
             // 
             // textBoxStaffMiddleName
             // 
@@ -1075,7 +1107,7 @@
             this.textBoxStaffMiddleName.Location = new System.Drawing.Point(113, 115);
             this.textBoxStaffMiddleName.Name = "textBoxStaffMiddleName";
             this.textBoxStaffMiddleName.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffMiddleName.TabIndex = 10;
+            this.textBoxStaffMiddleName.TabIndex = 11;
             // 
             // textBoxStaffVacancy
             // 
@@ -1084,7 +1116,7 @@
             this.textBoxStaffVacancy.Location = new System.Drawing.Point(113, 155);
             this.textBoxStaffVacancy.Name = "textBoxStaffVacancy";
             this.textBoxStaffVacancy.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffVacancy.TabIndex = 11;
+            this.textBoxStaffVacancy.TabIndex = 12;
             // 
             // textBoxStaffPhoneNumber
             // 
@@ -1093,7 +1125,7 @@
             this.textBoxStaffPhoneNumber.Location = new System.Drawing.Point(113, 195);
             this.textBoxStaffPhoneNumber.Name = "textBoxStaffPhoneNumber";
             this.textBoxStaffPhoneNumber.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffPhoneNumber.TabIndex = 12;
+            this.textBoxStaffPhoneNumber.TabIndex = 13;
             // 
             // textBoxStaffAddress
             // 
@@ -1102,25 +1134,43 @@
             this.textBoxStaffAddress.Location = new System.Drawing.Point(113, 235);
             this.textBoxStaffAddress.Name = "textBoxStaffAddress";
             this.textBoxStaffAddress.Size = new System.Drawing.Size(272, 30);
-            this.textBoxStaffAddress.TabIndex = 13;
+            this.textBoxStaffAddress.TabIndex = 14;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel5.Controls.Add(this.buttonStaffSave, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonStaffDelete, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.checkBoxStaffNewMember, 2, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 312);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 100);
+            this.tableLayoutPanel5.TabIndex = 1;
             // 
             // buttonStaffSave
             // 
             this.buttonStaffSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStaffSave.Location = new System.Drawing.Point(3, 31);
             this.buttonStaffSave.Name = "buttonStaffSave";
-            this.buttonStaffSave.Size = new System.Drawing.Size(50, 37);
-            this.buttonStaffSave.TabIndex = 14;
+            this.buttonStaffSave.Size = new System.Drawing.Size(147, 37);
+            this.buttonStaffSave.TabIndex = 16;
             this.buttonStaffSave.Text = "Сохранить";
             this.buttonStaffSave.UseVisualStyleBackColor = true;
             // 
             // buttonStaffDelete
             // 
             this.buttonStaffDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStaffDelete.Location = new System.Drawing.Point(59, 32);
+            this.buttonStaffDelete.Location = new System.Drawing.Point(156, 32);
             this.buttonStaffDelete.Name = "buttonStaffDelete";
-            this.buttonStaffDelete.Size = new System.Drawing.Size(50, 35);
-            this.buttonStaffDelete.TabIndex = 15;
+            this.buttonStaffDelete.Size = new System.Drawing.Size(147, 35);
+            this.buttonStaffDelete.TabIndex = 17;
             this.buttonStaffDelete.Text = "Удалить";
             this.buttonStaffDelete.UseVisualStyleBackColor = true;
             // 
@@ -1128,31 +1178,12 @@
             // 
             this.checkBoxStaffNewMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStaffNewMember.AutoSize = true;
-            this.checkBoxStaffNewMember.Location = new System.Drawing.Point(115, 36);
+            this.checkBoxStaffNewMember.Location = new System.Drawing.Point(309, 36);
             this.checkBoxStaffNewMember.Name = "checkBoxStaffNewMember";
-            this.checkBoxStaffNewMember.Size = new System.Drawing.Size(82, 27);
-            this.checkBoxStaffNewMember.TabIndex = 16;
+            this.checkBoxStaffNewMember.Size = new System.Drawing.Size(126, 27);
+            this.checkBoxStaffNewMember.TabIndex = 15;
             this.checkBoxStaffNewMember.Text = "Новый";
             this.checkBoxStaffNewMember.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.44828F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.44828F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.10345F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonStaffSave, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonStaffDelete, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBoxStaffNewMember, 2, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(27, 358);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel5.TabIndex = 1;
             // 
             // tabGoods
             // 
@@ -1167,17 +1198,529 @@
             // 
             // tableLayoutPanelGoodsMain
             // 
-            this.tableLayoutPanelGoodsMain.ColumnCount = 2;
-            this.tableLayoutPanelGoodsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelGoodsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelGoodsMain.ColumnCount = 1;
+            this.tableLayoutPanelGoodsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.label28, 0, 0);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelGoodsTopPanel, 0, 1);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.dataGridViewGoodsAllGoods, 0, 2);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelAfterGoodTable, 0, 3);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelGoodsButtons, 0, 7);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelPickChariter, 0, 6);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.label30, 0, 5);
             this.tableLayoutPanelGoodsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelGoodsMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelGoodsMain.Name = "tableLayoutPanelGoodsMain";
-            this.tableLayoutPanelGoodsMain.RowCount = 2;
-            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelGoodsMain.RowCount = 9;
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelGoodsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanelGoodsMain.Size = new System.Drawing.Size(1254, 630);
             this.tableLayoutPanelGoodsMain.TabIndex = 0;
+            // 
+            // tabReports
+            // 
+            this.tabReports.Controls.Add(this.tableLayoutPanelReportsMain);
+            this.tabReports.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tabReports.Location = new System.Drawing.Point(4, 39);
+            this.tabReports.Name = "tabReports";
+            this.tabReports.Size = new System.Drawing.Size(1254, 630);
+            this.tabReports.TabIndex = 3;
+            this.tabReports.Text = "Отчёты";
+            this.tabReports.UseVisualStyleBackColor = true;
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(3, 3);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(1248, 23);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Список еды, лекарств и прочего";
+            // 
+            // tableLayoutPanelGoodsTopPanel
+            // 
+            this.tableLayoutPanelGoodsTopPanel.ColumnCount = 7;
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.label29, 0, 0);
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.textBoxGoodsSortNameofGoods, 1, 0);
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsCure, 3, 0);
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsEat, 4, 0);
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsOther, 5, 0);
+            this.tableLayoutPanelGoodsTopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelGoodsTopPanel.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanelGoodsTopPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelGoodsTopPanel.Name = "tableLayoutPanelGoodsTopPanel";
+            this.tableLayoutPanelGoodsTopPanel.RowCount = 1;
+            this.tableLayoutPanelGoodsTopPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelGoodsTopPanel.Size = new System.Drawing.Size(1254, 40);
+            this.tableLayoutPanelGoodsTopPanel.TabIndex = 1;
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(9, 8);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(54, 17);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Наименование";
+            // 
+            // textBoxGoodsSortNameofGoods
+            // 
+            this.textBoxGoodsSortNameofGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxGoodsSortNameofGoods.Location = new System.Drawing.Point(97, 4);
+            this.textBoxGoodsSortNameofGoods.Name = "textBoxGoodsSortNameofGoods";
+            this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(100, 30);
+            this.textBoxGoodsSortNameofGoods.TabIndex = 1;
+            // 
+            // radioButtonGoodsSortIsCure
+            // 
+            this.radioButtonGoodsSortIsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonGoodsSortIsCure.AutoSize = true;
+            this.radioButtonGoodsSortIsCure.Location = new System.Drawing.Point(279, 9);
+            this.radioButtonGoodsSortIsCure.Name = "radioButtonGoodsSortIsCure";
+            this.radioButtonGoodsSortIsCure.Size = new System.Drawing.Size(110, 21);
+            this.radioButtonGoodsSortIsCure.TabIndex = 2;
+            this.radioButtonGoodsSortIsCure.TabStop = true;
+            this.radioButtonGoodsSortIsCure.Text = "Лекарства";
+            this.radioButtonGoodsSortIsCure.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonGoodsSortIsEat
+            // 
+            this.radioButtonGoodsSortIsEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonGoodsSortIsEat.AutoSize = true;
+            this.radioButtonGoodsSortIsEat.Location = new System.Drawing.Point(370, 10);
+            this.radioButtonGoodsSortIsEat.Name = "radioButtonGoodsSortIsEat";
+            this.radioButtonGoodsSortIsEat.Size = new System.Drawing.Size(110, 21);
+            this.radioButtonGoodsSortIsEat.TabIndex = 3;
+            this.radioButtonGoodsSortIsEat.TabStop = true;
+            this.radioButtonGoodsSortIsEat.Text = "Еда";
+            this.radioButtonGoodsSortIsEat.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonGoodsSortIsOther
+            // 
+            this.radioButtonGoodsSortIsOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonGoodsSortIsOther.AutoSize = true;
+            this.radioButtonGoodsSortIsOther.Location = new System.Drawing.Point(477, 9);
+            this.radioButtonGoodsSortIsOther.Name = "radioButtonGoodsSortIsOther";
+            this.radioButtonGoodsSortIsOther.Size = new System.Drawing.Size(110, 21);
+            this.radioButtonGoodsSortIsOther.TabIndex = 4;
+            this.radioButtonGoodsSortIsOther.TabStop = true;
+            this.radioButtonGoodsSortIsOther.Text = "Прочее";
+            this.radioButtonGoodsSortIsOther.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewGoodsAllGoods
+            // 
+            this.dataGridViewGoodsAllGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGoodsAllGoods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewGoodsAllGoods.Location = new System.Drawing.Point(3, 73);
+            this.dataGridViewGoodsAllGoods.Name = "dataGridViewGoodsAllGoods";
+            this.dataGridViewGoodsAllGoods.RowTemplate.Height = 24;
+            this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1248, 240);
+            this.dataGridViewGoodsAllGoods.TabIndex = 5;
+            // 
+            // tableLayoutPanelAfterGoodTable
+            // 
+            this.tableLayoutPanelAfterGoodTable.ColumnCount = 4;
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsName, 0, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 1, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 2, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsArrivalDate, 3, 0);
+            this.tableLayoutPanelAfterGoodTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelAfterGoodTable.Location = new System.Drawing.Point(0, 316);
+            this.tableLayoutPanelAfterGoodTable.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelAfterGoodTable.Name = "tableLayoutPanelAfterGoodTable";
+            this.tableLayoutPanelAfterGoodTable.RowCount = 1;
+            this.tableLayoutPanelAfterGoodTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelAfterGoodTable.Size = new System.Drawing.Size(1254, 40);
+            this.tableLayoutPanelAfterGoodTable.TabIndex = 3;
+            // 
+            // textBoxGoodsName
+            // 
+            this.textBoxGoodsName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGoodsName.Location = new System.Drawing.Point(3, 3);
+            this.textBoxGoodsName.Name = "textBoxGoodsName";
+            this.textBoxGoodsName.Size = new System.Drawing.Size(621, 30);
+            this.textBoxGoodsName.TabIndex = 6;
+            // 
+            // textBoxGoodsAmount
+            // 
+            this.textBoxGoodsAmount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGoodsAmount.Location = new System.Drawing.Point(630, 3);
+            this.textBoxGoodsAmount.Name = "textBoxGoodsAmount";
+            this.textBoxGoodsAmount.Size = new System.Drawing.Size(182, 30);
+            this.textBoxGoodsAmount.TabIndex = 7;
+            // 
+            // textBoxGoodsNeeded
+            // 
+            this.textBoxGoodsNeeded.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGoodsNeeded.Location = new System.Drawing.Point(818, 3);
+            this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
+            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(182, 30);
+            this.textBoxGoodsNeeded.TabIndex = 8;
+            // 
+            // textBoxGoodsArrivalDate
+            // 
+            this.textBoxGoodsArrivalDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGoodsArrivalDate.Location = new System.Drawing.Point(1006, 3);
+            this.textBoxGoodsArrivalDate.Name = "textBoxGoodsArrivalDate";
+            this.textBoxGoodsArrivalDate.Size = new System.Drawing.Size(245, 30);
+            this.textBoxGoodsArrivalDate.TabIndex = 9;
+            // 
+            // tableLayoutPanelGoodsButtons
+            // 
+            this.tableLayoutPanelGoodsButtons.ColumnCount = 3;
+            this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsWriteOff, 0, 0);
+            this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsAdd, 1, 0);
+            this.tableLayoutPanelGoodsButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelGoodsButtons.Location = new System.Drawing.Point(0, 467);
+            this.tableLayoutPanelGoodsButtons.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelGoodsButtons.Name = "tableLayoutPanelGoodsButtons";
+            this.tableLayoutPanelGoodsButtons.RowCount = 1;
+            this.tableLayoutPanelGoodsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelGoodsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelGoodsButtons.Size = new System.Drawing.Size(1254, 40);
+            this.tableLayoutPanelGoodsButtons.TabIndex = 4;
+            // 
+            // buttonGoodsWriteOff
+            // 
+            this.buttonGoodsWriteOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGoodsWriteOff.Location = new System.Drawing.Point(3, 4);
+            this.buttonGoodsWriteOff.Name = "buttonGoodsWriteOff";
+            this.buttonGoodsWriteOff.Size = new System.Drawing.Size(119, 32);
+            this.buttonGoodsWriteOff.TabIndex = 11;
+            this.buttonGoodsWriteOff.Text = "Списать";
+            this.buttonGoodsWriteOff.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoodsAdd
+            // 
+            this.buttonGoodsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGoodsAdd.Location = new System.Drawing.Point(128, 6);
+            this.buttonGoodsAdd.Name = "buttonGoodsAdd";
+            this.buttonGoodsAdd.Size = new System.Drawing.Size(119, 28);
+            this.buttonGoodsAdd.TabIndex = 12;
+            this.buttonGoodsAdd.Text = "Добавить";
+            this.buttonGoodsAdd.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 400);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(1248, 23);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "В случае, если принёс волонтёр, выберите его из списка ";
+            // 
+            // tableLayoutPanelPickChariter
+            // 
+            this.tableLayoutPanelPickChariter.ColumnCount = 3;
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
+            this.tableLayoutPanelPickChariter.Controls.Add(this.label31, 0, 0);
+            this.tableLayoutPanelPickChariter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelPickChariter.Location = new System.Drawing.Point(0, 427);
+            this.tableLayoutPanelPickChariter.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPickChariter.Name = "tableLayoutPanelPickChariter";
+            this.tableLayoutPanelPickChariter.RowCount = 1;
+            this.tableLayoutPanelPickChariter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPickChariter.Size = new System.Drawing.Size(1254, 40);
+            this.tableLayoutPanelPickChariter.TabIndex = 6;
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(3, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(74, 40);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Волонтёр";
+            // 
+            // comboBoxGoodsVolunteer
+            // 
+            this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxGoodsVolunteer.FormattingEnabled = true;
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
+            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(287, 31);
+            this.comboBoxGoodsVolunteer.TabIndex = 10;
+            // 
+            // tableLayoutPanelReportsMain
+            // 
+            this.tableLayoutPanelReportsMain.ColumnCount = 3;
+            this.tableLayoutPanelReportsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanelReportsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelReportsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanelReportsMain.Controls.Add(this.tableLayoutPanelReportsSpent, 0, 0);
+            this.tableLayoutPanelReportsMain.Controls.Add(this.tableLayoutPanel6, 2, 0);
+            this.tableLayoutPanelReportsMain.Controls.Add(this.dataGridViewReportsMain, 0, 1);
+            this.tableLayoutPanelReportsMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelReportsMain.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelReportsMain.Name = "tableLayoutPanelReportsMain";
+            this.tableLayoutPanelReportsMain.RowCount = 3;
+            this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelReportsMain.Size = new System.Drawing.Size(1254, 630);
+            this.tableLayoutPanelReportsMain.TabIndex = 0;
+            // 
+            // tableLayoutPanelReportsSpent
+            // 
+            this.tableLayoutPanelReportsSpent.ColumnCount = 4;
+            this.tableLayoutPanelReportsSpent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.label32, 0, 0);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsEat, 0, 1);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsCure, 0, 2);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsOther, 0, 3);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsMoney, 0, 4);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsOutCome, 1, 1);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.checkBoxReportsInCome, 1, 2);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.label33, 2, 0);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.buttonReportsForm, 3, 4);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.dateTimePickerReportsFrom, 2, 1);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.dateTimePickerReportsTo, 3, 1);
+            this.tableLayoutPanelReportsSpent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelReportsSpent.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelReportsSpent.Name = "tableLayoutPanelReportsSpent";
+            this.tableLayoutPanelReportsSpent.RowCount = 5;
+            this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelReportsSpent.Size = new System.Drawing.Size(683, 183);
+            this.tableLayoutPanelReportsSpent.TabIndex = 0;
+            // 
+            // label32
+            // 
+            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label32.AutoSize = true;
+            this.tableLayoutPanelReportsSpent.SetColumnSpan(this.label32, 2);
+            this.label32.Location = new System.Drawing.Point(3, 3);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(334, 23);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Расходы";
+            // 
+            // checkBoxReportsEat
+            // 
+            this.checkBoxReportsEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsEat.AutoSize = true;
+            this.checkBoxReportsEat.Location = new System.Drawing.Point(3, 35);
+            this.checkBoxReportsEat.Name = "checkBoxReportsEat";
+            this.checkBoxReportsEat.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsEat.TabIndex = 1;
+            this.checkBoxReportsEat.Text = "Еда";
+            this.checkBoxReportsEat.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportsCure
+            // 
+            this.checkBoxReportsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsCure.AutoSize = true;
+            this.checkBoxReportsCure.Location = new System.Drawing.Point(3, 73);
+            this.checkBoxReportsCure.Name = "checkBoxReportsCure";
+            this.checkBoxReportsCure.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsCure.TabIndex = 2;
+            this.checkBoxReportsCure.Text = "Лекарства";
+            this.checkBoxReportsCure.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportsOther
+            // 
+            this.checkBoxReportsOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsOther.AutoSize = true;
+            this.checkBoxReportsOther.Location = new System.Drawing.Point(3, 111);
+            this.checkBoxReportsOther.Name = "checkBoxReportsOther";
+            this.checkBoxReportsOther.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsOther.TabIndex = 3;
+            this.checkBoxReportsOther.Text = "Прочее";
+            this.checkBoxReportsOther.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportsMoney
+            // 
+            this.checkBoxReportsMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsMoney.AutoSize = true;
+            this.checkBoxReportsMoney.Location = new System.Drawing.Point(3, 150);
+            this.checkBoxReportsMoney.Name = "checkBoxReportsMoney";
+            this.checkBoxReportsMoney.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsMoney.TabIndex = 4;
+            this.checkBoxReportsMoney.Text = "Деньги";
+            this.checkBoxReportsMoney.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportsOutCome
+            // 
+            this.checkBoxReportsOutCome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsOutCome.AutoSize = true;
+            this.checkBoxReportsOutCome.Location = new System.Drawing.Point(173, 35);
+            this.checkBoxReportsOutCome.Name = "checkBoxReportsOutCome";
+            this.checkBoxReportsOutCome.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsOutCome.TabIndex = 5;
+            this.checkBoxReportsOutCome.Text = "Расходы";
+            this.checkBoxReportsOutCome.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportsInCome
+            // 
+            this.checkBoxReportsInCome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxReportsInCome.AutoSize = true;
+            this.checkBoxReportsInCome.Location = new System.Drawing.Point(173, 73);
+            this.checkBoxReportsInCome.Name = "checkBoxReportsInCome";
+            this.checkBoxReportsInCome.Size = new System.Drawing.Size(164, 27);
+            this.checkBoxReportsInCome.TabIndex = 6;
+            this.checkBoxReportsInCome.Text = "Поступление";
+            this.checkBoxReportsInCome.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label33.AutoSize = true;
+            this.tableLayoutPanelReportsSpent.SetColumnSpan(this.label33, 2);
+            this.label33.Location = new System.Drawing.Point(343, 3);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(337, 23);
+            this.label33.TabIndex = 7;
+            this.label33.Text = "Период";
+            // 
+            // buttonReportsForm
+            // 
+            this.buttonReportsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReportsForm.Location = new System.Drawing.Point(513, 148);
+            this.buttonReportsForm.Name = "buttonReportsForm";
+            this.buttonReportsForm.Size = new System.Drawing.Size(167, 31);
+            this.buttonReportsForm.TabIndex = 9;
+            this.buttonReportsForm.Text = "Сформировать";
+            this.buttonReportsForm.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerReportsFrom
+            // 
+            this.dateTimePickerReportsFrom.Location = new System.Drawing.Point(343, 33);
+            this.dateTimePickerReportsFrom.Name = "dateTimePickerReportsFrom";
+            this.dateTimePickerReportsFrom.Size = new System.Drawing.Size(164, 30);
+            this.dateTimePickerReportsFrom.TabIndex = 7;
+            // 
+            // dateTimePickerReportsTo
+            // 
+            this.dateTimePickerReportsTo.Location = new System.Drawing.Point(513, 33);
+            this.dateTimePickerReportsTo.Name = "dateTimePickerReportsTo";
+            this.dateTimePickerReportsTo.Size = new System.Drawing.Size(167, 30);
+            this.dateTimePickerReportsTo.TabIndex = 8;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel6.Controls.Add(this.label34, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.labelReportsMoneyAmount, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label36, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBoxReportsMoneyToSpend, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBoxReportsComment, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.buttonReportsWriteOffMoney, 1, 3);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(817, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 4;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(434, 183);
+            this.tableLayoutPanel6.TabIndex = 1;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(3, 3);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(167, 23);
+            this.label34.TabIndex = 0;
+            this.label34.Text = "Денег на счету";
+            // 
+            // labelReportsMoneyAmount
+            // 
+            this.labelReportsMoneyAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelReportsMoneyAmount.AutoSize = true;
+            this.labelReportsMoneyAmount.Location = new System.Drawing.Point(176, 3);
+            this.labelReportsMoneyAmount.Name = "labelReportsMoneyAmount";
+            this.labelReportsMoneyAmount.Size = new System.Drawing.Size(255, 23);
+            this.labelReportsMoneyAmount.TabIndex = 1;
+            this.labelReportsMoneyAmount.Text = "label35";
+            // 
+            // label36
+            // 
+            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(3, 38);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(167, 23);
+            this.label36.TabIndex = 2;
+            this.label36.Text = "Потрачено";
+            // 
+            // textBoxReportsMoneyToSpend
+            // 
+            this.textBoxReportsMoneyToSpend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxReportsMoneyToSpend.Location = new System.Drawing.Point(176, 35);
+            this.textBoxReportsMoneyToSpend.Name = "textBoxReportsMoneyToSpend";
+            this.textBoxReportsMoneyToSpend.Size = new System.Drawing.Size(255, 30);
+            this.textBoxReportsMoneyToSpend.TabIndex = 10;
+            // 
+            // textBoxReportsComment
+            // 
+            this.tableLayoutPanel6.SetColumnSpan(this.textBoxReportsComment, 2);
+            this.textBoxReportsComment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxReportsComment.Location = new System.Drawing.Point(3, 81);
+            this.textBoxReportsComment.Multiline = true;
+            this.textBoxReportsComment.Name = "textBoxReportsComment";
+            this.textBoxReportsComment.Size = new System.Drawing.Size(426, 57);
+            this.textBoxReportsComment.TabIndex = 11;
+            // 
+            // buttonReportsWriteOffMoney
+            // 
+            this.buttonReportsWriteOffMoney.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonReportsWriteOffMoney.Location = new System.Drawing.Point(271, 148);
+            this.buttonReportsWriteOffMoney.Name = "buttonReportsWriteOffMoney";
+            this.buttonReportsWriteOffMoney.Size = new System.Drawing.Size(160, 30);
+            this.buttonReportsWriteOffMoney.TabIndex = 12;
+            this.buttonReportsWriteOffMoney.Text = "Списать средства";
+            this.buttonReportsWriteOffMoney.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewReportsMain
+            // 
+            this.dataGridViewReportsMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanelReportsMain.SetColumnSpan(this.dataGridViewReportsMain, 3);
+            this.dataGridViewReportsMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewReportsMain.Location = new System.Drawing.Point(3, 192);
+            this.dataGridViewReportsMain.Name = "dataGridViewReportsMain";
+            this.dataGridViewReportsMain.RowTemplate.Height = 24;
+            this.dataGridViewReportsMain.Size = new System.Drawing.Size(1248, 403);
+            this.dataGridViewReportsMain.TabIndex = 13;
             // 
             // EmployeeForm
             // 
@@ -1190,6 +1733,7 @@
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EmployeeForm";
             this.Text = "Приют животных \"Ласка\"";
+            this.Resize += new System.EventHandler(this.EmployeeForm_Resize);
             this.tabMain.ResumeLayout(false);
             this.tabAnimals.ResumeLayout(false);
             this.tableLayoutPanelAnimalsMain.ResumeLayout(false);
@@ -1216,14 +1760,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaffAllMembers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaffCharity)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tabReports.ResumeLayout(false);
-            this.tabReports.PerformLayout();
             this.tableLayoutPanelStaffRightMain.ResumeLayout(false);
             this.tableLayoutPanelEmployeeInfo.ResumeLayout(false);
             this.tableLayoutPanelEmployeeInfo.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tabGoods.ResumeLayout(false);
+            this.tableLayoutPanelGoodsMain.ResumeLayout(false);
+            this.tableLayoutPanelGoodsMain.PerformLayout();
+            this.tabReports.ResumeLayout(false);
+            this.tableLayoutPanelGoodsTopPanel.ResumeLayout(false);
+            this.tableLayoutPanelGoodsTopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoodsAllGoods)).EndInit();
+            this.tableLayoutPanelAfterGoodTable.ResumeLayout(false);
+            this.tableLayoutPanelAfterGoodTable.PerformLayout();
+            this.tableLayoutPanelGoodsButtons.ResumeLayout(false);
+            this.tableLayoutPanelPickChariter.ResumeLayout(false);
+            this.tableLayoutPanelPickChariter.PerformLayout();
+            this.tableLayoutPanelReportsMain.ResumeLayout(false);
+            this.tableLayoutPanelReportsSpent.ResumeLayout(false);
+            this.tableLayoutPanelReportsSpent.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1234,7 +1793,6 @@
         private System.Windows.Forms.TabPage tabAnimals;
         private System.Windows.Forms.TabPage tabStaff;
         private System.Windows.Forms.TabPage tabReports;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAnimalsMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAnimalsLeftMain;
         private System.Windows.Forms.Label label1;
@@ -1317,5 +1875,46 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TabPage tabGoods;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsMain;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsTopPanel;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBoxGoodsSortNameofGoods;
+        private System.Windows.Forms.RadioButton radioButtonGoodsSortIsCure;
+        private System.Windows.Forms.RadioButton radioButtonGoodsSortIsEat;
+        private System.Windows.Forms.RadioButton radioButtonGoodsSortIsOther;
+        private System.Windows.Forms.DataGridView dataGridViewGoodsAllGoods;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAfterGoodTable;
+        private System.Windows.Forms.TextBox textBoxGoodsName;
+        private System.Windows.Forms.TextBox textBoxGoodsAmount;
+        private System.Windows.Forms.TextBox textBoxGoodsNeeded;
+        private System.Windows.Forms.TextBox textBoxGoodsArrivalDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsButtons;
+        private System.Windows.Forms.Button buttonGoodsWriteOff;
+        private System.Windows.Forms.Button buttonGoodsAdd;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPickChariter;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox comboBoxGoodsVolunteer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelReportsMain;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelReportsSpent;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.CheckBox checkBoxReportsEat;
+        private System.Windows.Forms.CheckBox checkBoxReportsCure;
+        private System.Windows.Forms.CheckBox checkBoxReportsOther;
+        private System.Windows.Forms.CheckBox checkBoxReportsMoney;
+        private System.Windows.Forms.CheckBox checkBoxReportsOutCome;
+        private System.Windows.Forms.CheckBox checkBoxReportsInCome;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button buttonReportsForm;
+        private System.Windows.Forms.DateTimePicker dateTimePickerReportsFrom;
+        private System.Windows.Forms.DateTimePicker dateTimePickerReportsTo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label labelReportsMoneyAmount;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textBoxReportsMoneyToSpend;
+        private System.Windows.Forms.TextBox textBoxReportsComment;
+        private System.Windows.Forms.Button buttonReportsWriteOffMoney;
+        private System.Windows.Forms.DataGridView dataGridViewReportsMain;
     }
 }

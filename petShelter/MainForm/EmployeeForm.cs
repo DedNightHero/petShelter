@@ -19,5 +19,10 @@ namespace MainForm
             tabMain.ItemSize = new Size(tabWidth, tabMain.ItemSize.Height);
         }
 
+        private void EmployeeForm_Resize(object sender, EventArgs e)
+        {
+            int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
+            tabMain.ItemSize = new Size(tabWidth-1, tabMain.ItemSize.Height);
+        }
     }
 }
