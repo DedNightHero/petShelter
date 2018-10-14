@@ -44,6 +44,11 @@
             this.dataGridViewVolunteerFormGoods = new System.Windows.Forms.DataGridView();
             this.dataGridViewVolunteerFormOneCharity = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanelVolunteerInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxVolunteerFormAddress = new System.Windows.Forms.TextBox();
+            this.textBoxVolunteerFormPhoneNumber = new System.Windows.Forms.TextBox();
+            this.textBoxVolunteerFormVacancy = new System.Windows.Forms.TextBox();
+            this.textBoxVolunteerFormMiddleName = new System.Windows.Forms.TextBox();
+            this.textBoxVolunteerFormFirstName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -51,11 +56,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxVolunteerFormLastName = new System.Windows.Forms.TextBox();
-            this.textBoxVolunteerFormFirstName = new System.Windows.Forms.TextBox();
-            this.textBoxVolunteerFormMiddleName = new System.Windows.Forms.TextBox();
-            this.textBoxVolunteerFormVacancy = new System.Windows.Forms.TextBox();
-            this.textBoxVolunteerFormPhoneNumber = new System.Windows.Forms.TextBox();
-            this.textBoxVolunteerFormAddress = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelVolunteerMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVolunteerFormGoods)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVolunteerFormOneCharity)).BeginInit();
@@ -280,6 +280,51 @@
             this.tableLayoutPanelVolunteerInfo.Size = new System.Drawing.Size(336, 161);
             this.tableLayoutPanelVolunteerInfo.TabIndex = 13;
             // 
+            // textBoxVolunteerFormAddress
+            // 
+            this.textBoxVolunteerFormAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxVolunteerFormAddress.Location = new System.Drawing.Point(93, 133);
+            this.textBoxVolunteerFormAddress.Name = "textBoxVolunteerFormAddress";
+            this.textBoxVolunteerFormAddress.ReadOnly = true;
+            this.textBoxVolunteerFormAddress.Size = new System.Drawing.Size(240, 30);
+            this.textBoxVolunteerFormAddress.TabIndex = 12;
+            // 
+            // textBoxVolunteerFormPhoneNumber
+            // 
+            this.textBoxVolunteerFormPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxVolunteerFormPhoneNumber.Location = new System.Drawing.Point(93, 107);
+            this.textBoxVolunteerFormPhoneNumber.Name = "textBoxVolunteerFormPhoneNumber";
+            this.textBoxVolunteerFormPhoneNumber.ReadOnly = true;
+            this.textBoxVolunteerFormPhoneNumber.Size = new System.Drawing.Size(240, 30);
+            this.textBoxVolunteerFormPhoneNumber.TabIndex = 11;
+            // 
+            // textBoxVolunteerFormVacancy
+            // 
+            this.textBoxVolunteerFormVacancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxVolunteerFormVacancy.Location = new System.Drawing.Point(93, 81);
+            this.textBoxVolunteerFormVacancy.Name = "textBoxVolunteerFormVacancy";
+            this.textBoxVolunteerFormVacancy.ReadOnly = true;
+            this.textBoxVolunteerFormVacancy.Size = new System.Drawing.Size(240, 30);
+            this.textBoxVolunteerFormVacancy.TabIndex = 10;
+            // 
+            // textBoxVolunteerFormMiddleName
+            // 
+            this.textBoxVolunteerFormMiddleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxVolunteerFormMiddleName.Location = new System.Drawing.Point(93, 55);
+            this.textBoxVolunteerFormMiddleName.Name = "textBoxVolunteerFormMiddleName";
+            this.textBoxVolunteerFormMiddleName.ReadOnly = true;
+            this.textBoxVolunteerFormMiddleName.Size = new System.Drawing.Size(240, 30);
+            this.textBoxVolunteerFormMiddleName.TabIndex = 9;
+            // 
+            // textBoxVolunteerFormFirstName
+            // 
+            this.textBoxVolunteerFormFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxVolunteerFormFirstName.Location = new System.Drawing.Point(93, 29);
+            this.textBoxVolunteerFormFirstName.Name = "textBoxVolunteerFormFirstName";
+            this.textBoxVolunteerFormFirstName.ReadOnly = true;
+            this.textBoxVolunteerFormFirstName.Size = new System.Drawing.Size(240, 30);
+            this.textBoxVolunteerFormFirstName.TabIndex = 8;
+            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -348,51 +393,6 @@
             this.textBoxVolunteerFormLastName.ReadOnly = true;
             this.textBoxVolunteerFormLastName.Size = new System.Drawing.Size(240, 30);
             this.textBoxVolunteerFormLastName.TabIndex = 7;
-            // 
-            // textBoxVolunteerFormFirstName
-            // 
-            this.textBoxVolunteerFormFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormFirstName.Location = new System.Drawing.Point(93, 29);
-            this.textBoxVolunteerFormFirstName.Name = "textBoxVolunteerFormFirstName";
-            this.textBoxVolunteerFormFirstName.ReadOnly = true;
-            this.textBoxVolunteerFormFirstName.Size = new System.Drawing.Size(240, 30);
-            this.textBoxVolunteerFormFirstName.TabIndex = 8;
-            // 
-            // textBoxVolunteerFormMiddleName
-            // 
-            this.textBoxVolunteerFormMiddleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormMiddleName.Location = new System.Drawing.Point(93, 55);
-            this.textBoxVolunteerFormMiddleName.Name = "textBoxVolunteerFormMiddleName";
-            this.textBoxVolunteerFormMiddleName.ReadOnly = true;
-            this.textBoxVolunteerFormMiddleName.Size = new System.Drawing.Size(240, 30);
-            this.textBoxVolunteerFormMiddleName.TabIndex = 9;
-            // 
-            // textBoxVolunteerFormVacancy
-            // 
-            this.textBoxVolunteerFormVacancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormVacancy.Location = new System.Drawing.Point(93, 81);
-            this.textBoxVolunteerFormVacancy.Name = "textBoxVolunteerFormVacancy";
-            this.textBoxVolunteerFormVacancy.ReadOnly = true;
-            this.textBoxVolunteerFormVacancy.Size = new System.Drawing.Size(240, 30);
-            this.textBoxVolunteerFormVacancy.TabIndex = 10;
-            // 
-            // textBoxVolunteerFormPhoneNumber
-            // 
-            this.textBoxVolunteerFormPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormPhoneNumber.Location = new System.Drawing.Point(93, 107);
-            this.textBoxVolunteerFormPhoneNumber.Name = "textBoxVolunteerFormPhoneNumber";
-            this.textBoxVolunteerFormPhoneNumber.ReadOnly = true;
-            this.textBoxVolunteerFormPhoneNumber.Size = new System.Drawing.Size(240, 30);
-            this.textBoxVolunteerFormPhoneNumber.TabIndex = 11;
-            // 
-            // textBoxVolunteerFormAddress
-            // 
-            this.textBoxVolunteerFormAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormAddress.Location = new System.Drawing.Point(93, 133);
-            this.textBoxVolunteerFormAddress.Name = "textBoxVolunteerFormAddress";
-            this.textBoxVolunteerFormAddress.ReadOnly = true;
-            this.textBoxVolunteerFormAddress.Size = new System.Drawing.Size(240, 30);
-            this.textBoxVolunteerFormAddress.TabIndex = 12;
             // 
             // VolunteerForm
             // 

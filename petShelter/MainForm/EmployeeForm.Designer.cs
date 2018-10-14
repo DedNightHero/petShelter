@@ -51,6 +51,7 @@
             this.textBoxPetsComment = new System.Windows.Forms.TextBox();
             this.buttonPetsAddCure = new System.Windows.Forms.Button();
             this.tableLayoutPanelPhotoAndInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelAnimalInfo = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxPetsArrivalDate = new System.Windows.Forms.TextBox();
             this.textBoxPetsNickName = new System.Windows.Forms.TextBox();
@@ -155,7 +156,6 @@
             this.textBoxReportsComment = new System.Windows.Forms.TextBox();
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -165,6 +165,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetsHistory)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanelPhotoAndInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanelAnimalInfo.SuspendLayout();
             this.tableLayoutPanelMasterInfo.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -189,7 +190,6 @@
             this.tableLayoutPanelReportsSpent.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -421,7 +421,7 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel4.Controls.Add(this.comboBoxPetsCure, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBoxPetsComment, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.buttonPetsAddCure, 2, 0);
@@ -448,7 +448,7 @@
             this.textBoxPetsComment.Location = new System.Drawing.Point(192, 3);
             this.textBoxPetsComment.Multiline = true;
             this.textBoxPetsComment.Name = "textBoxPetsComment";
-            this.textBoxPetsComment.Size = new System.Drawing.Size(562, 69);
+            this.textBoxPetsComment.Size = new System.Drawing.Size(561, 69);
             this.textBoxPetsComment.TabIndex = 9;
             // 
             // buttonPetsAddCure
@@ -456,9 +456,9 @@
             this.buttonPetsAddCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPetsAddCure.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
             this.buttonPetsAddCure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonPetsAddCure.Location = new System.Drawing.Point(760, 5);
+            this.buttonPetsAddCure.Location = new System.Drawing.Point(759, 5);
             this.buttonPetsAddCure.Name = "buttonPetsAddCure";
-            this.buttonPetsAddCure.Size = new System.Drawing.Size(67, 65);
+            this.buttonPetsAddCure.Size = new System.Drawing.Size(68, 65);
             this.buttonPetsAddCure.TabIndex = 10;
             this.buttonPetsAddCure.UseVisualStyleBackColor = true;
             // 
@@ -477,6 +477,17 @@
             this.tableLayoutPanelPhotoAndInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelPhotoAndInfo.Size = new System.Drawing.Size(330, 324);
             this.tableLayoutPanelPhotoAndInfo.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(324, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // tableLayoutPanelAnimalInfo
             // 
@@ -1732,17 +1743,6 @@
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1196, 409);
             this.dataGridViewReportsMain.TabIndex = 13;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(324, 139);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -1768,6 +1768,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanelPhotoAndInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanelAnimalInfo.ResumeLayout(false);
             this.tableLayoutPanelAnimalInfo.PerformLayout();
             this.tableLayoutPanelMasterInfo.ResumeLayout(false);
@@ -1804,7 +1805,6 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
