@@ -73,6 +73,16 @@ namespace MainForm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ok_btn {
+            get {
+                object obj = ResourceManager.GetObject("ok_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap showPass {
             get {
                 object obj = ResourceManager.GetObject("showPass", resourceCulture);
