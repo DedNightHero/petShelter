@@ -362,49 +362,6 @@ namespace MainForm {
             base.Tables.Add(this.tablespecies);
             this.tableusers = new usersDataTable();
             base.Tables.Add(this.tableusers);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_species_animals", new global::System.Data.DataColumn[] {
-                        this.tablespecies.Id_SpeciesColumn}, new global::System.Data.DataColumn[] {
-                        this.tableanimals.SpeciesColumn});
-            this.tableanimals.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_goods_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tablegoods.Id_GoodsColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.GoodsNameColumn});
-            this.tabledebitcredit.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_users_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tableusers.Id_UsersColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.UserIdColumn});
-            this.tabledebitcredit.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_animals_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tableanimals.Id_AnimalsColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.PatientIdColumn});
-            this.tabledebitcredit.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_goodstype_goods", new global::System.Data.DataColumn[] {
-                        this.tablegoodstype.Id_GoodsTypeColumn}, new global::System.Data.DataColumn[] {
-                        this.tablegoods.TypeColumn});
-            this.tablegoods.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_positions_users", new global::System.Data.DataColumn[] {
-                        this.tablepositions.Id_PositionsColumn}, new global::System.Data.DataColumn[] {
-                        this.tableusers.PositionColumn});
-            this.tableusers.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -702,7 +659,7 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow AddanimalsRow(int Species, string Breed, string NickName, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, int OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate) {
+            public animalsRow AddanimalsRow(int Species, string Breed, string NickName, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, string OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate) {
                 animalsRow rowanimalsRow = ((animalsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -773,7 +730,7 @@ namespace MainForm {
                 base.Columns.Add(this.columnInHere);
                 this.columnFMLNameOfOwner = new global::System.Data.DataColumn("FMLNameOfOwner", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFMLNameOfOwner);
-                this.columnOwnerPhone = new global::System.Data.DataColumn("OwnerPhone", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnOwnerPhone = new global::System.Data.DataColumn("OwnerPhone", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOwnerPhone);
                 this.columnOwnerAddress = new global::System.Data.DataColumn("OwnerAddress", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOwnerAddress);
@@ -788,6 +745,7 @@ namespace MainForm {
                 this.columnBreed.MaxLength = 30;
                 this.columnNickName.MaxLength = 20;
                 this.columnFMLNameOfOwner.MaxLength = 40;
+                this.columnOwnerPhone.MaxLength = 11;
                 this.columnOwnerAddress.MaxLength = 80;
             }
             
@@ -2900,13 +2858,13 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OwnerPhone {
+            public string OwnerPhone {
                 get {
-                    try {
-                        return ((int)(this[this.tableanimals.OwnerPhoneColumn]));
+                    if (this.IsOwnerPhoneNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerPhone\' в таблице \'animals\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableanimals.OwnerPhoneColumn]));
                     }
                 }
                 set {
@@ -2918,11 +2876,11 @@ namespace MainForm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string OwnerAddress {
                 get {
-                    try {
-                        return ((string)(this[this.tableanimals.OwnerAddressColumn]));
+                    if (this.IsOwnerAddressNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerAddress\' в таблице \'animals\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableanimals.OwnerAddressColumn]));
                     }
                 }
                 set {

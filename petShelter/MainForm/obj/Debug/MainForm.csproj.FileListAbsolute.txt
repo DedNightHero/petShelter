@@ -10,4 +10,4 @@ D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.exe
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.pdb
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.EmployeeForm.resources
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.VolunteerForm.resources
-D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\PetShelter.exe.config
+D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MySql.Data.dll

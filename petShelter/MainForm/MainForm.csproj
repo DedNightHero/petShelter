@@ -121,8 +121,7 @@
     </None>
     <None Include="PetShelter.xsd">
       <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PetShelter.Designer.cs</LastGenOutput>
+      <LastGenOutput>PetShelter1.Designer.cs</LastGenOutput>
     </None>
     <None Include="PetShelter.xss">
       <DependentUpon>PetShelter.xsd</DependentUpon>

@@ -61,12 +61,12 @@ namespace MainForm.Accessors
             };
             MySqlParameter OwnerAddress = new MySqlParameter
             {
-                SourceColumn = " OwnerAddress",
+                SourceColumn = "OwnerAddress",
                 ParameterName = "@oa",
             };
             MySqlParameter DeliveryDate = new MySqlParameter
             {
-                SourceColumn = " DeliveryDate",
+                SourceColumn = "DeliveryDate",
                 ParameterName = "@dd",
             };
 
