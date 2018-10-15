@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 14 2018 г., 11:03
+-- Время создания: Окт 15 2018 г., 06:22
 -- Версия сервера: 10.1.25-MariaDB
 -- Версия PHP: 5.6.31
 
@@ -35,11 +35,19 @@ CREATE TABLE `animals` (
   `NickName` char(20) NOT NULL,
   `ArrivalDate` date NOT NULL,
   `InHere` tinyint(1) UNSIGNED NOT NULL,
-  `FMLNameOfOwner` char(40) NOT NULL,
-  `OwnerPhone` int(11) UNSIGNED NOT NULL,
-  `OwnerAddress` char(80) NOT NULL,
-  `DeliveryDate` date NOT NULL
+  `FMLNameOfOwner` char(40) DEFAULT NULL,
+  `OwnerPhone` char(11) DEFAULT NULL,
+  `OwnerAddress` char(80) DEFAULT NULL,
+  `DeliveryDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `animals`
+--
+
+INSERT INTO `animals` (`Id_Animals`, `Species`, `Breed`, `NickName`, `ArrivalDate`, `InHere`, `FMLNameOfOwner`, `OwnerPhone`, `OwnerAddress`, `DeliveryDate`) VALUES
+(1, 1, 'Labrador', 'Musya', '2018-10-15', 1, NULL, NULL, NULL, NULL),
+(3, 1, 'dobby', 'pincher', '2018-10-15', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -90,10 +98,20 @@ CREATE TABLE `goodstype` (
 --
 
 CREATE TABLE `positions` (
-  `Id_Position` int(10) UNSIGNED NOT NULL,
+  `Id_Positions` int(10) UNSIGNED NOT NULL,
   `NameOfPosition` char(30) NOT NULL,
   `Rights` int(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `positions`
+--
+
+INSERT INTO `positions` (`Id_Positions`, `NameOfPosition`, `Rights`) VALUES
+(1, 'Волонтёр', 0),
+(2, 'Джуниор', 1),
+(3, 'Миддл', 2),
+(4, 'Сеньор', 3);
 
 -- --------------------------------------------------------
 
@@ -106,6 +124,14 @@ CREATE TABLE `species` (
   `NameOfSpecies` char(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `species`
+--
+
+INSERT INTO `species` (`Id_Species`, `NameOfSpecies`) VALUES
+(1, 'Собака'),
+(2, 'Кошка');
+
 -- --------------------------------------------------------
 
 --
@@ -115,10 +141,10 @@ CREATE TABLE `species` (
 CREATE TABLE `users` (
   `Id_Users` int(10) UNSIGNED NOT NULL,
   `Login` char(20) NOT NULL,
-  `Password` char(20) NOT NULL,
+  `Password` char(32) DEFAULT NULL,
   `FirstMiddleLastName` char(40) NOT NULL,
-  `Position` int(10) UNSIGNED NOT NULL,
-  `Phone` int(11) NOT NULL,
+  `Position` int(1) UNSIGNED NOT NULL,
+  `Phone` char(11) NOT NULL,
   `Address` char(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -159,7 +185,7 @@ ALTER TABLE `goodstype`
 -- Индексы таблицы `positions`
 --
 ALTER TABLE `positions`
-  ADD PRIMARY KEY (`Id_Position`);
+  ADD PRIMARY KEY (`Id_Positions`);
 
 --
 -- Индексы таблицы `species`
@@ -182,7 +208,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `debitcredit`
 --
@@ -202,12 +228,12 @@ ALTER TABLE `goodstype`
 -- AUTO_INCREMENT для таблицы `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `Id_Position` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Positions` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `species`
 --
 ALTER TABLE `species`
-  MODIFY `Id_Species` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Species` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
@@ -241,7 +267,7 @@ ALTER TABLE `goods`
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Position`) REFERENCES `positions` (`Id_Position`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Position`) REFERENCES `positions` (`Id_Positions`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPetsSortSpecies = new System.Windows.Forms.TextBox();
             this.textBoxPetsSortBreed = new System.Windows.Forms.TextBox();
             this.textBoxPetsSortNickName = new System.Windows.Forms.TextBox();
             this.checkBoxPetsIsAtShelter = new System.Windows.Forms.CheckBox();
@@ -61,6 +60,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePickerPetsArrivalDate = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxPetsSpecies = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelMasterInfo = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@
             this.textBoxPetsPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxPetsAddress = new System.Windows.Forms.TextBox();
             this.dateTimePickerPetsDeliveryDay = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxPetsMaster = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPetsDelete = new System.Windows.Forms.Button();
             this.buttonPetsSave = new System.Windows.Forms.Button();
@@ -155,8 +156,7 @@
             this.textBoxReportsComment = new System.Windows.Forms.TextBox();
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
-            this.comboBoxPetsSpecies = new System.Windows.Forms.ComboBox();
-            this.checkBoxPetsMaster = new System.Windows.Forms.CheckBox();
+            this.comboBoxSortSpecies = new System.Windows.Forms.ComboBox();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -266,12 +266,12 @@
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label4, 4, 1);
-            this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.textBoxPetsSortSpecies, 1, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.textBoxPetsSortBreed, 3, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.textBoxPetsSortNickName, 5, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.checkBoxPetsIsAtShelter, 6, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.checkBoxPetsIsAtHome, 7, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.dataGridViewPetsAllPets, 0, 2);
+            this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.comboBoxSortSpecies, 1, 1);
             this.tableLayoutPanelAnimalsLeftMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelAnimalsLeftMain.Location = new System.Drawing.Point(24, 12);
             this.tableLayoutPanelAnimalsLeftMain.Margin = new System.Windows.Forms.Padding(0);
@@ -280,6 +280,7 @@
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelAnimalsLeftMain.Size = new System.Drawing.Size(836, 330);
             this.tableLayoutPanelAnimalsLeftMain.TabIndex = 0;
             // 
@@ -324,14 +325,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Кличка";
             // 
-            // textBoxPetsSortSpecies
-            // 
-            this.textBoxPetsSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortSpecies.Location = new System.Drawing.Point(43, 40);
-            this.textBoxPetsSortSpecies.Name = "textBoxPetsSortSpecies";
-            this.textBoxPetsSortSpecies.Size = new System.Drawing.Size(155, 30);
-            this.textBoxPetsSortSpecies.TabIndex = 1;
-            // 
             // textBoxPetsSortBreed
             // 
             this.textBoxPetsSortBreed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -339,6 +332,7 @@
             this.textBoxPetsSortBreed.Name = "textBoxPetsSortBreed";
             this.textBoxPetsSortBreed.Size = new System.Drawing.Size(155, 30);
             this.textBoxPetsSortBreed.TabIndex = 2;
+            this.textBoxPetsSortBreed.Validated += new System.EventHandler(this.sortPetsTable);
             // 
             // textBoxPetsSortNickName
             // 
@@ -347,6 +341,7 @@
             this.textBoxPetsSortNickName.Name = "textBoxPetsSortNickName";
             this.textBoxPetsSortNickName.Size = new System.Drawing.Size(155, 30);
             this.textBoxPetsSortNickName.TabIndex = 3;
+            this.textBoxPetsSortNickName.Validated += new System.EventHandler(this.sortPetsTable);
             // 
             // checkBoxPetsIsAtShelter
             // 
@@ -358,6 +353,7 @@
             this.checkBoxPetsIsAtShelter.TabIndex = 4;
             this.checkBoxPetsIsAtShelter.Text = "В приюте";
             this.checkBoxPetsIsAtShelter.UseVisualStyleBackColor = true;
+            this.checkBoxPetsIsAtShelter.CheckedChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // checkBoxPetsIsAtHome
             // 
@@ -369,17 +365,20 @@
             this.checkBoxPetsIsAtHome.TabIndex = 5;
             this.checkBoxPetsIsAtHome.Text = "Дома";
             this.checkBoxPetsIsAtHome.UseVisualStyleBackColor = true;
+            this.checkBoxPetsIsAtHome.CheckedChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // dataGridViewPetsAllPets
             // 
             this.dataGridViewPetsAllPets.AllowUserToAddRows = false;
             this.dataGridViewPetsAllPets.AllowUserToDeleteRows = false;
             this.dataGridViewPetsAllPets.AllowUserToResizeColumns = false;
+            this.dataGridViewPetsAllPets.AllowUserToResizeRows = false;
             this.dataGridViewPetsAllPets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPetsAllPets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelAnimalsLeftMain.SetColumnSpan(this.dataGridViewPetsAllPets, 8);
             this.dataGridViewPetsAllPets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPetsAllPets.Location = new System.Drawing.Point(3, 83);
+            this.dataGridViewPetsAllPets.MultiSelect = false;
             this.dataGridViewPetsAllPets.Name = "dataGridViewPetsAllPets";
             this.dataGridViewPetsAllPets.ReadOnly = true;
             this.dataGridViewPetsAllPets.RowTemplate.Height = 24;
@@ -387,8 +386,8 @@
             this.dataGridViewPetsAllPets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPetsAllPets.Size = new System.Drawing.Size(830, 244);
             this.dataGridViewPetsAllPets.TabIndex = 6;
+            this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
-            this.dataGridViewPetsAllPets.Leave += new System.EventHandler(this.dataGridViewPetsAllPets_Leave);
             // 
             // tableLayoutPanel3
             // 
@@ -451,7 +450,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(183, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -526,6 +525,7 @@
             this.tableLayoutPanelAnimalInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelAnimalInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelAnimalInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelAnimalInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelAnimalInfo.Size = new System.Drawing.Size(324, 157);
             this.tableLayoutPanelAnimalInfo.TabIndex = 1;
             // 
@@ -603,6 +603,15 @@
             this.dateTimePickerPetsArrivalDate.Name = "dateTimePickerPetsArrivalDate";
             this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(158, 30);
             this.dateTimePickerPetsArrivalDate.TabIndex = 14;
+            // 
+            // comboBoxPetsSpecies
+            // 
+            this.comboBoxPetsSpecies.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxPetsSpecies.FormattingEnabled = true;
+            this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
+            this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
+            this.comboBoxPetsSpecies.Size = new System.Drawing.Size(158, 31);
+            this.comboBoxPetsSpecies.TabIndex = 15;
             // 
             // tableLayoutPanelMasterInfo
             // 
@@ -715,6 +724,18 @@
             this.dateTimePickerPetsDeliveryDay.Name = "dateTimePickerPetsDeliveryDay";
             this.dateTimePickerPetsDeliveryDay.Size = new System.Drawing.Size(164, 30);
             this.dateTimePickerPetsDeliveryDay.TabIndex = 18;
+            // 
+            // checkBoxPetsMaster
+            // 
+            this.checkBoxPetsMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPetsMaster.AutoSize = true;
+            this.checkBoxPetsMaster.Location = new System.Drawing.Point(163, 3);
+            this.checkBoxPetsMaster.Name = "checkBoxPetsMaster";
+            this.checkBoxPetsMaster.Size = new System.Drawing.Size(164, 24);
+            this.checkBoxPetsMaster.TabIndex = 19;
+            this.checkBoxPetsMaster.Text = "Есть";
+            this.checkBoxPetsMaster.UseVisualStyleBackColor = true;
+            this.checkBoxPetsMaster.CheckedChanged += new System.EventHandler(this.checkBoxPetsMaster_CheckedChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -1461,7 +1482,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(274, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 10;
@@ -1754,26 +1775,15 @@
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1196, 409);
             this.dataGridViewReportsMain.TabIndex = 13;
             // 
-            // comboBoxPetsSpecies
+            // comboBoxSortSpecies
             // 
-            this.comboBoxPetsSpecies.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxPetsSpecies.FormattingEnabled = true;
-            this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
-            this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
-            this.comboBoxPetsSpecies.Size = new System.Drawing.Size(158, 31);
-            this.comboBoxPetsSpecies.TabIndex = 15;
-            // 
-            // checkBoxPetsMaster
-            // 
-            this.checkBoxPetsMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxPetsMaster.AutoSize = true;
-            this.checkBoxPetsMaster.Location = new System.Drawing.Point(163, 3);
-            this.checkBoxPetsMaster.Name = "checkBoxPetsMaster";
-            this.checkBoxPetsMaster.Size = new System.Drawing.Size(164, 24);
-            this.checkBoxPetsMaster.TabIndex = 19;
-            this.checkBoxPetsMaster.Text = "Есть";
-            this.checkBoxPetsMaster.UseVisualStyleBackColor = true;
-            this.checkBoxPetsMaster.CheckedChanged += new System.EventHandler(this.checkBoxPetsMaster_CheckedChanged);
+            this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortSpecies.FormattingEnabled = true;
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 42);
+            this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
+            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
+            this.comboBoxSortSpecies.TabIndex = 7;
+            this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // EmployeeForm
             // 
@@ -1854,7 +1864,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxPetsSortSpecies;
         private System.Windows.Forms.TextBox textBoxPetsSortBreed;
         private System.Windows.Forms.TextBox textBoxPetsSortNickName;
         private System.Windows.Forms.CheckBox checkBoxPetsIsAtShelter;
@@ -1972,5 +1981,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerPetsDeliveryDay;
         private System.Windows.Forms.ComboBox comboBoxPetsSpecies;
         private System.Windows.Forms.CheckBox checkBoxPetsMaster;
+        private System.Windows.Forms.ComboBox comboBoxSortSpecies;
     }
 }

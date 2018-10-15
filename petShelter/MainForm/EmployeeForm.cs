@@ -35,25 +35,36 @@ namespace MainForm
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
             comboBoxPetsSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSortSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
             for (int i = 0; i < psSpecies.species.Rows.Count; i++)
             {
+                comboBoxSortSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
                 comboBoxPetsSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
             }
+            comboBoxSortSpecies.Items.Add("");
 
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
+            setPetsGridView();
+            dataGridViewPetsAllPets.ClearSelection();
+
+        }
+
+        private void setPetsGridView()
+        {
             dataGridViewPetsAllPets.Columns[0].Visible = false;
             dataGridViewPetsAllPets.Columns[6].Visible = false;
             dataGridViewPetsAllPets.Columns[7].Visible = false;
             dataGridViewPetsAllPets.Columns[8].Visible = false;
-            dataGridViewPetsAllPets.Columns[9].Visible = false;
+            dataGridViewPetsAllPets.Columns[5].Visible = false;
             dataGridViewPetsAllPets.Columns[1].HeaderText = "Вид";
             dataGridViewPetsAllPets.Columns[2].HeaderText = "Порода";
             dataGridViewPetsAllPets.Columns[3].HeaderText = "Кличка";
             dataGridViewPetsAllPets.Columns[4].HeaderText = "Дата поступления";
-            dataGridViewPetsAllPets.Columns[5].HeaderText = "Дата выдачи";
+            dataGridViewPetsAllPets.Columns[9].HeaderText = "Дата выдачи";
             dataGridViewPetsAllPets.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
         }
 
         private void dataGridViewPetsAllPets_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -164,18 +175,21 @@ namespace MainForm
         private void setPetsAddArea(int i)
         {
             cleanPetsAddArea();
-            id = Convert.ToInt32(psAnimals.animals.Rows[i][0])-1;
-            comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.Rows[i][1])-1][1].ToString();
-            textBoxPetsBreed.Text = psAnimals.animals.Rows[i][2].ToString();
-            textBoxPetsNickName.Text = psAnimals.animals.Rows[i][3].ToString();
-            dateTimePickerPetsArrivalDate.Text = psAnimals.animals.Rows[i][4].ToString();
-            if(psAnimals.animals.Rows[i][5].ToString()=="0")
+            if (i>=0)
             {
-                checkBoxPetsMaster.Checked = true;
-                textBoxPetsFIO.Text = psAnimals.animals.Rows[i][6].ToString();
-                textBoxPetsPhoneNumber.Text = psAnimals.animals.Rows[i][7].ToString();
-                textBoxPetsAddress.Text = psAnimals.animals.Rows[i][8].ToString();
-                dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.Rows[i][9].ToString();
+                id = Convert.ToInt32(psAnimals.animals.Rows[i][0]) - 1;
+                comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.Rows[i][1]) - 1][1].ToString();
+                textBoxPetsBreed.Text = psAnimals.animals.Rows[i][2].ToString();
+                textBoxPetsNickName.Text = psAnimals.animals.Rows[i][3].ToString();
+                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.Rows[i][4].ToString();
+                if (psAnimals.animals.Rows[i][5].ToString() == "0")
+                {
+                    checkBoxPetsMaster.Checked = true;
+                    textBoxPetsFIO.Text = psAnimals.animals.Rows[i][6].ToString();
+                    textBoxPetsPhoneNumber.Text = psAnimals.animals.Rows[i][7].ToString();
+                    textBoxPetsAddress.Text = psAnimals.animals.Rows[i][8].ToString();
+                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.Rows[i][9].ToString();
+                }
             }
         }
         #endregion
@@ -234,16 +248,157 @@ namespace MainForm
         #region Кнопка удаления записи из таблицы
         private void buttonPetsDelete_Click(object sender, EventArgs e)
         {
-            psAnimals.animals.Rows[id].Delete();
-            ibl.setAnimals(psAnimals);
-            cleanPetsAddArea();
-            refreshPetsInfo();
+                if(dataGridViewPetsAllPets.SelectedRows.Count>0)
+            {
+                psAnimals.animals.Rows[id].Delete();
+                ibl.setAnimals(psAnimals);
+                cleanPetsAddArea();
+                refreshPetsInfo();
+            }    
+                else
+            {
+                MessageBox.Show("Сначала выберите животное в таблице");
+            }  
         }
         #endregion
-
-        private void dataGridViewPetsAllPets_Leave(object sender, EventArgs e)
+        #region Сортировка таблицы Животных согласно указанным критериям
+        private void sortPetsTable(object sender, EventArgs e)
         {
-            cleanPetsAddArea();
+            if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' or CONVERT(InHere, 'System.String') LIKE '1' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtHome.Checked && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{1}' or CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}' and NickName LIKE '{1}' or CONVERT(InHere, 'System.String') LIKE '1'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' or CONVERT(InHere, 'System.String') LIKE '0' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}' or CONVERT(InHere, 'System.String') LIKE '1'", textBoxPetsSortBreed.Text);
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{0}' or CONVERT(InHere, 'System.String') LIKE '1'", textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtShelter.Checked && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' CONVERT(InHere, 'System.String') LIKE '1' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
+            }
+            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
+            }
+            else if (textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
+            }
+            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortBreed.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
+            }
+            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
+            }
+            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
+            }
+            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
+            }
+            else if (checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' or CONVERT(InHere, 'System.String') LIKE '0'");
+            }
+            else if (comboBoxSortSpecies.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
+            }
+            else if (textBoxPetsSortBreed.Text != "")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
+            }
+            else if(textBoxPetsSortNickName.Text!="")
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
+            }
+            else if (checkBoxPetsIsAtShelter.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1'");
+            }
+            else if (checkBoxPetsIsAtHome.Checked)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0'");
+            }
+            else
+            {
+                dataGridViewPetsAllPets.DataSource = psAnimals;
+                dataGridViewPetsAllPets.DataMember = "animals";
+                setPetsGridView();
+                return;
+            }
+            dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
+            setPetsGridView();
+
         }
+        #endregion
     }
 }
