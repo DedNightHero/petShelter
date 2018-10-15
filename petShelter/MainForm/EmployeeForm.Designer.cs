@@ -157,6 +157,7 @@
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
             this.dateTimePickerGoods = new System.Windows.Forms.DateTimePicker();
+            this.radioButtonGoodsSortIsAll = new System.Windows.Forms.RadioButton();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -1265,7 +1266,8 @@
             this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelAfterGoodTable, 1, 4);
             this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelGoodsButtons, 1, 8);
             this.tableLayoutPanelGoodsMain.Controls.Add(this.tableLayoutPanelPickChariter, 1, 7);
-            this.tableLayoutPanelGoodsMain.Controls.Add(this.label30, 1, 6);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.label30, 1, 5);
+            this.tableLayoutPanelGoodsMain.Controls.Add(this.dateTimePickerGoods, 1, 6);
             this.tableLayoutPanelGoodsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelGoodsMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelGoodsMain.Name = "tableLayoutPanelGoodsMain";
@@ -1309,6 +1311,7 @@
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsCure, 3, 0);
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsEat, 4, 0);
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsOther, 5, 0);
+            this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsAll, 6, 0);
             this.tableLayoutPanelGoodsTopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelGoodsTopPanel.Location = new System.Drawing.Point(25, 38);
             this.tableLayoutPanelGoodsTopPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -1335,6 +1338,8 @@
             this.textBoxGoodsSortNameofGoods.Name = "textBoxGoodsSortNameofGoods";
             this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(119, 25);
             this.textBoxGoodsSortNameofGoods.TabIndex = 1;
+            this.textBoxGoodsSortNameofGoods.TextChanged += new System.EventHandler(this.sortGoodsTable);
+            this.textBoxGoodsSortNameofGoods.Validated += new System.EventHandler(this.sortPetsTable);
             // 
             // radioButtonGoodsSortIsCure
             // 
@@ -1347,6 +1352,7 @@
             this.radioButtonGoodsSortIsCure.TabStop = true;
             this.radioButtonGoodsSortIsCure.Text = "Лекарства";
             this.radioButtonGoodsSortIsCure.UseVisualStyleBackColor = true;
+            this.radioButtonGoodsSortIsCure.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // radioButtonGoodsSortIsEat
             // 
@@ -1359,6 +1365,7 @@
             this.radioButtonGoodsSortIsEat.TabStop = true;
             this.radioButtonGoodsSortIsEat.Text = "Еда";
             this.radioButtonGoodsSortIsEat.UseVisualStyleBackColor = true;
+            this.radioButtonGoodsSortIsEat.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // radioButtonGoodsSortIsOther
             // 
@@ -1371,6 +1378,7 @@
             this.radioButtonGoodsSortIsOther.TabStop = true;
             this.radioButtonGoodsSortIsOther.Text = "Прочее";
             this.radioButtonGoodsSortIsOther.UseVisualStyleBackColor = true;
+            this.radioButtonGoodsSortIsOther.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // dataGridViewGoodsAllGoods
             // 
@@ -1394,7 +1402,6 @@
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsName, 0, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 1, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 2, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.dateTimePickerGoods, 3, 0);
             this.tableLayoutPanelAfterGoodTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelAfterGoodTable.Location = new System.Drawing.Point(25, 320);
             this.tableLayoutPanelAfterGoodTable.Margin = new System.Windows.Forms.Padding(0);
@@ -1473,8 +1480,8 @@
             this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
             this.tableLayoutPanelPickChariter.Controls.Add(this.label31, 0, 0);
+            this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
             this.tableLayoutPanelPickChariter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPickChariter.Location = new System.Drawing.Point(25, 431);
             this.tableLayoutPanelPickChariter.Margin = new System.Windows.Forms.Padding(0);
@@ -1507,7 +1514,7 @@
             // 
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(28, 406);
+            this.label30.Location = new System.Drawing.Point(28, 371);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(1199, 19);
             this.label30.TabIndex = 5;
@@ -1783,10 +1790,24 @@
             // 
             // dateTimePickerGoods
             // 
-            this.dateTimePickerGoods.Location = new System.Drawing.Point(965, 3);
+            this.dateTimePickerGoods.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateTimePickerGoods.Location = new System.Drawing.Point(28, 404);
             this.dateTimePickerGoods.Name = "dateTimePickerGoods";
-            this.dateTimePickerGoods.Size = new System.Drawing.Size(237, 25);
+            this.dateTimePickerGoods.Size = new System.Drawing.Size(205, 25);
             this.dateTimePickerGoods.TabIndex = 9;
+            // 
+            // radioButtonGoodsSortIsAll
+            // 
+            this.radioButtonGoodsSortIsAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonGoodsSortIsAll.AutoSize = true;
+            this.radioButtonGoodsSortIsAll.Location = new System.Drawing.Point(539, 8);
+            this.radioButtonGoodsSortIsAll.Name = "radioButtonGoodsSortIsAll";
+            this.radioButtonGoodsSortIsAll.Size = new System.Drawing.Size(663, 23);
+            this.radioButtonGoodsSortIsAll.TabIndex = 5;
+            this.radioButtonGoodsSortIsAll.TabStop = true;
+            this.radioButtonGoodsSortIsAll.Text = "Все";
+            this.radioButtonGoodsSortIsAll.UseVisualStyleBackColor = true;
+            this.radioButtonGoodsSortIsAll.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // EmployeeForm
             // 
@@ -1985,5 +2006,6 @@
         private System.Windows.Forms.CheckBox checkBoxPetsMaster;
         private System.Windows.Forms.ComboBox comboBoxSortSpecies;
         private System.Windows.Forms.DateTimePicker dateTimePickerGoods;
+        private System.Windows.Forms.RadioButton radioButtonGoodsSortIsAll;
     }
 }

@@ -4,5 +4,8 @@
 
     partial class PetShelter
     {
+        partial class goodsDataTable
+        {
+        }
     }
 }

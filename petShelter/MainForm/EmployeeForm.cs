@@ -412,8 +412,11 @@ namespace MainForm
         #endregion
 
         #region ОКНО Материально-техническая база
+        
         PetShelter psGoods = new PetShelter();
         PetShelter psGoodstype = new PetShelter();
+        PetShelter psDebitcredit = new PetShelter();
+
 
         private void dataGridViewGoodsAllGoods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -424,6 +427,7 @@ namespace MainForm
         {
             psGoods = ibl.getGoods();
             psGoodstype = ibl.getGoodsType();
+            psDebitcredit = ibl.getDebitCredit();
 
             dataGridViewGoodsAllGoods.DataSource = psGoods;
             dataGridViewGoodsAllGoods.DataMember = "goods";
@@ -457,18 +461,11 @@ namespace MainForm
                 textBoxGoodsAmount.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[3].Value.ToString();
                 textBoxGoodsNeeded.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[4].Value.ToString();
 
-                /*comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)[1]) - 1][1].ToString();
-                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
-                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
-                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
-                if (psAnimals.animals.FindById_Animals(id)[5].ToString() == "0")
-                {
-                    checkBoxPetsMaster.Checked = true;
-                    textBoxPetsFIO.Text = psAnimals.animals.FindById_Animals(id)[6].ToString();
-                    textBoxPetsPhoneNumber.Text = psAnimals.animals.FindById_Animals(id)[7].ToString();
-                    textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)[8].ToString();
-                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
-                }*/
+                //Поиск последнего внесения изменения этого товара Не надо этого. Эту дату если что во вкладедке с приходом/расходом смореть будут
+                /*var strExpr = "GoodsName = " + dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
+                DataTable dt = psDebitcredit.debitcredit; // refer to your table of interest within the DataSet
+                dt.Select(strExpr);
+                dateTimePickerGoods.Text = dt.Rows[0]["date"].ToString(); //Получение даты для первого */
             }
         }
         private void cleanGoodsAddArea()
@@ -476,6 +473,32 @@ namespace MainForm
             textBoxGoodsName.Text = "";
             textBoxGoodsNeeded.Text = "";
             textBoxGoodsAmount.Text = "";
+        }
+        private void sortGoodsTable(object sender, EventArgs e)
+        {
+            String filter = null;
+            if (radioButtonGoodsSortIsEat.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '1'";
+            if (radioButtonGoodsSortIsCure.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '2'";
+            if (radioButtonGoodsSortIsOther.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '3'";
+            if (textBoxGoodsSortNameofGoods.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "NameOfGoods LIKE '*" + textBoxGoodsSortNameofGoods.Text + "*'";
+            }
+            if (filter!=null) psGoods.goods.DefaultView.RowFilter = string.Format(filter);
+            else
+            {
+                dataGridViewGoodsAllGoods.DataSource = psGoods;
+                dataGridViewGoodsAllGoods.DataMember = "goods";
+                setGoodsGridView();
+                return;
+            }
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            setGoodsGridView();
+            dataGridViewGoodsAllGoods.ClearSelection();
+            cleanGoodsAddArea();
+            
+
         }
 
 
