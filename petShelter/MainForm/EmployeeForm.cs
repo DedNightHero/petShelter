@@ -24,6 +24,7 @@ namespace MainForm
             tabMain.ItemSize = new Size(tabWidth, tabMain.ItemSize.Height);
             psAnimals = ibl.getAnimals();
             psSpecies = ibl.getSpecies();
+            
         }
 
         private void EmployeeForm_Resize(object sender, EventArgs e)
@@ -50,8 +51,14 @@ namespace MainForm
             setPetsGridView();
             dataGridViewPetsAllPets.ClearSelection();
 
-        }
+            initGoodsTab();
 
+            
+
+
+
+        }
+        #region ОКНО Животные
         private void setPetsGridView()
         {
             dataGridViewPetsAllPets.Columns[0].Visible = false;
@@ -66,12 +73,12 @@ namespace MainForm
             dataGridViewPetsAllPets.Columns[9].HeaderText = "Дата выдачи";
             dataGridViewPetsAllPets.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-
+        
         private void dataGridViewPetsAllPets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             setPetsAddArea(e.RowIndex);
         }
-
+        
         #region Кнопка создания или изменения информации о животном
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
@@ -401,6 +408,42 @@ namespace MainForm
             cleanPetsAddArea();
 
         }
+        #endregion
+        #endregion
+
+        #region ОКНО Материально-техническая база
+        PetShelter psGoods = new PetShelter();
+        PetShelter psGoodstype = new PetShelter();
+
+        private void initGoodsTab()
+        {
+            psGoods = ibl.getGoods();
+            psGoodstype = ibl.getGoodsType();
+
+            dataGridViewGoodsAllGoods.DataSource = psGoods;
+            dataGridViewGoodsAllGoods.DataMember = "goods";
+            setGoodsGridView();
+            dataGridViewGoodsAllGoods.ClearSelection();
+
+        }
+        private void setGoodsGridView()
+        {
+            dataGridViewGoodsAllGoods.Columns[0].Visible = false;
+            dataGridViewGoodsAllGoods.Columns[1].HeaderText = "Наименование";
+            dataGridViewGoodsAllGoods.Columns[2].HeaderText = "В наличии";
+            dataGridViewGoodsAllGoods.Columns[3].HeaderText = "Необходимо";
+            dataGridViewGoodsAllGoods.Columns[4].HeaderText = "Дата поступления";
+            dataGridViewGoodsAllGoods.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
+            dataGridViewGoodsAllGoods.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewGoodsAllGoods.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewGoodsAllGoods.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewGoodsAllGoods.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+
+        }
+        
+
         #endregion
     }
 }
