@@ -415,6 +415,11 @@ namespace MainForm
         PetShelter psGoods = new PetShelter();
         PetShelter psGoodstype = new PetShelter();
 
+        private void dataGridViewGoodsAllGoods_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setGoodsAddArea(e.RowIndex);
+
+        }       
         private void initGoodsTab()
         {
             psGoods = ibl.getGoods();
@@ -425,25 +430,67 @@ namespace MainForm
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
 
-        }
+
+        }  
         private void setGoodsGridView()
         {
             dataGridViewGoodsAllGoods.Columns[0].Visible = false;
             dataGridViewGoodsAllGoods.Columns[1].HeaderText = "Наименование";
-            dataGridViewGoodsAllGoods.Columns[2].HeaderText = "В наличии";
-            dataGridViewGoodsAllGoods.Columns[3].HeaderText = "Необходимо";
-            dataGridViewGoodsAllGoods.Columns[4].HeaderText = "Дата поступления";
+            dataGridViewGoodsAllGoods.Columns[2].Visible = false;
+            dataGridViewGoodsAllGoods.Columns[3].HeaderText = "В наличии";
+            dataGridViewGoodsAllGoods.Columns[4].HeaderText = "Необходимо";
+            //dataGridViewGoodsAllGoods.Columns[5].HeaderText = "Дата поступления";
             dataGridViewGoodsAllGoods.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             
             dataGridViewGoodsAllGoods.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewGoodsAllGoods.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+           // dataGridViewGoodsAllGoods.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-
-
         }
-        
+        private void setGoodsAddArea(int i)
+        {
+            cleanGoodsAddArea();
+            if (i >= 0)
+            {
+                id = Convert.ToInt32(dataGridViewGoodsAllGoods.CurrentRow.Cells[0].Value);
+                textBoxGoodsName.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
+                textBoxGoodsAmount.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[3].Value.ToString();
+                textBoxGoodsNeeded.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[4].Value.ToString();
+
+                /*comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)[1]) - 1][1].ToString();
+                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
+                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
+                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
+                if (psAnimals.animals.FindById_Animals(id)[5].ToString() == "0")
+                {
+                    checkBoxPetsMaster.Checked = true;
+                    textBoxPetsFIO.Text = psAnimals.animals.FindById_Animals(id)[6].ToString();
+                    textBoxPetsPhoneNumber.Text = psAnimals.animals.FindById_Animals(id)[7].ToString();
+                    textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)[8].ToString();
+                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
+                }*/
+            }
+        }
+        private void cleanGoodsAddArea()
+        {
+            textBoxGoodsName.Text = "";
+            textBoxGoodsNeeded.Text = "";
+            textBoxGoodsAmount.Text = "";
+        }
+
 
         #endregion
+
+        private void tableLayoutPanelAfterGoodTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPetsAllPets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
     }
 }

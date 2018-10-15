@@ -127,7 +127,6 @@
             this.textBoxGoodsName = new System.Windows.Forms.TextBox();
             this.textBoxGoodsAmount = new System.Windows.Forms.TextBox();
             this.textBoxGoodsNeeded = new System.Windows.Forms.TextBox();
-            this.textBoxGoodsArrivalDate = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelGoodsButtons = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGoodsWriteOff = new System.Windows.Forms.Button();
             this.buttonGoodsAdd = new System.Windows.Forms.Button();
@@ -157,6 +156,7 @@
             this.textBoxReportsComment = new System.Windows.Forms.TextBox();
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
+            this.dateTimePickerGoods = new System.Windows.Forms.DateTimePicker();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -388,6 +388,7 @@
             this.dataGridViewPetsAllPets.TabIndex = 6;
             this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
+            this.dataGridViewPetsAllPets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellContentClick);
             // 
             // comboBoxSortSpecies
             // 
@@ -1381,6 +1382,7 @@
             this.dataGridViewGoodsAllGoods.RowTemplate.Height = 24;
             this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1199, 236);
             this.dataGridViewGoodsAllGoods.TabIndex = 5;
+            this.dataGridViewGoodsAllGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGoodsAllGoods_CellClick);
             // 
             // tableLayoutPanelAfterGoodTable
             // 
@@ -1392,7 +1394,7 @@
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsName, 0, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 1, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 2, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsArrivalDate, 3, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.dateTimePickerGoods, 3, 0);
             this.tableLayoutPanelAfterGoodTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelAfterGoodTable.Location = new System.Drawing.Point(25, 320);
             this.tableLayoutPanelAfterGoodTable.Margin = new System.Windows.Forms.Padding(0);
@@ -1401,6 +1403,7 @@
             this.tableLayoutPanelAfterGoodTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelAfterGoodTable.Size = new System.Drawing.Size(1205, 40);
             this.tableLayoutPanelAfterGoodTable.TabIndex = 3;
+            this.tableLayoutPanelAfterGoodTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelAfterGoodTable_Paint);
             // 
             // textBoxGoodsName
             // 
@@ -1425,14 +1428,6 @@
             this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
             this.textBoxGoodsNeeded.Size = new System.Drawing.Size(174, 25);
             this.textBoxGoodsNeeded.TabIndex = 8;
-            // 
-            // textBoxGoodsArrivalDate
-            // 
-            this.textBoxGoodsArrivalDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGoodsArrivalDate.Location = new System.Drawing.Point(965, 3);
-            this.textBoxGoodsArrivalDate.Name = "textBoxGoodsArrivalDate";
-            this.textBoxGoodsArrivalDate.Size = new System.Drawing.Size(237, 25);
-            this.textBoxGoodsArrivalDate.TabIndex = 9;
             // 
             // tableLayoutPanelGoodsButtons
             // 
@@ -1786,6 +1781,13 @@
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1196, 409);
             this.dataGridViewReportsMain.TabIndex = 13;
             // 
+            // dateTimePickerGoods
+            // 
+            this.dateTimePickerGoods.Location = new System.Drawing.Point(965, 3);
+            this.dateTimePickerGoods.Name = "dateTimePickerGoods";
+            this.dateTimePickerGoods.Size = new System.Drawing.Size(237, 25);
+            this.dateTimePickerGoods.TabIndex = 9;
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -1949,7 +1951,6 @@
         private System.Windows.Forms.TextBox textBoxGoodsName;
         private System.Windows.Forms.TextBox textBoxGoodsAmount;
         private System.Windows.Forms.TextBox textBoxGoodsNeeded;
-        private System.Windows.Forms.TextBox textBoxGoodsArrivalDate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsButtons;
         private System.Windows.Forms.Button buttonGoodsWriteOff;
         private System.Windows.Forms.Button buttonGoodsAdd;
@@ -1983,5 +1984,6 @@
         private System.Windows.Forms.ComboBox comboBoxPetsSpecies;
         private System.Windows.Forms.CheckBox checkBoxPetsMaster;
         private System.Windows.Forms.ComboBox comboBoxSortSpecies;
+        private System.Windows.Forms.DateTimePicker dateTimePickerGoods;
     }
 }
