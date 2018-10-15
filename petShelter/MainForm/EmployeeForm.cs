@@ -496,11 +496,18 @@ namespace MainForm
             dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
-            cleanGoodsAddArea();
-            
-
+            cleanGoodsAddArea();         
         }
-
+        private void buttonGoodsAdd_Click(object sender, EventArgs e)
+        {           
+            
+            //checkBoxAddAsNewGood.checked==true -> добавлять новый предмет
+            //Добавить выбор типа при добавление нового предмета. Можно вывзывать отдельное диалоговое окно.
+                
+            
+                
+            
+        }
 
         #endregion
 
@@ -510,6 +517,11 @@ namespace MainForm
         }
 
         private void dataGridViewPetsAllPets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label35_Click(object sender, EventArgs e)
         {
 
         }

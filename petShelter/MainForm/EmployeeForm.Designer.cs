@@ -126,7 +126,6 @@
             this.tableLayoutPanelAfterGoodTable = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxGoodsName = new System.Windows.Forms.TextBox();
             this.textBoxGoodsAmount = new System.Windows.Forms.TextBox();
-            this.textBoxGoodsNeeded = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelGoodsButtons = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGoodsWriteOff = new System.Windows.Forms.Button();
             this.buttonGoodsAdd = new System.Windows.Forms.Button();
@@ -158,6 +157,10 @@
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
             this.dateTimePickerGoods = new System.Windows.Forms.DateTimePicker();
             this.radioButtonGoodsSortIsAll = new System.Windows.Forms.RadioButton();
+            this.textBoxGoodsNeeded = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.checkBoxAddAsNewGood = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -205,7 +208,6 @@
             this.tabMain.ItemSize = new System.Drawing.Size(200, 35);
             this.tabMain.Location = new System.Drawing.Point(0, 0);
             this.tabMain.Margin = new System.Windows.Forms.Padding(0);
-            this.tabMain.Multiline = true;
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(1264, 681);
@@ -806,7 +808,7 @@
             this.tabStaff.Location = new System.Drawing.Point(4, 39);
             this.tabStaff.Name = "tabStaff";
             this.tabStaff.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStaff.Size = new System.Drawing.Size(1254, 630);
+            this.tabStaff.Size = new System.Drawing.Size(1256, 638);
             this.tabStaff.TabIndex = 1;
             this.tabStaff.Text = "Персонал";
             this.tabStaff.UseVisualStyleBackColor = true;
@@ -829,7 +831,7 @@
             this.tableLayoutPanelStaffMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanelStaffMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96F));
             this.tableLayoutPanelStaffMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.tableLayoutPanelStaffMain.Size = new System.Drawing.Size(1248, 624);
+            this.tableLayoutPanelStaffMain.Size = new System.Drawing.Size(1250, 632);
             this.tableLayoutPanelStaffMain.TabIndex = 0;
             // 
             // tableLayoutPanelLeftMain
@@ -856,7 +858,7 @@
             this.tableLayoutPanelLeftMain.Controls.Add(this.dataGridViewStaffCharity, 0, 5);
             this.tableLayoutPanelLeftMain.Controls.Add(this.tableLayoutPanel2, 6, 6);
             this.tableLayoutPanelLeftMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelLeftMain.Location = new System.Drawing.Point(24, 12);
+            this.tableLayoutPanelLeftMain.Location = new System.Drawing.Point(25, 12);
             this.tableLayoutPanelLeftMain.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelLeftMain.Name = "tableLayoutPanelLeftMain";
             this.tableLayoutPanelLeftMain.RowCount = 7;
@@ -867,14 +869,14 @@
             this.tableLayoutPanelLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.tableLayoutPanelLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelLeftMain.Size = new System.Drawing.Size(761, 599);
+            this.tableLayoutPanelLeftMain.Size = new System.Drawing.Size(762, 606);
             this.tableLayoutPanelLeftMain.TabIndex = 0;
             // 
             // textBoxStaffComment
             // 
             this.textBoxStaffComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.textBoxStaffComment, 6);
-            this.textBoxStaffComment.Location = new System.Drawing.Point(3, 514);
+            this.textBoxStaffComment.Location = new System.Drawing.Point(3, 521);
             this.textBoxStaffComment.Multiline = true;
             this.textBoxStaffComment.Name = "textBoxStaffComment";
             this.textBoxStaffComment.Size = new System.Drawing.Size(642, 68);
@@ -887,7 +889,7 @@
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.label16, 7);
             this.label16.Location = new System.Drawing.Point(3, 5);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(755, 19);
+            this.label16.Size = new System.Drawing.Size(756, 19);
             this.label16.TabIndex = 2;
             this.label16.Text = "Список людей";
             // 
@@ -926,9 +928,9 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.label20, 7);
-            this.label20.Location = new System.Drawing.Point(3, 338);
+            this.label20.Location = new System.Drawing.Point(3, 343);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(755, 19);
+            this.label20.Size = new System.Drawing.Size(756, 19);
             this.label20.TabIndex = 6;
             this.label20.Text = "Благотворительность";
             // 
@@ -962,7 +964,7 @@
             this.checkBoxStaffIsOnStaff.AutoSize = true;
             this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(651, 38);
             this.checkBoxStaffIsOnStaff.Name = "checkBoxStaffIsOnStaff";
-            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(107, 23);
+            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(108, 23);
             this.checkBoxStaffIsOnStaff.TabIndex = 4;
             this.checkBoxStaffIsOnStaff.Text = "Сотрудники";
             this.checkBoxStaffIsOnStaff.UseVisualStyleBackColor = true;
@@ -975,7 +977,7 @@
             this.dataGridViewStaffAllMembers.Location = new System.Drawing.Point(3, 73);
             this.dataGridViewStaffAllMembers.Name = "dataGridViewStaffAllMembers";
             this.dataGridViewStaffAllMembers.RowTemplate.Height = 24;
-            this.dataGridViewStaffAllMembers.Size = new System.Drawing.Size(755, 243);
+            this.dataGridViewStaffAllMembers.Size = new System.Drawing.Size(756, 247);
             this.dataGridViewStaffAllMembers.TabIndex = 5;
             // 
             // dataGridViewStaffCharity
@@ -983,10 +985,10 @@
             this.dataGridViewStaffCharity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.dataGridViewStaffCharity, 7);
             this.dataGridViewStaffCharity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStaffCharity.Location = new System.Drawing.Point(3, 366);
+            this.dataGridViewStaffCharity.Location = new System.Drawing.Point(3, 371);
             this.dataGridViewStaffCharity.Name = "dataGridViewStaffCharity";
             this.dataGridViewStaffCharity.RowTemplate.Height = 24;
-            this.dataGridViewStaffCharity.Size = new System.Drawing.Size(755, 128);
+            this.dataGridViewStaffCharity.Size = new System.Drawing.Size(756, 130);
             this.dataGridViewStaffCharity.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -997,14 +999,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.buttonStaffOk, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(648, 497);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(648, 504);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(113, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(114, 102);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // buttonStaffOk
@@ -1024,7 +1026,7 @@
             this.tableLayoutPanelStaffRightMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelStaffRightMain.Controls.Add(this.tableLayoutPanelEmployeeInfo, 0, 0);
             this.tableLayoutPanelStaffRightMain.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanelStaffRightMain.Location = new System.Drawing.Point(809, 12);
+            this.tableLayoutPanelStaffRightMain.Location = new System.Drawing.Point(812, 12);
             this.tableLayoutPanelStaffRightMain.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelStaffRightMain.Name = "tableLayoutPanelStaffRightMain";
             this.tableLayoutPanelStaffRightMain.RowCount = 2;
@@ -1394,21 +1396,24 @@
             // 
             // tableLayoutPanelAfterGoodTable
             // 
-            this.tableLayoutPanelAfterGoodTable.ColumnCount = 4;
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelAfterGoodTable.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanelAfterGoodTable.ColumnCount = 5;
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.62687F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.608209F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.68654F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label35, 1, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label37, 3, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 4, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsName, 0, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 1, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 2, 0);
-            this.tableLayoutPanelAfterGoodTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 2, 0);
             this.tableLayoutPanelAfterGoodTable.Location = new System.Drawing.Point(25, 320);
             this.tableLayoutPanelAfterGoodTable.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelAfterGoodTable.Name = "tableLayoutPanelAfterGoodTable";
             this.tableLayoutPanelAfterGoodTable.RowCount = 1;
             this.tableLayoutPanelAfterGoodTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelAfterGoodTable.Size = new System.Drawing.Size(1205, 40);
+            this.tableLayoutPanelAfterGoodTable.Size = new System.Drawing.Size(1203, 40);
             this.tableLayoutPanelAfterGoodTable.TabIndex = 3;
             this.tableLayoutPanelAfterGoodTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelAfterGoodTable_Paint);
             // 
@@ -1417,24 +1422,16 @@
             this.textBoxGoodsName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxGoodsName.Location = new System.Drawing.Point(3, 3);
             this.textBoxGoodsName.Name = "textBoxGoodsName";
-            this.textBoxGoodsName.Size = new System.Drawing.Size(596, 25);
+            this.textBoxGoodsName.Size = new System.Drawing.Size(526, 25);
             this.textBoxGoodsName.TabIndex = 6;
             // 
             // textBoxGoodsAmount
             // 
             this.textBoxGoodsAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGoodsAmount.Location = new System.Drawing.Point(605, 3);
+            this.textBoxGoodsAmount.Location = new System.Drawing.Point(638, 3);
             this.textBoxGoodsAmount.Name = "textBoxGoodsAmount";
-            this.textBoxGoodsAmount.Size = new System.Drawing.Size(174, 25);
+            this.textBoxGoodsAmount.Size = new System.Drawing.Size(215, 25);
             this.textBoxGoodsAmount.TabIndex = 7;
-            // 
-            // textBoxGoodsNeeded
-            // 
-            this.textBoxGoodsNeeded.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGoodsNeeded.Location = new System.Drawing.Point(785, 3);
-            this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
-            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(174, 25);
-            this.textBoxGoodsNeeded.TabIndex = 8;
             // 
             // tableLayoutPanelGoodsButtons
             // 
@@ -1444,6 +1441,7 @@
             this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsWriteOff, 0, 0);
             this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsAdd, 1, 0);
+            this.tableLayoutPanelGoodsButtons.Controls.Add(this.checkBoxAddAsNewGood, 2, 0);
             this.tableLayoutPanelGoodsButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelGoodsButtons.Location = new System.Drawing.Point(25, 471);
             this.tableLayoutPanelGoodsButtons.Margin = new System.Windows.Forms.Padding(0);
@@ -1456,20 +1454,27 @@
             // 
             // buttonGoodsWriteOff
             // 
-            this.buttonGoodsWriteOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGoodsWriteOff.Location = new System.Drawing.Point(3, 4);
+            this.buttonGoodsWriteOff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGoodsWriteOff.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonGoodsWriteOff.Location = new System.Drawing.Point(3, 3);
             this.buttonGoodsWriteOff.Name = "buttonGoodsWriteOff";
-            this.buttonGoodsWriteOff.Size = new System.Drawing.Size(114, 32);
+            this.buttonGoodsWriteOff.Size = new System.Drawing.Size(114, 34);
             this.buttonGoodsWriteOff.TabIndex = 11;
             this.buttonGoodsWriteOff.Text = "Списать";
             this.buttonGoodsWriteOff.UseVisualStyleBackColor = true;
             // 
             // buttonGoodsAdd
             // 
-            this.buttonGoodsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGoodsAdd.Location = new System.Drawing.Point(123, 6);
+            this.buttonGoodsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGoodsAdd.AutoSize = true;
+            this.buttonGoodsAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonGoodsAdd.Location = new System.Drawing.Point(123, 3);
             this.buttonGoodsAdd.Name = "buttonGoodsAdd";
-            this.buttonGoodsAdd.Size = new System.Drawing.Size(114, 28);
+            this.buttonGoodsAdd.Size = new System.Drawing.Size(114, 34);
             this.buttonGoodsAdd.TabIndex = 12;
             this.buttonGoodsAdd.Text = "Добавить";
             this.buttonGoodsAdd.UseVisualStyleBackColor = true;
@@ -1478,8 +1483,8 @@
             // 
             this.tableLayoutPanelPickChariter.ColumnCount = 3;
             this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.53333F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.46667F));
             this.tableLayoutPanelPickChariter.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
             this.tableLayoutPanelPickChariter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1497,7 +1502,7 @@
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
             this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 9);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
-            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(275, 25);
+            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 25);
             this.comboBoxGoodsVolunteer.TabIndex = 10;
             // 
             // label31
@@ -1526,7 +1531,7 @@
             this.tabReports.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tabReports.Location = new System.Drawing.Point(4, 39);
             this.tabReports.Name = "tabReports";
-            this.tabReports.Size = new System.Drawing.Size(1254, 630);
+            this.tabReports.Size = new System.Drawing.Size(1256, 638);
             this.tabReports.TabIndex = 3;
             this.tabReports.Text = "Отчёты";
             this.tabReports.UseVisualStyleBackColor = true;
@@ -1550,7 +1555,7 @@
             this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66F));
             this.tableLayoutPanelReportsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.tableLayoutPanelReportsMain.Size = new System.Drawing.Size(1254, 630);
+            this.tableLayoutPanelReportsMain.Size = new System.Drawing.Size(1256, 638);
             this.tableLayoutPanelReportsMain.TabIndex = 0;
             // 
             // tableLayoutPanelReportsSpent
@@ -1580,7 +1585,7 @@
             this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelReportsSpent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelReportsSpent.Size = new System.Drawing.Size(658, 183);
+            this.tableLayoutPanelReportsSpent.Size = new System.Drawing.Size(659, 185);
             this.tableLayoutPanelReportsSpent.TabIndex = 0;
             // 
             // label32
@@ -1631,7 +1636,7 @@
             // 
             this.checkBoxReportsMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsMoney.AutoSize = true;
-            this.checkBoxReportsMoney.Location = new System.Drawing.Point(3, 152);
+            this.checkBoxReportsMoney.Location = new System.Drawing.Point(3, 153);
             this.checkBoxReportsMoney.Name = "checkBoxReportsMoney";
             this.checkBoxReportsMoney.Size = new System.Drawing.Size(158, 23);
             this.checkBoxReportsMoney.TabIndex = 4;
@@ -1667,16 +1672,16 @@
             this.tableLayoutPanelReportsSpent.SetColumnSpan(this.label33, 2);
             this.label33.Location = new System.Drawing.Point(331, 5);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(324, 19);
+            this.label33.Size = new System.Drawing.Size(325, 19);
             this.label33.TabIndex = 7;
             this.label33.Text = "Период";
             // 
             // buttonReportsForm
             // 
             this.buttonReportsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReportsForm.Location = new System.Drawing.Point(495, 148);
+            this.buttonReportsForm.Location = new System.Drawing.Point(495, 149);
             this.buttonReportsForm.Name = "buttonReportsForm";
-            this.buttonReportsForm.Size = new System.Drawing.Size(160, 31);
+            this.buttonReportsForm.Size = new System.Drawing.Size(161, 31);
             this.buttonReportsForm.TabIndex = 9;
             this.buttonReportsForm.Text = "Сформировать";
             this.buttonReportsForm.UseVisualStyleBackColor = true;
@@ -1707,7 +1712,7 @@
             this.tableLayoutPanel6.Controls.Add(this.textBoxReportsComment, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.buttonReportsWriteOffMoney, 1, 3);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(817, 15);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(818, 15);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 4;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -1716,7 +1721,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(407, 183);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(408, 185);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label34
@@ -1725,7 +1730,7 @@
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(3, 5);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(156, 19);
+            this.label34.Size = new System.Drawing.Size(157, 19);
             this.label34.TabIndex = 0;
             this.label34.Text = "Денег на счету";
             // 
@@ -1733,7 +1738,7 @@
             // 
             this.labelReportsMoneyAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelReportsMoneyAmount.AutoSize = true;
-            this.labelReportsMoneyAmount.Location = new System.Drawing.Point(165, 5);
+            this.labelReportsMoneyAmount.Location = new System.Drawing.Point(166, 5);
             this.labelReportsMoneyAmount.Name = "labelReportsMoneyAmount";
             this.labelReportsMoneyAmount.Size = new System.Drawing.Size(239, 19);
             this.labelReportsMoneyAmount.TabIndex = 1;
@@ -1745,14 +1750,14 @@
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(3, 40);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(156, 19);
+            this.label36.Size = new System.Drawing.Size(157, 19);
             this.label36.TabIndex = 2;
             this.label36.Text = "Потрачено";
             // 
             // textBoxReportsMoneyToSpend
             // 
             this.textBoxReportsMoneyToSpend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxReportsMoneyToSpend.Location = new System.Drawing.Point(165, 37);
+            this.textBoxReportsMoneyToSpend.Location = new System.Drawing.Point(166, 37);
             this.textBoxReportsMoneyToSpend.Name = "textBoxReportsMoneyToSpend";
             this.textBoxReportsMoneyToSpend.Size = new System.Drawing.Size(239, 25);
             this.textBoxReportsMoneyToSpend.TabIndex = 10;
@@ -1764,13 +1769,13 @@
             this.textBoxReportsComment.Location = new System.Drawing.Point(3, 73);
             this.textBoxReportsComment.Multiline = true;
             this.textBoxReportsComment.Name = "textBoxReportsComment";
-            this.textBoxReportsComment.Size = new System.Drawing.Size(401, 67);
+            this.textBoxReportsComment.Size = new System.Drawing.Size(402, 69);
             this.textBoxReportsComment.TabIndex = 11;
             // 
             // buttonReportsWriteOffMoney
             // 
             this.buttonReportsWriteOffMoney.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonReportsWriteOffMoney.Location = new System.Drawing.Point(244, 148);
+            this.buttonReportsWriteOffMoney.Location = new System.Drawing.Point(245, 150);
             this.buttonReportsWriteOffMoney.Name = "buttonReportsWriteOffMoney";
             this.buttonReportsWriteOffMoney.Size = new System.Drawing.Size(160, 30);
             this.buttonReportsWriteOffMoney.TabIndex = 12;
@@ -1782,10 +1787,10 @@
             this.dataGridViewReportsMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelReportsMain.SetColumnSpan(this.dataGridViewReportsMain, 3);
             this.dataGridViewReportsMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewReportsMain.Location = new System.Drawing.Point(28, 204);
+            this.dataGridViewReportsMain.Location = new System.Drawing.Point(28, 206);
             this.dataGridViewReportsMain.Name = "dataGridViewReportsMain";
             this.dataGridViewReportsMain.RowTemplate.Height = 24;
-            this.dataGridViewReportsMain.Size = new System.Drawing.Size(1196, 409);
+            this.dataGridViewReportsMain.Size = new System.Drawing.Size(1198, 415);
             this.dataGridViewReportsMain.TabIndex = 13;
             // 
             // dateTimePickerGoods
@@ -1808,6 +1813,46 @@
             this.radioButtonGoodsSortIsAll.Text = "Все";
             this.radioButtonGoodsSortIsAll.UseVisualStyleBackColor = true;
             this.radioButtonGoodsSortIsAll.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
+            // 
+            // textBoxGoodsNeeded
+            // 
+            this.textBoxGoodsNeeded.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGoodsNeeded.Location = new System.Drawing.Point(990, 3);
+            this.textBoxGoodsNeeded.MinimumSize = new System.Drawing.Size(50, 0);
+            this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
+            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(210, 25);
+            this.textBoxGoodsNeeded.TabIndex = 9;
+            // 
+            // label37
+            // 
+            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(894, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(90, 19);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Необходимо";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(557, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(75, 19);
+            this.label35.TabIndex = 13;
+            this.label35.Text = "В наличии";
+            // 
+            // checkBoxAddAsNewGood
+            // 
+            this.checkBoxAddAsNewGood.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxAddAsNewGood.AutoSize = true;
+            this.checkBoxAddAsNewGood.Location = new System.Drawing.Point(243, 8);
+            this.checkBoxAddAsNewGood.Name = "checkBoxAddAsNewGood";
+            this.checkBoxAddAsNewGood.Size = new System.Drawing.Size(159, 23);
+            this.checkBoxAddAsNewGood.TabIndex = 13;
+            this.checkBoxAddAsNewGood.Text = "Добавить как новое.";
+            this.checkBoxAddAsNewGood.UseVisualStyleBackColor = true;
             // 
             // EmployeeForm
             // 
@@ -1863,6 +1908,7 @@
             this.tableLayoutPanelAfterGoodTable.ResumeLayout(false);
             this.tableLayoutPanelAfterGoodTable.PerformLayout();
             this.tableLayoutPanelGoodsButtons.ResumeLayout(false);
+            this.tableLayoutPanelGoodsButtons.PerformLayout();
             this.tableLayoutPanelPickChariter.ResumeLayout(false);
             this.tableLayoutPanelPickChariter.PerformLayout();
             this.tabReports.ResumeLayout(false);
@@ -1971,7 +2017,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAfterGoodTable;
         private System.Windows.Forms.TextBox textBoxGoodsName;
         private System.Windows.Forms.TextBox textBoxGoodsAmount;
-        private System.Windows.Forms.TextBox textBoxGoodsNeeded;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsButtons;
         private System.Windows.Forms.Button buttonGoodsWriteOff;
         private System.Windows.Forms.Button buttonGoodsAdd;
@@ -2007,5 +2052,9 @@
         private System.Windows.Forms.ComboBox comboBoxSortSpecies;
         private System.Windows.Forms.DateTimePicker dateTimePickerGoods;
         private System.Windows.Forms.RadioButton radioButtonGoodsSortIsAll;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textBoxGoodsNeeded;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.CheckBox checkBoxAddAsNewGood;
     }
 }
