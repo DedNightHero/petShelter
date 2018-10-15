@@ -177,18 +177,18 @@ namespace MainForm
             cleanPetsAddArea();
             if (i>=0)
             {
-                id = Convert.ToInt32(psAnimals.animals.Rows[i][0]) - 1;
-                comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.Rows[i][1]) - 1][1].ToString();
-                textBoxPetsBreed.Text = psAnimals.animals.Rows[i][2].ToString();
-                textBoxPetsNickName.Text = psAnimals.animals.Rows[i][3].ToString();
-                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.Rows[i][4].ToString();
-                if (psAnimals.animals.Rows[i][5].ToString() == "0")
+                id=Convert.ToInt32(dataGridViewPetsAllPets.CurrentRow.Cells[0].Value);
+                comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)[1]) - 1][1].ToString();
+                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
+                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
+                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
+                if (psAnimals.animals.FindById_Animals(id)[5].ToString() == "0")
                 {
                     checkBoxPetsMaster.Checked = true;
-                    textBoxPetsFIO.Text = psAnimals.animals.Rows[i][6].ToString();
-                    textBoxPetsPhoneNumber.Text = psAnimals.animals.Rows[i][7].ToString();
-                    textBoxPetsAddress.Text = psAnimals.animals.Rows[i][8].ToString();
-                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.Rows[i][9].ToString();
+                    textBoxPetsFIO.Text = psAnimals.animals.FindById_Animals(id)[6].ToString();
+                    textBoxPetsPhoneNumber.Text = psAnimals.animals.FindById_Animals(id)[7].ToString();
+                    textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)[8].ToString();
+                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
                 }
             }
         }
@@ -397,6 +397,8 @@ namespace MainForm
             }
             dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
             setPetsGridView();
+            dataGridViewPetsAllPets.ClearSelection();
+            cleanPetsAddArea();
 
         }
         #endregion

@@ -42,6 +42,7 @@
             this.checkBoxPetsIsAtShelter = new System.Windows.Forms.CheckBox();
             this.checkBoxPetsIsAtHome = new System.Windows.Forms.CheckBox();
             this.dataGridViewPetsAllPets = new System.Windows.Forms.DataGridView();
+            this.comboBoxSortSpecies = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewPetsHistory = new System.Windows.Forms.DataGridView();
@@ -156,7 +157,6 @@
             this.textBoxReportsComment = new System.Windows.Forms.TextBox();
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
-            this.comboBoxSortSpecies = new System.Windows.Forms.ComboBox();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -388,6 +388,16 @@
             this.dataGridViewPetsAllPets.TabIndex = 6;
             this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
+            // 
+            // comboBoxSortSpecies
+            // 
+            this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortSpecies.FormattingEnabled = true;
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 42);
+            this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
+            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
+            this.comboBoxSortSpecies.TabIndex = 7;
+            this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // tableLayoutPanel3
             // 
@@ -1774,16 +1784,6 @@
             this.dataGridViewReportsMain.RowTemplate.Height = 24;
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1196, 409);
             this.dataGridViewReportsMain.TabIndex = 13;
-            // 
-            // comboBoxSortSpecies
-            // 
-            this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 42);
-            this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
-            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
-            this.comboBoxSortSpecies.TabIndex = 7;
-            this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // EmployeeForm
             // 
