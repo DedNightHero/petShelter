@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainForm", "MainForm\MainForm.csproj", "{73D60648-A2FD-4C05-AB2C-2964CB04A1D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Sript", "SQL Sript", "{0D8CC321-C11A-4456-AC92-6280B17F17FC}"
 	ProjectSection(SolutionItems) = preProject
-		petshelter.sql = petshelter.sql
+		petShelter.sql = petShelter.sql
 	EndProjectSection
 EndProject
 Global
