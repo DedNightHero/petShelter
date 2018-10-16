@@ -24,8 +24,6 @@ namespace MainForm {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class PetShelter : global::System.Data.DataSet {
         
-        private animalsDataTable tableanimals;
-        
         private debitcreditDataTable tabledebitcredit;
         
         private goodsDataTable tablegoods;
@@ -38,11 +36,7 @@ namespace MainForm {
         
         private usersDataTable tableusers;
         
-        private global::System.Data.DataRelation relationFK_goods_debitcredit;
-        
-        private global::System.Data.DataRelation relationFK_users_debitcredit;
-        
-        private global::System.Data.DataRelation relationFK_animals_debitcredit;
+        private animalsDataTable tableanimals;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -72,9 +66,6 @@ namespace MainForm {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["animals"] != null)) {
-                    base.Tables.Add(new animalsDataTable(ds.Tables["animals"]));
-                }
                 if ((ds.Tables["debitcredit"] != null)) {
                     base.Tables.Add(new debitcreditDataTable(ds.Tables["debitcredit"]));
                 }
@@ -93,6 +84,9 @@ namespace MainForm {
                 if ((ds.Tables["users"] != null)) {
                     base.Tables.Add(new usersDataTable(ds.Tables["users"]));
                 }
+                if ((ds.Tables["animals"] != null)) {
+                    base.Tables.Add(new animalsDataTable(ds.Tables["animals"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -109,16 +103,6 @@ namespace MainForm {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public animalsDataTable animals {
-            get {
-                return this.tableanimals;
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -178,6 +162,16 @@ namespace MainForm {
         public usersDataTable users {
             get {
                 return this.tableusers;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public animalsDataTable animals {
+            get {
+                return this.tableanimals;
             }
         }
         
@@ -248,9 +242,6 @@ namespace MainForm {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["animals"] != null)) {
-                    base.Tables.Add(new animalsDataTable(ds.Tables["animals"]));
-                }
                 if ((ds.Tables["debitcredit"] != null)) {
                     base.Tables.Add(new debitcreditDataTable(ds.Tables["debitcredit"]));
                 }
@@ -268,6 +259,9 @@ namespace MainForm {
                 }
                 if ((ds.Tables["users"] != null)) {
                     base.Tables.Add(new usersDataTable(ds.Tables["users"]));
+                }
+                if ((ds.Tables["animals"] != null)) {
+                    base.Tables.Add(new animalsDataTable(ds.Tables["animals"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -302,12 +296,6 @@ namespace MainForm {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableanimals = ((animalsDataTable)(base.Tables["animals"]));
-            if ((initTable == true)) {
-                if ((this.tableanimals != null)) {
-                    this.tableanimals.InitVars();
-                }
-            }
             this.tabledebitcredit = ((debitcreditDataTable)(base.Tables["debitcredit"]));
             if ((initTable == true)) {
                 if ((this.tabledebitcredit != null)) {
@@ -344,9 +332,12 @@ namespace MainForm {
                     this.tableusers.InitVars();
                 }
             }
-            this.relationFK_goods_debitcredit = this.Relations["FK_goods_debitcredit"];
-            this.relationFK_users_debitcredit = this.Relations["FK_users_debitcredit"];
-            this.relationFK_animals_debitcredit = this.Relations["FK_animals_debitcredit"];
+            this.tableanimals = ((animalsDataTable)(base.Tables["animals"]));
+            if ((initTable == true)) {
+                if ((this.tableanimals != null)) {
+                    this.tableanimals.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -357,8 +348,6 @@ namespace MainForm {
             this.Namespace = "http://tempuri.org/PetShelter.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableanimals = new animalsDataTable();
-            base.Tables.Add(this.tableanimals);
             this.tabledebitcredit = new debitcreditDataTable();
             base.Tables.Add(this.tabledebitcredit);
             this.tablegoods = new goodsDataTable();
@@ -371,39 +360,8 @@ namespace MainForm {
             base.Tables.Add(this.tablespecies);
             this.tableusers = new usersDataTable();
             base.Tables.Add(this.tableusers);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_goodstype_goods", new global::System.Data.DataColumn[] {
-                        this.tablegoodstype.Id_GoodsTypeColumn}, new global::System.Data.DataColumn[] {
-                        this.tablegoods.TypeColumn});
-            this.tablegoods.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_positions_users", new global::System.Data.DataColumn[] {
-                        this.tablepositions.Id_PositionsColumn}, new global::System.Data.DataColumn[] {
-                        this.tableusers.PositionColumn});
-            this.tableusers.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_goods_debitcredit = new global::System.Data.DataRelation("FK_goods_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tablegoods.Id_GoodsColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.GoodsNameColumn}, false);
-            this.Relations.Add(this.relationFK_goods_debitcredit);
-            this.relationFK_users_debitcredit = new global::System.Data.DataRelation("FK_users_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tableusers.Id_UsersColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.UserIdColumn}, false);
-            this.Relations.Add(this.relationFK_users_debitcredit);
-            this.relationFK_animals_debitcredit = new global::System.Data.DataRelation("FK_animals_debitcredit", new global::System.Data.DataColumn[] {
-                        this.tableanimals.Id_AnimalsColumn}, new global::System.Data.DataColumn[] {
-                        this.tabledebitcredit.PatientIdColumn}, false);
-            this.Relations.Add(this.relationFK_animals_debitcredit);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeanimals() {
-            return false;
+            this.tableanimals = new animalsDataTable();
+            base.Tables.Add(this.tableanimals);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -439,6 +397,12 @@ namespace MainForm {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeusers() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeanimals() {
             return false;
         }
         
@@ -498,9 +462,6 @@ namespace MainForm {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void animalsRowChangeEventHandler(object sender, animalsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void debitcreditRowChangeEventHandler(object sender, debitcreditRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -518,411 +479,8 @@ namespace MainForm {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void usersRowChangeEventHandler(object sender, usersRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class animalsDataTable : global::System.Data.TypedTableBase<animalsRow> {
-            
-            private global::System.Data.DataColumn columnId_Animals;
-            
-            private global::System.Data.DataColumn columnSpecies;
-            
-            private global::System.Data.DataColumn columnBreed;
-            
-            private global::System.Data.DataColumn columnNickName;
-            
-            private global::System.Data.DataColumn columnArrivalDate;
-            
-            private global::System.Data.DataColumn columnInHere;
-            
-            private global::System.Data.DataColumn columnFMLNameOfOwner;
-            
-            private global::System.Data.DataColumn columnOwnerPhone;
-            
-            private global::System.Data.DataColumn columnOwnerAddress;
-            
-            private global::System.Data.DataColumn columnDeliveryDate;
-            
-            private global::System.Data.DataColumn columnPetPhoto;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsDataTable() {
-                this.TableName = "animals";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal animalsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected animalsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Id_AnimalsColumn {
-                get {
-                    return this.columnId_Animals;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SpeciesColumn {
-                get {
-                    return this.columnSpecies;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BreedColumn {
-                get {
-                    return this.columnBreed;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NickNameColumn {
-                get {
-                    return this.columnNickName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ArrivalDateColumn {
-                get {
-                    return this.columnArrivalDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn InHereColumn {
-                get {
-                    return this.columnInHere;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FMLNameOfOwnerColumn {
-                get {
-                    return this.columnFMLNameOfOwner;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OwnerPhoneColumn {
-                get {
-                    return this.columnOwnerPhone;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OwnerAddressColumn {
-                get {
-                    return this.columnOwnerAddress;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DeliveryDateColumn {
-                get {
-                    return this.columnDeliveryDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PetPhotoColumn {
-                get {
-                    return this.columnPetPhoto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow this[int index] {
-                get {
-                    return ((animalsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event animalsRowChangeEventHandler animalsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event animalsRowChangeEventHandler animalsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event animalsRowChangeEventHandler animalsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event animalsRowChangeEventHandler animalsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddanimalsRow(animalsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow AddanimalsRow(int Species, string Breed, string NickName, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, string OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate, string PetPhoto) {
-                animalsRow rowanimalsRow = ((animalsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Species,
-                        Breed,
-                        NickName,
-                        ArrivalDate,
-                        InHere,
-                        FMLNameOfOwner,
-                        OwnerPhone,
-                        OwnerAddress,
-                        DeliveryDate,
-                        PetPhoto};
-                rowanimalsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowanimalsRow);
-                return rowanimalsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow FindById_Animals(int Id_Animals) {
-                return ((animalsRow)(this.Rows.Find(new object[] {
-                            Id_Animals})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                animalsDataTable cln = ((animalsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new animalsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId_Animals = base.Columns["Id_Animals"];
-                this.columnSpecies = base.Columns["Species"];
-                this.columnBreed = base.Columns["Breed"];
-                this.columnNickName = base.Columns["NickName"];
-                this.columnArrivalDate = base.Columns["ArrivalDate"];
-                this.columnInHere = base.Columns["InHere"];
-                this.columnFMLNameOfOwner = base.Columns["FMLNameOfOwner"];
-                this.columnOwnerPhone = base.Columns["OwnerPhone"];
-                this.columnOwnerAddress = base.Columns["OwnerAddress"];
-                this.columnDeliveryDate = base.Columns["DeliveryDate"];
-                this.columnPetPhoto = base.Columns["PetPhoto"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId_Animals = new global::System.Data.DataColumn("Id_Animals", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Animals);
-                this.columnSpecies = new global::System.Data.DataColumn("Species", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSpecies);
-                this.columnBreed = new global::System.Data.DataColumn("Breed", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBreed);
-                this.columnNickName = new global::System.Data.DataColumn("NickName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNickName);
-                this.columnArrivalDate = new global::System.Data.DataColumn("ArrivalDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnArrivalDate);
-                this.columnInHere = new global::System.Data.DataColumn("InHere", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInHere);
-                this.columnFMLNameOfOwner = new global::System.Data.DataColumn("FMLNameOfOwner", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFMLNameOfOwner);
-                this.columnOwnerPhone = new global::System.Data.DataColumn("OwnerPhone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOwnerPhone);
-                this.columnOwnerAddress = new global::System.Data.DataColumn("OwnerAddress", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOwnerAddress);
-                this.columnDeliveryDate = new global::System.Data.DataColumn("DeliveryDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeliveryDate);
-                this.columnPetPhoto = new global::System.Data.DataColumn("PetPhoto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPetPhoto);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId_Animals}, true));
-                this.columnId_Animals.AutoIncrement = true;
-                this.columnId_Animals.AutoIncrementSeed = 1;
-                this.columnId_Animals.AllowDBNull = false;
-                this.columnId_Animals.Unique = true;
-                this.columnBreed.MaxLength = 30;
-                this.columnNickName.MaxLength = 20;
-                this.columnFMLNameOfOwner.MaxLength = 40;
-                this.columnOwnerPhone.MaxLength = 11;
-                this.columnOwnerAddress.MaxLength = 80;
-                this.columnPetPhoto.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow NewanimalsRow() {
-                return ((animalsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new animalsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(animalsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.animalsRowChanged != null)) {
-                    this.animalsRowChanged(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.animalsRowChanging != null)) {
-                    this.animalsRowChanging(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.animalsRowDeleted != null)) {
-                    this.animalsRowDeleted(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.animalsRowDeleting != null)) {
-                    this.animalsRowDeleting(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveanimalsRow(animalsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                PetShelter ds = new PetShelter();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "animalsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void animalsRowChangeEventHandler(object sender, animalsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1081,26 +639,17 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow AdddebitcreditRow(goodsRow parentgoodsRowByFK_goods_debitcredit, string Comment, System.DateTime Date, int Debit, int Credit, animalsRow parentanimalsRowByFK_animals_debitcredit, usersRow parentusersRowByFK_users_debitcredit) {
+            public debitcreditRow AdddebitcreditRow(int GoodsName, string Comment, System.DateTime Date, int Debit, int Credit, System.Data.SqlTypes.SqlInt32 PatientId, int UserId) {
                 debitcreditRow rowdebitcreditRow = ((debitcreditRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        GoodsName,
                         Comment,
                         Date,
                         Debit,
                         Credit,
-                        null,
-                        null};
-                if ((parentgoodsRowByFK_goods_debitcredit != null)) {
-                    columnValuesArray[1] = parentgoodsRowByFK_goods_debitcredit[0];
-                }
-                if ((parentanimalsRowByFK_animals_debitcredit != null)) {
-                    columnValuesArray[6] = parentanimalsRowByFK_animals_debitcredit[0];
-                }
-                if ((parentusersRowByFK_users_debitcredit != null)) {
-                    columnValuesArray[7] = parentusersRowByFK_users_debitcredit[0];
-                }
+                        PatientId,
+                        UserId};
                 rowdebitcreditRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdebitcreditRow);
                 return rowdebitcreditRow;
@@ -1155,7 +704,7 @@ namespace MainForm {
                 base.Columns.Add(this.columnDebit);
                 this.columnCredit = new global::System.Data.DataColumn("Credit", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCredit);
-                this.columnPatientId = new global::System.Data.DataColumn("PatientId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnPatientId = new global::System.Data.DataColumn("PatientId", typeof(global::System.Data.SqlTypes.SqlInt32), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPatientId);
                 this.columnUserId = new global::System.Data.DataColumn("UserId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserId);
@@ -2797,319 +2346,408 @@ namespace MainForm {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Represents the strongly named DataTable class.
         ///</summary>
-        public partial class animalsRow : global::System.Data.DataRow {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class animalsDataTable : global::System.Data.TypedTableBase<animalsRow> {
             
-            private animalsDataTable tableanimals;
+            private global::System.Data.DataColumn columnId_Animals;
+            
+            private global::System.Data.DataColumn columnSpecies;
+            
+            private global::System.Data.DataColumn columnBreed;
+            
+            private global::System.Data.DataColumn columnNickName;
+            
+            private global::System.Data.DataColumn columnArrivalDate;
+            
+            private global::System.Data.DataColumn columnInHere;
+            
+            private global::System.Data.DataColumn columnFMLNameOfOwner;
+            
+            private global::System.Data.DataColumn columnOwnerPhone;
+            
+            private global::System.Data.DataColumn columnOwnerAddress;
+            
+            private global::System.Data.DataColumn columnDeliveryDate;
+            
+            private global::System.Data.DataColumn columnPetPhoto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal animalsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableanimals = ((animalsDataTable)(this.Table));
+            public animalsDataTable() {
+                this.TableName = "animals";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id_Animals {
-                get {
-                    return ((int)(this[this.tableanimals.Id_AnimalsColumn]));
+            internal animalsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
                 }
-                set {
-                    this[this.tableanimals.Id_AnimalsColumn] = value;
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected animalsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Id_AnimalsColumn {
+                get {
+                    return this.columnId_Animals;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Species {
+            public global::System.Data.DataColumn SpeciesColumn {
                 get {
+                    return this.columnSpecies;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BreedColumn {
+                get {
+                    return this.columnBreed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NickNameColumn {
+                get {
+                    return this.columnNickName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ArrivalDateColumn {
+                get {
+                    return this.columnArrivalDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn InHereColumn {
+                get {
+                    return this.columnInHere;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FMLNameOfOwnerColumn {
+                get {
+                    return this.columnFMLNameOfOwner;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OwnerPhoneColumn {
+                get {
+                    return this.columnOwnerPhone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OwnerAddressColumn {
+                get {
+                    return this.columnOwnerAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DeliveryDateColumn {
+                get {
+                    return this.columnDeliveryDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PetPhotoColumn {
+                get {
+                    return this.columnPetPhoto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRow this[int index] {
+                get {
+                    return ((animalsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event animalsRowChangeEventHandler animalsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event animalsRowChangeEventHandler animalsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event animalsRowChangeEventHandler animalsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event animalsRowChangeEventHandler animalsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddanimalsRow(animalsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRow AddanimalsRow(int Species, string Breed, string NickName, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, string OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate, string PetPhoto) {
+                animalsRow rowanimalsRow = ((animalsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Species,
+                        Breed,
+                        NickName,
+                        ArrivalDate,
+                        InHere,
+                        FMLNameOfOwner,
+                        OwnerPhone,
+                        OwnerAddress,
+                        DeliveryDate,
+                        PetPhoto};
+                rowanimalsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowanimalsRow);
+                return rowanimalsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRow FindById_Animals(int Id_Animals) {
+                return ((animalsRow)(this.Rows.Find(new object[] {
+                            Id_Animals})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                animalsDataTable cln = ((animalsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new animalsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId_Animals = base.Columns["Id_Animals"];
+                this.columnSpecies = base.Columns["Species"];
+                this.columnBreed = base.Columns["Breed"];
+                this.columnNickName = base.Columns["NickName"];
+                this.columnArrivalDate = base.Columns["ArrivalDate"];
+                this.columnInHere = base.Columns["InHere"];
+                this.columnFMLNameOfOwner = base.Columns["FMLNameOfOwner"];
+                this.columnOwnerPhone = base.Columns["OwnerPhone"];
+                this.columnOwnerAddress = base.Columns["OwnerAddress"];
+                this.columnDeliveryDate = base.Columns["DeliveryDate"];
+                this.columnPetPhoto = base.Columns["PetPhoto"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId_Animals = new global::System.Data.DataColumn("Id_Animals", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_Animals);
+                this.columnSpecies = new global::System.Data.DataColumn("Species", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecies);
+                this.columnBreed = new global::System.Data.DataColumn("Breed", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBreed);
+                this.columnNickName = new global::System.Data.DataColumn("NickName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNickName);
+                this.columnArrivalDate = new global::System.Data.DataColumn("ArrivalDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnArrivalDate);
+                this.columnInHere = new global::System.Data.DataColumn("InHere", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInHere);
+                this.columnFMLNameOfOwner = new global::System.Data.DataColumn("FMLNameOfOwner", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFMLNameOfOwner);
+                this.columnOwnerPhone = new global::System.Data.DataColumn("OwnerPhone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOwnerPhone);
+                this.columnOwnerAddress = new global::System.Data.DataColumn("OwnerAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOwnerAddress);
+                this.columnDeliveryDate = new global::System.Data.DataColumn("DeliveryDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeliveryDate);
+                this.columnPetPhoto = new global::System.Data.DataColumn("PetPhoto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPetPhoto);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId_Animals}, true));
+                this.columnId_Animals.AutoIncrement = true;
+                this.columnId_Animals.AutoIncrementSeed = 1;
+                this.columnId_Animals.AllowDBNull = false;
+                this.columnId_Animals.Unique = true;
+                this.columnBreed.MaxLength = 30;
+                this.columnNickName.MaxLength = 20;
+                this.columnFMLNameOfOwner.MaxLength = 40;
+                this.columnOwnerPhone.MaxLength = 11;
+                this.columnOwnerAddress.MaxLength = 80;
+                this.columnPetPhoto.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRow NewanimalsRow() {
+                return ((animalsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new animalsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(animalsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.animalsRowChanged != null)) {
+                    this.animalsRowChanged(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.animalsRowChanging != null)) {
+                    this.animalsRowChanging(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.animalsRowDeleted != null)) {
+                    this.animalsRowDeleted(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.animalsRowDeleting != null)) {
+                    this.animalsRowDeleting(this, new animalsRowChangeEvent(((animalsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveanimalsRow(animalsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                PetShelter ds = new PetShelter();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "animalsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                     try {
-                        return ((int)(this[this.tableanimals.SpeciesColumn]));
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Species\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.SpeciesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Breed {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.BreedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Breed\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.BreedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NickName {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.NickNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NickName\' в таблице \'animals\' равно DBNull.", e);
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
                     }
                 }
-                set {
-                    this[this.tableanimals.NickNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime ArrivalDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableanimals.ArrivalDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ArrivalDate\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.ArrivalDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int InHere {
-                get {
-                    try {
-                        return ((int)(this[this.tableanimals.InHereColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'InHere\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.InHereColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FMLNameOfOwner {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.FMLNameOfOwnerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FMLNameOfOwner\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.FMLNameOfOwnerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OwnerPhone {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.OwnerPhoneColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerPhone\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.OwnerPhoneColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OwnerAddress {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.OwnerAddressColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerAddress\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.OwnerAddressColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DeliveryDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableanimals.DeliveryDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'DeliveryDate\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.DeliveryDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PetPhoto {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.PetPhotoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PetPhoto\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.PetPhotoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSpeciesNull() {
-                return this.IsNull(this.tableanimals.SpeciesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSpeciesNull() {
-                this[this.tableanimals.SpeciesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsBreedNull() {
-                return this.IsNull(this.tableanimals.BreedColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetBreedNull() {
-                this[this.tableanimals.BreedColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNickNameNull() {
-                return this.IsNull(this.tableanimals.NickNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNickNameNull() {
-                this[this.tableanimals.NickNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsArrivalDateNull() {
-                return this.IsNull(this.tableanimals.ArrivalDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetArrivalDateNull() {
-                this[this.tableanimals.ArrivalDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsInHereNull() {
-                return this.IsNull(this.tableanimals.InHereColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetInHereNull() {
-                this[this.tableanimals.InHereColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFMLNameOfOwnerNull() {
-                return this.IsNull(this.tableanimals.FMLNameOfOwnerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFMLNameOfOwnerNull() {
-                this[this.tableanimals.FMLNameOfOwnerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOwnerPhoneNull() {
-                return this.IsNull(this.tableanimals.OwnerPhoneColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOwnerPhoneNull() {
-                this[this.tableanimals.OwnerPhoneColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOwnerAddressNull() {
-                return this.IsNull(this.tableanimals.OwnerAddressColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOwnerAddressNull() {
-                this[this.tableanimals.OwnerAddressColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDeliveryDateNull() {
-                return this.IsNull(this.tableanimals.DeliveryDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDeliveryDateNull() {
-                this[this.tableanimals.DeliveryDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPetPhotoNull() {
-                return this.IsNull(this.tableanimals.PetPhotoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPetPhotoNull() {
-                this[this.tableanimals.PetPhotoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow[] GetdebitcreditRows() {
-                if ((this.Table.ChildRelations["FK_animals_debitcredit"] == null)) {
-                    return new debitcreditRow[0];
-                }
-                else {
-                    return ((debitcreditRow[])(base.GetChildRows(this.Table.ChildRelations["FK_animals_debitcredit"])));
-                }
+                xs.Add(dsSchema);
+                return type;
             }
         }
         
@@ -3220,10 +2858,10 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PatientId {
+            public System.Data.SqlTypes.SqlInt32 PatientId {
                 get {
                     try {
-                        return ((int)(this[this.tabledebitcredit.PatientIdColumn]));
+                        return ((global::System.Data.SqlTypes.SqlInt32)(this[this.tabledebitcredit.PatientIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'PatientId\' в таблице \'debitcredit\' равно DBNull.", e);
@@ -3247,39 +2885,6 @@ namespace MainForm {
                 }
                 set {
                     this[this.tabledebitcredit.UserIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public goodsRow goodsRow {
-                get {
-                    return ((goodsRow)(this.GetParentRow(this.Table.ParentRelations["FK_goods_debitcredit"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_goods_debitcredit"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usersRow usersRow {
-                get {
-                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK_users_debitcredit"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_users_debitcredit"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow animalsRow {
-                get {
-                    return ((animalsRow)(this.GetParentRow(this.Table.ParentRelations["FK_animals_debitcredit"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_animals_debitcredit"]);
                 }
             }
             
@@ -3503,17 +3108,6 @@ namespace MainForm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRequiredNull() {
                 this[this.tablegoods.RequiredColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow[] GetdebitcreditRows() {
-                if ((this.Table.ChildRelations["FK_goods_debitcredit"] == null)) {
-                    return new debitcreditRow[0];
-                }
-                else {
-                    return ((debitcreditRow[])(base.GetChildRows(this.Table.ChildRelations["FK_goods_debitcredit"])));
-                }
             }
         }
         
@@ -3899,50 +3493,311 @@ namespace MainForm {
             public void SetAddressNull() {
                 this[this.tableusers.AddressColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow[] GetdebitcreditRows() {
-                if ((this.Table.ChildRelations["FK_users_debitcredit"] == null)) {
-                    return new debitcreditRow[0];
-                }
-                else {
-                    return ((debitcreditRow[])(base.GetChildRows(this.Table.ChildRelations["FK_users_debitcredit"])));
-                }
-            }
         }
         
         /// <summary>
-        ///Row event argument class
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class animalsRowChangeEvent : global::System.EventArgs {
+        public partial class animalsRow : global::System.Data.DataRow {
             
-            private animalsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
+            private animalsDataTable tableanimals;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRowChangeEvent(animalsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
+            internal animalsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableanimals = ((animalsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow Row {
+            public int Id_Animals {
                 get {
-                    return this.eventRow;
+                    return ((int)(this[this.tableanimals.Id_AnimalsColumn]));
+                }
+                set {
+                    this[this.tableanimals.Id_AnimalsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
+            public int Species {
                 get {
-                    return this.eventAction;
+                    try {
+                        return ((int)(this[this.tableanimals.SpeciesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Species\' в таблице \'animals\' равно DBNull.", e);
+                    }
                 }
+                set {
+                    this[this.tableanimals.SpeciesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Breed {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.BreedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Breed\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.BreedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NickName {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.NickNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NickName\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.NickNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime ArrivalDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableanimals.ArrivalDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ArrivalDate\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.ArrivalDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int InHere {
+                get {
+                    try {
+                        return ((int)(this[this.tableanimals.InHereColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'InHere\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.InHereColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FMLNameOfOwner {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.FMLNameOfOwnerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FMLNameOfOwner\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.FMLNameOfOwnerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OwnerPhone {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.OwnerPhoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerPhone\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.OwnerPhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OwnerAddress {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.OwnerAddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OwnerAddress\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.OwnerAddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime DeliveryDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableanimals.DeliveryDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'DeliveryDate\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.DeliveryDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PetPhoto {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.PetPhotoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PetPhoto\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.PetPhotoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSpeciesNull() {
+                return this.IsNull(this.tableanimals.SpeciesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSpeciesNull() {
+                this[this.tableanimals.SpeciesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBreedNull() {
+                return this.IsNull(this.tableanimals.BreedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBreedNull() {
+                this[this.tableanimals.BreedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNickNameNull() {
+                return this.IsNull(this.tableanimals.NickNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNickNameNull() {
+                this[this.tableanimals.NickNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsArrivalDateNull() {
+                return this.IsNull(this.tableanimals.ArrivalDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetArrivalDateNull() {
+                this[this.tableanimals.ArrivalDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsInHereNull() {
+                return this.IsNull(this.tableanimals.InHereColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetInHereNull() {
+                this[this.tableanimals.InHereColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFMLNameOfOwnerNull() {
+                return this.IsNull(this.tableanimals.FMLNameOfOwnerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFMLNameOfOwnerNull() {
+                this[this.tableanimals.FMLNameOfOwnerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOwnerPhoneNull() {
+                return this.IsNull(this.tableanimals.OwnerPhoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOwnerPhoneNull() {
+                this[this.tableanimals.OwnerPhoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOwnerAddressNull() {
+                return this.IsNull(this.tableanimals.OwnerAddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOwnerAddressNull() {
+                this[this.tableanimals.OwnerAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDeliveryDateNull() {
+                return this.IsNull(this.tableanimals.DeliveryDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDeliveryDateNull() {
+                this[this.tableanimals.DeliveryDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPetPhotoNull() {
+                return this.IsNull(this.tableanimals.PetPhotoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPetPhotoNull() {
+                this[this.tableanimals.PetPhotoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4136,6 +3991,40 @@ namespace MainForm {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public usersRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class animalsRowChangeEvent : global::System.EventArgs {
+            
+            private animalsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRowChangeEvent(animalsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public animalsRow Row {
                 get {
                     return this.eventRow;
                 }

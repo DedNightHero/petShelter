@@ -432,7 +432,7 @@ namespace MainForm
         PetShelter psGoods = new PetShelter();
         PetShelter psGoodstype = new PetShelter();
         PetShelter psDebitcredit = new PetShelter();
-
+        PetShelter psUsers = new PetShelter();
 
         private void dataGridViewGoodsAllGoods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -444,11 +444,26 @@ namespace MainForm
             psGoods = ibl.getGoods();
             psGoodstype = ibl.getGoodsType();
             psDebitcredit = ibl.getDebitCredit();
+            psUsers = ibl.getUsers();
 
             dataGridViewGoodsAllGoods.DataSource = psGoods;
             dataGridViewGoodsAllGoods.DataMember = "goods";
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
+
+            comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+            for (int i = 0; i < psUsers.users.Rows.Count; i++)
+            {
+                comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
+            }
+            for (int i = 0; i < psGoodstype.goodstype.Rows.Count; i++)
+            {
+                comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
+            }
+            comboBoxGoodsVolunteer.Items.Add("");
 
 
         }  
@@ -476,7 +491,7 @@ namespace MainForm
                 textBoxGoodsName.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
                 textBoxGoodsAmount.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[3].Value.ToString();
                 textBoxGoodsNeeded.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[4].Value.ToString();
-
+                comboBoxGoodsType.SelectedItem = psGoodstype.goodstype.Rows[Convert.ToInt32(psGoods.goods.FindById_Goods(id)[2]) - 1][1].ToString();
                 //Поиск последнего внесения изменения этого товара Не надо этого. Эту дату если что во вкладедке с приходом/расходом смореть будут
                 /*var strExpr = "GoodsName = " + dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
                 DataTable dt = psDebitcredit.debitcredit; // refer to your table of interest within the DataSet
@@ -486,6 +501,8 @@ namespace MainForm
         }
         private void cleanGoodsAddArea()
         {
+            comboBoxGoodsType.SelectedIndex = -1;
+            comboBoxGoodsVolunteer.Text = "";
             textBoxGoodsName.Text = "";
             textBoxGoodsNeeded.Text = "";
             textBoxGoodsAmount.Text = "";
@@ -514,15 +531,108 @@ namespace MainForm
             dataGridViewGoodsAllGoods.ClearSelection();
             cleanGoodsAddArea();         
         }
+
+        private bool checkGoodsAddArea()
+        {
+            if (textBoxGoodsName.Text == "")
+            {
+                MessageBox.Show("Введите название элемента");
+                return false;
+            }
+            else if (comboBoxGoodsType.Text == "")
+            {
+                MessageBox.Show("Введите тип элемента");
+                return false;
+            }
+            else if (textBoxGoodsAmount.Text == "")
+            {
+                MessageBox.Show("Введите количество элемента");
+                return false;
+            }
+            else if (textBoxGoodsNeeded.Text == "")
+            {
+                MessageBox.Show("Введите необходимое кол-во элемента");
+                return false;
+            }           
+            return true;
+        }
+
         private void buttonGoodsAdd_Click(object sender, EventArgs e)
         {           
-            
-            //checkBoxAddAsNewGood.checked==true -> добавлять новый предмет
-            //Добавить выбор типа при добавление нового предмета. Можно вывзывать отдельное диалоговое окно.
-                
-            
-                
-            
+            bool f = checkGoodsAddArea();
+            if (f)
+            {
+                //if (checkBoxAddAsNewGood.Checked)
+                //{
+                string n = textBoxGoodsName.Text;
+                int t = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                int ga = Convert.ToInt32(textBoxGoodsAmount.Text);
+                int gn = Convert.ToInt32(textBoxGoodsNeeded.Text);
+                DateTime gad = dateTimePickerGoods.Value;
+
+                psGoods.goods.AddgoodsRow(n, t, ga, gn);
+                ibl.setGoods(psGoods);
+
+                if (comboBoxGoodsVolunteer.Text != "")
+                {
+                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, 0, ga, -1, ui);
+                }
+                else
+                {
+                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, 0, ga, -1, -1);
+                }
+
+                ibl.setDebitCredit(psDebitcredit);
+                dataGridViewGoodsAllGoods.Refresh();
+                cleanGoodsAddArea();
+                //}
+            }
+   
+        }
+
+        private void buttonGoodsChange_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewGoodsAllGoods.SelectedRows.Count > 0)
+            {
+                int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
+                int amountAfter = Convert.ToInt32(textBoxGoodsAmount.Text);
+                psGoods.goods.FindById_Goods(id)[1] = textBoxGoodsName.Text;
+                psGoods.goods.FindById_Goods(id)[2] = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(textBoxGoodsAmount.Text);
+                psGoods.goods.FindById_Goods(id)[4] = Convert.ToInt32(textBoxGoodsNeeded.Text);
+
+                ibl.setGoods(psGoods);
+                //Сделать запись в debitcredit
+                if(amountAfter!=amountBefore)
+                {
+                    int d = amountAfter > amountBefore ? 0 : amountBefore-amountAfter;
+                    int c = amountAfter > amountBefore ? amountAfter-amountBefore : 0;
+                    string n = textBoxGoodsName.Text;
+                    DateTime gad = dateTimePickerGoods.Value;
+                    if (comboBoxGoodsVolunteer.Text != "")
+                    {
+                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                        int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, d, c, -1, ui);
+                    }
+                    else
+                    {
+                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, d, c, -1, -1);
+                    }
+                    ibl.setDebitCredit(psDebitcredit);
+                }
+                dataGridViewGoodsAllGoods.Refresh();
+                cleanGoodsAddArea();
+
+            }
+            else
+            {
+                MessageBox.Show("Сначала выберите животное в таблице");
+            }
         }
 
         #endregion

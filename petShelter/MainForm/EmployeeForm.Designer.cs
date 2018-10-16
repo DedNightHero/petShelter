@@ -130,8 +130,9 @@
             this.textBoxGoodsNeeded = new System.Windows.Forms.TextBox();
             this.textBoxGoodsName = new System.Windows.Forms.TextBox();
             this.textBoxGoodsAmount = new System.Windows.Forms.TextBox();
+            this.comboBoxGoodsType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelGoodsButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonGoodsWriteOff = new System.Windows.Forms.Button();
+            this.buttonGoodsChange = new System.Windows.Forms.Button();
             this.buttonGoodsAdd = new System.Windows.Forms.Button();
             this.checkBoxAddAsNewGood = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPickChariter = new System.Windows.Forms.TableLayoutPanel();
@@ -398,7 +399,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 42);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 39);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
             this.comboBoxSortSpecies.TabIndex = 7;
@@ -465,7 +466,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(183, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1399,12 +1400,18 @@
             // 
             // dataGridViewGoodsAllGoods
             // 
-            this.dataGridViewGoodsAllGoods.AllowUserToOrderColumns = true;
+            this.dataGridViewGoodsAllGoods.AllowUserToAddRows = false;
+            this.dataGridViewGoodsAllGoods.AllowUserToDeleteRows = false;
+            this.dataGridViewGoodsAllGoods.AllowUserToResizeColumns = false;
+            this.dataGridViewGoodsAllGoods.AllowUserToResizeRows = false;
             this.dataGridViewGoodsAllGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGoodsAllGoods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewGoodsAllGoods.Location = new System.Drawing.Point(28, 81);
+            this.dataGridViewGoodsAllGoods.MultiSelect = false;
             this.dataGridViewGoodsAllGoods.Name = "dataGridViewGoodsAllGoods";
+            this.dataGridViewGoodsAllGoods.ReadOnly = true;
             this.dataGridViewGoodsAllGoods.RowTemplate.Height = 24;
+            this.dataGridViewGoodsAllGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1199, 236);
             this.dataGridViewGoodsAllGoods.TabIndex = 5;
             this.dataGridViewGoodsAllGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGoodsAllGoods_CellClick);
@@ -1412,17 +1419,19 @@
             // tableLayoutPanelAfterGoodTable
             // 
             this.tableLayoutPanelAfterGoodTable.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanelAfterGoodTable.ColumnCount = 5;
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.62687F));
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.608209F));
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.68654F));
-            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tableLayoutPanelAfterGoodTable.ColumnCount = 6;
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label35, 1, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label37, 3, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 4, 0);
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanelAfterGoodTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label35, 2, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.label37, 4, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsNeeded, 5, 0);
             this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsName, 0, 0);
-            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 2, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.textBoxGoodsAmount, 3, 0);
+            this.tableLayoutPanelAfterGoodTable.Controls.Add(this.comboBoxGoodsType, 1, 0);
             this.tableLayoutPanelAfterGoodTable.Location = new System.Drawing.Point(25, 320);
             this.tableLayoutPanelAfterGoodTable.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelAfterGoodTable.Name = "tableLayoutPanelAfterGoodTable";
@@ -1436,7 +1445,7 @@
             // 
             this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(539, 0);
+            this.label35.Location = new System.Drawing.Point(591, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(93, 23);
             this.label35.TabIndex = 13;
@@ -1446,7 +1455,7 @@
             // 
             this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(874, 0);
+            this.label37.Location = new System.Drawing.Point(896, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(110, 23);
             this.label37.TabIndex = 12;
@@ -1455,10 +1464,10 @@
             // textBoxGoodsNeeded
             // 
             this.textBoxGoodsNeeded.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGoodsNeeded.Location = new System.Drawing.Point(990, 3);
+            this.textBoxGoodsNeeded.Location = new System.Drawing.Point(1012, 3);
             this.textBoxGoodsNeeded.MinimumSize = new System.Drawing.Size(50, 4);
             this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
-            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(210, 30);
+            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(188, 30);
             this.textBoxGoodsNeeded.TabIndex = 9;
             // 
             // textBoxGoodsName
@@ -1466,16 +1475,25 @@
             this.textBoxGoodsName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxGoodsName.Location = new System.Drawing.Point(3, 3);
             this.textBoxGoodsName.Name = "textBoxGoodsName";
-            this.textBoxGoodsName.Size = new System.Drawing.Size(526, 30);
+            this.textBoxGoodsName.Size = new System.Drawing.Size(331, 30);
             this.textBoxGoodsName.TabIndex = 6;
             // 
             // textBoxGoodsAmount
             // 
             this.textBoxGoodsAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGoodsAmount.Location = new System.Drawing.Point(638, 3);
+            this.textBoxGoodsAmount.Location = new System.Drawing.Point(690, 3);
             this.textBoxGoodsAmount.Name = "textBoxGoodsAmount";
-            this.textBoxGoodsAmount.Size = new System.Drawing.Size(215, 30);
+            this.textBoxGoodsAmount.Size = new System.Drawing.Size(186, 30);
             this.textBoxGoodsAmount.TabIndex = 7;
+            // 
+            // comboBoxGoodsType
+            // 
+            this.comboBoxGoodsType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxGoodsType.FormattingEnabled = true;
+            this.comboBoxGoodsType.Location = new System.Drawing.Point(340, 3);
+            this.comboBoxGoodsType.Name = "comboBoxGoodsType";
+            this.comboBoxGoodsType.Size = new System.Drawing.Size(234, 31);
+            this.comboBoxGoodsType.TabIndex = 14;
             // 
             // tableLayoutPanelGoodsButtons
             // 
@@ -1483,7 +1501,7 @@
             this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelGoodsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsWriteOff, 0, 0);
+            this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsChange, 0, 0);
             this.tableLayoutPanelGoodsButtons.Controls.Add(this.buttonGoodsAdd, 1, 0);
             this.tableLayoutPanelGoodsButtons.Controls.Add(this.checkBoxAddAsNewGood, 2, 0);
             this.tableLayoutPanelGoodsButtons.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1496,18 +1514,19 @@
             this.tableLayoutPanelGoodsButtons.Size = new System.Drawing.Size(1205, 40);
             this.tableLayoutPanelGoodsButtons.TabIndex = 4;
             // 
-            // buttonGoodsWriteOff
+            // buttonGoodsChange
             // 
-            this.buttonGoodsWriteOff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonGoodsChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGoodsWriteOff.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonGoodsWriteOff.Location = new System.Drawing.Point(3, 3);
-            this.buttonGoodsWriteOff.Name = "buttonGoodsWriteOff";
-            this.buttonGoodsWriteOff.Size = new System.Drawing.Size(114, 34);
-            this.buttonGoodsWriteOff.TabIndex = 11;
-            this.buttonGoodsWriteOff.Text = "Списать";
-            this.buttonGoodsWriteOff.UseVisualStyleBackColor = true;
+            this.buttonGoodsChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonGoodsChange.Location = new System.Drawing.Point(3, 3);
+            this.buttonGoodsChange.Name = "buttonGoodsChange";
+            this.buttonGoodsChange.Size = new System.Drawing.Size(114, 34);
+            this.buttonGoodsChange.TabIndex = 11;
+            this.buttonGoodsChange.Text = "Изменить";
+            this.buttonGoodsChange.UseVisualStyleBackColor = true;
+            this.buttonGoodsChange.Click += new System.EventHandler(this.buttonGoodsChange_Click);
             // 
             // buttonGoodsAdd
             // 
@@ -1522,6 +1541,7 @@
             this.buttonGoodsAdd.TabIndex = 12;
             this.buttonGoodsAdd.Text = "Добавить";
             this.buttonGoodsAdd.UseVisualStyleBackColor = true;
+            this.buttonGoodsAdd.Click += new System.EventHandler(this.buttonGoodsAdd_Click);
             // 
             // checkBoxAddAsNewGood
             // 
@@ -1533,6 +1553,7 @@
             this.checkBoxAddAsNewGood.TabIndex = 13;
             this.checkBoxAddAsNewGood.Text = "Добавить как новое.";
             this.checkBoxAddAsNewGood.UseVisualStyleBackColor = true;
+            this.checkBoxAddAsNewGood.Visible = false;
             // 
             // tableLayoutPanelPickChariter
             // 
@@ -1565,7 +1586,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 10;
@@ -1583,6 +1604,7 @@
             // dateTimePickerGoods
             // 
             this.dateTimePickerGoods.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateTimePickerGoods.Enabled = false;
             this.dateTimePickerGoods.Location = new System.Drawing.Point(28, 404);
             this.dateTimePickerGoods.Name = "dateTimePickerGoods";
             this.dateTimePickerGoods.Size = new System.Drawing.Size(205, 30);
@@ -2020,7 +2042,7 @@
         private System.Windows.Forms.TextBox textBoxGoodsName;
         private System.Windows.Forms.TextBox textBoxGoodsAmount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGoodsButtons;
-        private System.Windows.Forms.Button buttonGoodsWriteOff;
+        private System.Windows.Forms.Button buttonGoodsChange;
         private System.Windows.Forms.Button buttonGoodsAdd;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPickChariter;
@@ -2054,10 +2076,11 @@
         private System.Windows.Forms.ComboBox comboBoxSortSpecies;
         private System.Windows.Forms.DateTimePicker dateTimePickerGoods;
         private System.Windows.Forms.RadioButton radioButtonGoodsSortIsAll;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox textBoxGoodsNeeded;
-        private System.Windows.Forms.Label label35;
         private System.Windows.Forms.CheckBox checkBoxAddAsNewGood;
         private System.Windows.Forms.OpenFileDialog openFileDialogAddPetPhoto;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.ComboBox comboBoxGoodsType;
     }
 }

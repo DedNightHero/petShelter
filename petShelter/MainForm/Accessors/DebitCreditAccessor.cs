@@ -16,7 +16,14 @@ namespace MainForm.Accessors
         {
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter();
             sqlDataAdapter.UpdateCommand = new MySqlCommand("Update debitcredit set GoodsName = @gn, Comment = @c, Date = @d, Debit = @dt, Credit = @ct, PatientId = @pi, UserId = @ui where Id_DebitCredit = @i");
-            sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into debitcredit (GoodsName, Comment, Date, Debit, Credit, PatientId, UserId) values (@gn, @c, @d, @dt, @ct, @pi, @ui)");
+            if (petShelter.debitcredit.Rows[petShelter.debitcredit.Rows.Count - 1][6].ToString() == "-1" && petShelter.debitcredit.Rows[petShelter.debitcredit.Rows.Count - 1][7].ToString() == "-1")
+                sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into debitcredit (GoodsName, Comment, Date, Debit, Credit, PatientId, UserId) values (@gn, @c, @d, @dt, @ct, null, null)");
+            else if (petShelter.debitcredit.Rows[petShelter.debitcredit.Rows.Count - 1][6].ToString() == "-1")
+                sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into debitcredit (GoodsName, Comment, Date, Debit, Credit, PatientId, UserId) values (@gn, @c, @d, @dt, @ct, null, @ui)");
+            else if(petShelter.debitcredit.Rows[petShelter.debitcredit.Rows.Count - 1][7].ToString() == "-1")
+                sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into debitcredit (GoodsName, Comment, Date, Debit, Credit, PatientId, UserId) values (@gn, @c, @d, @dt, @ct, @pi, null)");
+            else
+                sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into debitcredit (GoodsName, Comment, Date, Debit, Credit, PatientId, UserId) values (@gn, @c, @d, @dt, @ct, @pi, @ui)");
             sqlDataAdapter.DeleteCommand = new MySqlCommand("Delete from debitcredit where Id_DebitCredit = @i");
 
             MySqlParameter Id_DebitCredit = new MySqlParameter
