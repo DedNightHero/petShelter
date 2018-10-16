@@ -83,12 +83,11 @@
     </Compile>
     <Compile Include="PetShelter.cs">
       <DependentUpon>PetShelter.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PetShelter.Designer.cs">
+      <DependentUpon>PetShelter.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PetShelter.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,8 +120,9 @@
       <DependentUpon>PetShelter.xsd</DependentUpon>
     </None>
     <None Include="PetShelter.xsd">
+      <LastGenOutput>PetShelter.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <LastGenOutput>PetShelter1.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
     </None>
     <None Include="PetShelter.xss">
       <DependentUpon>PetShelter.xsd</DependentUpon>

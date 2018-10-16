@@ -22,6 +22,7 @@ namespace MainForm
             InitializeComponent();
             int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
             tabMain.ItemSize = new Size(tabWidth, tabMain.ItemSize.Height);
+            openFileDialogAddPetPhoto.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             psAnimals = ibl.getAnimals();
             psSpecies = ibl.getSpecies();
             
@@ -91,18 +92,23 @@ namespace MainForm
                     string b = textBoxPetsBreed.Text;
                     string nn = textBoxPetsNickName.Text;
                     DateTime ad = dateTimePickerPetsArrivalDate.Value;
+                    string pp;
+                    if (openFileDialogAddPetPhoto.FileName != "")
+                        pp = openFileDialogAddPetPhoto.FileName.ToString();
+                    else
+                        pp = null;
                     if (checkBoxPetsMaster.Checked)
                     {
                         string fio = textBoxPetsFIO.Text;
                         string pn = textBoxPetsPhoneNumber.Text;
                         string a = textBoxPetsAddress.Text;
                         DateTime dd = dateTimePickerPetsDeliveryDay.Value;
-                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 0, fio, pn, a, dd);
+                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 0, fio, pn, a, dd, pp);
                         ibl.setAnimals(psAnimals);
                     }
                     else
                     {
-                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 1, null, null, null, default(DateTime));
+                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 1, null, null, null, default(DateTime), pp);
                         ibl.setAnimals(psAnimals);
                     }
                     dataGridViewPetsAllPets.Refresh();
@@ -189,6 +195,12 @@ namespace MainForm
                 textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
                 textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
                 dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
+                if (psAnimals.animals.FindById_Animals(id)[10].ToString() == "")
+                    pictureBoxPetPhoto.Image = Properties.Resources.d1;
+                else
+                {
+                    pictureBoxPetPhoto.ImageLocation = psAnimals.animals.FindById_Animals(id)[10].ToString();
+                }
                 if (psAnimals.animals.FindById_Animals(id)[5].ToString() == "0")
                 {
                     checkBoxPetsMaster.Checked = true;
@@ -230,6 +242,10 @@ namespace MainForm
                 psAnimals.animals.Rows[i][8] = null;
                 psAnimals.animals.Rows[i][9] = default(DateTime);
             }
+            if (openFileDialogAddPetPhoto.FileName != "")
+                psAnimals.animals.Rows[i][10] = openFileDialogAddPetPhoto.FileName.ToString();
+            else
+                psAnimals.animals.Rows[i][10] = null;
             ibl.setAnimals(psAnimals);
         }
         #endregion
@@ -526,6 +542,12 @@ namespace MainForm
 
         }
 
-        
+        private void pictureBoxPetPhoto_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogAddPetPhoto.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = openFileDialogAddPetPhoto.FileName;
+
+        }
     }
 }

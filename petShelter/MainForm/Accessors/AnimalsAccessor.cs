@@ -15,8 +15,8 @@ namespace MainForm.Accessors
         public void WriteData(AbstractTransaction abstractTransaction, AbstractConnection abstractConnection, PetShelter petShelter)
         {
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter();
-            sqlDataAdapter.UpdateCommand = new MySqlCommand("Update animals set Species = @s, Breed = @b, NickName = @nn, ArrivalDate = @ad, InHere = @ih, FMLNameOfOwner = @fmlnoo, OwnerPhone = @op, OwnerAddress = @oa, DeliveryDate = @dd where Id_Animals = @i");
-            sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into animals (Species, Breed, NickName, ArrivalDate, InHere, FMLNameOfOwner, OwnerPhone, OwnerAddress, DeliveryDate) values (@s, @b, @nn, @ad, @ih, @fmlnoo, @op, @oa, @dd)");
+            sqlDataAdapter.UpdateCommand = new MySqlCommand("Update animals set Species = @s, Breed = @b, NickName = @nn, ArrivalDate = @ad, InHere = @ih, FMLNameOfOwner = @fmlnoo, OwnerPhone = @op, OwnerAddress = @oa, DeliveryDate = @dd, PetPhoto=@pp where Id_Animals = @i");
+            sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into animals (Species, Breed, NickName, ArrivalDate, InHere, FMLNameOfOwner, OwnerPhone, OwnerAddress, DeliveryDate, PetPhoto) values (@s, @b, @nn, @ad, @ih, @fmlnoo, @op, @oa, @dd, @pp)");
             sqlDataAdapter.DeleteCommand = new MySqlCommand("Delete from animals where Id_Animals = @i");
 
             MySqlParameter Id_Animals = new MySqlParameter
@@ -69,6 +69,11 @@ namespace MainForm.Accessors
                 SourceColumn = "DeliveryDate",
                 ParameterName = "@dd",
             };
+            MySqlParameter PetPhoto = new MySqlParameter
+            {
+                SourceColumn = "PetPhoto",
+                ParameterName = "@pp",
+            };
 
             sqlDataAdapter.UpdateCommand.Parameters.Add(Id_Animals);
             sqlDataAdapter.UpdateCommand.Parameters.Add(Species);
@@ -80,6 +85,7 @@ namespace MainForm.Accessors
             sqlDataAdapter.UpdateCommand.Parameters.Add(OwnerPhone);
             sqlDataAdapter.UpdateCommand.Parameters.Add(OwnerAddress);
             sqlDataAdapter.UpdateCommand.Parameters.Add(DeliveryDate);
+            sqlDataAdapter.UpdateCommand.Parameters.Add(PetPhoto);
 
             sqlDataAdapter.DeleteCommand.Parameters.Add(Id_Animals);
 
@@ -92,6 +98,7 @@ namespace MainForm.Accessors
             sqlDataAdapter.InsertCommand.Parameters.Add(OwnerPhone);
             sqlDataAdapter.InsertCommand.Parameters.Add(OwnerAddress);
             sqlDataAdapter.InsertCommand.Parameters.Add(DeliveryDate);
+            sqlDataAdapter.InsertCommand.Parameters.Add(PetPhoto);
 
             sqlDataAdapter.UpdateCommand.Connection = abstractConnection.Connection;
             sqlDataAdapter.UpdateCommand.Transaction = abstractTransaction.Transaction;
