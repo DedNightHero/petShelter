@@ -120,7 +120,7 @@ namespace MainForm
                 bool f = checkPetsAddArea();
                 if (f)
                 {
-                    changePetInfo(dataGridViewPetsAllPets.CurrentRow.Index);
+                    changePetInfo();
                     cleanPetsAddArea();
                 }
             }
@@ -220,32 +220,32 @@ namespace MainForm
         }
         #endregion
         #region Изменение информации о животном в датасете
-        private void changePetInfo(int i)
+        private void changePetInfo()
         {
-            psAnimals.animals.Rows[i][1] = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
-            psAnimals.animals.Rows[i][2] = textBoxPetsBreed.Text;
-            psAnimals.animals.Rows[i][3] = textBoxPetsNickName.Text;
-            psAnimals.animals.Rows[i][4] = dateTimePickerPetsArrivalDate.Value;
+            psAnimals.animals.FindById_Animals(id)[1] = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
+            psAnimals.animals.FindById_Animals(id)[2] = textBoxPetsBreed.Text;
+            psAnimals.animals.FindById_Animals(id)[3] = textBoxPetsNickName.Text;
+            psAnimals.animals.FindById_Animals(id)[4] = dateTimePickerPetsArrivalDate.Value;
             if (checkBoxPetsMaster.Checked)
             {
-                psAnimals.animals.Rows[i][5] = 0;
-                psAnimals.animals.Rows[i][6] = textBoxPetsFIO.Text;
-                psAnimals.animals.Rows[i][7] = textBoxPetsPhoneNumber.Text;
-                psAnimals.animals.Rows[i][8] = textBoxPetsAddress.Text;
-                psAnimals.animals.Rows[i][9] = dateTimePickerPetsDeliveryDay.Value;
+                psAnimals.animals.FindById_Animals(id)[5] = 0;
+                psAnimals.animals.FindById_Animals(id)[6] = textBoxPetsFIO.Text;
+                psAnimals.animals.FindById_Animals(id)[7] = textBoxPetsPhoneNumber.Text;
+                psAnimals.animals.FindById_Animals(id)[8] = textBoxPetsAddress.Text;
+                psAnimals.animals.FindById_Animals(id)[9] = dateTimePickerPetsDeliveryDay.Value;
             }
             else
             {
-                psAnimals.animals.Rows[i][5] = 1;
-                psAnimals.animals.Rows[i][6] = null;
-                psAnimals.animals.Rows[i][7] = null;
-                psAnimals.animals.Rows[i][8] = null;
-                psAnimals.animals.Rows[i][9] = default(DateTime);
+                psAnimals.animals.FindById_Animals(id)[5] = 1;
+                psAnimals.animals.FindById_Animals(id)[6] = null;
+                psAnimals.animals.FindById_Animals(id)[7] = null;
+                psAnimals.animals.FindById_Animals(id)[8] = null;
+                psAnimals.animals.FindById_Animals(id)[9] = default(DateTime);
             }
             if (openFileDialogAddPetPhoto.FileName != "")
-                psAnimals.animals.Rows[i][10] = openFileDialogAddPetPhoto.FileName.ToString();
+                psAnimals.animals.FindById_Animals(id)[10] = openFileDialogAddPetPhoto.FileName.ToString();
             else
-                psAnimals.animals.Rows[i][10] = null;
+                psAnimals.animals.FindById_Animals(id)[10] = null;
             ibl.setAnimals(psAnimals);
         }
         #endregion
