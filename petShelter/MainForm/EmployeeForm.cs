@@ -415,11 +415,15 @@ namespace MainForm
             }*/
 
             String filter = null;
-            if (checkBoxPetsIsAtHome.Checked) filter = "CONVERT(InHere, 'System.String') LIKE '0'";
+            if (checkBoxPetsIsAtHome.Checked) filter = "(CONVERT(InHere, 'System.String') LIKE '0'";
             if (checkBoxPetsIsAtShelter.Checked)
             {
                 if (filter != null) filter += " or ";
-                filter += "CONVERT(InHere, 'System.String') LIKE '1'";
+                else filter += "(";
+                filter += "CONVERT(InHere, 'System.String') LIKE '1')";
+            }
+            else {
+                if (filter != null) filter += " ) ";
             }
             if (textBoxPetsSortBreed.Text != "")
             {
