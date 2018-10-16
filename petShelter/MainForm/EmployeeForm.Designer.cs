@@ -1455,11 +1455,11 @@
             // 
             this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(916, 0);
+            this.label37.Location = new System.Drawing.Point(888, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(90, 19);
+            this.label37.Size = new System.Drawing.Size(118, 19);
             this.label37.TabIndex = 12;
-            this.label37.Text = "Необходимо";
+            this.label37.Text = "Еще необходимо";
             // 
             // textBoxGoodsNeeded
             // 

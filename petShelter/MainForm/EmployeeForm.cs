@@ -584,10 +584,29 @@ namespace MainForm
         }
 
         private void buttonGoodsAdd_Click(object sender, EventArgs e)
-        {           
+        {
+            
             bool f = checkGoodsAddArea();
             if (f)
             {
+            //Проверка, есть ли уже в базе этот продукт
+            PetShelter psGoodsFoChecking = new PetShelter();
+            psGoodsFoChecking = ibl.getGoods();
+            String filter = "NameOfGoods LIKE '" + textBoxGoodsName.Text + "'";
+            psGoodsFoChecking.goods.DefaultView.RowFilter = string.Format(filter);
+            if (psGoodsFoChecking.goods.Count != 0)
+            {
+                MessageBox.Show("Этот предмет уже есть в базе! Попробуйте изменить.");
+                return;
+            }
+
+
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            setGoodsGridView();
+            dataGridViewGoodsAllGoods.ClearSelection();
+            cleanGoodsAddArea();   
+
+
                 //if (checkBoxAddAsNewGood.Checked)
                 //{
                 string n = textBoxGoodsName.Text;
