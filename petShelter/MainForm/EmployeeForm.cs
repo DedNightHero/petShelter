@@ -472,26 +472,28 @@ namespace MainForm
             psDebitcredit = ibl.getDebitCredit();
             psUsers = ibl.getUsers();
 
-            dataGridViewGoodsAllGoods.DataSource = psGoods;
-            dataGridViewGoodsAllGoods.DataMember = "goods";
-            setGoodsGridView();
-            dataGridViewGoodsAllGoods.ClearSelection();
-
             comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
+            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count - 1); i++)
             {
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
             comboBoxGoodsVolunteer.Items.Add("");
 
+            //Убираем ДЕНЬГИ из выдачи
+            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String')  NOT LIKE '4'");
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            //dataGridViewGoodsAllGoods.DataMember = "goods";
+            setGoodsGridView();
 
+            /*dataGridViewGoodsAllGoods.DataSource = psGoods;
+            dataGridViewGoodsAllGoods.DataMember = "goods";
+            setGoodsGridView();*/
+            dataGridViewGoodsAllGoods.ClearSelection();
         }  
         private void setGoodsGridView()
         {
@@ -539,11 +541,12 @@ namespace MainForm
             if (radioButtonGoodsSortIsEat.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '1'";
             if (radioButtonGoodsSortIsCure.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '2'";
             if (radioButtonGoodsSortIsOther.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '3'";
+            if (filter == null) filter = "CONVERT(Type, 'System.String')  NOT LIKE '4'";
             if (textBoxGoodsSortNameofGoods.Text != "")
             {
                 if (filter != null) filter += " and ";
                 filter += "NameOfGoods LIKE '*" + textBoxGoodsSortNameofGoods.Text + "*'";
-            }
+            }        
             if (filter!=null) psGoods.goods.DefaultView.RowFilter = string.Format(filter);
             else
             {
@@ -640,6 +643,7 @@ namespace MainForm
 
         private void buttonGoodsChange_Click(object sender, EventArgs e)
         {
+            
             if (dataGridViewGoodsAllGoods.SelectedRows.Count > 0)
             {
                 int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
