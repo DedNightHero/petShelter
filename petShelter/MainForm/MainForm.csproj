@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="PetShelter.cs">
       <DependentUpon>PetShelter.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PetShelter.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -30,8 +30,8 @@ namespace MainForm
 
         private void EmployeeForm_Resize(object sender, EventArgs e)
         {
-            int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
-            tabMain.ItemSize = new Size(tabWidth-1, tabMain.ItemSize.Height);
+            /*int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
+            tabMain.ItemSize = new Size(tabWidth-1, tabMain.ItemSize.Height);*/
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
@@ -64,10 +64,12 @@ namespace MainForm
         {
             dataGridViewPetsAllPets.Columns[0].Visible = false;
             dataGridViewPetsAllPets.Columns[6].Visible = false;
-            dataGridViewPetsAllPets.Columns[7].Visible = false;
+            dataGridViewPetsAllPets.Columns[7].Visible = false;          
             dataGridViewPetsAllPets.Columns[8].Visible = false;
+            dataGridViewPetsAllPets.Columns[10].Visible = false;
             dataGridViewPetsAllPets.Columns[5].Visible = false;
-            dataGridViewPetsAllPets.Columns[1].HeaderText = "Вид";
+            dataGridViewPetsAllPets.Columns[1].Visible = false;
+            //dataGridViewPetsAllPets.Columns[1].HeaderText = "Вид";
             dataGridViewPetsAllPets.Columns[2].HeaderText = "Порода";
             dataGridViewPetsAllPets.Columns[3].HeaderText = "Кличка";
             dataGridViewPetsAllPets.Columns[4].HeaderText = "Дата поступления";
@@ -287,7 +289,7 @@ namespace MainForm
         #region Сортировка таблицы Животных согласно указанным критериям
         private void sortPetsTable(object sender, EventArgs e)
         {
-            if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
+            /*if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
             {
                 psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' or CONVERT(InHere, 'System.String') LIKE '1' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
             }
@@ -410,7 +412,31 @@ namespace MainForm
             else if (checkBoxPetsIsAtHome.Checked)
             {
                 psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0'");
+            }*/
+
+            String filter = null;
+            if (checkBoxPetsIsAtHome.Checked) filter = "CONVERT(InHere, 'System.String') LIKE '0'";
+            if (checkBoxPetsIsAtShelter.Checked)
+            {
+                if (filter != null) filter += " or ";
+                filter += "CONVERT(InHere, 'System.String') LIKE '1'";
             }
+            if (textBoxPetsSortBreed.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "Breed LIKE '*" +textBoxPetsSortBreed.Text + "*'";
+            }
+            if (textBoxPetsSortNickName.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "NickName LIKE '*" +textBoxPetsSortNickName.Text + "*'";
+            }
+            if (comboBoxSortSpecies.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "CONVERT(Species, 'System.String') LIKE '" + psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString() + "'";
+            }       
+            if (filter != null) psAnimals.animals.DefaultView.RowFilter = string.Format(filter);
             else
             {
                 dataGridViewPetsAllPets.DataSource = psAnimals;
@@ -459,7 +485,7 @@ namespace MainForm
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < psGoodstype.goodstype.Rows.Count; i++)
+            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
             {
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
