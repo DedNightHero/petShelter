@@ -342,6 +342,7 @@ namespace MainForm.BLogic
                 try
                 {
                     ua.ReadData(t, c, ps1);
+                    pa.ReadData(t, c, ps1);
                     t.Commit();
                 }
                 catch (Exception e)
@@ -379,6 +380,38 @@ namespace MainForm.BLogic
             {
                 c.Close();
             }
+        }
+
+        public PetShelter getPetShelter()
+        {
+            c = ConnectionFactory.CreateConnection();
+            c.Open();
+            ps1 = new PetShelter();
+            try
+            {
+                t = c.BeginTransaction();
+                try
+                {
+                    aa.ReadData(t, c, ps1);
+                    dca.ReadData(t, c, ps1);
+                    ga.ReadData(t, c, ps1);
+                    gta.ReadData(t, c, ps1);
+                    pa.ReadData(t, c, ps1);
+                    sa.ReadData(t, c, ps1);
+                    ua.ReadData(t, c, ps1);
+                    t.Commit();
+                }
+                catch (Exception e)
+                {
+                    t.Rollback();
+                    throw e;
+                }
+            }
+            finally
+            {
+                c.Close();
+            }
+            return ps1;
         }
     }
 }

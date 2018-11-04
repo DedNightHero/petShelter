@@ -15,6 +15,7 @@ namespace MainForm.BLogic
         PetShelter getPositions();
         PetShelter getSpecies();
         PetShelter getUsers();
+        PetShelter getPetShelter();
 
         void setAnimals(PetShelter ps1);
         void setDebitCredit(PetShelter ps1);

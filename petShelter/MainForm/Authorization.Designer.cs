@@ -73,7 +73,7 @@
             this.textBoxPass.MaxLength = 20;
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(225, 30);
-            this.textBoxPass.TabIndex = 3;
+            this.textBoxPass.TabIndex = 4;
             this.textBoxPass.Text = "Введите пароль";
             this.textBoxPass.Enter += new System.EventHandler(this.textBoxPass_Enter);
             this.textBoxPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -95,7 +95,7 @@
             this.buttonEnter.Location = new System.Drawing.Point(56, 261);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(80, 35);
-            this.buttonEnter.TabIndex = 4;
+            this.buttonEnter.TabIndex = 6;
             this.buttonEnter.Text = "Войти";
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
@@ -106,7 +106,7 @@
             this.buttonEnterAs.Location = new System.Drawing.Point(285, 261);
             this.buttonEnterAs.Name = "buttonEnterAs";
             this.buttonEnterAs.Size = new System.Drawing.Size(180, 35);
-            this.buttonEnterAs.TabIndex = 1;
+            this.buttonEnterAs.TabIndex = 7;
             this.buttonEnterAs.Text = "Войти как волонтёр";
             this.buttonEnterAs.UseVisualStyleBackColor = true;
             this.buttonEnterAs.Click += new System.EventHandler(this.buttonEnterAs_Click);
@@ -129,7 +129,7 @@
             this.labelPass.Location = new System.Drawing.Point(29, 155);
             this.labelPass.Name = "labelPass";
             this.labelPass.Size = new System.Drawing.Size(69, 23);
-            this.labelPass.TabIndex = 9;
+            this.labelPass.TabIndex = 3;
             this.labelPass.Text = "Пароль";
             this.labelPass.Click += new System.EventHandler(this.labelPass_Click);
             // 
@@ -148,7 +148,7 @@
             this.buttonShowPass.Margin = new System.Windows.Forms.Padding(0);
             this.buttonShowPass.Name = "buttonShowPass";
             this.buttonShowPass.Size = new System.Drawing.Size(30, 30);
-            this.buttonShowPass.TabIndex = 1;
+            this.buttonShowPass.TabIndex = 8;
             this.buttonShowPass.TabStop = false;
             this.buttonShowPass.UseVisualStyleBackColor = false;
             this.buttonShowPass.MouseEnter += new System.EventHandler(this.buttonShowPass_MouseEnter);

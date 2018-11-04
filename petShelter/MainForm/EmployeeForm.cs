@@ -1,70 +1,96 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MainForm
 {
     public partial class EmployeeForm : Form
     {
+        #region Объявление переменных
         PetShelter psAnimals = new PetShelter();
         PetShelter psSpecies = new PetShelter();
+        PetShelter psUsers = new PetShelter();
+        PetShelter psPositions = new PetShelter();
+        PetShelter psGoods = new PetShelter();
+        PetShelter psGoodstype = new PetShelter();
+        PetShelter psDebitcredit = new PetShelter();
         BLogic.IBL ibl = new BLogic.BLogic();
-        int id;
-
-        public EmployeeForm()
+        private int id;
+        private int userLvl;
+        #endregion
+        #region Создание и загрузка формы
+        public EmployeeForm(int lvl)
         {
             InitializeComponent();
-            int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
-            tabMain.ItemSize = new Size(tabWidth, tabMain.ItemSize.Height);
-            openFileDialogAddPetPhoto.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            psAnimals = ibl.getAnimals();
-            psSpecies = ibl.getSpecies();
-            
-        }
-
-        private void EmployeeForm_Resize(object sender, EventArgs e)
-        {
-            /*int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
-            tabMain.ItemSize = new Size(tabWidth-1, tabMain.ItemSize.Height);*/
+            userLvl = lvl;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
+            EmployeeForm_Resize(this, new EventArgs());
+            initAnimalsTab();
+            initStaffTab();
+            initGoodsTab();
+        }
+        #endregion
+        #region Изменение размера вкладок, при изменении размера окна приложения
+        private void EmployeeForm_Resize(object sender, EventArgs e)
+        {
+            int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
+            tabMain.ItemSize = new Size(tabWidth - 1, tabMain.ItemSize.Height);
+        }
+        #endregion
+        #region Генерация хэша
+        private static string CreateMD5(string input)
+        {
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+        #endregion
+        #region Закрытие приложения при закрытии формы
+        private void EmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+        #region ОКНО "Животные"
+        #region Инициализация окна
+        private void initAnimalsTab()
+        {
+            psAnimals = ibl.getAnimals();
+            psSpecies = ibl.getSpecies();
+            openFileDialogAddPetPhoto.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             comboBoxPetsSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSortSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
             for (int i = 0; i < psSpecies.species.Rows.Count; i++)
             {
                 comboBoxSortSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
                 comboBoxPetsSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
             }
             comboBoxSortSpecies.Items.Add("");
-
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
             setPetsGridView();
-            dataGridViewPetsAllPets.ClearSelection();
-
-            initGoodsTab();
-
-            
-
-
-
         }
-        #region ОКНО Животные
+        #endregion
+        #region Параметры датагрида "Животные"
         private void setPetsGridView()
         {
+            dataGridViewPetsAllPets.ClearSelection();
             dataGridViewPetsAllPets.Columns[0].Visible = false;
             dataGridViewPetsAllPets.Columns[6].Visible = false;
-            dataGridViewPetsAllPets.Columns[7].Visible = false;          
+            dataGridViewPetsAllPets.Columns[7].Visible = false;
             dataGridViewPetsAllPets.Columns[8].Visible = false;
             dataGridViewPetsAllPets.Columns[10].Visible = false;
             dataGridViewPetsAllPets.Columns[5].Visible = false;
@@ -76,12 +102,13 @@ namespace MainForm
             dataGridViewPetsAllPets.Columns[9].HeaderText = "Дата выдачи";
             dataGridViewPetsAllPets.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-        
+        #endregion
+        #region Выбор элемента в датагриде "Животные"
         private void dataGridViewPetsAllPets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             setPetsAddArea(e.RowIndex);
         }
-        
+        #endregion
         #region Кнопка создания или изменения информации о животном
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
@@ -214,13 +241,6 @@ namespace MainForm
             }
         }
         #endregion
-        #region Обновление данных в датасетах
-        private void refreshPetsInfo()
-        {
-            psAnimals = ibl.getAnimals();
-            dataGridViewPetsAllPets.DataSource = psAnimals;
-        }
-        #endregion
         #region Изменение информации о животном в датасете
         private void changePetInfo()
         {
@@ -273,147 +293,22 @@ namespace MainForm
         #region Кнопка удаления записи из таблицы
         private void buttonPetsDelete_Click(object sender, EventArgs e)
         {
-                if(dataGridViewPetsAllPets.SelectedRows.Count>0)
+            if(dataGridViewPetsAllPets.SelectedRows.Count>0)
             {
-                psAnimals.animals.Rows[id].Delete();
+                psAnimals.animals.FindById_Animals(id).Delete();
                 ibl.setAnimals(psAnimals);
                 cleanPetsAddArea();
-                refreshPetsInfo();
+                dataGridViewPetsAllPets.Refresh();
             }    
-                else
+            else
             {
                 MessageBox.Show("Сначала выберите животное в таблице");
             }  
         }
         #endregion
-        #region Сортировка таблицы Животных согласно указанным критериям
+        #region Фильтрация таблицы Животных согласно указанным критериям
         private void sortPetsTable(object sender, EventArgs e)
         {
-            /*if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' or CONVERT(InHere, 'System.String') LIKE '1' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtHome.Checked && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and (CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1')", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and NickName LIKE '{1}' and (CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1')", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("Breed LIKE '{0}' and NickName LIKE '{1}' and (CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1')", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and ( CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1')", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("(CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1') and Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("NickName LIKE '{0}' and (CONVERT(InHere, 'System.String') LIKE '0' or CONVERT(InHere, 'System.String') LIKE '1')", textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and NickName LIKE '{2}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtShelter.Checked && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '1' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
-            }
-            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortBreed.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and Breed LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortBreed.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and NickName LIKE '{1}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString(), textBoxPetsSortNickName.Text);
-            }
-            else if (textBoxPetsSortBreed.Text != "" && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("Breed LIKE '{0}' and NickName LIKE '{1}'", textBoxPetsSortBreed.Text, textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '1'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
-            }
-            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortBreed.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
-            }
-            else if (checkBoxPetsIsAtShelter.Checked && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' and NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
-            }
-            else if (comboBoxSortSpecies.Text != "" && checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}' and CONVERT(InHere, 'System.String') LIKE '0'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortBreed.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
-            }
-            else if (checkBoxPetsIsAtHome.Checked && textBoxPetsSortNickName.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0' and NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
-            }
-            else if (checkBoxPetsIsAtShelter.Checked && checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1' or CONVERT(InHere, 'System.String') LIKE '0'");
-            }
-            else if (comboBoxSortSpecies.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(Species, 'System.String') LIKE '{0}'", psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString());
-            }
-            else if (textBoxPetsSortBreed.Text != "")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("Breed LIKE '{0}'", textBoxPetsSortBreed.Text);
-            }
-            else if(textBoxPetsSortNickName.Text!="")
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("NickName LIKE '{0}'", textBoxPetsSortNickName.Text);
-            }
-            else if (checkBoxPetsIsAtShelter.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '1'");
-            }
-            else if (checkBoxPetsIsAtHome.Checked)
-            {
-                psAnimals.animals.DefaultView.RowFilter = string.Format("CONVERT(InHere, 'System.String') LIKE '0'");
-            }*/
-
             String filter = null;
             if (checkBoxPetsIsAtHome.Checked) filter = "(CONVERT(InHere, 'System.String') LIKE '0'";
             if (checkBoxPetsIsAtShelter.Checked)
@@ -452,30 +347,273 @@ namespace MainForm
             setPetsGridView();
             dataGridViewPetsAllPets.ClearSelection();
             cleanPetsAddArea();
-
+        }
+        #endregion
+        #region Добавление фото питомца
+        private void pictureBoxPetPhoto_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogAddPetPhoto.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = openFileDialogAddPetPhoto.FileName;
         }
         #endregion
         #endregion
 
-        #region ОКНО Материально-техническая база
-        
-        PetShelter psGoods = new PetShelter();
-        PetShelter psGoodstype = new PetShelter();
-        PetShelter psDebitcredit = new PetShelter();
-        PetShelter psUsers = new PetShelter();
-
-        private void dataGridViewGoodsAllGoods_CellClick(object sender, DataGridViewCellEventArgs e)
+        #region ОКНО "Персонал"
+        #region Инициализация окна
+        private void initStaffTab()
         {
-            setGoodsAddArea(e.RowIndex);
+            psUsers = ibl.getUsers();
+            psPositions = ibl.getPositions();
+            dataGridViewStaffAllMembers.DataSource = psUsers;
+            dataGridViewStaffAllMembers.DataMember = "users";
+            setStaffGridView();
 
-        }       
+            comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            for (int i = 0; i < psPositions.positions.Rows.Count; i++)
+            {
+                comboBoxStaffVacancy.Items.Add(psPositions.positions.Rows[i][1].ToString());
+            }
+            comboBoxStaffVacancy.Items.Add("");
+        }
+        #endregion
+        #region Параметры датагрида "Персонал"
+        private void setStaffGridView()
+        {
+            dataGridViewStaffAllMembers.ClearSelection();
+            dataGridViewStaffAllMembers.Columns[0].Visible = false;
+            dataGridViewStaffAllMembers.Columns[2].Visible = false;
+            //dataGridViewStaffAllMembers.Columns[4].Visible = false;
+            dataGridViewStaffAllMembers.Columns[1].HeaderText = "Логин";
+            dataGridViewStaffAllMembers.Columns[3].HeaderText = "ФИО";
+            dataGridViewStaffAllMembers.Columns[5].HeaderText = "Телефон";
+            dataGridViewStaffAllMembers.Columns[6].HeaderText = "Адрес";
+            dataGridViewStaffAllMembers.Columns[4].HeaderText = "Должность";
+            dataGridViewStaffAllMembers.Columns[1].DisplayIndex = 1;
+            dataGridViewStaffAllMembers.Columns[3].DisplayIndex = 0;
+            dataGridViewStaffAllMembers.Columns[5].DisplayIndex = 5;
+            dataGridViewStaffAllMembers.Columns[6].DisplayIndex = 4;
+            dataGridViewStaffAllMembers.Columns[4].DisplayIndex = 3;
+            dataGridViewStaffAllMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+        #endregion
+        #region Выбор элемента в датагриде "Персонал"
+        private void dataGridViewStaffAllMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setStaffAddArea(e.RowIndex);
+        }
+        #endregion
+        #region Установка информации о выбранном сотруднике
+        private void setStaffAddArea(int i)
+        {
+            cleanStaffAddArea();
+            if (i >= 0)
+            {
+                id = Convert.ToInt32(dataGridViewStaffAllMembers.CurrentRow.Cells[0].Value);
+                comboBoxStaffVacancy.SelectedItem = psPositions.positions.Rows[Convert.ToInt32(psUsers.users.FindById_Users(id)[4]) - 1][1].ToString();
+                textBoxStaffLogin.Text = psUsers.users.FindById_Users(id)[1].ToString();
+                //textBoxStaffPass.Text =;
+                textBoxStaffLastName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
+                textBoxStaffFirstName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                textBoxStaffMiddleName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[2];
+                textBoxStaffPhoneNumber.Text = psUsers.users.FindById_Users(id)[5].ToString();
+                textBoxStaffAddress.Text = psUsers.users.FindById_Users(id)[6].ToString();
+            }
+        }
+        #endregion
+        #region Очистка области редактирования информации о персонале
+        private void cleanStaffAddArea()
+        {
+            comboBoxStaffVacancy.SelectedIndex = -1;
+            textBoxStaffLogin.Text = "";
+            textBoxStaffPass.Text = "";
+            textBoxStaffLastName.Text = "";
+            textBoxStaffFirstName.Text = "";
+            textBoxStaffMiddleName.Text = "";
+            textBoxStaffPhoneNumber.Text = "";
+            textBoxStaffAddress.Text = "";
+            checkBoxStaffNewMember.Checked = false;
+        }
+        #endregion
+        #region Фильтрация таблицы "Персонал" согласно указанным критериям
+        private void sortStaffTable(object sender, EventArgs e)
+        {
+            String filter = null;
+            if (checkBoxStaffIsOnStaff.Checked) filter = "Position >=2";
+            if (textBoxStaffSortLastName.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortLastName.Text + "*'";
+            }
+            if (textBoxStafSortfFirstName.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "FirstMiddleLastName LIKE '*" + textBoxStafSortfFirstName.Text + "*'";
+            }
+            if (textBoxStaffSortMiddleName.Text != "")
+            {
+                if (filter != null) filter += " and ";
+                filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortMiddleName.Text + "*'";
+            }
+            if (filter != null) psUsers.users.DefaultView.RowFilter = string.Format(filter);
+            else
+            {
+                dataGridViewStaffAllMembers.DataSource = psUsers;
+                dataGridViewStaffAllMembers.DataMember = "users";
+                setStaffGridView();
+                return;
+            }
+            dataGridViewStaffAllMembers.DataSource = psUsers.users.DefaultView;
+            setStaffGridView();
+            dataGridViewStaffAllMembers.ClearSelection();
+            cleanStaffAddArea();
+        }
+        #endregion
+        #region Волонтёру пароль не нужен
+        private void comboBoxStaffVacancy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxStaffVacancy.Text == "Волонтёр")
+            {
+                textBoxStaffPass.Enabled = false;
+                textBoxStaffPass.Text = "";
+            }
+            else
+                textBoxStaffPass.Enabled = true;
+        }
+        #endregion
+        #region Проверка введенных данных при добавлении сотрудника
+        private bool checkStaffAddArea()
+        {
+            if (textBoxStaffLogin.Text == "")
+            {
+                MessageBox.Show("Введите логин");
+                return false;
+            }
+            else if (textBoxStaffPass.Text == "" && checkBoxStaffNewMember.Checked && comboBoxStaffVacancy.Text != "Волонтёр")
+            {
+                MessageBox.Show("Введите пароль");
+                return false;
+            }
+            else if (textBoxStaffLastName.Text == "")
+            {
+                MessageBox.Show("Введите фамилию");
+                return false;
+            }
+            else if (textBoxStaffFirstName.Text == "")
+            {
+                MessageBox.Show("Введите имя");
+                return false;
+            }
+            else if (textBoxStaffMiddleName.Text == "")
+            {
+                MessageBox.Show("Введите отчество");
+                return false;
+            }
+            else if (comboBoxStaffVacancy.Text == "")
+            {
+                MessageBox.Show("Введите должность сотрудника");
+                return false;
+            }
+            else if (textBoxStaffPhoneNumber.Text == "")
+            {
+                MessageBox.Show("Введите номер телефона сотрудника");
+                return false;
+            }
+            else if (textBoxStaffAddress.Text == "")
+            {
+                MessageBox.Show("Введите адрес жительства сотрудника");
+                return false;
+            }
+            return true;
+        }
+        #endregion
+        #region Кнопка создания или изменения информации о сотруднике
+        private void buttonStaffSave_Click(object sender, EventArgs e)
+        {
+            if (checkBoxStaffNewMember.Checked) //Добавить сотрудника в бд
+            {
+                bool f = checkStaffAddArea();
+                if (f)
+                {
+                    string l = textBoxStaffLogin.Text;
+                    string fio = textBoxStaffLastName.Text + ' ' + textBoxStaffFirstName.Text + ' ' + textBoxStaffMiddleName.Text;
+                    int pos = Convert.ToInt32(psPositions.positions.Rows[comboBoxStaffVacancy.SelectedIndex][0]);
+                    string phone = textBoxStaffPhoneNumber.Text;
+                    string address = textBoxStaffAddress.Text;
+                    if (comboBoxStaffVacancy.Text!= "Волонтёр")
+                    {
+                        string pass = CreateMD5(textBoxStaffPass.Text);
+                        psUsers.users.AddusersRow(l, pass, fio, pos, phone, address);
+                        ibl.setUsers(psUsers);
+                    }
+                    else
+                    {
+                        psUsers.users.AddusersRow(l, null, fio, pos, phone, address);
+                        ibl.setUsers(psUsers);
+                    }
+                    dataGridViewStaffAllMembers.Refresh();
+                    cleanStaffAddArea();
+                }
+            }
+            else //Редактирование информации о животном
+            {
+                bool f = checkStaffAddArea();
+                if (f)
+                {
+                    changeStaffInfo();
+                    dataGridViewStaffAllMembers.Refresh();
+                    cleanStaffAddArea();
+                }
+            }
+        }
+        #region Изменение информации о сотруднике в датасете
+        private void changeStaffInfo()
+        {
+            psUsers.users.FindById_Users(id)[1] = textBoxStaffLogin.Text;
+            psUsers.users.FindById_Users(id)[3] = textBoxStaffLastName.Text + ' ' + textBoxStaffFirstName.Text + ' ' + textBoxStaffMiddleName.Text;
+            psUsers.users.FindById_Users(id)[4] = Convert.ToInt32(psPositions.positions.Rows[comboBoxStaffVacancy.SelectedIndex][0]);
+            psUsers.users.FindById_Users(id)[5] = textBoxStaffPhoneNumber.Text;
+            psUsers.users.FindById_Users(id)[6] = textBoxStaffAddress.Text;
+            if (comboBoxStaffVacancy.Text == "Волонтёр")
+            {
+                psUsers.users.FindById_Users(id)[2] = null;
+            }
+            else
+            {
+                psUsers.users.FindById_Users(id)[2] = CreateMD5(textBoxStaffPass.Text);
+            }
+            ibl.setUsers(psUsers);
+        }
+        #endregion
+        #endregion
+        #region Кнопка удаления записи из таблицы
+        private void buttonStaffDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStaffAllMembers.SelectedRows.Count > 0)
+            {
+                psUsers.users.FindById_Users(id).Delete();
+                ibl.setUsers(psUsers);
+                dataGridViewStaffAllMembers.Refresh();
+                cleanStaffAddArea();
+            }
+            else
+            {
+                MessageBox.Show("Сначала выберите сотрудника в таблице");
+            }
+        }
+        #endregion
+        #endregion
+
+        #region ОКНО "Материально-техническая база"
+        #region Инициализация окна
         private void initGoodsTab()
         {
             psGoods = ibl.getGoods();
             psGoodstype = ibl.getGoodsType();
             psDebitcredit = ibl.getDebitCredit();
             psUsers = ibl.getUsers();
-
             comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
@@ -487,7 +625,6 @@ namespace MainForm
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
             comboBoxGoodsVolunteer.Items.Add("");
-
             //Убираем ДЕНЬГИ из выдачи
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String')  NOT LIKE '4'");
             dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
@@ -498,7 +635,9 @@ namespace MainForm
             dataGridViewGoodsAllGoods.DataMember = "goods";
             setGoodsGridView();*/
             dataGridViewGoodsAllGoods.ClearSelection();
-        }  
+        }
+        #endregion
+        #region Параметры датагрида "Материально-техническая база
         private void setGoodsGridView()
         {
             dataGridViewGoodsAllGoods.Columns[0].Visible = false;
@@ -508,12 +647,19 @@ namespace MainForm
             dataGridViewGoodsAllGoods.Columns[4].HeaderText = "Необходимо";
             //dataGridViewGoodsAllGoods.Columns[5].HeaderText = "Дата поступления";
             dataGridViewGoodsAllGoods.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            
             dataGridViewGoodsAllGoods.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
            // dataGridViewGoodsAllGoods.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
+        #endregion
+        #region Выбор элемента в датагриде "Материально-техническая база"
+        private void dataGridViewGoodsAllGoods_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setGoodsAddArea(e.RowIndex);
+        }
+        #endregion
+        #region Установка параметров предмета для редактирования
         private void setGoodsAddArea(int i)
         {
             cleanGoodsAddArea();
@@ -531,14 +677,19 @@ namespace MainForm
                 dateTimePickerGoods.Text = dt.Rows[0]["date"].ToString(); //Получение даты для первого */
             }
         }
+        #endregion
+        #region Очистка области редактирования информации о предмете
         private void cleanGoodsAddArea()
         {
+            textBoxDebitCreditComment.Text = "";
             comboBoxGoodsType.SelectedIndex = -1;
             comboBoxGoodsVolunteer.Text = "";
             textBoxGoodsName.Text = "";
             textBoxGoodsNeeded.Text = "";
             textBoxGoodsAmount.Text = "";
         }
+        #endregion
+        #region Фильтрация таблицы "Предметы" согласно указаным критериям
         private void sortGoodsTable(object sender, EventArgs e)
         {
             String filter = null;
@@ -564,7 +715,8 @@ namespace MainForm
             dataGridViewGoodsAllGoods.ClearSelection();
             cleanGoodsAddArea();         
         }
-
+        #endregion
+        #region Проверка введенных данных при добавлении предмета
         private bool checkGoodsAddArea()
         {
             if (textBoxGoodsName.Text == "")
@@ -589,65 +741,47 @@ namespace MainForm
             }           
             return true;
         }
-
+        #endregion
+        #region Кнопка создания нового предмета
         private void buttonGoodsAdd_Click(object sender, EventArgs e)
         {
-            
             bool f = checkGoodsAddArea();
             if (f)
             {
-            //Проверка, есть ли уже в базе этот продукт
-            PetShelter psGoodsFoChecking = new PetShelter();
-            psGoodsFoChecking = ibl.getGoods();
-            String filter = "NameOfGoods LIKE '" + textBoxGoodsName.Text + "'";
-            psGoodsFoChecking.goods.DefaultView.RowFilter = string.Format(filter);
-            if (psGoodsFoChecking.goods.Count != 0)
-            {
-                MessageBox.Show("Этот предмет уже есть в базе! Попробуйте изменить.");
-                return;
-            }
-
-
-            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
-            setGoodsGridView();
-            dataGridViewGoodsAllGoods.ClearSelection();
-            cleanGoodsAddArea();   
-
-
-                //if (checkBoxAddAsNewGood.Checked)
-                //{
                 string n = textBoxGoodsName.Text;
                 int t = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
                 int ga = Convert.ToInt32(textBoxGoodsAmount.Text);
                 int gn = Convert.ToInt32(textBoxGoodsNeeded.Text);
                 DateTime gad = dateTimePickerGoods.Value;
+                string com;
 
                 psGoods.goods.AddgoodsRow(n, t, ga, gn);
                 ibl.setGoods(psGoods);
-
+                if (textBoxDebitCreditComment.Text != "")
+                    com = textBoxDebitCreditComment.Text;
+                else
+                    com = null;
                 if (comboBoxGoodsVolunteer.Text != "")
                 {
                     int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
                     int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, 0, ga, -1, ui);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui);
                 }
                 else
                 {
                     int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, 0, ga, -1, -1);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1);
                 }
 
                 ibl.setDebitCredit(psDebitcredit);
                 dataGridViewGoodsAllGoods.Refresh();
                 cleanGoodsAddArea();
-                //}
             }
-   
         }
-
+        #endregion
+        #region Кнопка изменения информации о предмете
         private void buttonGoodsChange_Click(object sender, EventArgs e)
         {
-            
             if (dataGridViewGoodsAllGoods.SelectedRows.Count > 0)
             {
                 int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
@@ -656,7 +790,6 @@ namespace MainForm
                 psGoods.goods.FindById_Goods(id)[2] = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
                 psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(textBoxGoodsAmount.Text);
                 psGoods.goods.FindById_Goods(id)[4] = Convert.ToInt32(textBoxGoodsNeeded.Text);
-
                 ibl.setGoods(psGoods);
                 //Сделать запись в debitcredit
                 if(amountAfter!=amountBefore)
@@ -665,52 +798,35 @@ namespace MainForm
                     int c = amountAfter > amountBefore ? amountAfter-amountBefore : 0;
                     string n = textBoxGoodsName.Text;
                     DateTime gad = dateTimePickerGoods.Value;
+                    string com;
+                    if (textBoxDebitCreditComment.Text != "")
+                        com = textBoxDebitCreditComment.Text;
+                    else
+                        com = null;
                     if (comboBoxGoodsVolunteer.Text != "")
                     {
                         int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
                         int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, d, c, -1, ui);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, ui);
                     }
                     else
                     {
                         int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, null, gad, d, c, -1, -1);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, -1);
                     }
                     ibl.setDebitCredit(psDebitcredit);
                 }
                 dataGridViewGoodsAllGoods.Refresh();
                 cleanGoodsAddArea();
-
             }
             else
             {
-                MessageBox.Show("Сначала выберите животное в таблице");
+                MessageBox.Show("Сначала выберите предмет в таблице");
             }
         }
+        #endregion
 
         #endregion
 
-        private void tableLayoutPanelAfterGoodTable_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewPetsAllPets_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label35_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxPetPhoto_Click(object sender, EventArgs e)
-        {
-            if (openFileDialogAddPetPhoto.ShowDialog() == DialogResult.Cancel)
-                return;
-            string filename = openFileDialogAddPetPhoto.FileName;
-
-        }
     }
 }

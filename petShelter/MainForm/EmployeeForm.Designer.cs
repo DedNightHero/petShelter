@@ -96,6 +96,8 @@
             this.buttonStaffOk = new System.Windows.Forms.Button();
             this.tableLayoutPanelStaffRightMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelEmployeeInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxStaffPass = new System.Windows.Forms.TextBox();
+            this.textBoxStaffLogin = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -106,9 +108,11 @@
             this.textBoxStaffLastName = new System.Windows.Forms.TextBox();
             this.textBoxStaffFirstName = new System.Windows.Forms.TextBox();
             this.textBoxStaffMiddleName = new System.Windows.Forms.TextBox();
-            this.textBoxStaffVacancy = new System.Windows.Forms.TextBox();
             this.textBoxStaffPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxStaffAddress = new System.Windows.Forms.TextBox();
+            this.comboBoxStaffVacancy = new System.Windows.Forms.ComboBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonStaffSave = new System.Windows.Forms.Button();
             this.buttonStaffDelete = new System.Windows.Forms.Button();
@@ -138,6 +142,7 @@
             this.tableLayoutPanelPickChariter = new System.Windows.Forms.TableLayoutPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.comboBoxGoodsVolunteer = new System.Windows.Forms.ComboBox();
+            this.textBoxDebitCreditComment = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePickerGoods = new System.Windows.Forms.DateTimePicker();
             this.tabReports = new System.Windows.Forms.TabPage();
@@ -304,9 +309,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 45);
+            this.label2.Location = new System.Drawing.Point(3, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 19);
+            this.label2.Size = new System.Drawing.Size(34, 46);
             this.label2.TabIndex = 1;
             this.label2.Text = "Вид";
             // 
@@ -314,9 +319,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(204, 45);
+            this.label3.Location = new System.Drawing.Point(204, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 19);
+            this.label3.Size = new System.Drawing.Size(64, 46);
             this.label3.TabIndex = 2;
             this.label3.Text = "Порода";
             // 
@@ -324,27 +329,29 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 45);
+            this.label4.Location = new System.Drawing.Point(435, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 19);
+            this.label4.Size = new System.Drawing.Size(54, 46);
             this.label4.TabIndex = 3;
             this.label4.Text = "Кличка";
             // 
             // textBoxPetsSortBreed
             // 
             this.textBoxPetsSortBreed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(274, 42);
+            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(274, 40);
+            this.textBoxPetsSortBreed.MaxLength = 30;
             this.textBoxPetsSortBreed.Name = "textBoxPetsSortBreed";
-            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(155, 25);
+            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(155, 30);
             this.textBoxPetsSortBreed.TabIndex = 2;
             this.textBoxPetsSortBreed.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // textBoxPetsSortNickName
             // 
             this.textBoxPetsSortNickName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(495, 42);
+            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(495, 40);
+            this.textBoxPetsSortNickName.MaxLength = 20;
             this.textBoxPetsSortNickName.Name = "textBoxPetsSortNickName";
-            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(155, 25);
+            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(155, 30);
             this.textBoxPetsSortNickName.TabIndex = 3;
             this.textBoxPetsSortNickName.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
@@ -352,9 +359,9 @@
             // 
             this.checkBoxPetsIsAtShelter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtShelter.AutoSize = true;
-            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(656, 43);
+            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(656, 41);
             this.checkBoxPetsIsAtShelter.Name = "checkBoxPetsIsAtShelter";
-            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(94, 23);
+            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(94, 27);
             this.checkBoxPetsIsAtShelter.TabIndex = 4;
             this.checkBoxPetsIsAtShelter.Text = "В приюте";
             this.checkBoxPetsIsAtShelter.UseVisualStyleBackColor = true;
@@ -364,9 +371,9 @@
             // 
             this.checkBoxPetsIsAtHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtHome.AutoSize = true;
-            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(756, 43);
+            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(756, 41);
             this.checkBoxPetsIsAtHome.Name = "checkBoxPetsIsAtHome";
-            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(78, 23);
+            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(78, 27);
             this.checkBoxPetsIsAtHome.TabIndex = 5;
             this.checkBoxPetsIsAtHome.Text = "Дома";
             this.checkBoxPetsIsAtHome.UseVisualStyleBackColor = true;
@@ -393,16 +400,15 @@
             this.dataGridViewPetsAllPets.TabIndex = 6;
             this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
-            this.dataGridViewPetsAllPets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellContentClick);
             // 
             // comboBoxSortSpecies
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 44);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 39);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
-            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 25);
-            this.comboBoxSortSpecies.TabIndex = 7;
+            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
+            this.comboBoxSortSpecies.TabIndex = 1;
             this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // tableLayoutPanel3
@@ -424,9 +430,9 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 5);
+            this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(825, 19);
+            this.label5.Size = new System.Drawing.Size(825, 23);
             this.label5.TabIndex = 0;
             this.label5.Text = "История лечения";
             // 
@@ -466,9 +472,9 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 27);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
-            this.comboBoxPetsCure.Size = new System.Drawing.Size(183, 25);
+            this.comboBoxPetsCure.Size = new System.Drawing.Size(183, 31);
             this.comboBoxPetsCure.TabIndex = 8;
             // 
             // textBoxPetsComment
@@ -550,16 +556,18 @@
             // 
             this.textBoxPetsNickName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsNickName.Location = new System.Drawing.Point(163, 97);
+            this.textBoxPetsNickName.MaxLength = 20;
             this.textBoxPetsNickName.Name = "textBoxPetsNickName";
-            this.textBoxPetsNickName.Size = new System.Drawing.Size(159, 25);
+            this.textBoxPetsNickName.Size = new System.Drawing.Size(159, 30);
             this.textBoxPetsNickName.TabIndex = 13;
             // 
             // textBoxPetsBreed
             // 
             this.textBoxPetsBreed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsBreed.Location = new System.Drawing.Point(163, 65);
+            this.textBoxPetsBreed.MaxLength = 30;
             this.textBoxPetsBreed.Name = "textBoxPetsBreed";
-            this.textBoxPetsBreed.Size = new System.Drawing.Size(159, 25);
+            this.textBoxPetsBreed.Size = new System.Drawing.Size(159, 30);
             this.textBoxPetsBreed.TabIndex = 12;
             // 
             // label6
@@ -577,9 +585,9 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 36);
+            this.label7.Location = new System.Drawing.Point(3, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 19);
+            this.label7.Size = new System.Drawing.Size(154, 23);
             this.label7.TabIndex = 1;
             this.label7.Text = "Вид животного";
             // 
@@ -587,9 +595,9 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 68);
+            this.label8.Location = new System.Drawing.Point(3, 66);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 19);
+            this.label8.Size = new System.Drawing.Size(154, 23);
             this.label8.TabIndex = 2;
             this.label8.Text = "Порода";
             // 
@@ -597,9 +605,9 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 100);
+            this.label9.Location = new System.Drawing.Point(3, 98);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 19);
+            this.label9.Size = new System.Drawing.Size(154, 23);
             this.label9.TabIndex = 3;
             this.label9.Text = "Кличка";
             // 
@@ -607,9 +615,9 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 133);
+            this.label10.Location = new System.Drawing.Point(3, 131);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 19);
+            this.label10.Size = new System.Drawing.Size(154, 23);
             this.label10.TabIndex = 4;
             this.label10.Text = "Дата поступления";
             // 
@@ -618,7 +626,7 @@
             this.dateTimePickerPetsArrivalDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerPetsArrivalDate.Location = new System.Drawing.Point(163, 129);
             this.dateTimePickerPetsArrivalDate.Name = "dateTimePickerPetsArrivalDate";
-            this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(158, 25);
+            this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(158, 30);
             this.dateTimePickerPetsArrivalDate.TabIndex = 14;
             // 
             // comboBoxPetsSpecies
@@ -627,8 +635,8 @@
             this.comboBoxPetsSpecies.FormattingEnabled = true;
             this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
             this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
-            this.comboBoxPetsSpecies.Size = new System.Drawing.Size(159, 25);
-            this.comboBoxPetsSpecies.TabIndex = 15;
+            this.comboBoxPetsSpecies.Size = new System.Drawing.Size(159, 31);
+            this.comboBoxPetsSpecies.TabIndex = 11;
             // 
             // tableLayoutPanelMasterInfo
             // 
@@ -661,9 +669,9 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 5);
+            this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 19);
+            this.label11.Size = new System.Drawing.Size(154, 23);
             this.label11.TabIndex = 0;
             this.label11.Text = "Хозяин";
             // 
@@ -671,9 +679,9 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 34);
+            this.label12.Location = new System.Drawing.Point(3, 32);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 19);
+            this.label12.Size = new System.Drawing.Size(154, 23);
             this.label12.TabIndex = 1;
             this.label12.Text = "ФИО";
             // 
@@ -681,9 +689,9 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 62);
+            this.label13.Location = new System.Drawing.Point(3, 60);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(154, 19);
+            this.label13.Size = new System.Drawing.Size(154, 23);
             this.label13.TabIndex = 2;
             this.label13.Text = "Телефон";
             // 
@@ -691,9 +699,9 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 90);
+            this.label14.Location = new System.Drawing.Point(3, 88);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 19);
+            this.label14.Size = new System.Drawing.Size(154, 23);
             this.label14.TabIndex = 3;
             this.label14.Text = "Адрес";
             // 
@@ -701,9 +709,9 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 120);
+            this.label15.Location = new System.Drawing.Point(3, 118);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 19);
+            this.label15.Size = new System.Drawing.Size(154, 23);
             this.label15.TabIndex = 4;
             this.label15.Text = "Дата выдачи";
             // 
@@ -712,35 +720,38 @@
             this.textBoxPetsFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsFIO.Enabled = false;
             this.textBoxPetsFIO.Location = new System.Drawing.Point(163, 33);
+            this.textBoxPetsFIO.MaxLength = 40;
             this.textBoxPetsFIO.Name = "textBoxPetsFIO";
-            this.textBoxPetsFIO.Size = new System.Drawing.Size(165, 25);
-            this.textBoxPetsFIO.TabIndex = 15;
+            this.textBoxPetsFIO.Size = new System.Drawing.Size(165, 30);
+            this.textBoxPetsFIO.TabIndex = 16;
             // 
             // textBoxPetsPhoneNumber
             // 
             this.textBoxPetsPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsPhoneNumber.Enabled = false;
             this.textBoxPetsPhoneNumber.Location = new System.Drawing.Point(163, 61);
+            this.textBoxPetsPhoneNumber.MaxLength = 11;
             this.textBoxPetsPhoneNumber.Name = "textBoxPetsPhoneNumber";
-            this.textBoxPetsPhoneNumber.Size = new System.Drawing.Size(165, 25);
-            this.textBoxPetsPhoneNumber.TabIndex = 16;
+            this.textBoxPetsPhoneNumber.Size = new System.Drawing.Size(165, 30);
+            this.textBoxPetsPhoneNumber.TabIndex = 17;
             // 
             // textBoxPetsAddress
             // 
             this.textBoxPetsAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsAddress.Enabled = false;
             this.textBoxPetsAddress.Location = new System.Drawing.Point(163, 89);
+            this.textBoxPetsAddress.MaxLength = 80;
             this.textBoxPetsAddress.Name = "textBoxPetsAddress";
-            this.textBoxPetsAddress.Size = new System.Drawing.Size(165, 25);
-            this.textBoxPetsAddress.TabIndex = 17;
+            this.textBoxPetsAddress.Size = new System.Drawing.Size(165, 30);
+            this.textBoxPetsAddress.TabIndex = 18;
             // 
             // dateTimePickerPetsDeliveryDay
             // 
             this.dateTimePickerPetsDeliveryDay.Enabled = false;
             this.dateTimePickerPetsDeliveryDay.Location = new System.Drawing.Point(163, 117);
             this.dateTimePickerPetsDeliveryDay.Name = "dateTimePickerPetsDeliveryDay";
-            this.dateTimePickerPetsDeliveryDay.Size = new System.Drawing.Size(164, 25);
-            this.dateTimePickerPetsDeliveryDay.TabIndex = 18;
+            this.dateTimePickerPetsDeliveryDay.Size = new System.Drawing.Size(164, 30);
+            this.dateTimePickerPetsDeliveryDay.TabIndex = 19;
             // 
             // checkBoxPetsMaster
             // 
@@ -748,8 +759,8 @@
             this.checkBoxPetsMaster.AutoSize = true;
             this.checkBoxPetsMaster.Location = new System.Drawing.Point(163, 3);
             this.checkBoxPetsMaster.Name = "checkBoxPetsMaster";
-            this.checkBoxPetsMaster.Size = new System.Drawing.Size(165, 23);
-            this.checkBoxPetsMaster.TabIndex = 19;
+            this.checkBoxPetsMaster.Size = new System.Drawing.Size(165, 24);
+            this.checkBoxPetsMaster.TabIndex = 15;
             this.checkBoxPetsMaster.Text = "Есть";
             this.checkBoxPetsMaster.UseVisualStyleBackColor = true;
             this.checkBoxPetsMaster.CheckedChanged += new System.EventHandler(this.checkBoxPetsMaster_CheckedChanged);
@@ -777,7 +788,7 @@
             this.buttonPetsDelete.Location = new System.Drawing.Point(113, 16);
             this.buttonPetsDelete.Name = "buttonPetsDelete";
             this.buttonPetsDelete.Size = new System.Drawing.Size(104, 44);
-            this.buttonPetsDelete.TabIndex = 21;
+            this.buttonPetsDelete.TabIndex = 22;
             this.buttonPetsDelete.Text = "Удалить";
             this.buttonPetsDelete.UseVisualStyleBackColor = true;
             this.buttonPetsDelete.Click += new System.EventHandler(this.buttonPetsDelete_Click);
@@ -788,7 +799,7 @@
             this.buttonPetsSave.Location = new System.Drawing.Point(3, 16);
             this.buttonPetsSave.Name = "buttonPetsSave";
             this.buttonPetsSave.Size = new System.Drawing.Size(104, 44);
-            this.buttonPetsSave.TabIndex = 20;
+            this.buttonPetsSave.TabIndex = 21;
             this.buttonPetsSave.Text = "Сохранить";
             this.buttonPetsSave.UseVisualStyleBackColor = true;
             this.buttonPetsSave.Click += new System.EventHandler(this.buttonPetsSave_Click);
@@ -797,10 +808,10 @@
             // 
             this.checkBoxPetsNewAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsNewAnimal.AutoSize = true;
-            this.checkBoxPetsNewAnimal.Location = new System.Drawing.Point(223, 26);
+            this.checkBoxPetsNewAnimal.Location = new System.Drawing.Point(223, 24);
             this.checkBoxPetsNewAnimal.Name = "checkBoxPetsNewAnimal";
-            this.checkBoxPetsNewAnimal.Size = new System.Drawing.Size(105, 23);
-            this.checkBoxPetsNewAnimal.TabIndex = 19;
+            this.checkBoxPetsNewAnimal.Size = new System.Drawing.Size(105, 27);
+            this.checkBoxPetsNewAnimal.TabIndex = 20;
             this.checkBoxPetsNewAnimal.Text = "Новое животное";
             this.checkBoxPetsNewAnimal.UseVisualStyleBackColor = true;
             // 
@@ -880,6 +891,7 @@
             this.textBoxStaffComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.textBoxStaffComment, 6);
             this.textBoxStaffComment.Location = new System.Drawing.Point(3, 521);
+            this.textBoxStaffComment.MaxLength = 500;
             this.textBoxStaffComment.Multiline = true;
             this.textBoxStaffComment.Name = "textBoxStaffComment";
             this.textBoxStaffComment.Size = new System.Drawing.Size(642, 68);
@@ -890,9 +902,9 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.label16, 7);
-            this.label16.Location = new System.Drawing.Point(3, 5);
+            this.label16.Location = new System.Drawing.Point(3, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(756, 19);
+            this.label16.Size = new System.Drawing.Size(756, 23);
             this.label16.TabIndex = 2;
             this.label16.Text = "Список людей";
             // 
@@ -900,9 +912,9 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 40);
+            this.label17.Location = new System.Drawing.Point(3, 30);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 19);
+            this.label17.Size = new System.Drawing.Size(74, 40);
             this.label17.TabIndex = 3;
             this.label17.Text = "Фамилия";
             // 
@@ -910,9 +922,9 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(229, 40);
+            this.label18.Location = new System.Drawing.Point(229, 38);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 19);
+            this.label18.Size = new System.Drawing.Size(44, 23);
             this.label18.TabIndex = 4;
             this.label18.Text = "Имя";
             // 
@@ -920,9 +932,9 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(425, 40);
+            this.label19.Location = new System.Drawing.Point(425, 30);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 19);
+            this.label19.Size = new System.Drawing.Size(74, 40);
             this.label19.TabIndex = 5;
             this.label19.Text = "Отчество";
             // 
@@ -931,57 +943,75 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.label20, 7);
-            this.label20.Location = new System.Drawing.Point(3, 343);
+            this.label20.Location = new System.Drawing.Point(3, 341);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(756, 19);
+            this.label20.Size = new System.Drawing.Size(756, 23);
             this.label20.TabIndex = 6;
             this.label20.Text = "Благотворительность";
             // 
             // textBoxStaffSortLastName
             // 
             this.textBoxStaffSortLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStaffSortLastName.Location = new System.Drawing.Point(83, 37);
+            this.textBoxStaffSortLastName.Location = new System.Drawing.Point(83, 35);
+            this.textBoxStaffSortLastName.MaxLength = 14;
             this.textBoxStaffSortLastName.Name = "textBoxStaffSortLastName";
-            this.textBoxStaffSortLastName.Size = new System.Drawing.Size(140, 25);
+            this.textBoxStaffSortLastName.Size = new System.Drawing.Size(140, 30);
             this.textBoxStaffSortLastName.TabIndex = 1;
+            this.textBoxStaffSortLastName.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // textBoxStafSortfFirstName
             // 
             this.textBoxStafSortfFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStafSortfFirstName.Location = new System.Drawing.Point(279, 37);
+            this.textBoxStafSortfFirstName.Location = new System.Drawing.Point(279, 35);
+            this.textBoxStafSortfFirstName.MaxLength = 13;
             this.textBoxStafSortfFirstName.Name = "textBoxStafSortfFirstName";
-            this.textBoxStafSortfFirstName.Size = new System.Drawing.Size(140, 25);
+            this.textBoxStafSortfFirstName.Size = new System.Drawing.Size(140, 30);
             this.textBoxStafSortfFirstName.TabIndex = 2;
+            this.textBoxStafSortfFirstName.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // textBoxStaffSortMiddleName
             // 
             this.textBoxStaffSortMiddleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStaffSortMiddleName.Location = new System.Drawing.Point(505, 37);
+            this.textBoxStaffSortMiddleName.Location = new System.Drawing.Point(505, 35);
+            this.textBoxStaffSortMiddleName.MaxLength = 13;
             this.textBoxStaffSortMiddleName.Name = "textBoxStaffSortMiddleName";
-            this.textBoxStaffSortMiddleName.Size = new System.Drawing.Size(140, 25);
+            this.textBoxStaffSortMiddleName.Size = new System.Drawing.Size(140, 30);
             this.textBoxStaffSortMiddleName.TabIndex = 3;
+            this.textBoxStaffSortMiddleName.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // checkBoxStaffIsOnStaff
             // 
             this.checkBoxStaffIsOnStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStaffIsOnStaff.AutoSize = true;
-            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(651, 38);
+            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(651, 36);
             this.checkBoxStaffIsOnStaff.Name = "checkBoxStaffIsOnStaff";
-            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(108, 23);
+            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(108, 27);
             this.checkBoxStaffIsOnStaff.TabIndex = 4;
             this.checkBoxStaffIsOnStaff.Text = "Сотрудники";
             this.checkBoxStaffIsOnStaff.UseVisualStyleBackColor = true;
+            this.checkBoxStaffIsOnStaff.CheckedChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // dataGridViewStaffAllMembers
             // 
+            this.dataGridViewStaffAllMembers.AllowUserToAddRows = false;
+            this.dataGridViewStaffAllMembers.AllowUserToDeleteRows = false;
+            this.dataGridViewStaffAllMembers.AllowUserToResizeColumns = false;
+            this.dataGridViewStaffAllMembers.AllowUserToResizeRows = false;
+            this.dataGridViewStaffAllMembers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStaffAllMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.dataGridViewStaffAllMembers, 7);
             this.dataGridViewStaffAllMembers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStaffAllMembers.Location = new System.Drawing.Point(3, 73);
+            this.dataGridViewStaffAllMembers.MultiSelect = false;
             this.dataGridViewStaffAllMembers.Name = "dataGridViewStaffAllMembers";
+            this.dataGridViewStaffAllMembers.ReadOnly = true;
             this.dataGridViewStaffAllMembers.RowTemplate.Height = 24;
+            this.dataGridViewStaffAllMembers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewStaffAllMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStaffAllMembers.Size = new System.Drawing.Size(756, 247);
             this.dataGridViewStaffAllMembers.TabIndex = 5;
+            this.dataGridViewStaffAllMembers.TabStop = false;
+            this.dataGridViewStaffAllMembers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStaffAllMembers_CellClick);
             // 
             // dataGridViewStaffCharity
             // 
@@ -1026,15 +1056,14 @@
             // 
             this.tableLayoutPanelStaffRightMain.ColumnCount = 1;
             this.tableLayoutPanelStaffRightMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelStaffRightMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelStaffRightMain.Controls.Add(this.tableLayoutPanelEmployeeInfo, 0, 0);
             this.tableLayoutPanelStaffRightMain.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanelStaffRightMain.Location = new System.Drawing.Point(812, 12);
             this.tableLayoutPanelStaffRightMain.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelStaffRightMain.Name = "tableLayoutPanelStaffRightMain";
             this.tableLayoutPanelStaffRightMain.RowCount = 2;
-            this.tableLayoutPanelStaffRightMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStaffRightMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStaffRightMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanelStaffRightMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanelStaffRightMain.Size = new System.Drawing.Size(411, 599);
             this.tableLayoutPanelStaffRightMain.TabIndex = 1;
             // 
@@ -1045,24 +1074,28 @@
             this.tableLayoutPanelEmployeeInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanelEmployeeInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanelEmployeeInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffPass, 1, 2);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffLogin, 1, 1);
             this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label21, 0, 0);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label22, 0, 1);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label23, 0, 2);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label24, 0, 3);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label25, 0, 4);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label26, 0, 5);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label27, 0, 6);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffLastName, 1, 1);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffFirstName, 1, 2);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffMiddleName, 1, 3);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffVacancy, 1, 4);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffPhoneNumber, 1, 5);
-            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffAddress, 1, 6);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label22, 0, 3);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label23, 0, 4);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label24, 0, 5);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label25, 0, 6);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label26, 0, 7);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label27, 0, 8);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffLastName, 1, 3);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffFirstName, 1, 4);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffMiddleName, 1, 5);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffPhoneNumber, 1, 7);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.textBoxStaffAddress, 1, 8);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.comboBoxStaffVacancy, 1, 6);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label38, 0, 1);
+            this.tableLayoutPanelEmployeeInfo.Controls.Add(this.label39, 0, 2);
             this.tableLayoutPanelEmployeeInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelEmployeeInfo.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelEmployeeInfo.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelEmployeeInfo.Name = "tableLayoutPanelEmployeeInfo";
-            this.tableLayoutPanelEmployeeInfo.RowCount = 8;
+            this.tableLayoutPanelEmployeeInfo.RowCount = 10;
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -1070,18 +1103,40 @@
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelEmployeeInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelEmployeeInfo.Size = new System.Drawing.Size(411, 299);
+            this.tableLayoutPanelEmployeeInfo.Size = new System.Drawing.Size(411, 419);
             this.tableLayoutPanelEmployeeInfo.TabIndex = 0;
+            // 
+            // textBoxStaffPass
+            // 
+            this.textBoxStaffPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffPass, 2);
+            this.textBoxStaffPass.Location = new System.Drawing.Point(113, 75);
+            this.textBoxStaffPass.MaxLength = 32;
+            this.textBoxStaffPass.Name = "textBoxStaffPass";
+            this.textBoxStaffPass.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffPass.TabIndex = 10;
+            // 
+            // textBoxStaffLogin
+            // 
+            this.textBoxStaffLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffLogin, 2);
+            this.textBoxStaffLogin.Location = new System.Drawing.Point(113, 35);
+            this.textBoxStaffLogin.MaxLength = 20;
+            this.textBoxStaffLogin.Name = "textBoxStaffLogin";
+            this.textBoxStaffLogin.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffLogin.TabIndex = 9;
             // 
             // label21
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.label21, 3);
-            this.label21.Location = new System.Drawing.Point(3, 5);
+            this.label21.Location = new System.Drawing.Point(3, 3);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(359, 19);
+            this.label21.Size = new System.Drawing.Size(359, 23);
             this.label21.TabIndex = 0;
             this.label21.Text = "Информация о сотруднике";
             // 
@@ -1089,9 +1144,9 @@
             // 
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(3, 40);
+            this.label22.Location = new System.Drawing.Point(3, 118);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(104, 19);
+            this.label22.Size = new System.Drawing.Size(104, 23);
             this.label22.TabIndex = 1;
             this.label22.Text = "Фамилия";
             // 
@@ -1099,9 +1154,9 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 80);
+            this.label23.Location = new System.Drawing.Point(3, 158);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 19);
+            this.label23.Size = new System.Drawing.Size(104, 23);
             this.label23.TabIndex = 2;
             this.label23.Text = "Имя";
             // 
@@ -1109,9 +1164,9 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 120);
+            this.label24.Location = new System.Drawing.Point(3, 198);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(104, 19);
+            this.label24.Size = new System.Drawing.Size(104, 23);
             this.label24.TabIndex = 3;
             this.label24.Text = "Отчество";
             // 
@@ -1119,9 +1174,9 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(3, 160);
+            this.label25.Location = new System.Drawing.Point(3, 238);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(104, 19);
+            this.label25.Size = new System.Drawing.Size(104, 23);
             this.label25.TabIndex = 4;
             this.label25.Text = "Должность";
             // 
@@ -1129,9 +1184,9 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 200);
+            this.label26.Location = new System.Drawing.Point(3, 278);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(104, 19);
+            this.label26.Size = new System.Drawing.Size(104, 23);
             this.label26.TabIndex = 5;
             this.label26.Text = "Телефон";
             // 
@@ -1139,9 +1194,9 @@
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 240);
+            this.label27.Location = new System.Drawing.Point(3, 338);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(104, 19);
+            this.label27.Size = new System.Drawing.Size(104, 23);
             this.label27.TabIndex = 6;
             this.label27.Text = "Адрес";
             // 
@@ -1149,55 +1204,83 @@
             // 
             this.textBoxStaffLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffLastName, 2);
-            this.textBoxStaffLastName.Location = new System.Drawing.Point(113, 37);
+            this.textBoxStaffLastName.Location = new System.Drawing.Point(113, 115);
+            this.textBoxStaffLastName.MaxLength = 14;
             this.textBoxStaffLastName.Name = "textBoxStaffLastName";
-            this.textBoxStaffLastName.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffLastName.TabIndex = 9;
+            this.textBoxStaffLastName.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffLastName.TabIndex = 11;
             // 
             // textBoxStaffFirstName
             // 
             this.textBoxStaffFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffFirstName, 2);
-            this.textBoxStaffFirstName.Location = new System.Drawing.Point(113, 77);
+            this.textBoxStaffFirstName.Location = new System.Drawing.Point(113, 155);
+            this.textBoxStaffFirstName.MaxLength = 13;
             this.textBoxStaffFirstName.Name = "textBoxStaffFirstName";
-            this.textBoxStaffFirstName.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffFirstName.TabIndex = 10;
+            this.textBoxStaffFirstName.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffFirstName.TabIndex = 12;
             // 
             // textBoxStaffMiddleName
             // 
             this.textBoxStaffMiddleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffMiddleName, 2);
-            this.textBoxStaffMiddleName.Location = new System.Drawing.Point(113, 117);
+            this.textBoxStaffMiddleName.Location = new System.Drawing.Point(113, 195);
+            this.textBoxStaffMiddleName.MaxLength = 13;
             this.textBoxStaffMiddleName.Name = "textBoxStaffMiddleName";
-            this.textBoxStaffMiddleName.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffMiddleName.TabIndex = 11;
-            // 
-            // textBoxStaffVacancy
-            // 
-            this.textBoxStaffVacancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffVacancy, 2);
-            this.textBoxStaffVacancy.Location = new System.Drawing.Point(113, 157);
-            this.textBoxStaffVacancy.Name = "textBoxStaffVacancy";
-            this.textBoxStaffVacancy.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffVacancy.TabIndex = 12;
+            this.textBoxStaffMiddleName.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffMiddleName.TabIndex = 13;
             // 
             // textBoxStaffPhoneNumber
             // 
             this.textBoxStaffPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffPhoneNumber, 2);
-            this.textBoxStaffPhoneNumber.Location = new System.Drawing.Point(113, 197);
+            this.textBoxStaffPhoneNumber.Location = new System.Drawing.Point(113, 275);
+            this.textBoxStaffPhoneNumber.MaxLength = 11;
             this.textBoxStaffPhoneNumber.Name = "textBoxStaffPhoneNumber";
-            this.textBoxStaffPhoneNumber.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffPhoneNumber.TabIndex = 13;
+            this.textBoxStaffPhoneNumber.Size = new System.Drawing.Size(249, 30);
+            this.textBoxStaffPhoneNumber.TabIndex = 15;
             // 
             // textBoxStaffAddress
             // 
-            this.textBoxStaffAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.textBoxStaffAddress, 2);
-            this.textBoxStaffAddress.Location = new System.Drawing.Point(113, 237);
+            this.textBoxStaffAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxStaffAddress.Location = new System.Drawing.Point(113, 313);
+            this.textBoxStaffAddress.MaxLength = 80;
+            this.textBoxStaffAddress.Multiline = true;
             this.textBoxStaffAddress.Name = "textBoxStaffAddress";
-            this.textBoxStaffAddress.Size = new System.Drawing.Size(249, 25);
-            this.textBoxStaffAddress.TabIndex = 14;
+            this.textBoxStaffAddress.Size = new System.Drawing.Size(249, 74);
+            this.textBoxStaffAddress.TabIndex = 16;
+            // 
+            // comboBoxStaffVacancy
+            // 
+            this.tableLayoutPanelEmployeeInfo.SetColumnSpan(this.comboBoxStaffVacancy, 2);
+            this.comboBoxStaffVacancy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxStaffVacancy.FormattingEnabled = true;
+            this.comboBoxStaffVacancy.Location = new System.Drawing.Point(113, 233);
+            this.comboBoxStaffVacancy.Name = "comboBoxStaffVacancy";
+            this.comboBoxStaffVacancy.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxStaffVacancy.TabIndex = 14;
+            this.comboBoxStaffVacancy.SelectedIndexChanged += new System.EventHandler(this.comboBoxStaffVacancy_SelectedIndexChanged);
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(3, 38);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(104, 23);
+            this.label38.TabIndex = 16;
+            this.label38.Text = "Логин";
+            // 
+            // label39
+            // 
+            this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(3, 78);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(104, 23);
+            this.label39.TabIndex = 17;
+            this.label39.Text = "Пароль";
             // 
             // tableLayoutPanel5
             // 
@@ -1209,7 +1292,7 @@
             this.tableLayoutPanel5.Controls.Add(this.buttonStaffDelete, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkBoxStaffNewMember, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 299);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 419);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
@@ -1223,9 +1306,10 @@
             this.buttonStaffSave.Location = new System.Drawing.Point(3, 31);
             this.buttonStaffSave.Name = "buttonStaffSave";
             this.buttonStaffSave.Size = new System.Drawing.Size(137, 37);
-            this.buttonStaffSave.TabIndex = 16;
+            this.buttonStaffSave.TabIndex = 18;
             this.buttonStaffSave.Text = "Сохранить";
             this.buttonStaffSave.UseVisualStyleBackColor = true;
+            this.buttonStaffSave.Click += new System.EventHandler(this.buttonStaffSave_Click);
             // 
             // buttonStaffDelete
             // 
@@ -1233,18 +1317,19 @@
             this.buttonStaffDelete.Location = new System.Drawing.Point(146, 32);
             this.buttonStaffDelete.Name = "buttonStaffDelete";
             this.buttonStaffDelete.Size = new System.Drawing.Size(137, 35);
-            this.buttonStaffDelete.TabIndex = 17;
+            this.buttonStaffDelete.TabIndex = 19;
             this.buttonStaffDelete.Text = "Удалить";
             this.buttonStaffDelete.UseVisualStyleBackColor = true;
+            this.buttonStaffDelete.Click += new System.EventHandler(this.buttonStaffDelete_Click);
             // 
             // checkBoxStaffNewMember
             // 
             this.checkBoxStaffNewMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStaffNewMember.AutoSize = true;
-            this.checkBoxStaffNewMember.Location = new System.Drawing.Point(289, 38);
+            this.checkBoxStaffNewMember.Location = new System.Drawing.Point(289, 36);
             this.checkBoxStaffNewMember.Name = "checkBoxStaffNewMember";
-            this.checkBoxStaffNewMember.Size = new System.Drawing.Size(119, 23);
-            this.checkBoxStaffNewMember.TabIndex = 15;
+            this.checkBoxStaffNewMember.Size = new System.Drawing.Size(119, 27);
+            this.checkBoxStaffNewMember.TabIndex = 17;
             this.checkBoxStaffNewMember.Text = "Новый";
             this.checkBoxStaffNewMember.UseVisualStyleBackColor = true;
             // 
@@ -1295,9 +1380,9 @@
             // 
             this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(28, 13);
+            this.label28.Location = new System.Drawing.Point(28, 11);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(1199, 19);
+            this.label28.Size = new System.Drawing.Size(1199, 23);
             this.label28.TabIndex = 0;
             this.label28.Text = "Список еды, лекарств и прочего";
             // 
@@ -1330,18 +1415,19 @@
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 10);
+            this.label29.Location = new System.Drawing.Point(3, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 19);
+            this.label29.Size = new System.Drawing.Size(104, 40);
             this.label29.TabIndex = 0;
             this.label29.Text = "Наименование";
             // 
             // textBoxGoodsSortNameofGoods
             // 
             this.textBoxGoodsSortNameofGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxGoodsSortNameofGoods.Location = new System.Drawing.Point(113, 7);
+            this.textBoxGoodsSortNameofGoods.Location = new System.Drawing.Point(113, 5);
+            this.textBoxGoodsSortNameofGoods.MaxLength = 30;
             this.textBoxGoodsSortNameofGoods.Name = "textBoxGoodsSortNameofGoods";
-            this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(119, 25);
+            this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(119, 30);
             this.textBoxGoodsSortNameofGoods.TabIndex = 1;
             this.textBoxGoodsSortNameofGoods.TextChanged += new System.EventHandler(this.sortGoodsTable);
             this.textBoxGoodsSortNameofGoods.Validated += new System.EventHandler(this.sortPetsTable);
@@ -1350,9 +1436,9 @@
             // 
             this.radioButtonGoodsSortIsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsCure.AutoSize = true;
-            this.radioButtonGoodsSortIsCure.Location = new System.Drawing.Point(279, 8);
+            this.radioButtonGoodsSortIsCure.Location = new System.Drawing.Point(279, 6);
             this.radioButtonGoodsSortIsCure.Name = "radioButtonGoodsSortIsCure";
-            this.radioButtonGoodsSortIsCure.Size = new System.Drawing.Size(94, 23);
+            this.radioButtonGoodsSortIsCure.Size = new System.Drawing.Size(94, 27);
             this.radioButtonGoodsSortIsCure.TabIndex = 2;
             this.radioButtonGoodsSortIsCure.TabStop = true;
             this.radioButtonGoodsSortIsCure.Text = "Лекарства";
@@ -1363,9 +1449,9 @@
             // 
             this.radioButtonGoodsSortIsEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsEat.AutoSize = true;
-            this.radioButtonGoodsSortIsEat.Location = new System.Drawing.Point(379, 8);
+            this.radioButtonGoodsSortIsEat.Location = new System.Drawing.Point(379, 6);
             this.radioButtonGoodsSortIsEat.Name = "radioButtonGoodsSortIsEat";
-            this.radioButtonGoodsSortIsEat.Size = new System.Drawing.Size(54, 23);
+            this.radioButtonGoodsSortIsEat.Size = new System.Drawing.Size(54, 27);
             this.radioButtonGoodsSortIsEat.TabIndex = 3;
             this.radioButtonGoodsSortIsEat.TabStop = true;
             this.radioButtonGoodsSortIsEat.Text = "Еда";
@@ -1376,9 +1462,9 @@
             // 
             this.radioButtonGoodsSortIsOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsOther.AutoSize = true;
-            this.radioButtonGoodsSortIsOther.Location = new System.Drawing.Point(439, 8);
+            this.radioButtonGoodsSortIsOther.Location = new System.Drawing.Point(439, 6);
             this.radioButtonGoodsSortIsOther.Name = "radioButtonGoodsSortIsOther";
-            this.radioButtonGoodsSortIsOther.Size = new System.Drawing.Size(94, 23);
+            this.radioButtonGoodsSortIsOther.Size = new System.Drawing.Size(94, 27);
             this.radioButtonGoodsSortIsOther.TabIndex = 4;
             this.radioButtonGoodsSortIsOther.TabStop = true;
             this.radioButtonGoodsSortIsOther.Text = "Прочее";
@@ -1389,9 +1475,9 @@
             // 
             this.radioButtonGoodsSortIsAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsAll.AutoSize = true;
-            this.radioButtonGoodsSortIsAll.Location = new System.Drawing.Point(539, 8);
+            this.radioButtonGoodsSortIsAll.Location = new System.Drawing.Point(539, 6);
             this.radioButtonGoodsSortIsAll.Name = "radioButtonGoodsSortIsAll";
-            this.radioButtonGoodsSortIsAll.Size = new System.Drawing.Size(663, 23);
+            this.radioButtonGoodsSortIsAll.Size = new System.Drawing.Size(663, 27);
             this.radioButtonGoodsSortIsAll.TabIndex = 5;
             this.radioButtonGoodsSortIsAll.TabStop = true;
             this.radioButtonGoodsSortIsAll.Text = "Все";
@@ -1413,7 +1499,7 @@
             this.dataGridViewGoodsAllGoods.RowTemplate.Height = 24;
             this.dataGridViewGoodsAllGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1199, 236);
-            this.dataGridViewGoodsAllGoods.TabIndex = 5;
+            this.dataGridViewGoodsAllGoods.TabIndex = 6;
             this.dataGridViewGoodsAllGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGoodsAllGoods_CellClick);
             // 
             // tableLayoutPanelAfterGoodTable
@@ -1439,15 +1525,14 @@
             this.tableLayoutPanelAfterGoodTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelAfterGoodTable.Size = new System.Drawing.Size(1203, 40);
             this.tableLayoutPanelAfterGoodTable.TabIndex = 3;
-            this.tableLayoutPanelAfterGoodTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelAfterGoodTable_Paint);
             // 
             // label35
             // 
             this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(609, 0);
+            this.label35.Location = new System.Drawing.Point(591, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(75, 19);
+            this.label35.Size = new System.Drawing.Size(93, 23);
             this.label35.TabIndex = 13;
             this.label35.Text = "В наличии";
             // 
@@ -1455,36 +1540,39 @@
             // 
             this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(888, 0);
+            this.label37.Location = new System.Drawing.Point(896, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(118, 19);
+            this.label37.Size = new System.Drawing.Size(110, 23);
             this.label37.TabIndex = 12;
-            this.label37.Text = "Еще необходимо";
+            this.label37.Text = "Необходимо";
             // 
             // textBoxGoodsNeeded
             // 
             this.textBoxGoodsNeeded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxGoodsNeeded.Location = new System.Drawing.Point(1012, 3);
+            this.textBoxGoodsNeeded.MaxLength = 11;
             this.textBoxGoodsNeeded.MinimumSize = new System.Drawing.Size(50, 4);
             this.textBoxGoodsNeeded.Name = "textBoxGoodsNeeded";
-            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(188, 25);
-            this.textBoxGoodsNeeded.TabIndex = 9;
+            this.textBoxGoodsNeeded.Size = new System.Drawing.Size(188, 30);
+            this.textBoxGoodsNeeded.TabIndex = 10;
             // 
             // textBoxGoodsName
             // 
             this.textBoxGoodsName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxGoodsName.Location = new System.Drawing.Point(3, 3);
+            this.textBoxGoodsName.MaxLength = 30;
             this.textBoxGoodsName.Name = "textBoxGoodsName";
-            this.textBoxGoodsName.Size = new System.Drawing.Size(331, 25);
-            this.textBoxGoodsName.TabIndex = 6;
+            this.textBoxGoodsName.Size = new System.Drawing.Size(331, 30);
+            this.textBoxGoodsName.TabIndex = 7;
             // 
             // textBoxGoodsAmount
             // 
             this.textBoxGoodsAmount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxGoodsAmount.Location = new System.Drawing.Point(690, 3);
+            this.textBoxGoodsAmount.MaxLength = 11;
             this.textBoxGoodsAmount.Name = "textBoxGoodsAmount";
-            this.textBoxGoodsAmount.Size = new System.Drawing.Size(186, 25);
-            this.textBoxGoodsAmount.TabIndex = 7;
+            this.textBoxGoodsAmount.Size = new System.Drawing.Size(186, 30);
+            this.textBoxGoodsAmount.TabIndex = 9;
             // 
             // comboBoxGoodsType
             // 
@@ -1492,8 +1580,8 @@
             this.comboBoxGoodsType.FormattingEnabled = true;
             this.comboBoxGoodsType.Location = new System.Drawing.Point(340, 3);
             this.comboBoxGoodsType.Name = "comboBoxGoodsType";
-            this.comboBoxGoodsType.Size = new System.Drawing.Size(234, 25);
-            this.comboBoxGoodsType.TabIndex = 14;
+            this.comboBoxGoodsType.Size = new System.Drawing.Size(234, 31);
+            this.comboBoxGoodsType.TabIndex = 8;
             // 
             // tableLayoutPanelGoodsButtons
             // 
@@ -1523,7 +1611,7 @@
             this.buttonGoodsChange.Location = new System.Drawing.Point(3, 3);
             this.buttonGoodsChange.Name = "buttonGoodsChange";
             this.buttonGoodsChange.Size = new System.Drawing.Size(114, 34);
-            this.buttonGoodsChange.TabIndex = 11;
+            this.buttonGoodsChange.TabIndex = 16;
             this.buttonGoodsChange.Text = "Изменить";
             this.buttonGoodsChange.UseVisualStyleBackColor = true;
             this.buttonGoodsChange.Click += new System.EventHandler(this.buttonGoodsChange_Click);
@@ -1538,7 +1626,7 @@
             this.buttonGoodsAdd.Location = new System.Drawing.Point(123, 3);
             this.buttonGoodsAdd.Name = "buttonGoodsAdd";
             this.buttonGoodsAdd.Size = new System.Drawing.Size(114, 34);
-            this.buttonGoodsAdd.TabIndex = 12;
+            this.buttonGoodsAdd.TabIndex = 15;
             this.buttonGoodsAdd.Text = "Добавить";
             this.buttonGoodsAdd.UseVisualStyleBackColor = true;
             this.buttonGoodsAdd.Click += new System.EventHandler(this.buttonGoodsAdd_Click);
@@ -1547,10 +1635,10 @@
             // 
             this.checkBoxAddAsNewGood.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxAddAsNewGood.AutoSize = true;
-            this.checkBoxAddAsNewGood.Location = new System.Drawing.Point(243, 8);
+            this.checkBoxAddAsNewGood.Location = new System.Drawing.Point(243, 6);
             this.checkBoxAddAsNewGood.Name = "checkBoxAddAsNewGood";
-            this.checkBoxAddAsNewGood.Size = new System.Drawing.Size(159, 23);
-            this.checkBoxAddAsNewGood.TabIndex = 13;
+            this.checkBoxAddAsNewGood.Size = new System.Drawing.Size(195, 27);
+            this.checkBoxAddAsNewGood.TabIndex = 14;
             this.checkBoxAddAsNewGood.Text = "Добавить как новое.";
             this.checkBoxAddAsNewGood.UseVisualStyleBackColor = true;
             this.checkBoxAddAsNewGood.Visible = false;
@@ -1563,6 +1651,7 @@
             this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.46667F));
             this.tableLayoutPanelPickChariter.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
+            this.tableLayoutPanelPickChariter.Controls.Add(this.textBoxDebitCreditComment, 2, 0);
             this.tableLayoutPanelPickChariter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPickChariter.Location = new System.Drawing.Point(25, 431);
             this.tableLayoutPanelPickChariter.Margin = new System.Windows.Forms.Padding(0);
@@ -1576,9 +1665,9 @@
             // 
             this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(3, 10);
+            this.label31.Location = new System.Drawing.Point(3, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(74, 19);
+            this.label31.Size = new System.Drawing.Size(74, 40);
             this.label31.TabIndex = 0;
             this.label31.Text = "Волонтёр";
             // 
@@ -1586,18 +1675,27 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 9);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
-            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 25);
-            this.comboBoxGoodsVolunteer.TabIndex = 10;
+            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
+            this.comboBoxGoodsVolunteer.TabIndex = 12;
+            // 
+            // textBoxDebitCreditComment
+            // 
+            this.textBoxDebitCreditComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDebitCreditComment.Location = new System.Drawing.Point(403, 5);
+            this.textBoxDebitCreditComment.MaxLength = 150;
+            this.textBoxDebitCreditComment.Name = "textBoxDebitCreditComment";
+            this.textBoxDebitCreditComment.Size = new System.Drawing.Size(799, 30);
+            this.textBoxDebitCreditComment.TabIndex = 13;
             // 
             // label30
             // 
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(28, 371);
+            this.label30.Location = new System.Drawing.Point(28, 369);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(1199, 19);
+            this.label30.Size = new System.Drawing.Size(1199, 23);
             this.label30.TabIndex = 5;
             this.label30.Text = "В случае, если принёс волонтёр, выберите его из списка ";
             // 
@@ -1607,8 +1705,8 @@
             this.dateTimePickerGoods.Enabled = false;
             this.dateTimePickerGoods.Location = new System.Drawing.Point(28, 404);
             this.dateTimePickerGoods.Name = "dateTimePickerGoods";
-            this.dateTimePickerGoods.Size = new System.Drawing.Size(205, 25);
-            this.dateTimePickerGoods.TabIndex = 9;
+            this.dateTimePickerGoods.Size = new System.Drawing.Size(205, 30);
+            this.dateTimePickerGoods.TabIndex = 11;
             // 
             // tabReports
             // 
@@ -1678,9 +1776,9 @@
             this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label32.AutoSize = true;
             this.tableLayoutPanelReportsSpent.SetColumnSpan(this.label32, 2);
-            this.label32.Location = new System.Drawing.Point(3, 5);
+            this.label32.Location = new System.Drawing.Point(3, 3);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(322, 19);
+            this.label32.Size = new System.Drawing.Size(322, 23);
             this.label32.TabIndex = 0;
             this.label32.Text = "Расходы";
             // 
@@ -1688,9 +1786,9 @@
             // 
             this.checkBoxReportsEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsEat.AutoSize = true;
-            this.checkBoxReportsEat.Location = new System.Drawing.Point(3, 37);
+            this.checkBoxReportsEat.Location = new System.Drawing.Point(3, 35);
             this.checkBoxReportsEat.Name = "checkBoxReportsEat";
-            this.checkBoxReportsEat.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsEat.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsEat.TabIndex = 1;
             this.checkBoxReportsEat.Text = "Еда";
             this.checkBoxReportsEat.UseVisualStyleBackColor = true;
@@ -1699,9 +1797,9 @@
             // 
             this.checkBoxReportsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsCure.AutoSize = true;
-            this.checkBoxReportsCure.Location = new System.Drawing.Point(3, 75);
+            this.checkBoxReportsCure.Location = new System.Drawing.Point(3, 73);
             this.checkBoxReportsCure.Name = "checkBoxReportsCure";
-            this.checkBoxReportsCure.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsCure.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsCure.TabIndex = 2;
             this.checkBoxReportsCure.Text = "Лекарства";
             this.checkBoxReportsCure.UseVisualStyleBackColor = true;
@@ -1710,9 +1808,9 @@
             // 
             this.checkBoxReportsOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsOther.AutoSize = true;
-            this.checkBoxReportsOther.Location = new System.Drawing.Point(3, 113);
+            this.checkBoxReportsOther.Location = new System.Drawing.Point(3, 111);
             this.checkBoxReportsOther.Name = "checkBoxReportsOther";
-            this.checkBoxReportsOther.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsOther.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsOther.TabIndex = 3;
             this.checkBoxReportsOther.Text = "Прочее";
             this.checkBoxReportsOther.UseVisualStyleBackColor = true;
@@ -1721,9 +1819,9 @@
             // 
             this.checkBoxReportsMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsMoney.AutoSize = true;
-            this.checkBoxReportsMoney.Location = new System.Drawing.Point(3, 153);
+            this.checkBoxReportsMoney.Location = new System.Drawing.Point(3, 151);
             this.checkBoxReportsMoney.Name = "checkBoxReportsMoney";
-            this.checkBoxReportsMoney.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsMoney.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsMoney.TabIndex = 4;
             this.checkBoxReportsMoney.Text = "Деньги";
             this.checkBoxReportsMoney.UseVisualStyleBackColor = true;
@@ -1732,9 +1830,9 @@
             // 
             this.checkBoxReportsOutCome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsOutCome.AutoSize = true;
-            this.checkBoxReportsOutCome.Location = new System.Drawing.Point(167, 37);
+            this.checkBoxReportsOutCome.Location = new System.Drawing.Point(167, 35);
             this.checkBoxReportsOutCome.Name = "checkBoxReportsOutCome";
-            this.checkBoxReportsOutCome.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsOutCome.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsOutCome.TabIndex = 5;
             this.checkBoxReportsOutCome.Text = "Расходы";
             this.checkBoxReportsOutCome.UseVisualStyleBackColor = true;
@@ -1743,9 +1841,9 @@
             // 
             this.checkBoxReportsInCome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxReportsInCome.AutoSize = true;
-            this.checkBoxReportsInCome.Location = new System.Drawing.Point(167, 75);
+            this.checkBoxReportsInCome.Location = new System.Drawing.Point(167, 73);
             this.checkBoxReportsInCome.Name = "checkBoxReportsInCome";
-            this.checkBoxReportsInCome.Size = new System.Drawing.Size(158, 23);
+            this.checkBoxReportsInCome.Size = new System.Drawing.Size(158, 27);
             this.checkBoxReportsInCome.TabIndex = 6;
             this.checkBoxReportsInCome.Text = "Поступление";
             this.checkBoxReportsInCome.UseVisualStyleBackColor = true;
@@ -1755,9 +1853,9 @@
             this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label33.AutoSize = true;
             this.tableLayoutPanelReportsSpent.SetColumnSpan(this.label33, 2);
-            this.label33.Location = new System.Drawing.Point(331, 5);
+            this.label33.Location = new System.Drawing.Point(331, 3);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(325, 19);
+            this.label33.Size = new System.Drawing.Size(325, 23);
             this.label33.TabIndex = 7;
             this.label33.Text = "Период";
             // 
@@ -1775,14 +1873,14 @@
             // 
             this.dateTimePickerReportsFrom.Location = new System.Drawing.Point(331, 33);
             this.dateTimePickerReportsFrom.Name = "dateTimePickerReportsFrom";
-            this.dateTimePickerReportsFrom.Size = new System.Drawing.Size(158, 25);
+            this.dateTimePickerReportsFrom.Size = new System.Drawing.Size(158, 30);
             this.dateTimePickerReportsFrom.TabIndex = 7;
             // 
             // dateTimePickerReportsTo
             // 
             this.dateTimePickerReportsTo.Location = new System.Drawing.Point(495, 33);
             this.dateTimePickerReportsTo.Name = "dateTimePickerReportsTo";
-            this.dateTimePickerReportsTo.Size = new System.Drawing.Size(160, 25);
+            this.dateTimePickerReportsTo.Size = new System.Drawing.Size(160, 30);
             this.dateTimePickerReportsTo.TabIndex = 8;
             // 
             // tableLayoutPanel6
@@ -1813,9 +1911,9 @@
             // 
             this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(3, 5);
+            this.label34.Location = new System.Drawing.Point(3, 3);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(157, 19);
+            this.label34.Size = new System.Drawing.Size(157, 23);
             this.label34.TabIndex = 0;
             this.label34.Text = "Денег на счету";
             // 
@@ -1823,9 +1921,9 @@
             // 
             this.labelReportsMoneyAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelReportsMoneyAmount.AutoSize = true;
-            this.labelReportsMoneyAmount.Location = new System.Drawing.Point(166, 5);
+            this.labelReportsMoneyAmount.Location = new System.Drawing.Point(166, 3);
             this.labelReportsMoneyAmount.Name = "labelReportsMoneyAmount";
-            this.labelReportsMoneyAmount.Size = new System.Drawing.Size(239, 19);
+            this.labelReportsMoneyAmount.Size = new System.Drawing.Size(239, 23);
             this.labelReportsMoneyAmount.TabIndex = 1;
             this.labelReportsMoneyAmount.Text = "label35";
             // 
@@ -1833,18 +1931,19 @@
             // 
             this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(3, 40);
+            this.label36.Location = new System.Drawing.Point(3, 38);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(157, 19);
+            this.label36.Size = new System.Drawing.Size(157, 23);
             this.label36.TabIndex = 2;
             this.label36.Text = "Потрачено";
             // 
             // textBoxReportsMoneyToSpend
             // 
             this.textBoxReportsMoneyToSpend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxReportsMoneyToSpend.Location = new System.Drawing.Point(166, 37);
+            this.textBoxReportsMoneyToSpend.Location = new System.Drawing.Point(166, 35);
+            this.textBoxReportsMoneyToSpend.MaxLength = 11;
             this.textBoxReportsMoneyToSpend.Name = "textBoxReportsMoneyToSpend";
-            this.textBoxReportsMoneyToSpend.Size = new System.Drawing.Size(239, 25);
+            this.textBoxReportsMoneyToSpend.Size = new System.Drawing.Size(239, 30);
             this.textBoxReportsMoneyToSpend.TabIndex = 10;
             // 
             // textBoxReportsComment
@@ -1852,6 +1951,7 @@
             this.tableLayoutPanel6.SetColumnSpan(this.textBoxReportsComment, 2);
             this.textBoxReportsComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxReportsComment.Location = new System.Drawing.Point(3, 73);
+            this.textBoxReportsComment.MaxLength = 150;
             this.textBoxReportsComment.Multiline = true;
             this.textBoxReportsComment.Name = "textBoxReportsComment";
             this.textBoxReportsComment.Size = new System.Drawing.Size(402, 69);
@@ -1880,7 +1980,7 @@
             // 
             // EmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabMain);
@@ -1890,6 +1990,7 @@
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EmployeeForm";
             this.Text = "Приют животных \"Ласка\"";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeForm_FormClosed);
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.Resize += new System.EventHandler(this.EmployeeForm_Resize);
             this.tabMain.ResumeLayout(false);
@@ -2021,7 +2122,6 @@
         private System.Windows.Forms.TextBox textBoxStaffLastName;
         private System.Windows.Forms.TextBox textBoxStaffFirstName;
         private System.Windows.Forms.TextBox textBoxStaffMiddleName;
-        private System.Windows.Forms.TextBox textBoxStaffVacancy;
         private System.Windows.Forms.TextBox textBoxStaffPhoneNumber;
         private System.Windows.Forms.TextBox textBoxStaffAddress;
         private System.Windows.Forms.Button buttonStaffSave;
@@ -2082,5 +2182,11 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.ComboBox comboBoxGoodsType;
+        private System.Windows.Forms.TextBox textBoxDebitCreditComment;
+        private System.Windows.Forms.ComboBox comboBoxStaffVacancy;
+        private System.Windows.Forms.TextBox textBoxStaffPass;
+        private System.Windows.Forms.TextBox textBoxStaffLogin;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
     }
 }

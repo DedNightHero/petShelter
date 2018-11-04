@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelVolunteerName = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxVolunteerFormSortName = new System.Windows.Forms.TextBox();
             this.radioButtonVolunteerFormSortCure = new System.Windows.Forms.RadioButton();
@@ -78,7 +78,7 @@
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.label2, 1, 2);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.label3, 1, 6);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.label4, 5, 6);
-            this.tableLayoutPanelVolunteerMain.Controls.Add(this.label5, 5, 1);
+            this.tableLayoutPanelVolunteerMain.Controls.Add(this.labelVolunteerName, 5, 1);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.label6, 1, 3);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.textBoxVolunteerFormSortName, 2, 3);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.radioButtonVolunteerFormSortCure, 3, 3);
@@ -150,17 +150,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Ваша благотворительность";
             // 
-            // label5
+            // labelVolunteerName
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label5, 3);
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(424, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(424, 38);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Роман Екатерина Валериевна";
+            this.labelVolunteerName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelVolunteerName.AutoSize = true;
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.labelVolunteerName, 3);
+            this.labelVolunteerName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelVolunteerName.Location = new System.Drawing.Point(424, 43);
+            this.labelVolunteerName.Name = "labelVolunteerName";
+            this.labelVolunteerName.Size = new System.Drawing.Size(0, 38);
+            this.labelVolunteerName.TabIndex = 4;
             // 
             // label6
             // 
@@ -179,6 +178,7 @@
             this.textBoxVolunteerFormSortName.Name = "textBoxVolunteerFormSortName";
             this.textBoxVolunteerFormSortName.Size = new System.Drawing.Size(96, 30);
             this.textBoxVolunteerFormSortName.TabIndex = 1;
+            this.textBoxVolunteerFormSortName.TextChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // radioButtonVolunteerFormSortCure
             // 
@@ -191,6 +191,7 @@
             this.radioButtonVolunteerFormSortCure.TabStop = true;
             this.radioButtonVolunteerFormSortCure.Text = "Лекарства";
             this.radioButtonVolunteerFormSortCure.UseVisualStyleBackColor = true;
+            this.radioButtonVolunteerFormSortCure.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // radioButtonVolunteerFormSortEat
             // 
@@ -203,6 +204,7 @@
             this.radioButtonVolunteerFormSortEat.TabStop = true;
             this.radioButtonVolunteerFormSortEat.Text = "Еда";
             this.radioButtonVolunteerFormSortEat.UseVisualStyleBackColor = true;
+            this.radioButtonVolunteerFormSortEat.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // radioButtonVolunteerFormSortOther
             // 
@@ -215,6 +217,7 @@
             this.radioButtonVolunteerFormSortOther.TabStop = true;
             this.radioButtonVolunteerFormSortOther.Text = "Прочее";
             this.radioButtonVolunteerFormSortOther.UseVisualStyleBackColor = true;
+            this.radioButtonVolunteerFormSortOther.CheckedChanged += new System.EventHandler(this.sortGoodsTable);
             // 
             // buttonVolunteerFormCreateReport
             // 
@@ -228,23 +231,39 @@
             // 
             // dataGridViewVolunteerFormGoods
             // 
+            this.dataGridViewVolunteerFormGoods.AllowUserToAddRows = false;
+            this.dataGridViewVolunteerFormGoods.AllowUserToDeleteRows = false;
+            this.dataGridViewVolunteerFormGoods.AllowUserToResizeColumns = false;
+            this.dataGridViewVolunteerFormGoods.AllowUserToResizeRows = false;
+            this.dataGridViewVolunteerFormGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewVolunteerFormGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormGoods, 7);
             this.dataGridViewVolunteerFormGoods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewVolunteerFormGoods.Location = new System.Drawing.Point(9, 202);
+            this.dataGridViewVolunteerFormGoods.MultiSelect = false;
             this.dataGridViewVolunteerFormGoods.Name = "dataGridViewVolunteerFormGoods";
+            this.dataGridViewVolunteerFormGoods.ReadOnly = true;
             this.dataGridViewVolunteerFormGoods.RowTemplate.Height = 24;
+            this.dataGridViewVolunteerFormGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVolunteerFormGoods.Size = new System.Drawing.Size(961, 289);
             this.dataGridViewVolunteerFormGoods.TabIndex = 6;
             // 
             // dataGridViewVolunteerFormOneCharity
             // 
+            this.dataGridViewVolunteerFormOneCharity.AllowUserToAddRows = false;
+            this.dataGridViewVolunteerFormOneCharity.AllowUserToDeleteRows = false;
+            this.dataGridViewVolunteerFormOneCharity.AllowUserToResizeColumns = false;
+            this.dataGridViewVolunteerFormOneCharity.AllowUserToResizeRows = false;
+            this.dataGridViewVolunteerFormOneCharity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewVolunteerFormOneCharity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormOneCharity, 3);
             this.dataGridViewVolunteerFormOneCharity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewVolunteerFormOneCharity.Location = new System.Drawing.Point(424, 566);
+            this.dataGridViewVolunteerFormOneCharity.MultiSelect = false;
             this.dataGridViewVolunteerFormOneCharity.Name = "dataGridViewVolunteerFormOneCharity";
+            this.dataGridViewVolunteerFormOneCharity.ReadOnly = true;
             this.dataGridViewVolunteerFormOneCharity.RowTemplate.Height = 24;
+            this.dataGridViewVolunteerFormOneCharity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVolunteerFormOneCharity.Size = new System.Drawing.Size(546, 155);
             this.dataGridViewVolunteerFormOneCharity.TabIndex = 13;
             // 
@@ -406,6 +425,8 @@
             this.MinimumSize = new System.Drawing.Size(1000, 800);
             this.Name = "VolunteerForm";
             this.Text = "Приют животных \"Ласка\"";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VolunteerForm_FormClosed);
+            this.Load += new System.EventHandler(this.VolunteerForm_Load);
             this.tableLayoutPanelVolunteerMain.ResumeLayout(false);
             this.tableLayoutPanelVolunteerMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVolunteerFormGoods)).EndInit();
@@ -423,7 +444,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelVolunteerName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxVolunteerFormSortName;
         private System.Windows.Forms.RadioButton radioButtonVolunteerFormSortCure;

@@ -16,7 +16,7 @@ namespace MainForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeeForm());
+            Application.Run(new Authorization());
         }
     }
 }

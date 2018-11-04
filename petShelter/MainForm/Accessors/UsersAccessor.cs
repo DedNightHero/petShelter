@@ -41,7 +41,7 @@ namespace MainForm.Accessors
             };
             MySqlParameter Position = new MySqlParameter
             {
-                SourceColumn = "pn",
+                SourceColumn = "Position",
                 ParameterName = "@pn",
             };
             MySqlParameter Phone = new MySqlParameter
