@@ -271,7 +271,7 @@
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label3, 2, 1);
@@ -404,7 +404,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -455,7 +455,7 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel4.Controls.Add(this.comboBoxPetsCure, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBoxPetsComment, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.buttonPetsAddCure, 2, 0);
@@ -471,7 +471,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1674,7 +1674,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;

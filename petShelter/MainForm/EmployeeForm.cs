@@ -607,7 +607,7 @@ namespace MainForm
         #endregion
         #endregion
 
-        #region ОКНО "Материально-техническая база"
+        #region ОКНО "Материальная база"
         #region Инициализация окна
         private void initGoodsTab()
         {
@@ -829,5 +829,8 @@ namespace MainForm
 
         #endregion
 
+        #region ОКНО "Отчёты"
+
+        #endregion
     }
 }
