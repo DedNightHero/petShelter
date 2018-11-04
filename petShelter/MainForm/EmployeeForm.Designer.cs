@@ -237,8 +237,8 @@
             // 
             this.tableLayoutPanelAnimalsMain.ColumnCount = 5;
             this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
-            this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68F));
+            this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.96F));
             this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.tableLayoutPanelAnimalsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanelAnimalsMain.Controls.Add(this.tableLayoutPanelAnimalsLeftMain, 1, 1);
@@ -264,13 +264,13 @@
             // tableLayoutPanelAnimalsLeftMain
             // 
             this.tableLayoutPanelAnimalsLeftMain.ColumnCount = 8;
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label2, 0, 1);
@@ -290,8 +290,7 @@
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelAnimalsLeftMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelAnimalsLeftMain.Size = new System.Drawing.Size(837, 334);
+            this.tableLayoutPanelAnimalsLeftMain.Size = new System.Drawing.Size(850, 334);
             this.tableLayoutPanelAnimalsLeftMain.TabIndex = 0;
             // 
             // label1
@@ -301,7 +300,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(831, 30);
+            this.label1.Size = new System.Drawing.Size(844, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Список животных в приюте";
             // 
@@ -309,9 +308,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 32);
+            this.label2.Location = new System.Drawing.Point(3, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 46);
+            this.label2.Size = new System.Drawing.Size(39, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Вид";
             // 
@@ -319,9 +318,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(204, 32);
+            this.label3.Location = new System.Drawing.Point(206, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 46);
+            this.label3.Size = new System.Drawing.Size(69, 46);
             this.label3.TabIndex = 2;
             this.label3.Text = "Порода";
             // 
@@ -329,29 +328,29 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 32);
+            this.label4.Location = new System.Drawing.Point(439, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 46);
+            this.label4.Size = new System.Drawing.Size(59, 46);
             this.label4.TabIndex = 3;
             this.label4.Text = "Кличка";
             // 
             // textBoxPetsSortBreed
             // 
             this.textBoxPetsSortBreed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(274, 40);
+            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(281, 40);
             this.textBoxPetsSortBreed.MaxLength = 30;
             this.textBoxPetsSortBreed.Name = "textBoxPetsSortBreed";
-            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(155, 30);
+            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(152, 30);
             this.textBoxPetsSortBreed.TabIndex = 2;
             this.textBoxPetsSortBreed.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // textBoxPetsSortNickName
             // 
             this.textBoxPetsSortNickName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(495, 40);
+            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(504, 40);
             this.textBoxPetsSortNickName.MaxLength = 20;
             this.textBoxPetsSortNickName.Name = "textBoxPetsSortNickName";
-            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(155, 30);
+            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(152, 30);
             this.textBoxPetsSortNickName.TabIndex = 3;
             this.textBoxPetsSortNickName.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
@@ -359,9 +358,9 @@
             // 
             this.checkBoxPetsIsAtShelter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtShelter.AutoSize = true;
-            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(656, 41);
+            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(662, 41);
             this.checkBoxPetsIsAtShelter.Name = "checkBoxPetsIsAtShelter";
-            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(94, 27);
+            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(99, 27);
             this.checkBoxPetsIsAtShelter.TabIndex = 4;
             this.checkBoxPetsIsAtShelter.Text = "В приюте";
             this.checkBoxPetsIsAtShelter.UseVisualStyleBackColor = true;
@@ -371,9 +370,9 @@
             // 
             this.checkBoxPetsIsAtHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtHome.AutoSize = true;
-            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(756, 41);
+            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(767, 41);
             this.checkBoxPetsIsAtHome.Name = "checkBoxPetsIsAtHome";
-            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(78, 27);
+            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(80, 27);
             this.checkBoxPetsIsAtHome.TabIndex = 5;
             this.checkBoxPetsIsAtHome.Text = "Дома";
             this.checkBoxPetsIsAtHome.UseVisualStyleBackColor = true;
@@ -396,7 +395,7 @@
             this.dataGridViewPetsAllPets.RowTemplate.Height = 24;
             this.dataGridViewPetsAllPets.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPetsAllPets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPetsAllPets.Size = new System.Drawing.Size(831, 248);
+            this.dataGridViewPetsAllPets.Size = new System.Drawing.Size(844, 248);
             this.dataGridViewPetsAllPets.TabIndex = 6;
             this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
@@ -405,9 +404,9 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(43, 42);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
-            this.comboBoxSortSpecies.Size = new System.Drawing.Size(155, 31);
+            this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
             this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
@@ -423,7 +422,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(831, 145);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(844, 145);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label5
@@ -432,7 +431,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(825, 23);
+            this.label5.Size = new System.Drawing.Size(838, 23);
             this.label5.TabIndex = 0;
             this.label5.Text = "История лечения";
             // 
@@ -448,7 +447,7 @@
             this.dataGridViewPetsHistory.Name = "dataGridViewPetsHistory";
             this.dataGridViewPetsHistory.ReadOnly = true;
             this.dataGridViewPetsHistory.RowTemplate.Height = 24;
-            this.dataGridViewPetsHistory.Size = new System.Drawing.Size(825, 109);
+            this.dataGridViewPetsHistory.Size = new System.Drawing.Size(838, 109);
             this.dataGridViewPetsHistory.TabIndex = 7;
             // 
             // tableLayoutPanel4
@@ -465,25 +464,25 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(831, 76);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(844, 76);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // comboBoxPetsCure
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
-            this.comboBoxPetsCure.Size = new System.Drawing.Size(183, 31);
+            this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
             // 
             // textBoxPetsComment
             // 
             this.textBoxPetsComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsComment.Location = new System.Drawing.Point(192, 3);
+            this.textBoxPetsComment.Location = new System.Drawing.Point(195, 3);
             this.textBoxPetsComment.Multiline = true;
             this.textBoxPetsComment.Name = "textBoxPetsComment";
-            this.textBoxPetsComment.Size = new System.Drawing.Size(561, 69);
+            this.textBoxPetsComment.Size = new System.Drawing.Size(570, 69);
             this.textBoxPetsComment.TabIndex = 9;
             // 
             // buttonPetsAddCure
@@ -491,9 +490,9 @@
             this.buttonPetsAddCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPetsAddCure.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
             this.buttonPetsAddCure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonPetsAddCure.Location = new System.Drawing.Point(759, 5);
+            this.buttonPetsAddCure.Location = new System.Drawing.Point(771, 5);
             this.buttonPetsAddCure.Name = "buttonPetsAddCure";
-            this.buttonPetsAddCure.Size = new System.Drawing.Size(69, 65);
+            this.buttonPetsAddCure.Size = new System.Drawing.Size(70, 65);
             this.buttonPetsAddCure.TabIndex = 10;
             this.buttonPetsAddCure.UseVisualStyleBackColor = true;
             // 
@@ -1675,7 +1674,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
@@ -1989,6 +1988,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EmployeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Приют животных \"Ласка\"";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeForm_FormClosed);
             this.Load += new System.EventHandler(this.EmployeeForm_Load);

@@ -424,6 +424,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1000, 800);
             this.Name = "VolunteerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Приют животных \"Ласка\"";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VolunteerForm_FormClosed);
             this.Load += new System.EventHandler(this.VolunteerForm_Load);

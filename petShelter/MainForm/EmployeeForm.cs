@@ -38,7 +38,8 @@ namespace MainForm
         private void EmployeeForm_Resize(object sender, EventArgs e)
         {
             int tabWidth = tabMain.Width / tabMain.TabPages.Count - 1;
-            tabMain.ItemSize = new Size(tabWidth - 1, tabMain.ItemSize.Height);
+            if (tabWidth>0)
+                tabMain.ItemSize = new Size(tabWidth - 1, tabMain.ItemSize.Height);
         }
         #endregion
         #region Генерация хэша
