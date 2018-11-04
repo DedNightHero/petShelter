@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 16 2018 г., 09:59
+-- Время создания: Ноя 04 2018 г., 17:57
 -- Версия сервера: 10.1.25-MariaDB
 -- Версия PHP: 5.6.31
 
@@ -49,8 +49,8 @@ CREATE TABLE `animals` (
 INSERT INTO `animals` (`Id_Animals`, `Species`, `Breed`, `NickName`, `ArrivalDate`, `InHere`, `FMLNameOfOwner`, `OwnerPhone`, `OwnerAddress`, `DeliveryDate`, `PetPhoto`) VALUES
 (1, 2, 'Мэйнкун', 'Машка', '2018-10-02', 0, 'Небольсина М.', '8945123546', 'ул. Пожарника, д. 11', '2018-10-03', 'D:\\photos\\220px-Petersen1_tiny.svg.png'),
 (2, 1, 'Пинчер', 'Добби', '2018-10-03', 0, 'Роман Е.В.', '8962804300', 'г. Новоалтайск, ул. Партизанская, д. 110, к.10', '2018-10-04', 'D:\\photos\\14779362695817848dcfe1e4.53165232.jpg'),
-(3, 1, 'Дворняга', 'Цезарь', '2018-10-05', 1, NULL, NULL, NULL, '0001-01-01', NULL),
-(4, 2, 'Дворняга', 'Нефертити', '2018-10-06', 1, NULL, NULL, NULL, '0001-01-01', NULL);
+(3, 1, 'Дворняга', 'Цезарь', '2018-10-05', 0, 'Роман Е.В.', '895', 'ыва', '2018-10-04', 'D:\\photos\\united-state-map.png'),
+(7, 1, 'Лабрадор', 'Шелдон', '2018-10-06', 1, NULL, NULL, NULL, '0001-01-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,12 @@ INSERT INTO `debitcredit` (`Id_DebitCredit`, `GoodsName`, `Comment`, `Date`, `De
 (1, 1, NULL, '2018-10-16', 0, 0, NULL, NULL),
 (2, 1, NULL, '2018-10-16', 0, 5, NULL, 1),
 (3, 1, NULL, '2018-10-16', 0, 4, NULL, 2),
-(4, 1, NULL, '2018-10-16', 1, 0, NULL, NULL);
+(4, 1, NULL, '2018-10-16', 1, 0, NULL, NULL),
+(5, 2, NULL, '2018-10-16', 0, 0, NULL, NULL),
+(6, 2, 'Пожертвование', '2018-10-16', 0, 50, NULL, 1),
+(7, 2, 'На жвачку потратил', '2018-10-16', 10, 0, NULL, 1),
+(8, 2, NULL, '2018-10-16', 0, 20, NULL, NULL),
+(9, 2, 'Собачкам на еду', '2018-10-16', 0, 60, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -98,7 +103,8 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`Id_Goods`, `NameOfGoods`, `Type`, `Amount`, `Required`) VALUES
-(1, 'Икра чёрная', 1, 8, 10);
+(1, 'Икра чёрная', 1, 8, 10),
+(2, 'Рубли', 3, 120, 100);
 
 -- --------------------------------------------------------
 
@@ -183,8 +189,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id_Users`, `Login`, `Password`, `FirstMiddleLastName`, `Position`, `Phone`, `Address`) VALUES
-(1, 'DNH', 'b4b01c162bed5b59808b5c929f70a994', 'Фещенко Дмитрий Николаевич', 4, '89628043000', 'г. Барнаул, ул. Некрасова, д.41, к.55'),
-(2, 'REV', NULL, 'Роман Екатерина Валериевна', 1, '89233421816', 'г. Новоалтайск, ул. Партизанская, д.111, к. 10');
+(1, 'DNH', '9FF7FCE8DC408BF90D743A79F825CCDC', 'Фещенко Дмитрий Николаевич', 4, '89628043000', 'г. Барнаул, ул. Некрасова, д.41, к.55'),
+(2, 'REV', NULL, 'Роман Екатерина Валериевна', 1, '89233421816', 'г. Новоалтайск, ул. Партизанская, д.111, к. 10'),
+(3, 'Aldemm', NULL, 'Деменко Александр Михайлович', 1, 'sony', 'пос. Южный, ul. Unknownaya, d. -1');
 
 --
 -- Индексы сохранённых таблиц
@@ -246,17 +253,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `debitcredit`
 --
 ALTER TABLE `debitcredit`
-  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `goodstype`
 --
@@ -276,7 +283,7 @@ ALTER TABLE `species`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
