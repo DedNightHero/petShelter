@@ -48,10 +48,10 @@ C:\CODE\petShelter\petShelter\MainForm\bin\Debug\normnfc.nlp
 C:\CODE\petShelter\petShelter\MainForm\bin\Debug\normnfd.nlp
 C:\CODE\petShelter\petShelter\MainForm\bin\Debug\normnfkc.nlp
 C:\CODE\petShelter\petShelter\MainForm\bin\Debug\normnfkd.nlp
-C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csprojResolveAssemblyReference.cache
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.Authorization.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.EmployeeForm.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.Properties.Resources.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.VolunteerForm.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.GenerateResource.Cache
 D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.ResolveComReference.cache
+C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.ResolveComReference.cache
