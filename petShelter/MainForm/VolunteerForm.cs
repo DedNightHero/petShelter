@@ -112,17 +112,41 @@ namespace MainForm
         }
         #endregion
         #region Кнопка формирования отчёта
+        
         private void buttonVolunteerFormCreateReport_Click(object sender, EventArgs e)
         {
-           CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Необходимые приюту вещи");
+            Reports report = new Reports();
+           //CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Необходимые приюту вещи", saveFileDialog1);
+           report.CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Необходимые приюту вещи", saveFileDialog1);
         }
         #endregion
         #region Генерация отчёта
-        private void CreateReportFromVisibleItems(DataGridView DG, string Title)
+
+
+        /*private string AskFileName(SaveFileDialog SFD)
         {
+            //Save Dialog Init
+
+            SFD.Filter = "Text files(*.xls)|*.xls|Text files(*.xlsx)|*.xlsx|All files(*.*)|*.*"; ;
+            SFD.CreatePrompt = true;
+            SFD.FileName = DateTime.Today.ToString("dd/MM/yyyy") + ".xls";
+            SFD.RestoreDirectory = true;
+            SFD.Title = "Export Excel File To";
+            if (SFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                return SFD.FileName;
+            }
+            return null;
+        }        
+        private void CreateReportFromVisibleItems(DataGridView DG, string Title, SaveFileDialog SFD)
+        {
+
+            string path = AskFileName(SFD);
+
             int currentRow = 1; //текущая строка в файле Excel
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook excelWorkBook = excelApp.Workbooks.Add();
+            //Excel.Workbook excelWorkBook = excelApp.Workbooks.Open(filename);
             Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add();
             //имя листа
             excelWorkSheet.Name = "Отчёт";
@@ -154,10 +178,18 @@ namespace MainForm
                     }
                 }
             }
-            excelWorkBook.Save();
-            excelWorkBook.Close();
-            excelApp.Quit();
-        }
+            
+                excelWorkBook.SaveCopyAs(path);
+                excelWorkBook.Saved = true;
+                excelWorkBook.Close(true);
+                excelApp.Quit();
+                MessageBox.Show("Отчет сохранен в файл: " + path, "Отчет сохранен!", MessageBoxButtons.OK);
+            }*/
+        
+        
+
+        
+
         #endregion
     }
 }
