@@ -36,12 +36,6 @@
     <ApplicationIcon>PetShelterLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MySql.Data.dll</HintPath>
@@ -89,7 +83,6 @@
     </Compile>
     <Compile Include="PetShelter.cs">
       <DependentUpon>PetShelter.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PetShelter.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using Word = Microsoft.Office.Interop.Word;
-
 
 namespace MainForm
 {
@@ -718,7 +714,7 @@ namespace MainForm
             dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
-            cleanGoodsAddArea();
+            cleanGoodsAddArea();         
         }
         #endregion
         #region Проверка введенных данных при добавлении предмета
@@ -830,9 +826,6 @@ namespace MainForm
             }
         }
         #endregion
-        
-
-
 
         #endregion
 
