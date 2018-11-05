@@ -1,10 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace MainForm
 {
-
     public class AbstractConnection
     {
+        private bool f = false;
         private MySqlConnection connection;
 
         public MySqlConnection Connection
@@ -21,7 +22,20 @@ namespace MainForm
 
         public void Open()
         {
-            connection.Open();
+            try
+            {
+                connection.Open();
+                f = false;
+            }
+            catch
+            {
+                if (connection != null)
+                    connection.Close();
+                if(!f)
+                    MessageBox.Show("Отсутствует соединение с базой данных", "Ошибка", MessageBoxButtons.OK);
+                f = true;
+                Open();
+            }
         }
 
         public void Close()
