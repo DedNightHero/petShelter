@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+//using Word = Microsoft.Office.Interop.Word;
+using System.Collections.Generic;
 
 namespace MainForm
 {
@@ -106,5 +110,58 @@ namespace MainForm
             dataGridViewVolunteerFormGoods.ClearSelection();
         }
         #endregion
+
+        private void buttonVolunteerFormCreateReport_Click(object sender, EventArgs e)
+        {
+            CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Вещи необходимые приюту");
+        }
+        private void CreateReportFromVisibleItems(DataGridView DG, string Title)
+        {
+            int currentRow = 1; //текущая строка в файле Excel
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook excelWorkBook = excelApp.Workbooks.Add(@"C:\Reportss\Org.xlsx");
+            Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add();
+            //имя листа
+            excelWorkSheet.Name = "Имя отчета";
+            //добавление заголовка
+            excelWorkSheet.Cells[currentRow, 1] = Title;
+            currentRow++;
+            excelWorkSheet.Cells[currentRow, 1] = DateTime.Today.ToString("dd/MM/yyyy");
+            currentRow += 2;
+
+
+            //Поиск выборка только видимых элементов для отчета
+            List<DataGridViewColumn> listVisible = new List<DataGridViewColumn>();
+            foreach (DataGridViewColumn col in DG.Columns)
+            {
+                if (col.Visible)
+                    listVisible.Add(col);
+            }
+            int rowCount = DG.RowCount;
+
+
+
+
+            for (int i = 0; i < listVisible.Count; i++)
+            {
+                excelWorkSheet.Cells[currentRow, i + 1] = listVisible[i].HeaderText;
+            }
+            for (int y = 0; y < rowCount; y++)
+            {
+                currentRow++;
+                for (int x = 0; x < listVisible.Count; x++)
+                {
+                    for (int j = 0; j < listVisible.Count; j++)
+                    {
+                        excelWorkSheet.Cells[currentRow, x + 1] = DG.Rows[y].Cells[listVisible[x].Name].Value.ToString();
+                    }
+                }
+            }
+
+            excelWorkBook.Save();
+            excelWorkBook.Close();
+            excelApp.Quit();
+
+        }
     }
 }
