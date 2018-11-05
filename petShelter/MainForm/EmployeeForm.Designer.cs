@@ -220,6 +220,7 @@
             this.tabMain.Size = new System.Drawing.Size(1264, 681);
             this.tabMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabMain.TabIndex = 0;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
             // tabAnimals
             // 
@@ -399,12 +400,14 @@
             this.dataGridViewPetsAllPets.TabIndex = 6;
             this.dataGridViewPetsAllPets.TabStop = false;
             this.dataGridViewPetsAllPets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPetsAllPets_CellClick);
+            this.dataGridViewPetsAllPets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPetsAllPets_KeyDown);
+            this.dataGridViewPetsAllPets.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPetsAllPets_KeyUp);
             // 
             // comboBoxSortSpecies
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -440,13 +443,16 @@
             this.dataGridViewPetsHistory.AllowUserToAddRows = false;
             this.dataGridViewPetsHistory.AllowUserToDeleteRows = false;
             this.dataGridViewPetsHistory.AllowUserToResizeColumns = false;
+            this.dataGridViewPetsHistory.AllowUserToResizeRows = false;
             this.dataGridViewPetsHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPetsHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPetsHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPetsHistory.Location = new System.Drawing.Point(3, 33);
+            this.dataGridViewPetsHistory.MultiSelect = false;
             this.dataGridViewPetsHistory.Name = "dataGridViewPetsHistory";
             this.dataGridViewPetsHistory.ReadOnly = true;
             this.dataGridViewPetsHistory.RowTemplate.Height = 24;
+            this.dataGridViewPetsHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPetsHistory.Size = new System.Drawing.Size(838, 109);
             this.dataGridViewPetsHistory.TabIndex = 7;
             // 
@@ -471,7 +477,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -495,6 +501,7 @@
             this.buttonPetsAddCure.Size = new System.Drawing.Size(70, 65);
             this.buttonPetsAddCure.TabIndex = 10;
             this.buttonPetsAddCure.UseVisualStyleBackColor = true;
+            this.buttonPetsAddCure.Click += new System.EventHandler(this.buttonPetsAddCure_Click);
             // 
             // tableLayoutPanelPhotoAndInfo
             // 
@@ -1011,6 +1018,8 @@
             this.dataGridViewStaffAllMembers.TabIndex = 5;
             this.dataGridViewStaffAllMembers.TabStop = false;
             this.dataGridViewStaffAllMembers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStaffAllMembers_CellClick);
+            this.dataGridViewStaffAllMembers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStaffAllMembers_KeyDown);
+            this.dataGridViewStaffAllMembers.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStaffAllMembers_KeyUp);
             // 
             // dataGridViewStaffCharity
             // 
@@ -1500,6 +1509,8 @@
             this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1199, 236);
             this.dataGridViewGoodsAllGoods.TabIndex = 6;
             this.dataGridViewGoodsAllGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGoodsAllGoods_CellClick);
+            this.dataGridViewGoodsAllGoods.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewGoodsAllGoods_KeyDown);
+            this.dataGridViewGoodsAllGoods.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewGoodsAllGoods_KeyUp);
             // 
             // tableLayoutPanelAfterGoodTable
             // 
@@ -1674,7 +1685,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;

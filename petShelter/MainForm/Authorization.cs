@@ -134,7 +134,8 @@ namespace MainForm
             if (psUsers.users.Select("Login LIKE '" + login + "' and Password LIKE '" + password +"'").Length == 1)
             {
                 int lvl = Convert.ToInt32(psUsers.users.Select("Login LIKE '" + login + "' and Password LIKE '" + password + "'")[0][4].ToString());
-                EmployeeForm ef1 = new EmployeeForm(lvl);
+                int id = Convert.ToInt32(psUsers.users.Select("Login LIKE '" + login + "' and Password LIKE '" + password + "'")[0][0].ToString());
+                EmployeeForm ef1 = new EmployeeForm(lvl, id);
                 ef1.Show();
                 this.Hide();
             }

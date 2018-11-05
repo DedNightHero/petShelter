@@ -18,12 +18,14 @@ namespace MainForm
         BLogic.IBL ibl = new BLogic.BLogic();
         private int id;
         private int userLvl;
+        private int userId;
         #endregion
         #region Создание и загрузка формы
-        public EmployeeForm(int lvl)
+        public EmployeeForm(int lvl, int id)
         {
             InitializeComponent();
             userLvl = lvl;
+            userId = id;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
@@ -32,6 +34,38 @@ namespace MainForm
             initAnimalsTab();
             initStaffTab();
             initGoodsTab();
+        }
+        #endregion
+        #region Переключение между вкладками
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 0)
+            {
+                initAnimalsTab();
+                cleanPetsAddArea();
+                clearPetsAddCureArea();
+                cleanPetsSortArea();
+                return;
+            }
+            else if (tabMain.SelectedIndex == 1)
+            {
+                initStaffTab();
+                clearStaffFilter();
+                cleanStaffAddArea();
+                return;
+            }
+            else if (tabMain.SelectedIndex == 2)
+            {
+                initGoodsTab();
+                clearGoodsFilter();
+                cleanGoodsAddArea();
+                dataGridViewGoodsAllGoods.ClearSelection();
+                return;
+            }
+            else if (tabMain.SelectedIndex == 3)
+            {
+
+            }
         }
         #endregion
         #region Изменение размера вкладок, при изменении размера окна приложения
@@ -71,17 +105,28 @@ namespace MainForm
         {
             psAnimals = ibl.getAnimals();
             psSpecies = ibl.getSpecies();
+            psGoods = ibl.getGoods();
             openFileDialogAddPetPhoto.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             comboBoxPetsSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSortSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPetsSpecies.Items.Clear();
+            comboBoxSortSpecies.Items.Clear();
             for (int i = 0; i < psSpecies.species.Rows.Count; i++)
             {
                 comboBoxSortSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
                 comboBoxPetsSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
             }
             comboBoxSortSpecies.Items.Add("");
+            comboBoxPetsCure.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPetsCure.Items.Clear();
+            for (int i = 0; i < psGoods.goods.Rows.Count; i++)
+            {
+                if (psGoods.goods.Rows[i][2].ToString()=="2")
+                    comboBoxPetsCure.Items.Add(psGoods.goods.Rows[i][1].ToString());
+            }
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
+            dataGridViewPetsHistory.DataSource = 0;
             setPetsGridView();
         }
         #endregion
@@ -108,6 +153,17 @@ namespace MainForm
         private void dataGridViewPetsAllPets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             setPetsAddArea(e.RowIndex);
+            setPetsCureHistory(id);
+        }
+        private void dataGridViewPetsAllPets_KeyUp(object sender, KeyEventArgs e)
+        {
+            setPetsAddArea(dataGridViewPetsAllPets.CurrentRow.Index);
+            setPetsCureHistory(id);
+        }
+        private void dataGridViewPetsAllPets_KeyDown(object sender, KeyEventArgs e)
+        {
+            setPetsAddArea(dataGridViewPetsAllPets.CurrentRow.Index);
+            setPetsCureHistory(id);
         }
         #endregion
         #region Кнопка создания или изменения информации о животном
@@ -154,6 +210,72 @@ namespace MainForm
                     cleanPetsAddArea();
                 }
             }
+        }
+        #endregion
+        #region Очистка области внесения препарата животному
+        private void clearPetsAddCureArea()
+        {
+            comboBoxPetsCure.SelectedIndex=-1;
+            textBoxPetsComment.Text = "";
+            dataGridViewPetsHistory.DataSource = 0;
+        }
+        #endregion
+        #region Очистка фильтра
+        private void cleanPetsSortArea()
+        {
+            comboBoxSortSpecies.SelectedIndex = -1;
+            textBoxPetsSortBreed.Text = "";
+            textBoxPetsSortNickName.Text = "";
+            checkBoxPetsIsAtHome.Checked = false;
+            checkBoxPetsIsAtShelter.Checked = false;
+        }
+        #endregion
+        #region Кнопка выделения лекарства животному
+        private void buttonPetsAddCure_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewPetsAllPets.SelectedRows.Count!=1)
+            {
+                MessageBox.Show("Нужно выбрать питомца из списка", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            psDebitcredit = ibl.getDebitCredit();
+            psGoods = ibl.getGoods();
+            int gn = 0;
+            if (comboBoxPetsCure.Text == "")
+            {
+                MessageBox.Show("Нужно выбрать препарат", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            else if (textBoxPetsComment.Text == "")
+            {
+                MessageBox.Show("Нужно указать причину выдачи препарата", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            for (int i = 0; i < psGoods.goods.Rows.Count; i++)
+            {
+                if (psGoods.goods.Rows[i][1].ToString()==comboBoxPetsCure.Text)
+                {
+                    int x = Convert.ToInt32(psGoods.goods.Rows[i][3].ToString()) - 1;
+                    if (x>=0)
+                    {
+                        psGoods.goods.Rows[i][3] = x;
+                        gn = Convert.ToInt32(psGoods.goods.Rows[i][0].ToString());
+                        ibl.setGoods(psGoods);
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Препарата нет в наличии", "Ошибка", MessageBoxButtons.OK);
+                        clearPetsAddCureArea();
+                        return;
+                    }
+                }
+            }
+            psDebitcredit.debitcredit.AdddebitcreditRow(gn, textBoxPetsComment.Text, DateTime.Today, 1, 0, id, userId);
+            ibl.setDebitCredit(psDebitcredit);
+            clearPetsAddCureArea();
+            dataGridViewPetsHistory.Refresh();
+            dataGridViewPetsAllPets.ClearSelection();
         }
         #endregion
         #region Вспомогательные функции для Области добавления питомцев
@@ -212,6 +334,7 @@ namespace MainForm
             textBoxPetsPhoneNumber.Text = "";
             textBoxPetsAddress.Text = "";
             checkBoxPetsNewAnimal.Checked = false;
+            pictureBoxPetPhoto.Image = Properties.Resources.d1;
         }
         #endregion
         #region Установка параметров животного для редактирования
@@ -240,6 +363,27 @@ namespace MainForm
                     dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
                 }
             }
+        }
+        #endregion
+        #region Установка истории лечения для животного
+        private void setPetsCureHistory(int id)
+        {
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
+            dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
+            dataGridViewPetsHistory.Refresh();
+            dataGridViewPetsHistory.Columns[0].Visible = false;
+            dataGridViewPetsHistory.Columns[4].Visible = false;
+            dataGridViewPetsHistory.Columns[5].Visible = false;
+            dataGridViewPetsHistory.Columns[6].Visible = false;
+            dataGridViewPetsHistory.Columns[7].Visible = false;
+            dataGridViewPetsHistory.Columns[1].HeaderText = "Препарат";
+            dataGridViewPetsHistory.Columns[2].HeaderText = "Комментарий";
+            dataGridViewPetsHistory.Columns[3].HeaderText = "Дата";
+            dataGridViewPetsHistory.Columns[1].DisplayIndex = 1;
+            dataGridViewPetsHistory.Columns[3].DisplayIndex = 0;
+            dataGridViewPetsHistory.Columns[2].DisplayIndex = 2;
+            dataGridViewPetsHistory.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPetsHistory.ClearSelection();
         }
         #endregion
         #region Изменение информации о животном в датасете
@@ -371,7 +515,7 @@ namespace MainForm
             setStaffGridView();
 
             comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxStaffVacancy.Items.Clear();
 
             for (int i = 0; i < psPositions.positions.Rows.Count; i++)
             {
@@ -400,10 +544,27 @@ namespace MainForm
             dataGridViewStaffAllMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         #endregion
+        #region Очистка фильтра
+        private void clearStaffFilter()
+        {
+            textBoxStaffSortLastName.Text = "";
+            textBoxStaffSortMiddleName.Text = "";
+            textBoxStafSortfFirstName.Text = "";
+            checkBoxStaffIsOnStaff.Checked = false;
+        }
+        #endregion
         #region Выбор элемента в датагриде "Персонал"
         private void dataGridViewStaffAllMembers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             setStaffAddArea(e.RowIndex);
+        }
+        private void dataGridViewStaffAllMembers_KeyUp(object sender, KeyEventArgs e)
+        {
+            setStaffAddArea(dataGridViewStaffAllMembers.CurrentRow.Index);
+        }
+        private void dataGridViewStaffAllMembers_KeyDown(object sender, KeyEventArgs e)
+        {
+            setStaffAddArea(dataGridViewStaffAllMembers.CurrentRow.Index);
         }
         #endregion
         #region Установка информации о выбранном сотруднике
@@ -617,6 +778,8 @@ namespace MainForm
             psUsers = ibl.getUsers();
             comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGoodsType.Items.Clear();
+            comboBoxGoodsVolunteer.Items.Clear();
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
@@ -659,6 +822,14 @@ namespace MainForm
         {
             setGoodsAddArea(e.RowIndex);
         }
+        private void dataGridViewGoodsAllGoods_KeyUp(object sender, KeyEventArgs e)
+        {
+            setGoodsAddArea(dataGridViewGoodsAllGoods.CurrentRow.Index);
+        }
+        private void dataGridViewGoodsAllGoods_KeyDown(object sender, KeyEventArgs e)
+        {
+            setGoodsAddArea(dataGridViewGoodsAllGoods.CurrentRow.Index);
+        }
         #endregion
         #region Установка параметров предмета для редактирования
         private void setGoodsAddArea(int i)
@@ -677,6 +848,16 @@ namespace MainForm
                 dt.Select(strExpr);
                 dateTimePickerGoods.Text = dt.Rows[0]["date"].ToString(); //Получение даты для первого */
             }
+        }
+        #endregion
+        #region Очистка фильтра
+        private void clearGoodsFilter()
+        {
+            textBoxGoodsSortNameofGoods.Text = "";
+            radioButtonGoodsSortIsAll.Checked = false;
+            radioButtonGoodsSortIsCure.Checked = false;
+            radioButtonGoodsSortIsEat.Checked = false;
+            radioButtonGoodsSortIsOther.Checked = false;
         }
         #endregion
         #region Очистка области редактирования информации о предмете
@@ -825,8 +1006,8 @@ namespace MainForm
                 MessageBox.Show("Сначала выберите предмет в таблице");
             }
         }
-        #endregion
 
+        #endregion
         #endregion
 
         #region ОКНО "Отчёты"

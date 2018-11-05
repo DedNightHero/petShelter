@@ -639,7 +639,7 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow AdddebitcreditRow(int GoodsName, string Comment, System.DateTime Date, int Debit, int Credit, System.Data.SqlTypes.SqlInt32 PatientId, int UserId) {
+            public debitcreditRow AdddebitcreditRow(int GoodsName, string Comment, System.DateTime Date, int Debit, int Credit, int PatientId, int UserId) {
                 debitcreditRow rowdebitcreditRow = ((debitcreditRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -704,7 +704,7 @@ namespace MainForm {
                 base.Columns.Add(this.columnDebit);
                 this.columnCredit = new global::System.Data.DataColumn("Credit", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCredit);
-                this.columnPatientId = new global::System.Data.DataColumn("PatientId", typeof(global::System.Data.SqlTypes.SqlInt32), null, global::System.Data.MappingType.Element);
+                this.columnPatientId = new global::System.Data.DataColumn("PatientId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPatientId);
                 this.columnUserId = new global::System.Data.DataColumn("UserId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserId);
@@ -2858,10 +2858,10 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Data.SqlTypes.SqlInt32 PatientId {
+            public int PatientId {
                 get {
                     try {
-                        return ((global::System.Data.SqlTypes.SqlInt32)(this[this.tabledebitcredit.PatientIdColumn]));
+                        return ((int)(this[this.tabledebitcredit.PatientIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'PatientId\' в таблице \'debitcredit\' равно DBNull.", e);
