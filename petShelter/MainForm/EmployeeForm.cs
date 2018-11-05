@@ -41,25 +41,17 @@ namespace MainForm
         {
             if (tabMain.SelectedIndex == 0)
             {
-                initAnimalsTab();
-                cleanPetsAddArea();
-                clearPetsAddCureArea();
-                cleanPetsSortArea();
+                refreshAnimalsTab();
                 return;
             }
             else if (tabMain.SelectedIndex == 1)
             {
-                initStaffTab();
-                clearStaffFilter();
-                cleanStaffAddArea();
+                refreshStaffTab();
                 return;
             }
             else if (tabMain.SelectedIndex == 2)
             {
-                initGoodsTab();
-                clearGoodsFilter();
-                cleanGoodsAddArea();
-                dataGridViewGoodsAllGoods.ClearSelection();
+                refreshGoodsTab();
                 return;
             }
             else if (tabMain.SelectedIndex == 3)
@@ -109,16 +101,13 @@ namespace MainForm
             openFileDialogAddPetPhoto.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             comboBoxPetsSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSortSpecies.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxPetsSpecies.Items.Clear();
-            comboBoxSortSpecies.Items.Clear();
+            comboBoxPetsCure.DropDownStyle = ComboBoxStyle.DropDownList;
             for (int i = 0; i < psSpecies.species.Rows.Count; i++)
             {
                 comboBoxSortSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
                 comboBoxPetsSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
             }
             comboBoxSortSpecies.Items.Add("");
-            comboBoxPetsCure.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxPetsCure.Items.Clear();
             for (int i = 0; i < psGoods.goods.Rows.Count; i++)
             {
                 if (psGoods.goods.Rows[i][2].ToString()=="2")
@@ -126,8 +115,36 @@ namespace MainForm
             }
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
-            dataGridViewPetsHistory.DataSource = 0;
             setPetsGridView();
+        }
+        #endregion
+        #region Обновление окна
+        private void refreshAnimalsTab()
+        {
+            psAnimals = ibl.getAnimals();
+            psSpecies = ibl.getSpecies();
+            psGoods = ibl.getGoods();
+
+            comboBoxPetsSpecies.Items.Clear();
+            comboBoxSortSpecies.Items.Clear();
+            comboBoxPetsCure.Items.Clear();
+            for (int i = 0; i < psSpecies.species.Rows.Count; i++)
+            {
+                comboBoxSortSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
+                comboBoxPetsSpecies.Items.Add(psSpecies.species.Rows[i][1].ToString());
+            }
+            comboBoxSortSpecies.Items.Add("");
+            for (int i = 0; i < psGoods.goods.Rows.Count; i++)
+            {
+                if (psGoods.goods.Rows[i][2].ToString() == "2")
+                    comboBoxPetsCure.Items.Add(psGoods.goods.Rows[i][1].ToString());
+            }
+            pictureBoxPetPhoto.Image = Properties.Resources.d1;
+            dataGridViewPetsAllPets.Refresh();
+            dataGridViewPetsAllPets.ClearSelection();
+            cleanPetsAddArea();
+            clearPetsAddCureArea();
+            cleanPetsFilterArea();
         }
         #endregion
         #region Параметры датагрида "Животные"
@@ -221,7 +238,7 @@ namespace MainForm
         }
         #endregion
         #region Очистка фильтра
-        private void cleanPetsSortArea()
+        private void cleanPetsFilterArea()
         {
             comboBoxSortSpecies.SelectedIndex = -1;
             textBoxPetsSortBreed.Text = "";
@@ -334,13 +351,12 @@ namespace MainForm
             textBoxPetsPhoneNumber.Text = "";
             textBoxPetsAddress.Text = "";
             checkBoxPetsNewAnimal.Checked = false;
-            pictureBoxPetPhoto.Image = Properties.Resources.d1;
         }
         #endregion
         #region Установка параметров животного для редактирования
         private void setPetsAddArea(int i)
         {
-            cleanPetsAddArea();
+            //cleanPetsAddArea();
             if (i>=0)
             {
                 id=Convert.ToInt32(dataGridViewPetsAllPets.CurrentRow.Cells[0].Value);
@@ -362,6 +378,14 @@ namespace MainForm
                     textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)[8].ToString();
                     dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
                 }
+                else
+                {
+                    checkBoxPetsMaster.Checked = false;
+                    textBoxPetsFIO.Text = "";
+                    textBoxPetsPhoneNumber.Text = "";
+                    textBoxPetsAddress.Text = "";
+                    dateTimePickerPetsDeliveryDay.Text = "";
+                }
             }
         }
         #endregion
@@ -370,7 +394,7 @@ namespace MainForm
         {
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
             dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
-            dataGridViewPetsHistory.Refresh();
+            //dataGridViewPetsHistory.Refresh();
             dataGridViewPetsHistory.Columns[0].Visible = false;
             dataGridViewPetsHistory.Columns[4].Visible = false;
             dataGridViewPetsHistory.Columns[5].Visible = false;
@@ -510,19 +534,36 @@ namespace MainForm
         {
             psUsers = ibl.getUsers();
             psPositions = ibl.getPositions();
+            psDebitcredit = ibl.getDebitCredit();
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
             setStaffGridView();
             setStaffCharity();
 
             comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxStaffVacancy.Items.Clear();
-
             for (int i = 0; i < psPositions.positions.Rows.Count; i++)
             {
                 comboBoxStaffVacancy.Items.Add(psPositions.positions.Rows[i][1].ToString());
             }
             comboBoxStaffVacancy.Items.Add("");
+        }
+        #endregion
+        #region Обновление окна
+        private void refreshStaffTab()
+        {
+            psUsers = ibl.getUsers();
+            psPositions = ibl.getPositions();
+            psDebitcredit = ibl.getDebitCredit();
+            comboBoxStaffVacancy.Items.Clear();
+            for (int i = 0; i < psPositions.positions.Rows.Count; i++)
+            {
+                comboBoxStaffVacancy.Items.Add(psPositions.positions.Rows[i][1].ToString());
+            }
+            comboBoxStaffVacancy.Items.Add("");
+            clearStaffFilter();
+            cleanStaffAddArea();
+            dataGridViewStaffCharity.ClearSelection();
+            dataGridViewStaffAllMembers.ClearSelection();
         }
         #endregion
         #region Параметры датагрида "Персонал"
@@ -571,7 +612,7 @@ namespace MainForm
         #region Установка информации о выбранном сотруднике
         private void setStaffAddArea(int i)
         {
-            cleanStaffAddArea();
+            //cleanStaffAddArea();
             if (i >= 0)
             {
                 id = Convert.ToInt32(dataGridViewStaffAllMembers.CurrentRow.Cells[0].Value);
@@ -589,10 +630,9 @@ namespace MainForm
         #region Установка благих дел сотрудника
         private void setStaffCharity()
         {
-            psDebitcredit = ibl.getDebitCredit();
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
             dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
-            dataGridViewStaffCharity.Refresh();
+            //dataGridViewStaffCharity.Refresh();
             dataGridViewStaffCharity.Columns[0].Visible = false;
             dataGridViewStaffCharity.Columns[1].Visible = false;
             dataGridViewStaffCharity.Columns[4].Visible = false;
@@ -822,6 +862,29 @@ namespace MainForm
             psUsers = ibl.getUsers();
             comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
+            for (int i = 0; i < psUsers.users.Rows.Count; i++)
+            {
+                comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
+            }
+            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count - 1); i++)
+            {
+                comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
+            }
+            comboBoxGoodsVolunteer.Items.Add("");
+            //Убираем ДЕНЬГИ из выдачи
+            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String')  NOT LIKE '3'");
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            setGoodsGridView();
+            dataGridViewGoodsAllGoods.ClearSelection();
+        }
+        #endregion
+        #region Обновление окна
+        private void refreshGoodsTab()
+        {
+            psGoods = ibl.getGoods();
+            psGoodstype = ibl.getGoodsType();
+            psDebitcredit = ibl.getDebitCredit();
+            psUsers = ibl.getUsers();
             comboBoxGoodsType.Items.Clear();
             comboBoxGoodsVolunteer.Items.Clear();
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
@@ -833,16 +896,9 @@ namespace MainForm
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
             comboBoxGoodsVolunteer.Items.Add("");
-            //Убираем ДЕНЬГИ из выдачи
-            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String')  NOT LIKE '4'");
-            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
-            //dataGridViewGoodsAllGoods.DataMember = "goods";
-            setGoodsGridView();
-
-            /*dataGridViewGoodsAllGoods.DataSource = psGoods;
-            dataGridViewGoodsAllGoods.DataMember = "goods";
-            setGoodsGridView();*/
             dataGridViewGoodsAllGoods.ClearSelection();
+            clearGoodsFilter();
+            cleanGoodsAddArea();
         }
         #endregion
         #region Параметры датагрида "Материально-техническая база
@@ -878,7 +934,7 @@ namespace MainForm
         #region Установка параметров предмета для редактирования
         private void setGoodsAddArea(int i)
         {
-            cleanGoodsAddArea();
+            //cleanGoodsAddArea();
             if (i >= 0)
             {
                 id = Convert.ToInt32(dataGridViewGoodsAllGoods.CurrentRow.Cells[0].Value);
