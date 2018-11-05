@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports.cs" />
     <Compile Include="VolunteerForm.cs">
       <SubType>Form</SubType>
     </Compile>
