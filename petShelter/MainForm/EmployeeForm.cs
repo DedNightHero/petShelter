@@ -513,6 +513,7 @@ namespace MainForm
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
             setStaffGridView();
+            setStaffCharity();
 
             comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxStaffVacancy.Items.Clear();
@@ -583,6 +584,27 @@ namespace MainForm
                 textBoxStaffPhoneNumber.Text = psUsers.users.FindById_Users(id)[5].ToString();
                 textBoxStaffAddress.Text = psUsers.users.FindById_Users(id)[6].ToString();
             }
+        }
+        #endregion
+        #region Установка благих дел сотрудника
+        private void setStaffCharity()
+        {
+            psDebitcredit = ibl.getDebitCredit();
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
+            dataGridViewStaffCharity.Refresh();
+            dataGridViewStaffCharity.Columns[0].Visible = false;
+            dataGridViewStaffCharity.Columns[1].Visible = false;
+            dataGridViewStaffCharity.Columns[4].Visible = false;
+            dataGridViewStaffCharity.Columns[5].Visible = false;
+            dataGridViewStaffCharity.Columns[6].Visible = false;
+            dataGridViewStaffCharity.Columns[7].Visible = false;
+            dataGridViewStaffCharity.Columns[2].HeaderText = "Комментарий";
+            dataGridViewStaffCharity.Columns[3].HeaderText = "Дата";
+            dataGridViewStaffCharity.Columns[3].DisplayIndex = 0;
+            dataGridViewStaffCharity.Columns[2].DisplayIndex = 1;
+            dataGridViewStaffCharity.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewStaffCharity.ClearSelection();
         }
         #endregion
         #region Очистка области редактирования информации о персонале
@@ -764,6 +786,28 @@ namespace MainForm
             {
                 MessageBox.Show("Сначала выберите сотрудника в таблице");
             }
+        }
+        #endregion
+        #region Кнопка добавления благого дела пользователя
+        private void buttonStaffOk_Click(object sender, EventArgs e)
+        {
+            psDebitcredit = ibl.getDebitCredit();
+            if (textBoxStaffComment.Text == "")
+            {
+                MessageBox.Show("Нужно указать произведенное действие", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            psDebitcredit.debitcredit.AdddebitcreditRow(-1, textBoxStaffComment.Text, DateTime.Today, 0, 0, -1, userId);
+            ibl.setDebitCredit(psDebitcredit);
+            clearStaffAddMoveArea();
+            setStaffCharity();
+            dataGridViewStaffCharity.ClearSelection();
+        }
+        #endregion
+        #region Очистка области добавления благого дела сотрудника
+        private void clearStaffAddMoveArea()
+        {
+            textBoxStaffComment.Text = "";
         }
         #endregion
         #endregion
@@ -1008,10 +1052,12 @@ namespace MainForm
         }
 
         #endregion
+
         #endregion
 
         #region ОКНО "Отчёты"
 
         #endregion
+
     }
 }

@@ -54,3 +54,4 @@ C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.EmployeeForm.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.Properties.Resources.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.VolunteerForm.resources
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.GenerateResource.Cache
+D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.ResolveComReference.cache

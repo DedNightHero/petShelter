@@ -110,10 +110,10 @@ namespace MainForm
             dataGridViewVolunteerFormGoods.ClearSelection();
         }
         #endregion
-
+        
         private void buttonVolunteerFormCreateReport_Click(object sender, EventArgs e)
         {
-            CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Вещи необходимые приюту");
+           CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Вещи необходимые приюту");
         }
         private void CreateReportFromVisibleItems(DataGridView DG, string Title)
         {

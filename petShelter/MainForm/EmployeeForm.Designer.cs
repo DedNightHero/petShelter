@@ -407,7 +407,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -477,7 +477,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1023,14 +1023,23 @@
             // 
             // dataGridViewStaffCharity
             // 
+            this.dataGridViewStaffCharity.AllowUserToAddRows = false;
+            this.dataGridViewStaffCharity.AllowUserToDeleteRows = false;
+            this.dataGridViewStaffCharity.AllowUserToResizeColumns = false;
+            this.dataGridViewStaffCharity.AllowUserToResizeRows = false;
+            this.dataGridViewStaffCharity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStaffCharity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelLeftMain.SetColumnSpan(this.dataGridViewStaffCharity, 7);
             this.dataGridViewStaffCharity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStaffCharity.Location = new System.Drawing.Point(3, 371);
+            this.dataGridViewStaffCharity.MultiSelect = false;
             this.dataGridViewStaffCharity.Name = "dataGridViewStaffCharity";
+            this.dataGridViewStaffCharity.ReadOnly = true;
             this.dataGridViewStaffCharity.RowTemplate.Height = 24;
+            this.dataGridViewStaffCharity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStaffCharity.Size = new System.Drawing.Size(756, 130);
             this.dataGridViewStaffCharity.TabIndex = 6;
+            this.dataGridViewStaffCharity.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -1059,6 +1068,7 @@
             this.buttonStaffOk.Size = new System.Drawing.Size(59, 59);
             this.buttonStaffOk.TabIndex = 8;
             this.buttonStaffOk.UseVisualStyleBackColor = true;
+            this.buttonStaffOk.Click += new System.EventHandler(this.buttonStaffOk_Click);
             // 
             // tableLayoutPanelStaffRightMain
             // 
@@ -1685,7 +1695,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
