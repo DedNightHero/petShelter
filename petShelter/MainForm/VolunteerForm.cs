@@ -89,9 +89,10 @@ namespace MainForm
         private void sortGoodsTable(object sender, EventArgs e)
         {
             String filter = "CONVERT(Type, 'System.String') NOT LIKE '3'";
-            if (radioButtonVolunteerFormSortCure.Checked) filter += " and CONVERT(Type, 'System.String') LIKE '1'";
-            else if (radioButtonVolunteerFormSortEat.Checked) filter += " and CONVERT(Type, 'System.String') LIKE '2'";
+            if (radioButtonVolunteerFormSortCure.Checked) filter += " and CONVERT(Type, 'System.String') LIKE '2'";
+            else if (radioButtonVolunteerFormSortEat.Checked) filter += " and CONVERT(Type, 'System.String') LIKE '1'";
             else if (radioButtonVolunteerFormSortOther.Checked) filter += " and CONVERT(Type, 'System.String') LIKE '4'";
+            else if (radioButtonVolunteerFormSortAll.Checked) filter += "";
             if (textBoxVolunteerFormSortName.Text != "")
             {
                 if (filter != null) filter += " and ";
@@ -110,26 +111,26 @@ namespace MainForm
             dataGridViewVolunteerFormGoods.ClearSelection();
         }
         #endregion
-        
+        #region Кнопка формирования отчёта
         private void buttonVolunteerFormCreateReport_Click(object sender, EventArgs e)
         {
-           CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Вещи необходимые приюту");
+           CreateReportFromVisibleItems(dataGridViewVolunteerFormGoods, "Необходимые приюту вещи");
         }
+        #endregion
+        #region Генерация отчёта
         private void CreateReportFromVisibleItems(DataGridView DG, string Title)
         {
             int currentRow = 1; //текущая строка в файле Excel
             Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook excelWorkBook = excelApp.Workbooks.Add(@"C:\Reportss\Org.xlsx");
+            Excel.Workbook excelWorkBook = excelApp.Workbooks.Add();
             Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add();
             //имя листа
-            excelWorkSheet.Name = "Имя отчета";
+            excelWorkSheet.Name = "Отчёт";
             //добавление заголовка
             excelWorkSheet.Cells[currentRow, 1] = Title;
             currentRow++;
             excelWorkSheet.Cells[currentRow, 1] = DateTime.Today.ToString("dd/MM/yyyy");
             currentRow += 2;
-
-
             //Поиск выборка только видимых элементов для отчета
             List<DataGridViewColumn> listVisible = new List<DataGridViewColumn>();
             foreach (DataGridViewColumn col in DG.Columns)
@@ -138,10 +139,6 @@ namespace MainForm
                     listVisible.Add(col);
             }
             int rowCount = DG.RowCount;
-
-
-
-
             for (int i = 0; i < listVisible.Count; i++)
             {
                 excelWorkSheet.Cells[currentRow, i + 1] = listVisible[i].HeaderText;
@@ -157,11 +154,10 @@ namespace MainForm
                     }
                 }
             }
-
             excelWorkBook.Save();
             excelWorkBook.Close();
             excelApp.Quit();
-
         }
+        #endregion
     }
 }

@@ -1058,6 +1058,5 @@ namespace MainForm
         #region ОКНО "Отчёты"
 
         #endregion
-
     }
 }

@@ -56,6 +56,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxVolunteerFormLastName = new System.Windows.Forms.TextBox();
+            this.radioButtonVolunteerFormSortAll = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanelVolunteerMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVolunteerFormGoods)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVolunteerFormOneCharity)).BeginInit();
@@ -64,13 +65,14 @@
             // 
             // tableLayoutPanelVolunteerMain
             // 
-            this.tableLayoutPanelVolunteerMain.ColumnCount = 9;
+            this.tableLayoutPanelVolunteerMain.ColumnCount = 10;
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 226F));
             this.tableLayoutPanelVolunteerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
@@ -84,10 +86,11 @@
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.radioButtonVolunteerFormSortCure, 3, 3);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.radioButtonVolunteerFormSortEat, 4, 3);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.radioButtonVolunteerFormSortOther, 5, 3);
-            this.tableLayoutPanelVolunteerMain.Controls.Add(this.buttonVolunteerFormCreateReport, 7, 3);
+            this.tableLayoutPanelVolunteerMain.Controls.Add(this.buttonVolunteerFormCreateReport, 8, 3);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.dataGridViewVolunteerFormGoods, 1, 4);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.dataGridViewVolunteerFormOneCharity, 5, 7);
             this.tableLayoutPanelVolunteerMain.Controls.Add(this.tableLayoutPanelVolunteerInfo, 1, 7);
+            this.tableLayoutPanelVolunteerMain.Controls.Add(this.radioButtonVolunteerFormSortAll, 6, 3);
             this.tableLayoutPanelVolunteerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelVolunteerMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVolunteerMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -109,9 +112,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label1, 4);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label1, 5);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(21, 44);
+            this.label1.Location = new System.Drawing.Point(97, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(398, 38);
             this.label1.TabIndex = 0;
@@ -121,10 +124,10 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label2, 7);
-            this.label2.Location = new System.Drawing.Point(9, 109);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label2, 8);
+            this.label2.Location = new System.Drawing.Point(8, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(964, 23);
+            this.label2.Size = new System.Drawing.Size(967, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Необходимые приюту вещи";
             // 
@@ -133,9 +136,9 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label3, 3);
-            this.label3.Location = new System.Drawing.Point(9, 536);
+            this.label3.Location = new System.Drawing.Point(8, 536);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(331, 23);
+            this.label3.Size = new System.Drawing.Size(307, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Информация о вас";
             // 
@@ -143,10 +146,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label4, 3);
-            this.label4.Location = new System.Drawing.Point(425, 536);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.label4, 4);
+            this.label4.Location = new System.Drawing.Point(400, 536);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(548, 23);
+            this.label4.Size = new System.Drawing.Size(575, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Ваша благотворительность";
             // 
@@ -154,9 +157,9 @@
             // 
             this.labelVolunteerName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelVolunteerName.AutoSize = true;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.labelVolunteerName, 3);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.labelVolunteerName, 4);
             this.labelVolunteerName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelVolunteerName.Location = new System.Drawing.Point(425, 44);
+            this.labelVolunteerName.Location = new System.Drawing.Point(501, 44);
             this.labelVolunteerName.Name = "labelVolunteerName";
             this.labelVolunteerName.Size = new System.Drawing.Size(0, 38);
             this.labelVolunteerName.TabIndex = 4;
@@ -165,7 +168,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 148);
+            this.label6.Location = new System.Drawing.Point(8, 148);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 46);
             this.label6.TabIndex = 5;
@@ -174,9 +177,9 @@
             // textBoxVolunteerFormSortName
             // 
             this.textBoxVolunteerFormSortName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVolunteerFormSortName.Location = new System.Drawing.Point(119, 156);
+            this.textBoxVolunteerFormSortName.Location = new System.Drawing.Point(118, 156);
             this.textBoxVolunteerFormSortName.Name = "textBoxVolunteerFormSortName";
-            this.textBoxVolunteerFormSortName.Size = new System.Drawing.Size(97, 30);
+            this.textBoxVolunteerFormSortName.Size = new System.Drawing.Size(73, 30);
             this.textBoxVolunteerFormSortName.TabIndex = 1;
             this.textBoxVolunteerFormSortName.TextChanged += new System.EventHandler(this.sortGoodsTable);
             // 
@@ -184,7 +187,7 @@
             // 
             this.radioButtonVolunteerFormSortCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonVolunteerFormSortCure.AutoSize = true;
-            this.radioButtonVolunteerFormSortCure.Location = new System.Drawing.Point(222, 157);
+            this.radioButtonVolunteerFormSortCure.Location = new System.Drawing.Point(197, 157);
             this.radioButtonVolunteerFormSortCure.Name = "radioButtonVolunteerFormSortCure";
             this.radioButtonVolunteerFormSortCure.Size = new System.Drawing.Size(118, 27);
             this.radioButtonVolunteerFormSortCure.TabIndex = 2;
@@ -197,7 +200,7 @@
             // 
             this.radioButtonVolunteerFormSortEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonVolunteerFormSortEat.AutoSize = true;
-            this.radioButtonVolunteerFormSortEat.Location = new System.Drawing.Point(346, 157);
+            this.radioButtonVolunteerFormSortEat.Location = new System.Drawing.Point(321, 157);
             this.radioButtonVolunteerFormSortEat.Name = "radioButtonVolunteerFormSortEat";
             this.radioButtonVolunteerFormSortEat.Size = new System.Drawing.Size(73, 27);
             this.radioButtonVolunteerFormSortEat.TabIndex = 3;
@@ -210,7 +213,7 @@
             // 
             this.radioButtonVolunteerFormSortOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonVolunteerFormSortOther.AutoSize = true;
-            this.radioButtonVolunteerFormSortOther.Location = new System.Drawing.Point(425, 157);
+            this.radioButtonVolunteerFormSortOther.Location = new System.Drawing.Point(400, 157);
             this.radioButtonVolunteerFormSortOther.Name = "radioButtonVolunteerFormSortOther";
             this.radioButtonVolunteerFormSortOther.Size = new System.Drawing.Size(95, 27);
             this.radioButtonVolunteerFormSortOther.TabIndex = 4;
@@ -222,7 +225,7 @@
             // buttonVolunteerFormCreateReport
             // 
             this.buttonVolunteerFormCreateReport.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonVolunteerFormCreateReport.Location = new System.Drawing.Point(753, 156);
+            this.buttonVolunteerFormCreateReport.Location = new System.Drawing.Point(755, 156);
             this.buttonVolunteerFormCreateReport.Name = "buttonVolunteerFormCreateReport";
             this.buttonVolunteerFormCreateReport.Size = new System.Drawing.Size(200, 30);
             this.buttonVolunteerFormCreateReport.TabIndex = 5;
@@ -238,15 +241,15 @@
             this.dataGridViewVolunteerFormGoods.AllowUserToResizeRows = false;
             this.dataGridViewVolunteerFormGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewVolunteerFormGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormGoods, 7);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormGoods, 8);
             this.dataGridViewVolunteerFormGoods.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewVolunteerFormGoods.Location = new System.Drawing.Point(9, 203);
+            this.dataGridViewVolunteerFormGoods.Location = new System.Drawing.Point(8, 203);
             this.dataGridViewVolunteerFormGoods.MultiSelect = false;
             this.dataGridViewVolunteerFormGoods.Name = "dataGridViewVolunteerFormGoods";
             this.dataGridViewVolunteerFormGoods.ReadOnly = true;
             this.dataGridViewVolunteerFormGoods.RowTemplate.Height = 24;
             this.dataGridViewVolunteerFormGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVolunteerFormGoods.Size = new System.Drawing.Size(964, 293);
+            this.dataGridViewVolunteerFormGoods.Size = new System.Drawing.Size(967, 293);
             this.dataGridViewVolunteerFormGoods.TabIndex = 6;
             // 
             // dataGridViewVolunteerFormOneCharity
@@ -257,15 +260,15 @@
             this.dataGridViewVolunteerFormOneCharity.AllowUserToResizeRows = false;
             this.dataGridViewVolunteerFormOneCharity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewVolunteerFormOneCharity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormOneCharity, 3);
+            this.tableLayoutPanelVolunteerMain.SetColumnSpan(this.dataGridViewVolunteerFormOneCharity, 4);
             this.dataGridViewVolunteerFormOneCharity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewVolunteerFormOneCharity.Location = new System.Drawing.Point(425, 572);
+            this.dataGridViewVolunteerFormOneCharity.Location = new System.Drawing.Point(400, 572);
             this.dataGridViewVolunteerFormOneCharity.MultiSelect = false;
             this.dataGridViewVolunteerFormOneCharity.Name = "dataGridViewVolunteerFormOneCharity";
             this.dataGridViewVolunteerFormOneCharity.ReadOnly = true;
             this.dataGridViewVolunteerFormOneCharity.RowTemplate.Height = 24;
             this.dataGridViewVolunteerFormOneCharity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVolunteerFormOneCharity.Size = new System.Drawing.Size(548, 157);
+            this.dataGridViewVolunteerFormOneCharity.Size = new System.Drawing.Size(575, 157);
             this.dataGridViewVolunteerFormOneCharity.TabIndex = 13;
             // 
             // tableLayoutPanelVolunteerInfo
@@ -287,7 +290,7 @@
             this.tableLayoutPanelVolunteerInfo.Controls.Add(this.label12, 0, 5);
             this.tableLayoutPanelVolunteerInfo.Controls.Add(this.textBoxVolunteerFormLastName, 1, 0);
             this.tableLayoutPanelVolunteerInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelVolunteerInfo.Location = new System.Drawing.Point(6, 569);
+            this.tableLayoutPanelVolunteerInfo.Location = new System.Drawing.Point(5, 569);
             this.tableLayoutPanelVolunteerInfo.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelVolunteerInfo.Name = "tableLayoutPanelVolunteerInfo";
             this.tableLayoutPanelVolunteerInfo.RowCount = 6;
@@ -297,7 +300,7 @@
             this.tableLayoutPanelVolunteerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelVolunteerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelVolunteerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelVolunteerInfo.Size = new System.Drawing.Size(337, 163);
+            this.tableLayoutPanelVolunteerInfo.Size = new System.Drawing.Size(313, 163);
             this.tableLayoutPanelVolunteerInfo.TabIndex = 13;
             // 
             // textBoxVolunteerFormAddress
@@ -306,7 +309,7 @@
             this.textBoxVolunteerFormAddress.Location = new System.Drawing.Point(93, 138);
             this.textBoxVolunteerFormAddress.Name = "textBoxVolunteerFormAddress";
             this.textBoxVolunteerFormAddress.ReadOnly = true;
-            this.textBoxVolunteerFormAddress.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormAddress.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormAddress.TabIndex = 12;
             // 
             // textBoxVolunteerFormPhoneNumber
@@ -315,7 +318,7 @@
             this.textBoxVolunteerFormPhoneNumber.Location = new System.Drawing.Point(93, 111);
             this.textBoxVolunteerFormPhoneNumber.Name = "textBoxVolunteerFormPhoneNumber";
             this.textBoxVolunteerFormPhoneNumber.ReadOnly = true;
-            this.textBoxVolunteerFormPhoneNumber.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormPhoneNumber.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormPhoneNumber.TabIndex = 11;
             // 
             // textBoxVolunteerFormVacancy
@@ -324,7 +327,7 @@
             this.textBoxVolunteerFormVacancy.Location = new System.Drawing.Point(93, 84);
             this.textBoxVolunteerFormVacancy.Name = "textBoxVolunteerFormVacancy";
             this.textBoxVolunteerFormVacancy.ReadOnly = true;
-            this.textBoxVolunteerFormVacancy.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormVacancy.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormVacancy.TabIndex = 10;
             // 
             // textBoxVolunteerFormMiddleName
@@ -333,7 +336,7 @@
             this.textBoxVolunteerFormMiddleName.Location = new System.Drawing.Point(93, 57);
             this.textBoxVolunteerFormMiddleName.Name = "textBoxVolunteerFormMiddleName";
             this.textBoxVolunteerFormMiddleName.ReadOnly = true;
-            this.textBoxVolunteerFormMiddleName.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormMiddleName.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormMiddleName.TabIndex = 9;
             // 
             // textBoxVolunteerFormFirstName
@@ -342,7 +345,7 @@
             this.textBoxVolunteerFormFirstName.Location = new System.Drawing.Point(93, 30);
             this.textBoxVolunteerFormFirstName.Name = "textBoxVolunteerFormFirstName";
             this.textBoxVolunteerFormFirstName.ReadOnly = true;
-            this.textBoxVolunteerFormFirstName.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormFirstName.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormFirstName.TabIndex = 8;
             // 
             // label7
@@ -411,8 +414,20 @@
             this.textBoxVolunteerFormLastName.Location = new System.Drawing.Point(93, 3);
             this.textBoxVolunteerFormLastName.Name = "textBoxVolunteerFormLastName";
             this.textBoxVolunteerFormLastName.ReadOnly = true;
-            this.textBoxVolunteerFormLastName.Size = new System.Drawing.Size(241, 30);
+            this.textBoxVolunteerFormLastName.Size = new System.Drawing.Size(217, 30);
             this.textBoxVolunteerFormLastName.TabIndex = 7;
+            // 
+            // radioButtonVolunteerFormSortAll
+            // 
+            this.radioButtonVolunteerFormSortAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonVolunteerFormSortAll.AutoSize = true;
+            this.radioButtonVolunteerFormSortAll.Location = new System.Drawing.Point(501, 157);
+            this.radioButtonVolunteerFormSortAll.Name = "radioButtonVolunteerFormSortAll";
+            this.radioButtonVolunteerFormSortAll.Size = new System.Drawing.Size(74, 27);
+            this.radioButtonVolunteerFormSortAll.TabIndex = 14;
+            this.radioButtonVolunteerFormSortAll.TabStop = true;
+            this.radioButtonVolunteerFormSortAll.Text = "Всё";
+            this.radioButtonVolunteerFormSortAll.UseVisualStyleBackColor = true;
             // 
             // VolunteerForm
             // 
@@ -468,5 +483,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxVolunteerFormLastName;
+        private System.Windows.Forms.RadioButton radioButtonVolunteerFormSortAll;
     }
 }
