@@ -48,13 +48,13 @@ namespace MainForm
         private void buttonShowPass_MouseEnter(object sender, EventArgs e)
         {
             if(textBoxPass.Text!="Введите пароль")
-                textBoxPass.UseSystemPasswordChar = false;
+                textBoxPass.PasswordChar = '\0';
         }
 
         private void buttonShowPass_MouseLeave(object sender, EventArgs e)
         {
             if (textBoxPass.Text != "Введите пароль")
-                textBoxPass.UseSystemPasswordChar = true;
+                textBoxPass.PasswordChar = (new TextBox() { UseSystemPasswordChar = true }).PasswordChar;
         }
         #endregion
         #region Поле ввода логина
@@ -81,7 +81,7 @@ namespace MainForm
         {
             if (textBoxPass.Text == "Введите пароль")
             {
-                textBoxPass.UseSystemPasswordChar = true;
+                textBoxPass.PasswordChar = (new TextBox() { UseSystemPasswordChar = true }).PasswordChar;
                 textBoxPass.Text = "";
                 textBoxPass.ForeColor = Color.Black;
             }
@@ -91,7 +91,7 @@ namespace MainForm
         {
             if (textBoxPass.Text == "")
             {
-                textBoxPass.UseSystemPasswordChar = false;
+                textBoxPass.PasswordChar = '\0';
                 textBoxPass.Text = "Введите пароль";
                 textBoxPass.ForeColor = Color.Gray;
             }
