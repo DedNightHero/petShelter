@@ -591,7 +591,9 @@ namespace MainForm
             setStaffCharity();
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
+            dataGridViewStaffAllMembers.Columns.Add("positionsName", "Должность");
             setStaffGridView();
+
         }
         #endregion
         #region Обновление окна
@@ -614,26 +616,61 @@ namespace MainForm
             dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
             dataGridViewStaffAllMembers.ClearSelection();
+            FillPositions();
+            
         }
         #endregion
         #region Параметры датагрида "Персонал"
         private void setStaffGridView()
         {
             dataGridViewStaffAllMembers.ClearSelection();
-            dataGridViewStaffAllMembers.Columns[0].Visible = false;
-            dataGridViewStaffAllMembers.Columns[2].Visible = false;
-            dataGridViewStaffAllMembers.Columns[1].HeaderText = "Логин";
-            dataGridViewStaffAllMembers.Columns[3].HeaderText = "ФИО";
-            dataGridViewStaffAllMembers.Columns[5].HeaderText = "Телефон";
-            dataGridViewStaffAllMembers.Columns[6].HeaderText = "Адрес";
-            dataGridViewStaffAllMembers.Columns[4].HeaderText = "Должность";
-            dataGridViewStaffAllMembers.Columns[1].DisplayIndex = 1;
-            dataGridViewStaffAllMembers.Columns[3].DisplayIndex = 0;
-            dataGridViewStaffAllMembers.Columns[5].DisplayIndex = 5;
-            dataGridViewStaffAllMembers.Columns[6].DisplayIndex = 4;
-            dataGridViewStaffAllMembers.Columns[4].DisplayIndex = 3;
+            dataGridViewStaffAllMembers.Columns["Id_Users"].Visible = false;
+            dataGridViewStaffAllMembers.Columns["Password"].Visible = false;
+            dataGridViewStaffAllMembers.Columns["Position"].Visible = false;
+            dataGridViewStaffAllMembers.Columns["Login"].HeaderText = "Логин";
+            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].HeaderText = "ФИО";
+            dataGridViewStaffAllMembers.Columns["Phone"].HeaderText = "Телефон";
+            dataGridViewStaffAllMembers.Columns["Address"].HeaderText = "Адрес";
+
+            dataGridViewStaffAllMembers.Columns["Login"].DisplayIndex = 1;
+            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].DisplayIndex = 0;
+            dataGridViewStaffAllMembers.Columns["Phone"].DisplayIndex = 5;
+            dataGridViewStaffAllMembers.Columns["Address"].DisplayIndex = 4;
+            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;
+            /*
+            dataGridViewStaffAllMembers.Columns["Login"].HeaderText = "Логин";
+            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].HeaderText = "ФИО";
+            dataGridViewStaffAllMembers.Columns["Phone"].HeaderText = "Телефон";
+            dataGridViewStaffAllMembers.Columns["Address"].HeaderText = "Адрес";
+            //dataGridViewStaffAllMembers.Columns[4].HeaderText = "Должность";
+            dataGridViewStaffAllMembers.Columns["Login"].DisplayIndex = 1;
+            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].DisplayIndex = 0;
+            dataGridViewStaffAllMembers.Columns["Phone"].DisplayIndex = 5;
+            dataGridViewStaffAllMembers.Columns["Address"].DisplayIndex = 4;
+            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;*/
+            
             dataGridViewStaffAllMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+        private void FillPositions()
+        {
+            psPositions = ibl.getPositions();
+            String positionsId;
+            int rowCount = dataGridViewStaffAllMembers.RowCount;
+            string expression;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                positionsId = dataGridViewStaffAllMembers.Rows[i].Cells["Position"].Value.ToString();
+                expression = "Id_Positions = " + positionsId;
+                System.Data.DataRow[] foundRows;
+                // Use the Select method to find all rows matching the filter.
+                foundRows = psPositions.positions.Select(expression);
+                expression = foundRows[0][1].ToString();
+                dataGridViewStaffAllMembers.Rows[i].Cells["positionsName"].Value = expression;         
+
+            }
+        }
+
         #endregion
         #region Очистка фильтра
         private void clearStaffFilter()
@@ -664,7 +701,7 @@ namespace MainForm
             //cleanStaffAddArea();
             if (i >= 0)
             {
-                id = Convert.ToInt32(dataGridViewStaffAllMembers.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt32(dataGridViewStaffAllMembers.CurrentRow.Cells["Id_Users"].Value);
                 comboBoxStaffVacancy.SelectedItem = psPositions.positions.Rows[Convert.ToInt32(psUsers.users.FindById_Users(id)[4]) - 1][1].ToString();
                 textBoxStaffLogin.Text = psUsers.users.FindById_Users(id)[1].ToString();
                 //textBoxStaffPass.Text =;
