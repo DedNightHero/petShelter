@@ -2,6 +2,8 @@
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
 
 namespace MainForm
 {
@@ -19,6 +21,7 @@ namespace MainForm
         private int id;
         private int userLvl;
         private int userId;
+        private string photoName = "";
         #endregion
         #region Создание и загрузка формы
         public EmployeeForm(int lvl, int id)
@@ -124,7 +127,8 @@ namespace MainForm
             psAnimals = ibl.getAnimals();
             psSpecies = ibl.getSpecies();
             psGoods = ibl.getGoods();
-
+            dataGridViewPetsAllPets.DataSource = psAnimals;
+            dataGridViewPetsAllPets.DataMember = "animals";
             comboBoxPetsSpecies.Items.Clear();
             comboBoxSortSpecies.Items.Clear();
             comboBoxPetsCure.Items.Clear();
@@ -159,8 +163,8 @@ namespace MainForm
             dataGridViewPetsAllPets.Columns[5].Visible = false;
             dataGridViewPetsAllPets.Columns[1].Visible = false;
             //dataGridViewPetsAllPets.Columns[1].HeaderText = "Вид";
-            dataGridViewPetsAllPets.Columns[2].HeaderText = "Порода";
-            dataGridViewPetsAllPets.Columns[3].HeaderText = "Кличка";
+            dataGridViewPetsAllPets.Columns[2].HeaderText = "Кличка";
+            dataGridViewPetsAllPets.Columns[3].HeaderText = "Порода";
             dataGridViewPetsAllPets.Columns[4].HeaderText = "Дата поступления";
             dataGridViewPetsAllPets.Columns[9].HeaderText = "Дата выдачи";
             dataGridViewPetsAllPets.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -196,8 +200,8 @@ namespace MainForm
                     string nn = textBoxPetsNickName.Text;
                     DateTime ad = dateTimePickerPetsArrivalDate.Value;
                     string pp;
-                    if (openFileDialogAddPetPhoto.FileName != "")
-                        pp = openFileDialogAddPetPhoto.FileName.ToString();
+                    if (photoName != "")
+                        pp = photoName;
                     else
                         pp = null;
                     if (checkBoxPetsMaster.Checked)
@@ -206,16 +210,16 @@ namespace MainForm
                         string pn = textBoxPetsPhoneNumber.Text;
                         string a = textBoxPetsAddress.Text;
                         DateTime dd = dateTimePickerPetsDeliveryDay.Value;
-                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 0, fio, pn, a, dd, pp);
+                        psAnimals.animals.AddanimalsRow(i, nn, b, ad, 0, fio, pn, a, dd, pp);
                         ibl.setAnimals(psAnimals);
                     }
                     else
                     {
-                        psAnimals.animals.AddanimalsRow(i, b, nn, ad, 1, null, null, null, default(DateTime), pp);
+                        psAnimals.animals.AddanimalsRow(i, nn, b, ad, 1, null, null, null, default(DateTime), pp);
                         ibl.setAnimals(psAnimals);
                     }
-                    dataGridViewPetsAllPets.Refresh();
                     cleanPetsAddArea();
+                    clearPetsAddCureArea();
                 }
             }
             else //Редактирование информации о животном
@@ -224,9 +228,12 @@ namespace MainForm
                 if (f)
                 {
                     changePetInfo();
+                    clearPetsAddCureArea();
                     cleanPetsAddArea();
                 }
             }
+            dataGridViewPetsAllPets.Refresh();
+            dataGridViewPetsAllPets.ClearSelection();
         }
         #endregion
         #region Очистка области внесения препарата животному
@@ -235,6 +242,7 @@ namespace MainForm
             comboBoxPetsCure.SelectedIndex=-1;
             textBoxPetsComment.Text = "";
             dataGridViewPetsHistory.DataSource = 0;
+            dataGridViewPetsHistory.Refresh();
         }
         #endregion
         #region Очистка фильтра
@@ -291,6 +299,8 @@ namespace MainForm
             psDebitcredit.debitcredit.AdddebitcreditRow(gn, textBoxPetsComment.Text, DateTime.Today, 1, 0, id, userId);
             ibl.setDebitCredit(psDebitcredit);
             clearPetsAddCureArea();
+            cleanPetsAddArea();
+            cleanPetsFilterArea();
             dataGridViewPetsHistory.Refresh();
             dataGridViewPetsAllPets.ClearSelection();
         }
@@ -347,10 +357,13 @@ namespace MainForm
             textBoxPetsBreed.Text = "";
             textBoxPetsNickName.Text = "";
             checkBoxPetsMaster.Checked = false;
+            dateTimePickerPetsArrivalDate.Value = DateTime.Today;
+            dateTimePickerPetsDeliveryDay.Value = DateTime.Today;
             textBoxPetsFIO.Text = "";
             textBoxPetsPhoneNumber.Text = "";
             textBoxPetsAddress.Text = "";
             checkBoxPetsNewAnimal.Checked = false;
+            photoName = "";
         }
         #endregion
         #region Установка параметров животного для редактирования
@@ -361,8 +374,8 @@ namespace MainForm
             {
                 id=Convert.ToInt32(dataGridViewPetsAllPets.CurrentRow.Cells[0].Value);
                 comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)[1]) - 1][1].ToString();
-                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
-                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
+                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
+                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
                 dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
                 if (psAnimals.animals.FindById_Animals(id)[10].ToString() == "")
                     pictureBoxPetPhoto.Image = Properties.Resources.d1;
@@ -394,7 +407,6 @@ namespace MainForm
         {
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
             dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
-            //dataGridViewPetsHistory.Refresh();
             dataGridViewPetsHistory.Columns[0].Visible = false;
             dataGridViewPetsHistory.Columns[4].Visible = false;
             dataGridViewPetsHistory.Columns[5].Visible = false;
@@ -414,8 +426,8 @@ namespace MainForm
         private void changePetInfo()
         {
             psAnimals.animals.FindById_Animals(id)[1] = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
-            psAnimals.animals.FindById_Animals(id)[2] = textBoxPetsBreed.Text;
-            psAnimals.animals.FindById_Animals(id)[3] = textBoxPetsNickName.Text;
+            psAnimals.animals.FindById_Animals(id)[2] = textBoxPetsNickName.Text;
+            psAnimals.animals.FindById_Animals(id)[3] = textBoxPetsBreed.Text;
             psAnimals.animals.FindById_Animals(id)[4] = dateTimePickerPetsArrivalDate.Value;
             if (checkBoxPetsMaster.Checked)
             {
@@ -433,8 +445,8 @@ namespace MainForm
                 psAnimals.animals.FindById_Animals(id)[8] = null;
                 psAnimals.animals.FindById_Animals(id)[9] = default(DateTime);
             }
-            if (openFileDialogAddPetPhoto.FileName != "")
-                psAnimals.animals.FindById_Animals(id)[10] = openFileDialogAddPetPhoto.FileName.ToString();
+            if (photoName != "")
+                psAnimals.animals.FindById_Animals(id)[10] = photoName;
             else
                 psAnimals.animals.FindById_Animals(id)[10] = null;
             ibl.setAnimals(psAnimals);
@@ -467,6 +479,7 @@ namespace MainForm
                 psAnimals.animals.FindById_Animals(id).Delete();
                 ibl.setAnimals(psAnimals);
                 cleanPetsAddArea();
+                clearPetsAddCureArea();
                 dataGridViewPetsAllPets.Refresh();
             }    
             else
@@ -503,19 +516,49 @@ namespace MainForm
             {
                 if (filter != null) filter += " and ";
                 filter += "CONVERT(Species, 'System.String') LIKE '" + psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString() + "'";
-            }       
-            if (filter != null) psAnimals.animals.DefaultView.RowFilter = string.Format(filter);
+            }
+            if (filter != null)
+            {
+                psAnimals.animals.DefaultView.RowFilter = string.Format(filter);
+                dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
+            }
             else
             {
                 dataGridViewPetsAllPets.DataSource = psAnimals;
                 dataGridViewPetsAllPets.DataMember = "animals";
                 setPetsGridView();
-                return;
             }
-            dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
             setPetsGridView();
             dataGridViewPetsAllPets.ClearSelection();
             cleanPetsAddArea();
+            clearPetsAddCureArea();
+        }
+        #endregion
+        #region Загрузка фото на сервер
+        private void UploadFileToFTP(string strn, string strp)
+        {
+            FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create("ftp://127.0.0.1/"+strn);
+
+            ftpReq.UseBinary = true;
+            ftpReq.Method = WebRequestMethods.Ftp.UploadFile;
+            ftpReq.Credentials = new NetworkCredential("user", "pass");
+
+            byte[] b = File.ReadAllBytes(strp);
+            ftpReq.ContentLength = b.Length;
+            using (Stream s = ftpReq.GetRequestStream())
+            {
+                s.Write(b, 0, b.Length);
+            }
+
+            FtpWebResponse ftpResp = (FtpWebResponse)ftpReq.GetResponse();
+
+            if (ftpResp != null)
+            {
+                if (ftpResp.StatusDescription.StartsWith("226"))
+                {
+                    MessageBox.Show("Фото успешно загружено на сервер", "Сообщение", MessageBoxButtons.OK);
+                }
+            }
         }
         #endregion
         #region Добавление фото питомца
@@ -523,7 +566,8 @@ namespace MainForm
         {
             if (openFileDialogAddPetPhoto.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = openFileDialogAddPetPhoto.FileName;
+            UploadFileToFTP(openFileDialogAddPetPhoto.SafeFileName, openFileDialogAddPetPhoto.FileName);
+            photoName = "ftp://127.0.0.1/"+openFileDialogAddPetPhoto.SafeFileName;
         }
         #endregion
         #endregion
@@ -537,6 +581,8 @@ namespace MainForm
             psDebitcredit = ibl.getDebitCredit();
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             setStaffGridView();
             setStaffCharity();
 
@@ -562,6 +608,7 @@ namespace MainForm
             comboBoxStaffVacancy.Items.Add("");
             clearStaffFilter();
             cleanStaffAddArea();
+            dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
             dataGridViewStaffAllMembers.ClearSelection();
         }
@@ -572,7 +619,6 @@ namespace MainForm
             dataGridViewStaffAllMembers.ClearSelection();
             dataGridViewStaffAllMembers.Columns[0].Visible = false;
             dataGridViewStaffAllMembers.Columns[2].Visible = false;
-            //dataGridViewStaffAllMembers.Columns[4].Visible = false;
             dataGridViewStaffAllMembers.Columns[1].HeaderText = "Логин";
             dataGridViewStaffAllMembers.Columns[3].HeaderText = "ФИО";
             dataGridViewStaffAllMembers.Columns[5].HeaderText = "Телефон";
@@ -630,9 +676,6 @@ namespace MainForm
         #region Установка благих дел сотрудника
         private void setStaffCharity()
         {
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
-            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
-            //dataGridViewStaffCharity.Refresh();
             dataGridViewStaffCharity.Columns[0].Visible = false;
             dataGridViewStaffCharity.Columns[1].Visible = false;
             dataGridViewStaffCharity.Columns[4].Visible = false;
@@ -681,15 +724,17 @@ namespace MainForm
                 if (filter != null) filter += " and ";
                 filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortMiddleName.Text + "*'";
             }
-            if (filter != null) psUsers.users.DefaultView.RowFilter = string.Format(filter);
+            if (filter != null)
+            {
+                psUsers.users.DefaultView.RowFilter = string.Format(filter);
+                dataGridViewStaffAllMembers.DataSource = psUsers.users.DefaultView;
+            }
             else
             {
                 dataGridViewStaffAllMembers.DataSource = psUsers;
                 dataGridViewStaffAllMembers.DataMember = "users";
                 setStaffGridView();
-                return;
             }
-            dataGridViewStaffAllMembers.DataSource = psUsers.users.DefaultView;
             setStaffGridView();
             dataGridViewStaffAllMembers.ClearSelection();
             cleanStaffAddArea();
@@ -770,18 +815,17 @@ namespace MainForm
                     {
                         string pass = CreateMD5(textBoxStaffPass.Text);
                         psUsers.users.AddusersRow(l, pass, fio, pos, phone, address);
-                        ibl.setUsers(psUsers);
                     }
                     else
                     {
                         psUsers.users.AddusersRow(l, null, fio, pos, phone, address);
-                        ibl.setUsers(psUsers);
                     }
+                    ibl.setUsers(psUsers);
                     dataGridViewStaffAllMembers.Refresh();
                     cleanStaffAddArea();
                 }
             }
-            else //Редактирование информации о животном
+            else //Редактирование информации о сотруднике
             {
                 bool f = checkStaffAddArea();
                 if (f)
@@ -983,16 +1027,18 @@ namespace MainForm
             {
                 if (filter != null) filter += " and ";
                 filter += "NameOfGoods LIKE '*" + textBoxGoodsSortNameofGoods.Text + "*'";
-            }        
-            if (filter!=null) psGoods.goods.DefaultView.RowFilter = string.Format(filter);
+            }
+            if (filter != null)
+            {
+                psGoods.goods.DefaultView.RowFilter = string.Format(filter);
+                dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            }
             else
             {
                 dataGridViewGoodsAllGoods.DataSource = psGoods;
                 dataGridViewGoodsAllGoods.DataMember = "goods";
                 setGoodsGridView();
-                return;
             }
-            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
             cleanGoodsAddArea();         

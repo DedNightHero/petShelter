@@ -2356,9 +2356,9 @@ namespace MainForm {
             
             private global::System.Data.DataColumn columnSpecies;
             
-            private global::System.Data.DataColumn columnBreed;
-            
             private global::System.Data.DataColumn columnNickName;
+            
+            private global::System.Data.DataColumn columnBreed;
             
             private global::System.Data.DataColumn columnArrivalDate;
             
@@ -2425,17 +2425,17 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BreedColumn {
+            public global::System.Data.DataColumn NickNameColumn {
                 get {
-                    return this.columnBreed;
+                    return this.columnNickName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NickNameColumn {
+            public global::System.Data.DataColumn BreedColumn {
                 get {
-                    return this.columnNickName;
+                    return this.columnBreed;
                 }
             }
             
@@ -2532,13 +2532,13 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public animalsRow AddanimalsRow(int Species, string Breed, string NickName, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, string OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate, string PetPhoto) {
+            public animalsRow AddanimalsRow(int Species, string NickName, string Breed, System.DateTime ArrivalDate, int InHere, string FMLNameOfOwner, string OwnerPhone, string OwnerAddress, System.DateTime DeliveryDate, string PetPhoto) {
                 animalsRow rowanimalsRow = ((animalsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Species,
-                        Breed,
                         NickName,
+                        Breed,
                         ArrivalDate,
                         InHere,
                         FMLNameOfOwner,
@@ -2577,8 +2577,8 @@ namespace MainForm {
             internal void InitVars() {
                 this.columnId_Animals = base.Columns["Id_Animals"];
                 this.columnSpecies = base.Columns["Species"];
-                this.columnBreed = base.Columns["Breed"];
                 this.columnNickName = base.Columns["NickName"];
+                this.columnBreed = base.Columns["Breed"];
                 this.columnArrivalDate = base.Columns["ArrivalDate"];
                 this.columnInHere = base.Columns["InHere"];
                 this.columnFMLNameOfOwner = base.Columns["FMLNameOfOwner"];
@@ -2595,10 +2595,10 @@ namespace MainForm {
                 base.Columns.Add(this.columnId_Animals);
                 this.columnSpecies = new global::System.Data.DataColumn("Species", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSpecies);
-                this.columnBreed = new global::System.Data.DataColumn("Breed", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBreed);
                 this.columnNickName = new global::System.Data.DataColumn("NickName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNickName);
+                this.columnBreed = new global::System.Data.DataColumn("Breed", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBreed);
                 this.columnArrivalDate = new global::System.Data.DataColumn("ArrivalDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnArrivalDate);
                 this.columnInHere = new global::System.Data.DataColumn("InHere", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2619,8 +2619,8 @@ namespace MainForm {
                 this.columnId_Animals.AutoIncrementSeed = 1;
                 this.columnId_Animals.AllowDBNull = false;
                 this.columnId_Animals.Unique = true;
-                this.columnBreed.MaxLength = 30;
                 this.columnNickName.MaxLength = 20;
+                this.columnBreed.MaxLength = 30;
                 this.columnFMLNameOfOwner.MaxLength = 40;
                 this.columnOwnerPhone.MaxLength = 11;
                 this.columnOwnerAddress.MaxLength = 80;
@@ -3538,22 +3538,6 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Breed {
-                get {
-                    try {
-                        return ((string)(this[this.tableanimals.BreedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Breed\' в таблице \'animals\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableanimals.BreedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NickName {
                 get {
                     try {
@@ -3565,6 +3549,22 @@ namespace MainForm {
                 }
                 set {
                     this[this.tableanimals.NickNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Breed {
+                get {
+                    try {
+                        return ((string)(this[this.tableanimals.BreedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Breed\' в таблице \'animals\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableanimals.BreedColumn] = value;
                 }
             }
             
@@ -3694,18 +3694,6 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsBreedNull() {
-                return this.IsNull(this.tableanimals.BreedColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetBreedNull() {
-                this[this.tableanimals.BreedColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNickNameNull() {
                 return this.IsNull(this.tableanimals.NickNameColumn);
             }
@@ -3714,6 +3702,18 @@ namespace MainForm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNickNameNull() {
                 this[this.tableanimals.NickNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBreedNull() {
+                return this.IsNull(this.tableanimals.BreedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBreedNull() {
+                this[this.tableanimals.BreedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

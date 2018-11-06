@@ -15,8 +15,8 @@ namespace MainForm.Accessors
         public void WriteData(AbstractTransaction abstractTransaction, AbstractConnection abstractConnection, PetShelter petShelter)
         {
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter();
-            sqlDataAdapter.UpdateCommand = new MySqlCommand("Update animals set Species = @s, Breed = @b, NickName = @nn, ArrivalDate = @ad, InHere = @ih, FMLNameOfOwner = @fmlnoo, OwnerPhone = @op, OwnerAddress = @oa, DeliveryDate = @dd, PetPhoto=@pp where Id_Animals = @i");
-            sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into animals (Species, Breed, NickName, ArrivalDate, InHere, FMLNameOfOwner, OwnerPhone, OwnerAddress, DeliveryDate, PetPhoto) values (@s, @b, @nn, @ad, @ih, @fmlnoo, @op, @oa, @dd, @pp)");
+            sqlDataAdapter.UpdateCommand = new MySqlCommand("Update animals set Species = @s, NickName = @nn, Breed = @b, ArrivalDate = @ad, InHere = @ih, FMLNameOfOwner = @fmlnoo, OwnerPhone = @op, OwnerAddress = @oa, DeliveryDate = @dd, PetPhoto=@pp where Id_Animals = @i");
+            sqlDataAdapter.InsertCommand = new MySqlCommand("Insert into animals (Species, NickName, Breed, ArrivalDate, InHere, FMLNameOfOwner, OwnerPhone, OwnerAddress, DeliveryDate, PetPhoto) values (@s, @nn, @b, @ad, @ih, @fmlnoo, @op, @oa, @dd, @pp)");
             sqlDataAdapter.DeleteCommand = new MySqlCommand("Delete from animals where Id_Animals = @i");
 
             MySqlParameter Id_Animals = new MySqlParameter
@@ -77,8 +77,8 @@ namespace MainForm.Accessors
 
             sqlDataAdapter.UpdateCommand.Parameters.Add(Id_Animals);
             sqlDataAdapter.UpdateCommand.Parameters.Add(Species);
-            sqlDataAdapter.UpdateCommand.Parameters.Add(Breed);
             sqlDataAdapter.UpdateCommand.Parameters.Add(NickName);
+            sqlDataAdapter.UpdateCommand.Parameters.Add(Breed);
             sqlDataAdapter.UpdateCommand.Parameters.Add(ArrivalDate);
             sqlDataAdapter.UpdateCommand.Parameters.Add(InHere);
             sqlDataAdapter.UpdateCommand.Parameters.Add(FMLNameOfOwner);
@@ -90,8 +90,8 @@ namespace MainForm.Accessors
             sqlDataAdapter.DeleteCommand.Parameters.Add(Id_Animals);
 
             sqlDataAdapter.InsertCommand.Parameters.Add(Species);
-            sqlDataAdapter.InsertCommand.Parameters.Add(Breed);
             sqlDataAdapter.InsertCommand.Parameters.Add(NickName);
+            sqlDataAdapter.InsertCommand.Parameters.Add(Breed);
             sqlDataAdapter.InsertCommand.Parameters.Add(ArrivalDate);
             sqlDataAdapter.InsertCommand.Parameters.Add(InHere);
             sqlDataAdapter.InsertCommand.Parameters.Add(FMLNameOfOwner);

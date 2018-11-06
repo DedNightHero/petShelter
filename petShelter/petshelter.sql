@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 04 2018 г., 17:57
+-- Время создания: Ноя 06 2018 г., 10:22
 -- Версия сервера: 10.1.25-MariaDB
 -- Версия PHP: 5.6.31
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `animals` (
   `Id_Animals` int(10) UNSIGNED NOT NULL,
-  `Species` int(10) UNSIGNED NOT NULL,
-  `Breed` char(30) NOT NULL,
+  `Species` int(10) UNSIGNED DEFAULT NULL,
   `NickName` char(20) NOT NULL,
+  `Breed` char(30) NOT NULL,
   `ArrivalDate` date NOT NULL,
   `InHere` tinyint(1) UNSIGNED NOT NULL,
   `FMLNameOfOwner` char(40) DEFAULT NULL,
@@ -46,11 +46,11 @@ CREATE TABLE `animals` (
 -- Дамп данных таблицы `animals`
 --
 
-INSERT INTO `animals` (`Id_Animals`, `Species`, `Breed`, `NickName`, `ArrivalDate`, `InHere`, `FMLNameOfOwner`, `OwnerPhone`, `OwnerAddress`, `DeliveryDate`, `PetPhoto`) VALUES
-(1, 2, 'Мэйнкун', 'Машка', '2018-10-02', 0, 'Небольсина М.', '8945123546', 'ул. Пожарника, д. 11', '2018-10-03', 'D:\\photos\\220px-Petersen1_tiny.svg.png'),
-(2, 1, 'Пинчер', 'Добби', '2018-10-03', 0, 'Роман Е.В.', '8962804300', 'г. Новоалтайск, ул. Партизанская, д. 110, к.10', '2018-10-04', 'D:\\photos\\14779362695817848dcfe1e4.53165232.jpg'),
-(3, 1, 'Дворняга', 'Цезарь', '2018-10-05', 0, 'Роман Е.В.', '895', 'ыва', '2018-10-04', 'D:\\photos\\united-state-map.png'),
-(7, 1, 'Лабрадор', 'Шелдон', '2018-10-06', 1, NULL, NULL, NULL, '0001-01-01', NULL);
+INSERT INTO `animals` (`Id_Animals`, `Species`, `NickName`, `Breed`, `ArrivalDate`, `InHere`, `FMLNameOfOwner`, `OwnerPhone`, `OwnerAddress`, `DeliveryDate`, `PetPhoto`) VALUES
+(1, 2, 'Машка', 'Мэйнкун', '2018-10-02', 0, 'Небольсина М.', '8945123546', 'ул. Пожарника, д. 11', '2018-10-03', 'ftp://127.0.0.1/1491574272_003-1.jpg'),
+(2, 1, 'Добби', 'Пинчер', '2018-10-01', 0, 'Роман Е.В.', '8962804300', 'г. Новоалтайск, ул. Партизанская, д. 110, к.10', '2018-10-04', 'ftp://127.0.0.1/doberman_11.jpg'),
+(3, 1, 'Цезарь', 'Дворняга', '2018-10-05', 0, 'Роман Е.В.', '895', 'ыва', '2018-10-04', 'ftp://127.0.0.1/mops_06.jpg'),
+(7, 1, 'Шелдон', 'Лабрадор', '2018-09-26', 1, NULL, NULL, NULL, '0001-01-01', 'ftp://127.0.0.1/labrador-retriver.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ INSERT INTO `animals` (`Id_Animals`, `Species`, `Breed`, `NickName`, `ArrivalDat
 
 CREATE TABLE `debitcredit` (
   `Id_DebitCredit` int(10) UNSIGNED NOT NULL,
-  `GoodsName` int(10) UNSIGNED NOT NULL,
+  `GoodsName` int(10) UNSIGNED DEFAULT NULL,
   `Comment` text,
   `Date` date NOT NULL,
   `Debit` tinyint(1) UNSIGNED NOT NULL,
@@ -82,7 +82,28 @@ INSERT INTO `debitcredit` (`Id_DebitCredit`, `GoodsName`, `Comment`, `Date`, `De
 (6, 2, 'Пожертвование', '2018-10-16', 0, 50, NULL, 1),
 (7, 2, 'На жвачку потратил', '2018-10-16', 10, 0, NULL, 1),
 (8, 2, NULL, '2018-10-16', 0, 20, NULL, NULL),
-(9, 2, 'Собачкам на еду', '2018-10-16', 0, 60, NULL, 2);
+(9, 2, 'Собачкам на еду', '2018-10-16', 0, 60, NULL, 2),
+(10, 1, 'В попу', '2018-11-04', 1, 0, 2, 1),
+(11, 3, 'Чтоб было смешно', '2018-11-05', 1, 0, 1, 1),
+(12, 4, 'Чтоб было смешно', '2018-11-05', 1, 0, 1, 1),
+(13, 4, 'Ещё смешнее', '2018-11-05', 1, 0, 1, 1),
+(14, 4, 'АХАХ', '2018-11-05', 1, 0, 1, 1),
+(15, 4, '[f[f', '2018-11-05', 1, 0, 1, 1),
+(16, 4, 'Чтобы было смешно', '2018-11-05', 0, 20, NULL, 3),
+(17, 4, 'От Саши', '2018-11-05', 1, 0, 1, 1),
+(18, NULL, 'Почесал собачек за ушками', '2018-11-05', 0, 0, NULL, 1),
+(19, NULL, 'Почесал кошечек', '2018-11-05', 0, 0, NULL, 1),
+(20, NULL, 'Всех почесал', '2018-11-05', 0, 0, NULL, 1),
+(21, 4, 'Так надо', '2018-11-05', 30, 0, NULL, 1),
+(22, 4, 'За знакомство', '2018-11-06', 1, 0, NULL, 1),
+(23, 4, 'От бешенства', '2018-11-06', 1, 0, 2, 1),
+(24, 3, 'Хобана', '2018-11-06', 1, 0, 2, 1),
+(25, 3, 'Плановая вакцинация', '2018-11-06', 1, 0, 3, 1),
+(26, 3, 'От бешенства', '2018-11-06', 1, 0, 7, 1),
+(28, 3, 'Плановая вакцинация', '2018-11-06', 1, 0, NULL, 1),
+(29, 4, 'фывафыва', '2018-11-06', 1, 0, NULL, 1),
+(31, 3, 'asdf', '2018-11-06', 1, 0, NULL, 1),
+(32, 3, 'Для мишутки', '2018-11-06', 1, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +114,7 @@ INSERT INTO `debitcredit` (`Id_DebitCredit`, `GoodsName`, `Comment`, `Date`, `De
 CREATE TABLE `goods` (
   `Id_Goods` int(10) UNSIGNED NOT NULL,
   `NameOfGoods` char(30) NOT NULL,
-  `Type` int(10) UNSIGNED NOT NULL,
+  `Type` int(10) UNSIGNED DEFAULT NULL,
   `Amount` int(11) NOT NULL,
   `Required` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -104,7 +125,9 @@ CREATE TABLE `goods` (
 
 INSERT INTO `goods` (`Id_Goods`, `NameOfGoods`, `Type`, `Amount`, `Required`) VALUES
 (1, 'Икра чёрная', 1, 8, 10),
-(2, 'Рубли', 3, 120, 100);
+(2, 'Рубли', 3, 90, 100),
+(3, 'Викодин', 2, 11, 20),
+(4, 'Валерьянка', 2, 16, 20);
 
 -- --------------------------------------------------------
 
@@ -179,7 +202,7 @@ CREATE TABLE `users` (
   `Login` char(20) NOT NULL,
   `Password` char(32) DEFAULT NULL,
   `FirstMiddleLastName` char(40) NOT NULL,
-  `Position` int(1) UNSIGNED NOT NULL,
+  `Position` int(1) UNSIGNED DEFAULT NULL,
   `Phone` char(11) NOT NULL,
   `Address` char(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -191,7 +214,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`Id_Users`, `Login`, `Password`, `FirstMiddleLastName`, `Position`, `Phone`, `Address`) VALUES
 (1, 'DNH', '9FF7FCE8DC408BF90D743A79F825CCDC', 'Фещенко Дмитрий Николаевич', 4, '89628043000', 'г. Барнаул, ул. Некрасова, д.41, к.55'),
 (2, 'REV', NULL, 'Роман Екатерина Валериевна', 1, '89233421816', 'г. Новоалтайск, ул. Партизанская, д.111, к. 10'),
-(3, 'Aldemm', NULL, 'Деменко Александр Михайлович', 1, 'sony', 'пос. Южный, ul. Unknownaya, d. -1');
+(3, 'Aldemm', NULL, 'Деменко Александр Михайлович', 1, 'sony', 'пос. Южный, ul. Unknownaya, d. -1'),
+(5, 'asdljk', 'D41D8CD98F00B204E9800998ECF8427E', 'a s d', 2, 'as', 'asd');
 
 --
 -- Индексы сохранённых таблиц
@@ -258,12 +282,12 @@ ALTER TABLE `animals`
 -- AUTO_INCREMENT для таблицы `debitcredit`
 --
 ALTER TABLE `debitcredit`
-  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `goodstype`
 --
@@ -283,7 +307,7 @@ ALTER TABLE `species`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -292,27 +316,27 @@ ALTER TABLE `users`
 -- Ограничения внешнего ключа таблицы `animals`
 --
 ALTER TABLE `animals`
-  ADD CONSTRAINT `animals_ibfk_1` FOREIGN KEY (`Species`) REFERENCES `species` (`Id_Species`);
+  ADD CONSTRAINT `animals_ibfk_1` FOREIGN KEY (`Species`) REFERENCES `species` (`Id_Species`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `debitcredit`
 --
 ALTER TABLE `debitcredit`
-  ADD CONSTRAINT `debitcredit_ibfk_1` FOREIGN KEY (`PatientId`) REFERENCES `animals` (`Id_Animals`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `debitcredit_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id_Users`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `debitcredit_ibfk_3` FOREIGN KEY (`GoodsName`) REFERENCES `goods` (`Id_Goods`);
+  ADD CONSTRAINT `debitcredit_ibfk_1` FOREIGN KEY (`PatientId`) REFERENCES `animals` (`Id_Animals`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  ADD CONSTRAINT `debitcredit_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id_Users`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  ADD CONSTRAINT `debitcredit_ibfk_3` FOREIGN KEY (`GoodsName`) REFERENCES `goods` (`Id_Goods`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `goods`
 --
 ALTER TABLE `goods`
-  ADD CONSTRAINT `goods_ibfk_1` FOREIGN KEY (`Type`) REFERENCES `goodstype` (`Id_GoodsType`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `goods_ibfk_1` FOREIGN KEY (`Type`) REFERENCES `goodstype` (`Id_GoodsType`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Position`) REFERENCES `positions` (`Id_Positions`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Position`) REFERENCES `positions` (`Id_Positions`) ON DELETE SET NULL ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
