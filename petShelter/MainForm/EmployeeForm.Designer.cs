@@ -1020,6 +1020,7 @@
             this.dataGridViewStaffAllMembers.TabIndex = 5;
             this.dataGridViewStaffAllMembers.TabStop = false;
             this.dataGridViewStaffAllMembers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStaffAllMembers_CellClick);
+            this.dataGridViewStaffAllMembers.Sorted += new System.EventHandler(this.sorted);
             this.dataGridViewStaffAllMembers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStaffAllMembers_KeyDown);
             this.dataGridViewStaffAllMembers.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStaffAllMembers_KeyUp);
             // 

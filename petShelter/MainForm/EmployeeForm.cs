@@ -616,13 +616,18 @@ namespace MainForm
             dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
             dataGridViewStaffAllMembers.ClearSelection();
-            FillPositions();
+            //FillPositions();
             
+        }
+        private void sorted(object sender, EventArgs e) //Вызывается при сортировки столбцов
+        {
+            FillPositions();
         }
         #endregion
         #region Параметры датагрида "Персонал"
         private void setStaffGridView()
         {
+            FillPositions();
             dataGridViewStaffAllMembers.ClearSelection();
             dataGridViewStaffAllMembers.Columns["Id_Users"].Visible = false;
             dataGridViewStaffAllMembers.Columns["Password"].Visible = false;
@@ -636,19 +641,7 @@ namespace MainForm
             dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].DisplayIndex = 0;
             dataGridViewStaffAllMembers.Columns["Phone"].DisplayIndex = 5;
             dataGridViewStaffAllMembers.Columns["Address"].DisplayIndex = 4;
-            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;
-            /*
-            dataGridViewStaffAllMembers.Columns["Login"].HeaderText = "Логин";
-            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].HeaderText = "ФИО";
-            dataGridViewStaffAllMembers.Columns["Phone"].HeaderText = "Телефон";
-            dataGridViewStaffAllMembers.Columns["Address"].HeaderText = "Адрес";
-            //dataGridViewStaffAllMembers.Columns[4].HeaderText = "Должность";
-            dataGridViewStaffAllMembers.Columns["Login"].DisplayIndex = 1;
-            dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].DisplayIndex = 0;
-            dataGridViewStaffAllMembers.Columns["Phone"].DisplayIndex = 5;
-            dataGridViewStaffAllMembers.Columns["Address"].DisplayIndex = 4;
-            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;*/
-            
+            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;            
             dataGridViewStaffAllMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void FillPositions()
@@ -667,7 +660,6 @@ namespace MainForm
                 foundRows = psPositions.positions.Select(expression);
                 expression = foundRows[0][1].ToString();
                 dataGridViewStaffAllMembers.Rows[i].Cells["positionsName"].Value = expression;         
-
             }
         }
 
@@ -743,6 +735,8 @@ namespace MainForm
             textBoxStaffAddress.Text = "";
             checkBoxStaffNewMember.Checked = false;
         }
+        
+        
         #endregion
         #region Фильтрация таблицы "Персонал" согласно указанным критериям
         private void sortStaffTable(object sender, EventArgs e)
@@ -1322,6 +1316,8 @@ namespace MainForm
             cleanReportsMoneyControl();
         }
         #endregion
+
+        
         #endregion
     }
 }
