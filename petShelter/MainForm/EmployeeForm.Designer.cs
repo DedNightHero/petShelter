@@ -168,6 +168,7 @@
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
             this.openFileDialogAddPetPhoto = new System.Windows.Forms.OpenFileDialog();
+            this.sortByDate = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -1786,6 +1787,7 @@
             this.tableLayoutPanelReportsSpent.Controls.Add(this.buttonReportsForm, 3, 4);
             this.tableLayoutPanelReportsSpent.Controls.Add(this.dateTimePickerReportsFrom, 2, 1);
             this.tableLayoutPanelReportsSpent.Controls.Add(this.dateTimePickerReportsTo, 3, 1);
+            this.tableLayoutPanelReportsSpent.Controls.Add(this.sortByDate, 2, 2);
             this.tableLayoutPanelReportsSpent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelReportsSpent.Location = new System.Drawing.Point(28, 15);
             this.tableLayoutPanelReportsSpent.Name = "tableLayoutPanelReportsSpent";
@@ -1819,6 +1821,7 @@
             this.checkBoxReportsEat.TabIndex = 1;
             this.checkBoxReportsEat.Text = "Еда";
             this.checkBoxReportsEat.UseVisualStyleBackColor = true;
+            this.checkBoxReportsEat.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // checkBoxReportsCure
             // 
@@ -1830,6 +1833,7 @@
             this.checkBoxReportsCure.TabIndex = 2;
             this.checkBoxReportsCure.Text = "Лекарства";
             this.checkBoxReportsCure.UseVisualStyleBackColor = true;
+            this.checkBoxReportsCure.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // checkBoxReportsOther
             // 
@@ -1841,6 +1845,7 @@
             this.checkBoxReportsOther.TabIndex = 3;
             this.checkBoxReportsOther.Text = "Прочее";
             this.checkBoxReportsOther.UseVisualStyleBackColor = true;
+            this.checkBoxReportsOther.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // checkBoxReportsMoney
             // 
@@ -1852,6 +1857,7 @@
             this.checkBoxReportsMoney.TabIndex = 4;
             this.checkBoxReportsMoney.Text = "Деньги";
             this.checkBoxReportsMoney.UseVisualStyleBackColor = true;
+            this.checkBoxReportsMoney.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // checkBoxReportsOutCome
             // 
@@ -1863,6 +1869,7 @@
             this.checkBoxReportsOutCome.TabIndex = 5;
             this.checkBoxReportsOutCome.Text = "Расходы";
             this.checkBoxReportsOutCome.UseVisualStyleBackColor = true;
+            this.checkBoxReportsOutCome.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // checkBoxReportsInCome
             // 
@@ -1874,6 +1881,7 @@
             this.checkBoxReportsInCome.TabIndex = 6;
             this.checkBoxReportsInCome.Text = "Поступление";
             this.checkBoxReportsInCome.UseVisualStyleBackColor = true;
+            this.checkBoxReportsInCome.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // label33
             // 
@@ -1899,18 +1907,22 @@
             // 
             // dateTimePickerReportsFrom
             // 
+            this.dateTimePickerReportsFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerReportsFrom.Location = new System.Drawing.Point(331, 33);
             this.dateTimePickerReportsFrom.Name = "dateTimePickerReportsFrom";
             this.dateTimePickerReportsFrom.Size = new System.Drawing.Size(158, 25);
             this.dateTimePickerReportsFrom.TabIndex = 7;
             this.dateTimePickerReportsFrom.Value = new System.DateTime(2017, 11, 6, 19, 53, 0, 0);
+            this.dateTimePickerReportsFrom.Validated += new System.EventHandler(this.SortDebitCredit);
             // 
             // dateTimePickerReportsTo
             // 
+            this.dateTimePickerReportsTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerReportsTo.Location = new System.Drawing.Point(495, 33);
             this.dateTimePickerReportsTo.Name = "dateTimePickerReportsTo";
             this.dateTimePickerReportsTo.Size = new System.Drawing.Size(160, 25);
             this.dateTimePickerReportsTo.TabIndex = 8;
+            this.dateTimePickerReportsTo.Validated += new System.EventHandler(this.SortDebitCredit);
             // 
             // tableLayoutPanel6
             // 
@@ -2016,6 +2028,17 @@
             this.dataGridViewReportsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1198, 415);
             this.dataGridViewReportsMain.TabIndex = 13;
+            // 
+            // sortByDate
+            // 
+            this.sortByDate.AutoSize = true;
+            this.sortByDate.Location = new System.Drawing.Point(331, 71);
+            this.sortByDate.Name = "sortByDate";
+            this.sortByDate.Size = new System.Drawing.Size(92, 23);
+            this.sortByDate.TabIndex = 10;
+            this.sortByDate.Text = "checkBox1";
+            this.sortByDate.UseVisualStyleBackColor = true;
+            this.sortByDate.CheckedChanged += new System.EventHandler(this.SortDebitCredit);
             // 
             // EmployeeForm
             // 
@@ -2228,5 +2251,6 @@
         private System.Windows.Forms.TextBox textBoxStaffLogin;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.CheckBox sortByDate;
     }
 }

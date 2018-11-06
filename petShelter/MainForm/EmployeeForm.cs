@@ -616,7 +616,7 @@ namespace MainForm
             dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
             dataGridViewStaffAllMembers.ClearSelection();
-            //FillPositions();
+
             
         }
         private void sorted(object sender, EventArgs e) //Вызывается при сортировки столбцов
@@ -1203,6 +1203,8 @@ namespace MainForm
         #region Инициализация окна
         private void initReportsTab()
         {
+            dateTimePickerReportsFrom.CustomFormat = "yyyy-mm-dd";
+            dateTimePickerReportsTo.CustomFormat = "yyyy-mm-dd";
             psDebitcredit = ibl.getDebitCredit();
             psGoods = ibl.getGoods();
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
@@ -1317,7 +1319,114 @@ namespace MainForm
         }
         #endregion
 
-        
+        #region Фильтрация таблицы Приход/Расход согласно указанным критериям
+        private void SortDebitCredit(object sender, EventArgs e)
+        {
+            psDebitcredit = ibl.getDebitCredit();
+            String filter = null;
+            if (checkBoxReportsEat.Checked) filter = "CONVERT(GoodsName, 'System.String') LIKE '1'";
+            if (checkBoxReportsCure.Checked)
+            {
+                if (filter != null) filter += " or ";
+                filter += "CONVERT(GoodsName, 'System.String') LIKE '2'";
+            }
+            if (checkBoxReportsOther.Checked)
+            {
+                if (filter != null) filter += " or ";
+                filter += "CONVERT(GoodsName, 'System.String') LIKE '4'";
+            }
+            if (checkBoxReportsMoney.Checked)
+            {
+                if (filter != null) filter += " or ";
+                filter += "CONVERT(GoodsName, 'System.String') LIKE '3'";
+            }
+            if (filter != null) filter = "(" + filter+")";
+
+            if (checkBoxReportsOutCome.Checked)
+            {
+                if (filter != null) filter += " and ";
+                filter += "CONVERT(Credit, 'System.String') LIKE '0'";
+            }
+            if (checkBoxReportsInCome.Checked)
+            {
+                if (filter != null) filter += " and ";
+                filter += "CONVERT(Debit, 'System.String') LIKE '0'";
+            }
+            if (sortByDate.Checked)
+            {
+                if (filter != null) filter += " and ";
+                filter += "CONVERT(Date, 'System.String') > '" + dateTimePickerReportsFrom.Value.Date + "'";
+                filter += " and ";
+                filter += "CONVERT(Date, 'System.String') < '" + dateTimePickerReportsTo.Value.Date + "'";
+            }  
+
+            if (filter != null)
+            {
+                psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format(filter);
+                dataGridViewReportsMain.DataSource = psDebitcredit.debitcredit.DefaultView;
+            }
+            else{
+            dataGridViewReportsMain.DataSource = psDebitcredit;
+            dataGridViewReportsMain.DataMember = "debitcredit";
+            }
+            setReportsGridView();
+            dataGridViewReportsMain.ClearSelection();
+            //cleanReportsMoneyControl();
+            //cleanReportsFilterArea();
+
+
+
+
+            /*#region Фильтрация таблицы Животных согласно указанным критериям
+       private void sortPetsTable(object sender, EventArgs e)
+       {
+           String filter = null;
+           if (checkBoxPetsIsAtHome.Checked) filter = "(CONVERT(InHere, 'System.String') LIKE '0'";
+           if (checkBoxPetsIsAtShelter.Checked)
+           {
+               if (filter != null) filter += " or ";
+               else filter += "(";
+               filter += "CONVERT(InHere, 'System.String') LIKE '1')";
+           }
+           else {
+               if (filter != null) filter += " ) ";
+           }
+           if (textBoxPetsSortBreed.Text != "")
+           {
+               if (filter != null) filter += " and ";
+               filter += "Breed LIKE '*" +textBoxPetsSortBreed.Text + "*'";
+           }
+           if (textBoxPetsSortNickName.Text != "")
+           {
+               if (filter != null) filter += " and ";
+               filter += "NickName LIKE '*" +textBoxPetsSortNickName.Text + "*'";
+           }
+           if (comboBoxSortSpecies.Text != "")
+           {
+               if (filter != null) filter += " and ";
+               filter += "CONVERT(Species, 'System.String') LIKE '" + psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString() + "'";
+           }
+           if (filter != null)
+           {
+               psAnimals.animals.DefaultView.RowFilter = string.Format(filter);
+               dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
+           }
+           else
+           {
+               dataGridViewPetsAllPets.DataSource = psAnimals;
+               dataGridViewPetsAllPets.DataMember = "animals";
+               setPetsGridView();
+           }
+           setPetsGridView();
+           dataGridViewPetsAllPets.ClearSelection();
+           cleanPetsAddArea();
+           clearPetsAddCureArea();
+       }
+       #endregion*/
+
+        }
+        #endregion
+
         #endregion
     }
 }
