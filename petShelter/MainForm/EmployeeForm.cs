@@ -211,13 +211,10 @@ namespace MainForm
                         string a = textBoxPetsAddress.Text;
                         DateTime dd = dateTimePickerPetsDeliveryDay.Value;
                         psAnimals.animals.AddanimalsRow(i, nn, b, ad, 0, fio, pn, a, dd, pp);
-                        ibl.setAnimals(psAnimals);
                     }
                     else
-                    {
                         psAnimals.animals.AddanimalsRow(i, nn, b, ad, 1, null, null, null, default(DateTime), pp);
-                        ibl.setAnimals(psAnimals);
-                    }
+                    ibl.setAnimals(psAnimals);
                     cleanPetsAddArea();
                     clearPetsAddCureArea();
                 }
@@ -579,19 +576,20 @@ namespace MainForm
             psUsers = ibl.getUsers();
             psPositions = ibl.getPositions();
             psDebitcredit = ibl.getDebitCredit();
-            dataGridViewStaffAllMembers.DataSource = psUsers;
-            dataGridViewStaffAllMembers.DataMember = "users";
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
-            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
-            setStaffGridView();
-            setStaffCharity();
-
+            
             comboBoxStaffVacancy.DropDownStyle = ComboBoxStyle.DropDownList;
             for (int i = 0; i < psPositions.positions.Rows.Count; i++)
             {
                 comboBoxStaffVacancy.Items.Add(psPositions.positions.Rows[i][1].ToString());
             }
             comboBoxStaffVacancy.Items.Add("");
+
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
+            setStaffCharity();
+            dataGridViewStaffAllMembers.DataSource = psUsers;
+            dataGridViewStaffAllMembers.DataMember = "users";
+            setStaffGridView();
         }
         #endregion
         #region Обновление окна
@@ -608,6 +606,9 @@ namespace MainForm
             comboBoxStaffVacancy.Items.Add("");
             clearStaffFilter();
             cleanStaffAddArea();
+            dataGridViewStaffAllMembers.DataSource = psUsers;
+            dataGridViewStaffAllMembers.DataMember = "users";
+            setStaffGridView();
             dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
             dataGridViewStaffAllMembers.ClearSelection();
@@ -821,8 +822,10 @@ namespace MainForm
                         psUsers.users.AddusersRow(l, null, fio, pos, phone, address);
                     }
                     ibl.setUsers(psUsers);
-                    dataGridViewStaffAllMembers.Refresh();
                     cleanStaffAddArea();
+                    setStaffGridView();
+                    //dataGridViewStaffAllMembers.Refresh();
+                    dataGridViewStaffAllMembers.ClearSelection();
                 }
             }
             else //Редактирование информации о сотруднике
@@ -831,8 +834,10 @@ namespace MainForm
                 if (f)
                 {
                     changeStaffInfo();
-                    dataGridViewStaffAllMembers.Refresh();
                     cleanStaffAddArea();
+                    setStaffGridView();
+                    //dataGridViewStaffAllMembers.Refresh();
+                    dataGridViewStaffAllMembers.ClearSelection();
                 }
             }
         }
@@ -848,6 +853,8 @@ namespace MainForm
             {
                 psUsers.users.FindById_Users(id)[2] = null;
             }
+            else if (textBoxStaffPass.Text == "" && comboBoxStaffVacancy.Text != "Волонтёр")
+                psUsers.users.FindById_Users(id)[2] = psUsers.users.FindById_Users(id)[2].ToString();
             else
             {
                 psUsers.users.FindById_Users(id)[2] = CreateMD5(textBoxStaffPass.Text);
@@ -863,8 +870,10 @@ namespace MainForm
             {
                 psUsers.users.FindById_Users(id).Delete();
                 ibl.setUsers(psUsers);
-                dataGridViewStaffAllMembers.Refresh();
                 cleanStaffAddArea();
+                setStaffGridView();
+                //dataGridViewStaffAllMembers.Refresh();
+                dataGridViewStaffAllMembers.ClearSelection();
             }
             else
             {
@@ -910,7 +919,7 @@ namespace MainForm
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count - 1); i++)
+            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
             {
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
@@ -929,13 +938,14 @@ namespace MainForm
             psGoodstype = ibl.getGoodsType();
             psDebitcredit = ibl.getDebitCredit();
             psUsers = ibl.getUsers();
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
             comboBoxGoodsType.Items.Clear();
             comboBoxGoodsVolunteer.Items.Clear();
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count - 1); i++)
+            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
             {
                 comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
@@ -949,14 +959,12 @@ namespace MainForm
         private void setGoodsGridView()
         {
             dataGridViewGoodsAllGoods.Columns[0].Visible = false;
-            dataGridViewGoodsAllGoods.Columns[1].HeaderText = "Наименование";
             dataGridViewGoodsAllGoods.Columns[2].Visible = false;
+            dataGridViewGoodsAllGoods.Columns[1].HeaderText = "Наименование";
             dataGridViewGoodsAllGoods.Columns[3].HeaderText = "В наличии";
             dataGridViewGoodsAllGoods.Columns[4].HeaderText = "Необходимо";
-            //dataGridViewGoodsAllGoods.Columns[5].HeaderText = "Дата поступления";
             dataGridViewGoodsAllGoods.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewGoodsAllGoods.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-           // dataGridViewGoodsAllGoods.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewGoodsAllGoods.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
@@ -1021,8 +1029,8 @@ namespace MainForm
             String filter = null;
             if (radioButtonGoodsSortIsEat.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '1'";
             if (radioButtonGoodsSortIsCure.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '2'";
-            if (radioButtonGoodsSortIsOther.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '3'";
-            if (filter == null) filter = "CONVERT(Type, 'System.String')  NOT LIKE '4'";
+            if (radioButtonGoodsSortIsOther.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '4'";
+            if (filter == null) filter = "";
             if (textBoxGoodsSortNameofGoods.Text != "")
             {
                 if (filter != null) filter += " and ";
@@ -1103,6 +1111,7 @@ namespace MainForm
 
                 ibl.setDebitCredit(psDebitcredit);
                 dataGridViewGoodsAllGoods.Refresh();
+                dataGridViewGoodsAllGoods.ClearSelection();
                 cleanGoodsAddArea();
             }
         }
@@ -1145,6 +1154,7 @@ namespace MainForm
                     ibl.setDebitCredit(psDebitcredit);
                 }
                 dataGridViewGoodsAllGoods.Refresh();
+                dataGridViewGoodsAllGoods.ClearSelection();
                 cleanGoodsAddArea();
             }
             else
@@ -1154,7 +1164,6 @@ namespace MainForm
         }
 
         #endregion
-
         #endregion
 
         #region ОКНО "Отчёты"

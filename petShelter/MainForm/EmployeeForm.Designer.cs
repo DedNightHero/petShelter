@@ -393,6 +393,7 @@
             this.dataGridViewPetsAllPets.MultiSelect = false;
             this.dataGridViewPetsAllPets.Name = "dataGridViewPetsAllPets";
             this.dataGridViewPetsAllPets.ReadOnly = true;
+            this.dataGridViewPetsAllPets.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewPetsAllPets.RowTemplate.Height = 24;
             this.dataGridViewPetsAllPets.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPetsAllPets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -407,7 +408,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -451,6 +452,7 @@
             this.dataGridViewPetsHistory.MultiSelect = false;
             this.dataGridViewPetsHistory.Name = "dataGridViewPetsHistory";
             this.dataGridViewPetsHistory.ReadOnly = true;
+            this.dataGridViewPetsHistory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewPetsHistory.RowTemplate.Height = 24;
             this.dataGridViewPetsHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPetsHistory.Size = new System.Drawing.Size(838, 109);
@@ -477,7 +479,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1010,6 +1012,7 @@
             this.dataGridViewStaffAllMembers.MultiSelect = false;
             this.dataGridViewStaffAllMembers.Name = "dataGridViewStaffAllMembers";
             this.dataGridViewStaffAllMembers.ReadOnly = true;
+            this.dataGridViewStaffAllMembers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewStaffAllMembers.RowTemplate.Height = 24;
             this.dataGridViewStaffAllMembers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewStaffAllMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1034,6 +1037,7 @@
             this.dataGridViewStaffCharity.MultiSelect = false;
             this.dataGridViewStaffCharity.Name = "dataGridViewStaffCharity";
             this.dataGridViewStaffCharity.ReadOnly = true;
+            this.dataGridViewStaffCharity.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewStaffCharity.RowTemplate.Height = 24;
             this.dataGridViewStaffCharity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStaffCharity.Size = new System.Drawing.Size(756, 130);
@@ -1507,12 +1511,14 @@
             this.dataGridViewGoodsAllGoods.AllowUserToDeleteRows = false;
             this.dataGridViewGoodsAllGoods.AllowUserToResizeColumns = false;
             this.dataGridViewGoodsAllGoods.AllowUserToResizeRows = false;
+            this.dataGridViewGoodsAllGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewGoodsAllGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGoodsAllGoods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewGoodsAllGoods.Location = new System.Drawing.Point(28, 81);
             this.dataGridViewGoodsAllGoods.MultiSelect = false;
             this.dataGridViewGoodsAllGoods.Name = "dataGridViewGoodsAllGoods";
             this.dataGridViewGoodsAllGoods.ReadOnly = true;
+            this.dataGridViewGoodsAllGoods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewGoodsAllGoods.RowTemplate.Height = 24;
             this.dataGridViewGoodsAllGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGoodsAllGoods.Size = new System.Drawing.Size(1199, 236);
@@ -1694,7 +1700,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
@@ -1726,6 +1732,7 @@
             this.dateTimePickerGoods.Name = "dateTimePickerGoods";
             this.dateTimePickerGoods.Size = new System.Drawing.Size(205, 30);
             this.dateTimePickerGoods.TabIndex = 11;
+            this.dateTimePickerGoods.Visible = false;
             // 
             // tabReports
             // 
@@ -1988,12 +1995,21 @@
             // 
             // dataGridViewReportsMain
             // 
+            this.dataGridViewReportsMain.AllowUserToAddRows = false;
+            this.dataGridViewReportsMain.AllowUserToDeleteRows = false;
+            this.dataGridViewReportsMain.AllowUserToResizeColumns = false;
+            this.dataGridViewReportsMain.AllowUserToResizeRows = false;
+            this.dataGridViewReportsMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewReportsMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanelReportsMain.SetColumnSpan(this.dataGridViewReportsMain, 3);
             this.dataGridViewReportsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReportsMain.Location = new System.Drawing.Point(28, 206);
+            this.dataGridViewReportsMain.MultiSelect = false;
             this.dataGridViewReportsMain.Name = "dataGridViewReportsMain";
+            this.dataGridViewReportsMain.ReadOnly = true;
+            this.dataGridViewReportsMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewReportsMain.RowTemplate.Height = 24;
+            this.dataGridViewReportsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReportsMain.Size = new System.Drawing.Size(1198, 415);
             this.dataGridViewReportsMain.TabIndex = 13;
             // 
