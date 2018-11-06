@@ -37,6 +37,7 @@ namespace MainForm
             initAnimalsTab();
             initStaffTab();
             initGoodsTab();
+            initReportsTab();
         }
         #endregion
         #region Переключение между вкладками
@@ -59,7 +60,8 @@ namespace MainForm
             }
             else if (tabMain.SelectedIndex == 3)
             {
-
+                refreshReportsTab();
+                return;
             }
         }
         #endregion
@@ -1167,7 +1169,122 @@ namespace MainForm
         #endregion
 
         #region ОКНО "Отчёты"
+        #region Инициализация окна
+        private void initReportsTab()
+        {
+            psDebitcredit = ibl.getDebitCredit();
+            psGoods = ibl.getGoods();
+            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
+            labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
+            dataGridViewReportsMain.DataSource = psDebitcredit;
+            dataGridViewReportsMain.DataMember = "debitcredit";
+            setReportsGridView();
+        }
+        #endregion
+        #region Обновление окна
+        private void refreshReportsTab()
+        {
+            psDebitcredit = ibl.getDebitCredit();
+            psGoods = ibl.getGoods();
+            dataGridViewReportsMain.DataSource = psDebitcredit;
+            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
+            labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
+            id = Convert.ToInt32(psGoods.goods.DefaultView[0][0].ToString());
+            dataGridViewReportsMain.Refresh();
+            dataGridViewReportsMain.ClearSelection();
+            cleanReportsMoneyControl();
+            cleanReportsFilterArea();
+        }
+        #endregion
+        #region Параметры датагрида "Отчёты"
+        private void setReportsGridView()
+        {
+            dataGridViewReportsMain.Columns[0].Visible = false;
+            dataGridViewReportsMain.Columns[6].Visible = false;
+            dataGridViewReportsMain.Columns[7].Visible = false;
+            dataGridViewReportsMain.Columns[1].HeaderText = "Наименование";
+            dataGridViewReportsMain.Columns[2].HeaderText = "Комментарий";
+            dataGridViewReportsMain.Columns[3].HeaderText = "Дата";
+            dataGridViewReportsMain.Columns[4].HeaderText = "Списано";
+            dataGridViewReportsMain.Columns[5].HeaderText = "Поступило";
+            dataGridViewReportsMain.Columns[1].DisplayIndex = 0;
+            dataGridViewReportsMain.Columns[2].DisplayIndex = 1;
+            dataGridViewReportsMain.Columns[3].DisplayIndex = 4;
+            dataGridViewReportsMain.Columns[4].DisplayIndex = 2;
+            dataGridViewReportsMain.Columns[5].DisplayIndex = 3;
+            dataGridViewReportsMain.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewReportsMain.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewReportsMain.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewReportsMain.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewReportsMain.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewReportsMain.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        }
+        #endregion
+        #region Очистка фильтра
+        private void cleanReportsFilterArea()
+        {
+            checkBoxReportsEat.Checked = false;
+            checkBoxReportsCure.Checked = false;
+            checkBoxReportsOther.Checked = false;
+            checkBoxReportsMoney.Checked = false;
+            checkBoxReportsOutCome.Checked = false;
+            checkBoxReportsInCome.Checked = false;
+            dateTimePickerReportsFrom.Value = DateTime.Today.AddDays(-365);
+            dateTimePickerReportsTo.Value = DateTime.Today;
+        }
+        #endregion
+        #region Очистка области списания денег
+        private void cleanReportsMoneyControl()
+        {
+            psGoods = ibl.getGoods();
+            textBoxReportsMoneyToSpend.Text = "";
+            textBoxReportsComment.Text = "";
+            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
+            labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
+        }
+        #endregion
+        #region Фильтрация таблицы "Предметы" согласно указаным критериям
+        private void sortReportsTable(object sender, EventArgs e)
+        {
+            
+        }
+        #endregion
+        #region Кнопка формирования отчёта
+        private void buttonReportsForm_Click(object sender, EventArgs e)
+        {
+            Reports report = new Reports();
+            report.CreateReportFromVisibleItems(dataGridViewReportsMain, "Отчёт по расходам");
+            cleanReportsFilterArea();
+        }
 
+        #endregion
+        #region Кнопка списания денежных средств
+        private void buttonReportsWriteOffMoney_Click(object sender, EventArgs e)
+        {
+            if (textBoxReportsMoneyToSpend.Text == "")
+            {
+                MessageBox.Show("Введите сумму", "Ошибка!", MessageBoxButtons.OK);
+                return;
+            }
+            else if (textBoxReportsComment.Text == "")
+            {
+                MessageBox.Show("Введите комментарий", "Ошибка!", MessageBoxButtons.OK);
+                return;
+            }
+            if (Convert.ToInt32(textBoxReportsMoneyToSpend.Text)>Convert.ToInt32(labelReportsMoneyAmount.Text))
+            {
+                MessageBox.Show("Недостаточно средств", "Критическая ошибка!", MessageBoxButtons.OK);
+                cleanReportsMoneyControl();
+                return;
+            }
+            int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+            psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3]) - Convert.ToInt32(textBoxReportsMoneyToSpend.Text);
+            ibl.setGoods(psGoods);
+            psDebitcredit.debitcredit.AdddebitcreditRow(gi, textBoxReportsComment.Text, DateTime.Today.Date, Convert.ToInt32(textBoxReportsMoneyToSpend.Text), 0, -1, userId);
+            ibl.setDebitCredit(psDebitcredit);
+            cleanReportsMoneyControl();
+        }
+        #endregion
         #endregion
     }
 }

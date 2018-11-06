@@ -408,7 +408,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -479,7 +479,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1700,7 +1700,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
@@ -1894,6 +1894,7 @@
             this.buttonReportsForm.TabIndex = 9;
             this.buttonReportsForm.Text = "Сформировать";
             this.buttonReportsForm.UseVisualStyleBackColor = true;
+            this.buttonReportsForm.Click += new System.EventHandler(this.buttonReportsForm_Click);
             // 
             // dateTimePickerReportsFrom
             // 
@@ -1901,6 +1902,7 @@
             this.dateTimePickerReportsFrom.Name = "dateTimePickerReportsFrom";
             this.dateTimePickerReportsFrom.Size = new System.Drawing.Size(158, 30);
             this.dateTimePickerReportsFrom.TabIndex = 7;
+            this.dateTimePickerReportsFrom.Value = new System.DateTime(2017, 11, 6, 19, 53, 0, 0);
             // 
             // dateTimePickerReportsTo
             // 
@@ -1992,6 +1994,7 @@
             this.buttonReportsWriteOffMoney.TabIndex = 12;
             this.buttonReportsWriteOffMoney.Text = "Списать средства";
             this.buttonReportsWriteOffMoney.UseVisualStyleBackColor = true;
+            this.buttonReportsWriteOffMoney.Click += new System.EventHandler(this.buttonReportsWriteOffMoney_Click);
             // 
             // dataGridViewReportsMain
             // 
