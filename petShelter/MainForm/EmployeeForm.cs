@@ -207,6 +207,11 @@ namespace MainForm
                 dataGridViewPetsAllPets.Rows[i].Cells["speciesShow"].Value = expression;
             }
         }
+        private void PetsGridSorted(object sender, EventArgs e)
+        {
+            FillSpecies();
+
+        }
         #endregion
         #region Выбор элемента в датагриде "Животные"
         private void dataGridViewPetsAllPets_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1271,8 +1276,8 @@ namespace MainForm
         #region Инициализация окна
         private void initReportsTab()
         {
-            dateTimePickerReportsFrom.CustomFormat = "yyyy-mm-dd";
-            dateTimePickerReportsTo.CustomFormat = "yyyy-mm-dd";
+            //dateTimePickerReportsFrom.CustomFormat = "yyyy-mm-dd";
+            //dateTimePickerReportsTo.CustomFormat = "yyyy-mm-dd";
             psDebitcredit = ibl.getDebitCredit();
             psGoods = ibl.getGoods();
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
@@ -1305,6 +1310,10 @@ namespace MainForm
                 else
                     dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = "";
             }
+        }
+        private void ReportsGridSorted(object sender, EventArgs e)
+        {
+            FillGoodsReports();
         }
         #endregion
         #region Обновление окна
@@ -1519,6 +1528,17 @@ namespace MainForm
 
         }
         #endregion
+
+        private void tableLayoutPanelGoodsTopPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
+
+
+
+        
         #endregion
     }
 }
