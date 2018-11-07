@@ -120,6 +120,8 @@ namespace MainForm
             }
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
+            dataGridViewPetsHistory.Columns.Add("goodsNameShow", "Препарат");
+            dataGridViewPetsAllPets.Columns.Add("speciesShow", "Вид");
             setPetsGridView();
         }
         #endregion
@@ -131,6 +133,7 @@ namespace MainForm
             psGoods = ibl.getGoods();
             dataGridViewPetsAllPets.DataSource = psAnimals;
             dataGridViewPetsAllPets.DataMember = "animals";
+            setPetsGridView();
             comboBoxPetsSpecies.Items.Clear();
             comboBoxSortSpecies.Items.Clear();
             comboBoxPetsCure.Items.Clear();
@@ -156,20 +159,53 @@ namespace MainForm
         #region Параметры датагрида "Животные"
         private void setPetsGridView()
         {
+            FillSpecies();
             dataGridViewPetsAllPets.ClearSelection();
-            dataGridViewPetsAllPets.Columns[0].Visible = false;
-            dataGridViewPetsAllPets.Columns[6].Visible = false;
-            dataGridViewPetsAllPets.Columns[7].Visible = false;
-            dataGridViewPetsAllPets.Columns[8].Visible = false;
-            dataGridViewPetsAllPets.Columns[10].Visible = false;
-            dataGridViewPetsAllPets.Columns[5].Visible = false;
-            dataGridViewPetsAllPets.Columns[1].Visible = false;
-            //dataGridViewPetsAllPets.Columns[1].HeaderText = "Вид";
-            dataGridViewPetsAllPets.Columns[2].HeaderText = "Кличка";
-            dataGridViewPetsAllPets.Columns[3].HeaderText = "Порода";
-            dataGridViewPetsAllPets.Columns[4].HeaderText = "Дата поступления";
-            dataGridViewPetsAllPets.Columns[9].HeaderText = "Дата выдачи";
+            dataGridViewPetsAllPets.Columns["Id_Animals"].Visible = false;
+            dataGridViewPetsAllPets.Columns["InHere"].Visible = false;
+            dataGridViewPetsAllPets.Columns["FMLNameOfOwner"].Visible = false;
+            dataGridViewPetsAllPets.Columns["OwnerPhone"].Visible = false;
+            dataGridViewPetsAllPets.Columns["OwnerAddress"].Visible = false;
+            dataGridViewPetsAllPets.Columns["PetPhoto"].Visible = false;
+            dataGridViewPetsAllPets.Columns["Species"].Visible = false;
+            dataGridViewPetsAllPets.Columns["speciesShow"].HeaderText = "Вид";
+            dataGridViewPetsAllPets.Columns["NickName"].HeaderText = "Кличка";
+            dataGridViewPetsAllPets.Columns["Breed"].HeaderText = "Порода";
+            dataGridViewPetsAllPets.Columns["ArrivalDate"].HeaderText = "Дата поступления";
+            dataGridViewPetsAllPets.Columns["DeliveryDate"].HeaderText = "Дата выдачи";
+            dataGridViewPetsAllPets.Columns["speciesShow"].DisplayIndex = 0;
+            dataGridViewPetsAllPets.Columns["Breed"].DisplayIndex = 1;
+            dataGridViewPetsAllPets.Columns["NickName"].DisplayIndex = 2;
+            dataGridViewPetsAllPets.Columns["ArrivalDate"].DisplayIndex = 3;
+            dataGridViewPetsAllPets.Columns["DeliveryDate"].DisplayIndex = 4;
+
+            dataGridViewPetsAllPets.Columns["Id_Animals"].DisplayIndex = 5;
+            dataGridViewPetsAllPets.Columns["InHere"].DisplayIndex = 6;
+            dataGridViewPetsAllPets.Columns["FMLNameOfOwner"].DisplayIndex = 7;
+            dataGridViewPetsAllPets.Columns["OwnerPhone"].DisplayIndex = 8;
+            dataGridViewPetsAllPets.Columns["OwnerAddress"].DisplayIndex = 9;
+            dataGridViewPetsAllPets.Columns["PetPhoto"].DisplayIndex = 10;
+            dataGridViewPetsAllPets.Columns["Species"].DisplayIndex = 11;
             dataGridViewPetsAllPets.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+        #endregion
+        #region Правильное отображение названий видов животных
+        private void FillSpecies()
+        {
+            psSpecies = ibl.getSpecies();
+            String speciesId;
+            int rowCount = dataGridViewPetsAllPets.RowCount;
+            string expression;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                speciesId = dataGridViewPetsAllPets.Rows[i].Cells["Species"].Value.ToString();
+                expression = "Id_Species = " + speciesId;
+                System.Data.DataRow[] foundRows;
+                foundRows = psSpecies.species.Select(expression);
+                expression = foundRows[0][1].ToString();
+                dataGridViewPetsAllPets.Rows[i].Cells["speciesShow"].Value = expression;
+            }
         }
         #endregion
         #region Выбор элемента в датагриде "Животные"
@@ -231,6 +267,7 @@ namespace MainForm
                     cleanPetsAddArea();
                 }
             }
+            setPetsGridView();
             dataGridViewPetsAllPets.Refresh();
             dataGridViewPetsAllPets.ClearSelection();
         }
@@ -371,24 +408,24 @@ namespace MainForm
             //cleanPetsAddArea();
             if (i>=0)
             {
-                id=Convert.ToInt32(dataGridViewPetsAllPets.CurrentRow.Cells[0].Value);
-                comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)[1]) - 1][1].ToString();
-                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)[2].ToString();
-                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)[3].ToString();
-                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)[4].ToString();
-                if (psAnimals.animals.FindById_Animals(id)[10].ToString() == "")
+                id=Convert.ToInt32(dataGridViewPetsAllPets.CurrentRow.Cells["Id_Animals"].Value);
+                comboBoxPetsSpecies.SelectedItem = psSpecies.species.Rows[Convert.ToInt32(psAnimals.animals.FindById_Animals(id)["Species"])-1]["NameOfSpecies"].ToString();
+                textBoxPetsNickName.Text = psAnimals.animals.FindById_Animals(id)["NickName"].ToString();
+                textBoxPetsBreed.Text = psAnimals.animals.FindById_Animals(id)["Breed"].ToString();
+                dateTimePickerPetsArrivalDate.Text = psAnimals.animals.FindById_Animals(id)["ArrivalDate"].ToString();
+                if (psAnimals.animals.FindById_Animals(id)["PetPhoto"].ToString() == "")
                     pictureBoxPetPhoto.Image = Properties.Resources.d1;
                 else
                 {
-                    pictureBoxPetPhoto.ImageLocation = psAnimals.animals.FindById_Animals(id)[10].ToString();
+                    pictureBoxPetPhoto.ImageLocation = psAnimals.animals.FindById_Animals(id)["PetPhoto"].ToString();
                 }
-                if (psAnimals.animals.FindById_Animals(id)[5].ToString() == "0")
+                if (psAnimals.animals.FindById_Animals(id)["InHere"].ToString() == "0")
                 {
                     checkBoxPetsMaster.Checked = true;
-                    textBoxPetsFIO.Text = psAnimals.animals.FindById_Animals(id)[6].ToString();
-                    textBoxPetsPhoneNumber.Text = psAnimals.animals.FindById_Animals(id)[7].ToString();
-                    textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)[8].ToString();
-                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)[9].ToString();
+                    textBoxPetsFIO.Text = psAnimals.animals.FindById_Animals(id)["FMLNameOfOwner"].ToString();
+                    textBoxPetsPhoneNumber.Text = psAnimals.animals.FindById_Animals(id)["OwnerPhone"].ToString();
+                    textBoxPetsAddress.Text = psAnimals.animals.FindById_Animals(id)["OwnerAddress"].ToString();
+                    dateTimePickerPetsDeliveryDay.Text = psAnimals.animals.FindById_Animals(id)["DeliveryDate"].ToString();
                 }
                 else
                 {
@@ -406,19 +443,48 @@ namespace MainForm
         {
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
             dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
-            dataGridViewPetsHistory.Columns[0].Visible = false;
-            dataGridViewPetsHistory.Columns[4].Visible = false;
-            dataGridViewPetsHistory.Columns[5].Visible = false;
-            dataGridViewPetsHistory.Columns[6].Visible = false;
-            dataGridViewPetsHistory.Columns[7].Visible = false;
-            dataGridViewPetsHistory.Columns[1].HeaderText = "Препарат";
-            dataGridViewPetsHistory.Columns[2].HeaderText = "Комментарий";
-            dataGridViewPetsHistory.Columns[3].HeaderText = "Дата";
-            dataGridViewPetsHistory.Columns[1].DisplayIndex = 1;
-            dataGridViewPetsHistory.Columns[3].DisplayIndex = 0;
-            dataGridViewPetsHistory.Columns[2].DisplayIndex = 2;
+
+            FillGoods();
+
+            dataGridViewPetsHistory.Columns["Id_DebitCredit"].Visible = false;
+            dataGridViewPetsHistory.Columns["GoodsName"].Visible = false;
+            dataGridViewPetsHistory.Columns["Debit"].Visible = false;
+            dataGridViewPetsHistory.Columns["Credit"].Visible = false;
+            dataGridViewPetsHistory.Columns["PatientId"].Visible = false;
+            dataGridViewPetsHistory.Columns["UserId"].Visible = false;
+            dataGridViewPetsHistory.Columns["goodsNameShow"].HeaderText = "Препарат";
+            dataGridViewPetsHistory.Columns["Comment"].HeaderText = "Комментарий";
+            dataGridViewPetsHistory.Columns["Date"].HeaderText = "Дата";
+            dataGridViewPetsHistory.Columns["Date"].DisplayIndex = 0;
+            dataGridViewPetsHistory.Columns["goodsNameShow"].DisplayIndex = 1;
+            dataGridViewPetsHistory.Columns["Comment"].DisplayIndex = 2;
+            dataGridViewPetsHistory.Columns["Id_DebitCredit"].DisplayIndex = 3;
+            dataGridViewPetsHistory.Columns["GoodsName"].DisplayIndex = 4;
+            dataGridViewPetsHistory.Columns["Debit"].DisplayIndex = 5;
+            dataGridViewPetsHistory.Columns["Credit"].DisplayIndex = 6;
+            dataGridViewPetsHistory.Columns["PatientId"].DisplayIndex = 7;
+            dataGridViewPetsHistory.Columns["UserId"].DisplayIndex = 8;
             dataGridViewPetsHistory.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewPetsHistory.ClearSelection();
+        }
+        #endregion
+        #region Правильное отображение названий предметов
+        private void FillGoods()
+        {
+            psGoods = ibl.getGoods();
+            String goodsId;
+            int rowCount = dataGridViewPetsHistory.RowCount;
+            string expression;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                goodsId = dataGridViewPetsHistory.Rows[i].Cells["GoodsName"].Value.ToString();
+                expression = "Id_Goods = " + goodsId;
+                System.Data.DataRow[] foundRows;
+                foundRows = psGoods.goods.Select(expression);
+                expression = foundRows[0][1].ToString();
+                dataGridViewPetsHistory.Rows[i].Cells["goodsNameShow"].Value = expression;
+            }
         }
         #endregion
         #region Изменение информации о животном в датасете
@@ -447,7 +513,7 @@ namespace MainForm
             if (photoName != "")
                 psAnimals.animals.FindById_Animals(id)[10] = photoName;
             else
-                psAnimals.animals.FindById_Animals(id)[10] = null;
+                psAnimals.animals.FindById_Animals(id)[10] = psAnimals.animals.FindById_Animals(id)[10];
             ibl.setAnimals(psAnimals);
         }
         #endregion
@@ -479,6 +545,7 @@ namespace MainForm
                 ibl.setAnimals(psAnimals);
                 cleanPetsAddArea();
                 clearPetsAddCureArea();
+                setPetsGridView();
                 dataGridViewPetsAllPets.Refresh();
             }    
             else
@@ -641,7 +708,8 @@ namespace MainForm
             dataGridViewStaffAllMembers.Columns["FirstMiddleLastName"].DisplayIndex = 0;
             dataGridViewStaffAllMembers.Columns["Phone"].DisplayIndex = 5;
             dataGridViewStaffAllMembers.Columns["Address"].DisplayIndex = 4;
-            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;            
+            dataGridViewStaffAllMembers.Columns["positionsName"].DisplayIndex = 3;  
+                      
             dataGridViewStaffAllMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void FillPositions()
@@ -1211,7 +1279,32 @@ namespace MainForm
             labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
             dataGridViewReportsMain.DataSource = psDebitcredit;
             dataGridViewReportsMain.DataMember = "debitcredit";
+            dataGridViewReportsMain.Columns.Add("goodsNameReports", "Наименование");
             setReportsGridView();
+        }
+        #endregion
+        #region Правильное отображение названий предметов
+        private void FillGoodsReports()
+        {
+            psGoods = ibl.getGoods();
+            String goodsId;
+            int rowCount = dataGridViewReportsMain.RowCount;
+            string expression;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                if(dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString() != "")
+                {
+                    goodsId = dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString();
+                    expression = "Id_Goods = " + goodsId;
+                    System.Data.DataRow[] foundRows;
+                    foundRows = psGoods.goods.Select(expression);
+                    expression = foundRows[0][1].ToString();
+                    dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = expression;
+                }
+                else
+                    dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = "";
+            }
         }
         #endregion
         #region Обновление окна
@@ -1223,6 +1316,7 @@ namespace MainForm
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
             labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
             id = Convert.ToInt32(psGoods.goods.DefaultView[0][0].ToString());
+            setReportsGridView();
             dataGridViewReportsMain.Refresh();
             dataGridViewReportsMain.ClearSelection();
             cleanReportsMoneyControl();
@@ -1232,25 +1326,31 @@ namespace MainForm
         #region Параметры датагрида "Отчёты"
         private void setReportsGridView()
         {
-            dataGridViewReportsMain.Columns[0].Visible = false;
-            dataGridViewReportsMain.Columns[6].Visible = false;
-            dataGridViewReportsMain.Columns[7].Visible = false;
-            dataGridViewReportsMain.Columns[1].HeaderText = "Наименование";
-            dataGridViewReportsMain.Columns[2].HeaderText = "Комментарий";
-            dataGridViewReportsMain.Columns[3].HeaderText = "Дата";
-            dataGridViewReportsMain.Columns[4].HeaderText = "Списано";
-            dataGridViewReportsMain.Columns[5].HeaderText = "Поступило";
-            dataGridViewReportsMain.Columns[1].DisplayIndex = 0;
-            dataGridViewReportsMain.Columns[2].DisplayIndex = 1;
-            dataGridViewReportsMain.Columns[3].DisplayIndex = 4;
-            dataGridViewReportsMain.Columns[4].DisplayIndex = 2;
-            dataGridViewReportsMain.Columns[5].DisplayIndex = 3;
+            FillGoodsReports();
+            dataGridViewReportsMain.Columns["Id_DebitCredit"].Visible = false;
+            dataGridViewReportsMain.Columns["GoodsName"].Visible = false;
+            dataGridViewReportsMain.Columns["PatientId"].Visible = false;
+            dataGridViewReportsMain.Columns["UserId"].Visible = false;
+            dataGridViewReportsMain.Columns["goodsNameReports"].HeaderText = "Наименование";
+            dataGridViewReportsMain.Columns["Comment"].HeaderText = "Комментарий";
+            dataGridViewReportsMain.Columns["Date"].HeaderText = "Дата";
+            dataGridViewReportsMain.Columns["Debit"].HeaderText = "Списано";
+            dataGridViewReportsMain.Columns["Credit"].HeaderText = "Поступило";
+            dataGridViewReportsMain.Columns["goodsNameReports"].DisplayIndex = 0;
+            dataGridViewReportsMain.Columns["Comment"].DisplayIndex = 1;
+            dataGridViewReportsMain.Columns["Debit"].DisplayIndex = 2;
+            dataGridViewReportsMain.Columns["Credit"].DisplayIndex = 3;
+            dataGridViewReportsMain.Columns["Date"].DisplayIndex = 4;
+
+            dataGridViewReportsMain.Columns["Id_DebitCredit"].DisplayIndex = 5;
+            dataGridViewReportsMain.Columns["GoodsName"].DisplayIndex = 6;
+            dataGridViewReportsMain.Columns["PatientId"].DisplayIndex = 7;
+            dataGridViewReportsMain.Columns["UserId"].DisplayIndex = 8;
+
             dataGridViewReportsMain.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewReportsMain.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewReportsMain.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewReportsMain.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewReportsMain.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewReportsMain.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewReportsMain.Columns["Debit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewReportsMain.Columns["Credit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewReportsMain.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
         #endregion
         #region Очистка фильтра
@@ -1274,12 +1374,6 @@ namespace MainForm
             textBoxReportsComment.Text = "";
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
             labelReportsMoneyAmount.Text = psGoods.goods.DefaultView[0][3].ToString();
-        }
-        #endregion
-        #region Фильтрация таблицы "Предметы" согласно указаным критериям
-        private void sortReportsTable(object sender, EventArgs e)
-        {
-            
         }
         #endregion
         #region Кнопка формирования отчёта
@@ -1318,7 +1412,6 @@ namespace MainForm
             cleanReportsMoneyControl();
         }
         #endregion
-
         #region Фильтрация таблицы Приход/Расход согласно указанным критериям
         private void SortDebitCredit(object sender, EventArgs e)
         {
@@ -1426,7 +1519,6 @@ namespace MainForm
 
         }
         #endregion
-
         #endregion
     }
 }
