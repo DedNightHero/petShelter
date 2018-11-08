@@ -49,7 +49,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxPetsCure = new System.Windows.Forms.ComboBox();
             this.textBoxPetsComment = new System.Windows.Forms.TextBox();
+            this.buttonPetsAddCure = new System.Windows.Forms.Button();
             this.tableLayoutPanelPhotoAndInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxPetPhoto = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelAnimalInfo = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxPetsNickName = new System.Windows.Forms.TextBox();
             this.textBoxPetsBreed = new System.Windows.Forms.TextBox();
@@ -91,6 +93,7 @@
             this.dataGridViewStaffAllMembers = new System.Windows.Forms.DataGridView();
             this.dataGridViewStaffCharity = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStaffOk = new System.Windows.Forms.Button();
             this.tableLayoutPanelStaffRightMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelEmployeeInfo = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxStaffPass = new System.Windows.Forms.TextBox();
@@ -166,9 +169,6 @@
             this.buttonReportsWriteOffMoney = new System.Windows.Forms.Button();
             this.dataGridViewReportsMain = new System.Windows.Forms.DataGridView();
             this.openFileDialogAddPetPhoto = new System.Windows.Forms.OpenFileDialog();
-            this.buttonPetsAddCure = new System.Windows.Forms.Button();
-            this.pictureBoxPetPhoto = new System.Windows.Forms.PictureBox();
-            this.buttonStaffOk = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tableLayoutPanelAnimalsMain.SuspendLayout();
@@ -178,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetsHistory)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanelPhotoAndInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetPhoto)).BeginInit();
             this.tableLayoutPanelAnimalInfo.SuspendLayout();
             this.tableLayoutPanelMasterInfo.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -202,7 +203,6 @@
             this.tableLayoutPanelReportsSpent.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -411,7 +411,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -482,7 +482,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -495,6 +495,18 @@
             this.textBoxPetsComment.Name = "textBoxPetsComment";
             this.textBoxPetsComment.Size = new System.Drawing.Size(570, 69);
             this.textBoxPetsComment.TabIndex = 9;
+            // 
+            // buttonPetsAddCure
+            // 
+            this.buttonPetsAddCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPetsAddCure.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
+            this.buttonPetsAddCure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonPetsAddCure.Location = new System.Drawing.Point(771, 5);
+            this.buttonPetsAddCure.Name = "buttonPetsAddCure";
+            this.buttonPetsAddCure.Size = new System.Drawing.Size(70, 65);
+            this.buttonPetsAddCure.TabIndex = 10;
+            this.buttonPetsAddCure.UseVisualStyleBackColor = true;
+            this.buttonPetsAddCure.Click += new System.EventHandler(this.buttonPetsAddCure_Click);
             // 
             // tableLayoutPanelPhotoAndInfo
             // 
@@ -511,6 +523,18 @@
             this.tableLayoutPanelPhotoAndInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelPhotoAndInfo.Size = new System.Drawing.Size(331, 328);
             this.tableLayoutPanelPhotoAndInfo.TabIndex = 3;
+            // 
+            // pictureBoxPetPhoto
+            // 
+            this.pictureBoxPetPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPetPhoto.Image = global::MainForm.Properties.Resources.d1;
+            this.pictureBoxPetPhoto.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxPetPhoto.Name = "pictureBoxPetPhoto";
+            this.pictureBoxPetPhoto.Size = new System.Drawing.Size(325, 141);
+            this.pictureBoxPetPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPetPhoto.TabIndex = 0;
+            this.pictureBoxPetPhoto.TabStop = false;
+            this.pictureBoxPetPhoto.Click += new System.EventHandler(this.pictureBoxPetPhoto_Click);
             // 
             // tableLayoutPanelAnimalInfo
             // 
@@ -1041,6 +1065,17 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(114, 102);
             this.tableLayoutPanel2.TabIndex = 13;
+            // 
+            // buttonStaffOk
+            // 
+            this.buttonStaffOk.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
+            this.buttonStaffOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonStaffOk.Location = new System.Drawing.Point(27, 21);
+            this.buttonStaffOk.Name = "buttonStaffOk";
+            this.buttonStaffOk.Size = new System.Drawing.Size(59, 59);
+            this.buttonStaffOk.TabIndex = 8;
+            this.buttonStaffOk.UseVisualStyleBackColor = true;
+            this.buttonStaffOk.Click += new System.EventHandler(this.buttonStaffOk_Click);
             // 
             // tableLayoutPanelStaffRightMain
             // 
@@ -1669,7 +1704,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
@@ -2008,41 +2043,6 @@
             this.dataGridViewReportsMain.TabIndex = 13;
             this.dataGridViewReportsMain.Sorted += new System.EventHandler(this.ReportsGridSorted);
             // 
-            // buttonPetsAddCure
-            // 
-            this.buttonPetsAddCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPetsAddCure.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
-            this.buttonPetsAddCure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonPetsAddCure.Location = new System.Drawing.Point(771, 5);
-            this.buttonPetsAddCure.Name = "buttonPetsAddCure";
-            this.buttonPetsAddCure.Size = new System.Drawing.Size(70, 65);
-            this.buttonPetsAddCure.TabIndex = 10;
-            this.buttonPetsAddCure.UseVisualStyleBackColor = true;
-            this.buttonPetsAddCure.Click += new System.EventHandler(this.buttonPetsAddCure_Click);
-            // 
-            // pictureBoxPetPhoto
-            // 
-            this.pictureBoxPetPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPetPhoto.Image = global::MainForm.Properties.Resources.d1;
-            this.pictureBoxPetPhoto.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxPetPhoto.Name = "pictureBoxPetPhoto";
-            this.pictureBoxPetPhoto.Size = new System.Drawing.Size(325, 141);
-            this.pictureBoxPetPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPetPhoto.TabIndex = 0;
-            this.pictureBoxPetPhoto.TabStop = false;
-            this.pictureBoxPetPhoto.Click += new System.EventHandler(this.pictureBoxPetPhoto_Click);
-            // 
-            // buttonStaffOk
-            // 
-            this.buttonStaffOk.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
-            this.buttonStaffOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonStaffOk.Location = new System.Drawing.Point(27, 21);
-            this.buttonStaffOk.Name = "buttonStaffOk";
-            this.buttonStaffOk.Size = new System.Drawing.Size(59, 59);
-            this.buttonStaffOk.TabIndex = 8;
-            this.buttonStaffOk.UseVisualStyleBackColor = true;
-            this.buttonStaffOk.Click += new System.EventHandler(this.buttonStaffOk_Click);
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -2071,6 +2071,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanelPhotoAndInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetPhoto)).EndInit();
             this.tableLayoutPanelAnimalInfo.ResumeLayout(false);
             this.tableLayoutPanelAnimalInfo.PerformLayout();
             this.tableLayoutPanelMasterInfo.ResumeLayout(false);
@@ -2108,7 +2109,6 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportsMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetPhoto)).EndInit();
             this.ResumeLayout(false);
 
         }

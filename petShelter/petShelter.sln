@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Sript", "SQL Sript", "{
 		petShelter.sql = petShelter.sql
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PetShelterSetup", "PetShelterSetup\PetShelterSetup.vdproj", "{0BDF8E9F-7B69-43E9-919E-62B61A3E03EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{73D60648-A2FD-4C05-AB2C-2964CB04A1D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{73D60648-A2FD-4C05-AB2C-2964CB04A1D4}.Release|x86.ActiveCfg = Release|x86
 		{73D60648-A2FD-4C05-AB2C-2964CB04A1D4}.Release|x86.Build.0 = Release|x86
+		{0BDF8E9F-7B69-43E9-919E-62B61A3E03EC}.Debug|Any CPU.ActiveCfg = Debug
+		{0BDF8E9F-7B69-43E9-919E-62B61A3E03EC}.Debug|x86.ActiveCfg = Debug
+		{0BDF8E9F-7B69-43E9-919E-62B61A3E03EC}.Release|Any CPU.ActiveCfg = Release
+		{0BDF8E9F-7B69-43E9-919E-62B61A3E03EC}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,14 +66,3 @@ C:\CODE\petShelter1\petShelter\MainForm\bin\Debug\normnfkd.nlp
 C:\CODE\petShelter1\petShelter\MainForm\obj\Debug\MainForm.exe
 C:\CODE\petShelter1\petShelter\MainForm\obj\Debug\MainForm.pdb
 L:\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.ResolveComReference.cache
-D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.exe.config
-D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.exe
-D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MainForm.pdb
-D:\GitHub\petShelter\petShelter\MainForm\bin\Debug\MySql.Data.dll
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.Authorization.resources
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.EmployeeForm.resources
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.Properties.Resources.resources
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.VolunteerForm.resources
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.GenerateResource.Cache
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.exe
-D:\GitHub\petShelter\petShelter\MainForm\obj\Debug\MainForm.pdb
