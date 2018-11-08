@@ -157,9 +157,11 @@ namespace MainForm
                 return;
             }
             string login = textBoxLogin.Text;
-            if (psUsers.users.Select("Login LIKE '" + login + "' and Password is NULL").Length == 1)
+            //if (psUsers.users.Select("Login LIKE '" + login + "' and Password is NULL").Length == 1)
+            if (psUsers.users.Select("Login LIKE '" + login + "'").Length == 1)
             {
-                int id = Convert.ToInt32(psUsers.users.Select("Login LIKE '" + login + "' and Password is NULL")[0][0].ToString());
+                //int id = Convert.ToInt32(psUsers.users.Select("Login LIKE '" + login + "' and Password is NULL")[0][0].ToString());
+                int id = Convert.ToInt32(psUsers.users.Select("Login LIKE '" + login + "'")[0][0].ToString());
                 VolunteerForm vf1 = new VolunteerForm(id);
                 vf1.Show();
                 this.Hide();

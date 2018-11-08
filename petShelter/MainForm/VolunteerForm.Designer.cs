@@ -239,6 +239,7 @@
             this.dataGridViewVolunteerFormOneCharity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVolunteerFormOneCharity.Size = new System.Drawing.Size(575, 157);
             this.dataGridViewVolunteerFormOneCharity.TabIndex = 13;
+            this.dataGridViewVolunteerFormOneCharity.Sorted += new System.EventHandler(this.CharityGridSorted);
             // 
             // dataGridViewVolunteerFormGoods
             // 
@@ -258,6 +259,7 @@
             this.dataGridViewVolunteerFormGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVolunteerFormGoods.Size = new System.Drawing.Size(967, 293);
             this.dataGridViewVolunteerFormGoods.TabIndex = 6;
+            this.dataGridViewVolunteerFormGoods.Sorted += new System.EventHandler(this.VolunteerGridSorted);
             // 
             // buttonVolunteerFormCreateReport
             // 

@@ -38,7 +38,86 @@ namespace MainForm
             initStaffTab();
             initGoodsTab();
             initReportsTab();
+            nothingAccept();
+            privilegeSetting();
         }
+        #endregion
+        #region Изначально ничего не доступно
+        private void nothingAccept()
+        {
+            ((Control)this.tabAnimals).Enabled = false;
+            ((Control)this.tabStaff).Enabled = false;
+            ((Control)this.tabGoods).Enabled = false;
+            ((Control)this.tabReports).Enabled = false;
+        }
+        #endregion
+        #region Разграничение прав пользователей
+        private void privilegeSetting()
+        {
+            switch(userLvl)
+            {
+                case 2:
+                    juniorPrivilege();
+                    break;
+                case 3:
+                    middlePrivilege();
+                    break;
+                case 4:
+                    seniorPrivilege();
+                    break;
+            }
+        }
+        #endregion
+        #region Ограничения открытия вкладок для пользователей разных уровней
+        private void tabMain_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            switch (userLvl)
+            {
+                case 2:
+                    e.Cancel=e.TabPageIndex>1;
+                    break;
+                case 3:
+                    e.Cancel = e.TabPageIndex==3;
+                    break;
+                case 4:
+                    break;
+            }
+        }
+        #endregion
+        #region Права сотрудников разных уровней
+        #region Права младшего сотрудника
+        private void juniorPrivilege()
+        {
+            ((Control)this.tabAnimals).Enabled = true;
+            ((Control)this.tabStaff).Enabled = true;
+            pictureBoxPetPhoto.Enabled = false;
+            buttonPetsSave.Enabled = false;
+            buttonPetsDelete.Enabled = false;
+            buttonStaffSave.Enabled = false;
+            buttonStaffDelete.Enabled = false;
+            dataGridViewStaffAllMembers.Enabled = false;
+        }
+        #endregion
+        #region Права среднего сотрудника
+        private void middlePrivilege()
+        {
+            ((Control)this.tabAnimals).Enabled = true;
+            ((Control)this.tabGoods).Enabled = true;
+            ((Control)this.tabStaff).Enabled = true;
+            buttonStaffSave.Enabled = false;
+            buttonStaffDelete.Enabled = false;
+            dataGridViewStaffAllMembers.Enabled = false;
+        }
+        #endregion
+        #region Права старшего сотрудника
+        private void seniorPrivilege()
+        {
+            ((Control)this.tabAnimals).Enabled = true;
+            ((Control)this.tabStaff).Enabled = true;
+            ((Control)this.tabGoods).Enabled = true;
+            ((Control)this.tabReports).Enabled = true;
+        }
+        #endregion
         #endregion
         #region Переключение между вкладками
         private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +174,6 @@ namespace MainForm
             Application.Exit();
         }
         #endregion
-
         #region ОКНО "Животные"
         #region Инициализация окна
         private void initAnimalsTab()
@@ -642,7 +720,6 @@ namespace MainForm
         }
         #endregion
         #endregion
-
         #region ОКНО "Персонал"
         #region Инициализация окна
         private void initStaffTab()
@@ -1010,7 +1087,6 @@ namespace MainForm
         }
         #endregion
         #endregion
-
         #region ОКНО "Материальная база"
         #region Инициализация окна
         private void initGoodsTab()
@@ -1271,13 +1347,10 @@ namespace MainForm
 
         #endregion
         #endregion
-
         #region ОКНО "Отчёты"
         #region Инициализация окна
         private void initReportsTab()
         {
-            //dateTimePickerReportsFrom.CustomFormat = "yyyy-mm-dd";
-            //dateTimePickerReportsTo.CustomFormat = "yyyy-mm-dd";
             psDebitcredit = ibl.getDebitCredit();
             psGoods = ibl.getGoods();
             psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String') LIKE '3'");
@@ -1457,9 +1530,9 @@ namespace MainForm
             if (sortByDate.Checked)
             {
                 if (filter != null) filter += " and ";
-                filter += "CONVERT(Date, 'System.String') > '" + dateTimePickerReportsFrom.Value.Date + "'";
+                filter += "CONVERT(Date, 'System.String') >= '" + dateTimePickerReportsFrom.Value.Date + "'";
                 filter += " and ";
-                filter += "CONVERT(Date, 'System.String') < '" + dateTimePickerReportsTo.Value.Date + "'";
+                filter += "CONVERT(Date, 'System.String') <= '" + dateTimePickerReportsTo.Value.Date + "'";
             }  
 
             if (filter != null)
@@ -1475,70 +1548,9 @@ namespace MainForm
             dataGridViewReportsMain.ClearSelection();
             //cleanReportsMoneyControl();
             //cleanReportsFilterArea();
-
-
-
-
-            /*#region Фильтрация таблицы Животных согласно указанным критериям
-       private void sortPetsTable(object sender, EventArgs e)
-       {
-           String filter = null;
-           if (checkBoxPetsIsAtHome.Checked) filter = "(CONVERT(InHere, 'System.String') LIKE '0'";
-           if (checkBoxPetsIsAtShelter.Checked)
-           {
-               if (filter != null) filter += " or ";
-               else filter += "(";
-               filter += "CONVERT(InHere, 'System.String') LIKE '1')";
-           }
-           else {
-               if (filter != null) filter += " ) ";
-           }
-           if (textBoxPetsSortBreed.Text != "")
-           {
-               if (filter != null) filter += " and ";
-               filter += "Breed LIKE '*" +textBoxPetsSortBreed.Text + "*'";
-           }
-           if (textBoxPetsSortNickName.Text != "")
-           {
-               if (filter != null) filter += " and ";
-               filter += "NickName LIKE '*" +textBoxPetsSortNickName.Text + "*'";
-           }
-           if (comboBoxSortSpecies.Text != "")
-           {
-               if (filter != null) filter += " and ";
-               filter += "CONVERT(Species, 'System.String') LIKE '" + psSpecies.species.Rows[comboBoxSortSpecies.SelectedIndex][0].ToString() + "'";
-           }
-           if (filter != null)
-           {
-               psAnimals.animals.DefaultView.RowFilter = string.Format(filter);
-               dataGridViewPetsAllPets.DataSource = psAnimals.animals.DefaultView;
-           }
-           else
-           {
-               dataGridViewPetsAllPets.DataSource = psAnimals;
-               dataGridViewPetsAllPets.DataMember = "animals";
-               setPetsGridView();
-           }
-           setPetsGridView();
-           dataGridViewPetsAllPets.ClearSelection();
-           cleanPetsAddArea();
-           clearPetsAddCureArea();
-       }
-       #endregion*/
-
         }
         #endregion
 
-        private void tableLayoutPanelGoodsTopPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
-
-
-        
         #endregion
     }
 }

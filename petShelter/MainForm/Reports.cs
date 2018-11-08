@@ -40,8 +40,6 @@ namespace MainForm
                 return;
             currentRow = 1; //текущая строка в файле Excel
             excelApp = new Excel.Application();
-            excelWorkBook = new Excel.Workbook();
-            excelWorkSheet = new Excel.Worksheet();
             excelWorkBook = excelApp.Workbooks.Add();
 
             excelWorkSheet = excelWorkBook.Sheets.Add();
