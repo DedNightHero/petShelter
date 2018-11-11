@@ -1237,6 +1237,15 @@ namespace MainForm
         #region Проверка введенных данных при добавлении предмета
         private bool checkGoodsAddArea()
         {
+            //проверка есть ли уже такой предмет.
+            psGoods = ibl.getGoods();
+            System.Data.DataRow[] foundRows;
+            foundRows = psGoods.goods.Select("NameOfGoods LIKE '" + textBoxGoodsName.Text.ToString()+"'");
+            if (foundRows.Length > 0)
+            {
+                MessageBox.Show("Такой предмет уже существует.\nПопробуйте сменить имя или изменить существующий.");
+                return false;
+            }
             if (textBoxGoodsName.Text == "")
             {
                 MessageBox.Show("Введите название элемента");
