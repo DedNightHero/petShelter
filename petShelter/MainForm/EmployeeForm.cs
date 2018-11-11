@@ -970,16 +970,21 @@ namespace MainForm
         }
         #endregion
         #region Проверка введенных данных при добавлении сотрудника
-        private bool checkStaffAddArea()
+        private bool checkIfUserExists()
         {
             //проверка есть ли уже такой предмет.
-            psUsers = ibl.getUsers();
-            System.Data.DataRow[] foundRows = psUsers.users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "'");
+            PetShelter _psUsers = ibl.getUsers();
+            System.Data.DataRow[] foundRows = _psUsers.users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "'");            
             if (foundRows.Length > 0)
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!\nПопробуйте сменить логин или изменить существующего пользователя.");
-                return false;
+                return true;
             }
+            return false;
+        }
+        private bool checkStaffAddArea()
+        {
+            
 
             if (textBoxStaffLogin.Text == "")
             {
@@ -1028,12 +1033,11 @@ namespace MainForm
         private void buttonStaffSave_Click(object sender, EventArgs e)
         {
             if (checkBoxStaffNewMember.Checked) //Добавить сотрудника в бд
-            {
-                
-
+            {              
                 bool f = checkStaffAddArea();
-                if (f)
+                if (f && !checkIfUserExists())
                 {
+
                     string l = textBoxStaffLogin.Text;
                     string fio = textBoxStaffLastName.Text + ' ' + textBoxStaffFirstName.Text + ' ' + textBoxStaffMiddleName.Text;
                     int pos = Convert.ToInt32(psPositions.positions.Rows[comboBoxStaffVacancy.SelectedIndex][0]);
