@@ -415,7 +415,7 @@ namespace MainForm
                     }
                 }
             }
-            psDebitcredit.debitcredit.AdddebitcreditRow(gn, textBoxPetsComment.Text, DateTime.Today, 1, 0, id, userId);
+            psDebitcredit.debitcredit.AdddebitcreditRow(gn, textBoxPetsComment.Text, DateTime.Today, 1, 0, id, userId, 2);
             ibl.setDebitCredit(psDebitcredit);
             clearPetsAddCureArea();
             cleanPetsAddArea();
@@ -1073,7 +1073,7 @@ namespace MainForm
                 MessageBox.Show("Нужно указать произведенное действие", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
-            psDebitcredit.debitcredit.AdddebitcreditRow(-1, textBoxStaffComment.Text, DateTime.Today, 0, 0, -1, userId);
+            psDebitcredit.debitcredit.AdddebitcreditRow(-1, textBoxStaffComment.Text, DateTime.Today, 0, 0, -1, userId,-1);
             ibl.setDebitCredit(psDebitcredit);
             clearStaffAddMoveArea();
             setStaffCharity();
@@ -1283,12 +1283,12 @@ namespace MainForm
                 {
                     int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
                     int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui, t);
                 }
                 else
                 {
                     int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
                 }
 
                 ibl.setDebitCredit(psDebitcredit);
@@ -1306,7 +1306,8 @@ namespace MainForm
                 int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
                 int amountAfter = Convert.ToInt32(textBoxGoodsAmount.Text);
                 psGoods.goods.FindById_Goods(id)[1] = textBoxGoodsName.Text;
-                psGoods.goods.FindById_Goods(id)[2] = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                int goodsType = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                psGoods.goods.FindById_Goods(id)[2] = goodsType;
                 psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(textBoxGoodsAmount.Text);
                 psGoods.goods.FindById_Goods(id)[4] = Convert.ToInt32(textBoxGoodsNeeded.Text);
                 ibl.setGoods(psGoods);
@@ -1326,12 +1327,12 @@ namespace MainForm
                     {
                         int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
                         int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, ui);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, ui, goodsType);
                     }
                     else
                     {
                         int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, -1);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, -1, goodsType);
                     }
                     ibl.setDebitCredit(psDebitcredit);
                 }
@@ -1489,7 +1490,7 @@ namespace MainForm
             int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
             psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3]) - Convert.ToInt32(textBoxReportsMoneyToSpend.Text);
             ibl.setGoods(psGoods);
-            psDebitcredit.debitcredit.AdddebitcreditRow(gi, textBoxReportsComment.Text, DateTime.Today.Date, Convert.ToInt32(textBoxReportsMoneyToSpend.Text), 0, -1, userId);
+            psDebitcredit.debitcredit.AdddebitcreditRow(gi, textBoxReportsComment.Text, DateTime.Today.Date, Convert.ToInt32(textBoxReportsMoneyToSpend.Text), 0, -1, userId, 3);
             ibl.setDebitCredit(psDebitcredit);
             cleanReportsMoneyControl();
         }

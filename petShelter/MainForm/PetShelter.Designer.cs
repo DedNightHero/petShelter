@@ -505,6 +505,8 @@ namespace MainForm {
             
             private global::System.Data.DataColumn columnUserId;
             
+            private global::System.Data.DataColumn columnGoodsType;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public debitcreditDataTable() {
@@ -604,6 +606,14 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GoodsTypeColumn {
+                get {
+                    return this.columnGoodsType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -639,7 +649,7 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public debitcreditRow AdddebitcreditRow(int GoodsName, string Comment, System.DateTime Date, int Debit, int Credit, int PatientId, int UserId) {
+            public debitcreditRow AdddebitcreditRow(int GoodsName, string Comment, System.DateTime Date, int Debit, int Credit, int PatientId, int UserId, int GoodsType) {
                 debitcreditRow rowdebitcreditRow = ((debitcreditRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -649,7 +659,8 @@ namespace MainForm {
                         Debit,
                         Credit,
                         PatientId,
-                        UserId};
+                        UserId,
+                        GoodsType};
                 rowdebitcreditRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdebitcreditRow);
                 return rowdebitcreditRow;
@@ -687,6 +698,7 @@ namespace MainForm {
                 this.columnCredit = base.Columns["Credit"];
                 this.columnPatientId = base.Columns["PatientId"];
                 this.columnUserId = base.Columns["UserId"];
+                this.columnGoodsType = base.Columns["GoodsType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -708,6 +720,8 @@ namespace MainForm {
                 base.Columns.Add(this.columnPatientId);
                 this.columnUserId = new global::System.Data.DataColumn("UserId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserId);
+                this.columnGoodsType = new global::System.Data.DataColumn("GoodsType", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGoodsType);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId_DebitCredit}, true));
                 this.columnId_DebitCredit.AutoIncrement = true;
@@ -2890,6 +2904,22 @@ namespace MainForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int GoodsType {
+                get {
+                    try {
+                        return ((int)(this[this.tabledebitcredit.GoodsTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'GoodsType\' в таблице \'debitcredit\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledebitcredit.GoodsTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsGoodsNameNull() {
                 return this.IsNull(this.tabledebitcredit.GoodsNameColumn);
             }
@@ -2970,6 +3000,18 @@ namespace MainForm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUserIdNull() {
                 this[this.tabledebitcredit.UserIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGoodsTypeNull() {
+                return this.IsNull(this.tabledebitcredit.GoodsTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGoodsTypeNull() {
+                this[this.tabledebitcredit.GoodsTypeColumn] = global::System.Convert.DBNull;
             }
         }
         

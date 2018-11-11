@@ -411,7 +411,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 44);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 25);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -482,7 +482,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 27);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 25);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -1704,7 +1704,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 9);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 25);
             this.comboBoxGoodsVolunteer.TabIndex = 12;

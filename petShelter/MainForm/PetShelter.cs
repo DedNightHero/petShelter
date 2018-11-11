@@ -2,5 +2,8 @@
 {
     public partial class PetShelter
     {
+        partial class debitcreditDataTable
+        {
+        }
     }
 }
