@@ -817,9 +817,9 @@ namespace MainForm
         #region Очистка фильтра
         private void clearStaffFilter()
         {
-            textBoxStaffSortLastName.Text = "";
-            textBoxStaffSortMiddleName.Text = "";
-            textBoxStafSortfFirstName.Text = "";
+            textBoxStaffSortFIO.Text = "";
+            textBoxStaffSortAdres.Text = "";
+            textBoxStafSortfLogin.Text = "";
             checkBoxStaffIsOnStaff.Checked = false;
         }
         #endregion
@@ -893,20 +893,20 @@ namespace MainForm
         {
             String filter = null;
             if (checkBoxStaffIsOnStaff.Checked) filter = "Position >=2";
-            if (textBoxStaffSortLastName.Text != "")
+            if (textBoxStaffSortFIO.Text != "")
             {
                 if (filter != null) filter += " and ";
-                filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortLastName.Text + "*'";
+                filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortFIO.Text + "*'";
             }
-            if (textBoxStafSortfFirstName.Text != "")
+            if (textBoxStafSortfLogin.Text != "")
             {
                 if (filter != null) filter += " and ";
-                filter += "FirstMiddleLastName LIKE '*" + textBoxStafSortfFirstName.Text + "*'";
+                filter += "Login LIKE '*" + textBoxStafSortfLogin.Text + "*'";
             }
-            if (textBoxStaffSortMiddleName.Text != "")
+            if (textBoxStaffSortAdres.Text != "")
             {
                 if (filter != null) filter += " and ";
-                filter += "FirstMiddleLastName LIKE '*" + textBoxStaffSortMiddleName.Text + "*'";
+                filter += "Address LIKE '*" + textBoxStaffSortAdres.Text + "*'";
             }
             if (filter != null)
             {
@@ -1550,6 +1550,11 @@ namespace MainForm
             //cleanReportsFilterArea();
         }
         #endregion
+
+
+
+
+
 
         #endregion
     }
