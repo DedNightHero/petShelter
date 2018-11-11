@@ -317,9 +317,9 @@ namespace MainForm
         private bool checkIfAnimalExists(int i, string b, string nn)
         {
             //проверка есть ли такое животное в базе
-            psAnimals = ibl.getAnimals();
+            PetShelter _psAnimals = ibl.getAnimals();
 
-            System.Data.DataRow[] foundRows = psAnimals.animals.Select(
+            System.Data.DataRow[] foundRows = _psAnimals.animals.Select(
                 "Species = '" + i + "' and " +
                 "Breed LIKE '" + b + "' and " +
                 "NickName LIKE '" + nn + "'");
