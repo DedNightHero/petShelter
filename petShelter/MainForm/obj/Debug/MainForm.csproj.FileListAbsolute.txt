@@ -65,3 +65,4 @@ C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.VolunteerForm.resource
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csproj.GenerateResource.Cache
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.exe
 C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.pdb
+C:\CODE\petShelter\petShelter\MainForm\obj\Debug\MainForm.csprojResolveAssemblyReference.cache

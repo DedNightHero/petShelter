@@ -1424,6 +1424,7 @@ namespace MainForm
             dataGridViewReportsMain.Columns["Debit"].DisplayIndex = 2;
             dataGridViewReportsMain.Columns["Credit"].DisplayIndex = 3;
             dataGridViewReportsMain.Columns["Date"].DisplayIndex = 4;
+            dataGridViewReportsMain.Columns["GoodsType"].Visible = false;
 
             dataGridViewReportsMain.Columns["Id_DebitCredit"].DisplayIndex = 5;
             dataGridViewReportsMain.Columns["GoodsName"].DisplayIndex = 6;
@@ -1501,22 +1502,27 @@ namespace MainForm
 
             psDebitcredit = ibl.getDebitCredit();
             String filter = null;
-            if (checkBoxReportsEat.Checked) filter = "CONVERT(GoodsName, 'System.String') LIKE '1'";
+            if (checkBoxReportsEat.Checked) filter = "CONVERT(GoodsType, 'System.String') LIKE '1'";
             if (checkBoxReportsCure.Checked)
             {
                 if (filter != null) filter += " or ";
-                filter += "CONVERT(GoodsName, 'System.String') LIKE '2'";
+                filter += "CONVERT(GoodsType, 'System.String') LIKE '2'";
             }
             if (checkBoxReportsOther.Checked)
             {
                 if (filter != null) filter += " or ";
-                filter += "CONVERT(GoodsName, 'System.String') LIKE '4'";
+                filter += "CONVERT(GoodsType, 'System.String') LIKE '4'";
             }
             if (checkBoxReportsMoney.Checked)
             {
                 if (filter != null) filter += " or ";
-                filter += "CONVERT(GoodsName, 'System.String') LIKE '3'";
+                filter += "CONVERT(GoodsType, 'System.String') LIKE '3'";
             }
+            /*if (checkBoxReportsHelp.Checked)
+            {
+                if (filter != null) filter += " or ";
+                filter += "CONVERT(GoodsType, 'System.String') = 'NULL'";
+            }*/
             if (filter != null) filter = "(" + filter+")";
 
             if (checkBoxReportsOutCome.Checked)
