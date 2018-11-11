@@ -144,6 +144,7 @@ namespace MainForm
             }
             else if (tabMain.SelectedIndex == 3)
             {
+                cleanReportsFilterArea();
                 refreshReportsTab();
                 return;
             }
@@ -1416,30 +1417,35 @@ namespace MainForm
             dataGridViewReportsMain.DataSource = psDebitcredit;
             dataGridViewReportsMain.DataMember = "debitcredit";
             dataGridViewReportsMain.Columns.Add("goodsNameReports", "Наименование");
+            cleanReportsFilterArea();
             setReportsGridView();
         }
         #endregion
         #region Правильное отображение названий предметов
         private void FillGoodsReports()
         {
-            psGoods = ibl.getGoods();
+            PetShelter _psGoods = ibl.getGoods();
             String goodsId;
             int rowCount = dataGridViewReportsMain.RowCount;
             string expression;
-
-            for (int i = 0; i < rowCount; i++)
+            if (rowCount > 1)
             {
-                if(dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString() != "")
+
+                for (int i = 0; i < rowCount; i++)
                 {
-                    goodsId = dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString();
-                    expression = "Id_Goods = " + goodsId;
-                    System.Data.DataRow[] foundRows;
-                    foundRows = psGoods.goods.Select(expression);
-                    expression = foundRows[0][1].ToString();
-                    dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = expression;
+
+                    if (dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString() != "")
+                    {
+                        goodsId = dataGridViewReportsMain.Rows[i].Cells["GoodsName"].Value.ToString();
+                        expression = "Id_Goods = " + goodsId;
+                        System.Data.DataRow[] foundRows;
+                        foundRows = _psGoods.goods.Select(expression);
+                        expression = foundRows[0][1].ToString();
+                        dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = expression;
+                    }
+                    else
+                        dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = "";
                 }
-                else
-                    dataGridViewReportsMain.Rows[i].Cells["goodsNameReports"].Value = "";
             }
         }
         private void ReportsGridSorted(object sender, EventArgs e)
@@ -1466,7 +1472,7 @@ namespace MainForm
         #region Параметры датагрида "Отчёты"
         private void setReportsGridView()
         {
-            FillGoodsReports();
+            FillGoodsReports();            
             dataGridViewReportsMain.Columns["Id_DebitCredit"].Visible = false;
             dataGridViewReportsMain.Columns["GoodsName"].Visible = false;
             dataGridViewReportsMain.Columns["PatientId"].Visible = false;
@@ -1492,6 +1498,7 @@ namespace MainForm
             dataGridViewReportsMain.Columns["Debit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridViewReportsMain.Columns["Credit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridViewReportsMain.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            
         }
         #endregion
         #region Очистка фильтра
@@ -1503,7 +1510,7 @@ namespace MainForm
             checkBoxReportsMoney.Checked = false;
             checkBoxReportsOutCome.Checked = false;
             checkBoxReportsInCome.Checked = false;
-            dateTimePickerReportsFrom.Value = DateTime.Today.AddDays(-365);
+            dateTimePickerReportsFrom.Value = DateTime.Today.AddDays(-30);
             dateTimePickerReportsTo.Value = DateTime.Today;
         }
         #endregion
