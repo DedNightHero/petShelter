@@ -22,6 +22,11 @@ namespace MainForm
         private int userLvl;
         private int userId;
         private string photoName = "";
+        bool dataChanged = false;
+        private void setDataChanged(object sender, EventArgs e)
+        {
+            dataChanged = true;
+        }
         #endregion
         #region Создание и загрузка формы
         public EmployeeForm(int lvl, int id)
@@ -311,8 +316,15 @@ namespace MainForm
         #region Кнопка создания или изменения информации о животном
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
+
+            
             if (checkBoxPetsNewAnimal.Checked) //Добавить животное в бд
             {
+                if (!dataChanged)
+                {
+                    MessageBox.Show("Такое животное уже существует.\nПопробуйте изменить данные или изменить существующее.");
+                    return;
+                }
                 bool f = checkPetsAddArea();
                 if (f)
                 {
@@ -524,6 +536,7 @@ namespace MainForm
         #region Установка истории лечения для животного
         private void setPetsCureHistory(int id)
         {
+            dataChanged = false;
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
             dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
 
@@ -939,6 +952,15 @@ namespace MainForm
         #region Проверка введенных данных при добавлении сотрудника
         private bool checkStaffAddArea()
         {
+            //проверка есть ли уже такой предмет.
+            psUsers = ibl.getUsers();
+            System.Data.DataRow[] foundRows = psUsers.users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "'");
+            if (foundRows.Length > 0)
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует!\nПопробуйте сменить логин или изменить существующего пользователя.");
+                return false;
+            }
+
             if (textBoxStaffLogin.Text == "")
             {
                 MessageBox.Show("Введите логин");
@@ -987,6 +1009,8 @@ namespace MainForm
         {
             if (checkBoxStaffNewMember.Checked) //Добавить сотрудника в бд
             {
+                
+
                 bool f = checkStaffAddArea();
                 if (f)
                 {
@@ -1570,6 +1594,11 @@ namespace MainForm
             //cleanReportsFilterArea();
         }
         #endregion
+
+        private void setDataChanged()
+        {
+
+        }
 
 
 

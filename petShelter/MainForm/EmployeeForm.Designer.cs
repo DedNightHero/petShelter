@@ -571,6 +571,7 @@
             this.textBoxPetsNickName.Name = "textBoxPetsNickName";
             this.textBoxPetsNickName.Size = new System.Drawing.Size(159, 25);
             this.textBoxPetsNickName.TabIndex = 13;
+            this.textBoxPetsNickName.TextChanged += new System.EventHandler(this.setDataChanged);
             // 
             // textBoxPetsBreed
             // 
@@ -580,6 +581,7 @@
             this.textBoxPetsBreed.Name = "textBoxPetsBreed";
             this.textBoxPetsBreed.Size = new System.Drawing.Size(159, 25);
             this.textBoxPetsBreed.TabIndex = 12;
+            this.textBoxPetsBreed.TextChanged += new System.EventHandler(this.setDataChanged);
             // 
             // label6
             // 
@@ -638,6 +640,7 @@
             this.dateTimePickerPetsArrivalDate.Name = "dateTimePickerPetsArrivalDate";
             this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(158, 25);
             this.dateTimePickerPetsArrivalDate.TabIndex = 14;
+            this.dateTimePickerPetsArrivalDate.ValueChanged += new System.EventHandler(this.setDataChanged);
             // 
             // comboBoxPetsSpecies
             // 
@@ -647,6 +650,7 @@
             this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
             this.comboBoxPetsSpecies.Size = new System.Drawing.Size(159, 25);
             this.comboBoxPetsSpecies.TabIndex = 11;
+            this.comboBoxPetsSpecies.SelectedIndexChanged += new System.EventHandler(this.setDataChanged);
             // 
             // tableLayoutPanelMasterInfo
             // 
