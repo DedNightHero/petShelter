@@ -314,24 +314,43 @@ namespace MainForm
         }
         #endregion
         #region Кнопка создания или изменения информации о животном
+        private bool checkIfAnimalExists(int i, string b, string nn)
+        {
+            //проверка есть ли такое животное в базе
+            psAnimals = ibl.getAnimals();
+
+            System.Data.DataRow[] foundRows = psAnimals.animals.Select(
+                "Species = '" + i + "' and " +
+                "Breed LIKE '" + b + "' and " +
+                "NickName LIKE '" + nn + "'");
+            if (foundRows.Length > 0)
+            {
+                MessageBox.Show("Такое животное уже существует!\nПопробуйте изменить некоторые поля или измените существующее животное.");
+                return true;
+            }
+            return false;
+        }
+
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
 
             
             if (checkBoxPetsNewAnimal.Checked) //Добавить животное в бд
             {
-                if (!dataChanged)
-                {
-                    MessageBox.Show("Такое животное уже существует.\nПопробуйте изменить данные или изменить существующее.");
-                    return;
-                }
+
+
+                int i = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
+                string b = textBoxPetsBreed.Text;
+                string nn = textBoxPetsNickName.Text;
+
+                if (checkIfAnimalExists(i, b, nn)) return;               
+
                 bool f = checkPetsAddArea();
                 if (f)
                 {
-                    int i = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
-                    string b = textBoxPetsBreed.Text;
-                    string nn = textBoxPetsNickName.Text;
+                    
                     DateTime ad = dateTimePickerPetsArrivalDate.Value;
+                    //ad = DateTime.Today.Date;
                     string pp;
                     if (photoName != "")
                         pp = photoName;
@@ -342,7 +361,7 @@ namespace MainForm
                         string fio = textBoxPetsFIO.Text;
                         string pn = textBoxPetsPhoneNumber.Text;
                         string a = textBoxPetsAddress.Text;
-                        DateTime dd = dateTimePickerPetsDeliveryDay.Value;
+                        DateTime dd = dateTimePickerPetsDeliveryDay.Value;                        
                         psAnimals.animals.AddanimalsRow(i, nn, b, ad, 0, fio, pn, a, dd, pp);
                     }
                     else
@@ -366,6 +385,7 @@ namespace MainForm
             dataGridViewPetsAllPets.Refresh();
             dataGridViewPetsAllPets.ClearSelection();
         }
+        
         #endregion
         #region Очистка области внесения препарата животному
         private void clearPetsAddCureArea()
