@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -14,6 +15,8 @@ namespace MainForm
         Excel.Worksheet excelWorkSheet;
         string path;
         int currentRow;
+        Thread showDialog; 
+        Boolean wait = false;
 
 
         public string AskFileName()
@@ -30,14 +33,29 @@ namespace MainForm
                 return SFD.FileName;
             }
             return null;
-        }
+        }        
+        public void ShowMessageBox()
+            {
+                showDialog = new Thread(
+                () =>
+                {
+                    while (wait)
+                    {
+                        AutoClosingMessageBox.Show("Пожалуйста, не закрывайте это окно до завершения формирвоания отчета.\nОтчет будет сохранен по следующему пути: " + path, "Дождитесь сохранения отчета!", 2000);
+                    }
+                });
+                showDialog.Start();
+            }       
+        
         public void CreateReportFromVisibleItems(DataGridView DG, string Title)
         {
-
-
             path = AskFileName();
-            if (path == null)
-                return;
+            if (path == null)  return;
+            wait = true;
+            ShowMessageBox();
+
+
+            
             currentRow = 1; //текущая строка в файле Excel
             excelApp = new Excel.Application();
             excelWorkBook = excelApp.Workbooks.Add();
@@ -81,6 +99,7 @@ namespace MainForm
         }
         private void SaveToFile()
         {
+            wait = false;
             try
             {
                 excelWorkBook.SaveCopyAs(path);
@@ -92,8 +111,10 @@ namespace MainForm
                 excelWorkBook.Saved = false;
                 MessageBox.Show("Отчет не сохранен!\nПроверьте не используется ли файл другой программой или создайте другой файл.\nФайл: " + path, "Ошибка сохранения!", MessageBoxButtons.OK);
             }
+            
             excelWorkBook.Close(true);
             excelApp.Quit();
+
 
         }
         private void Formating()

@@ -121,6 +121,7 @@
     <Compile Include="Accessors\UsersAccessor.cs" />
     <Compile Include="BLogic\BLogic.cs" />
     <Compile Include="BLogic\IBL.cs" />
+    <Compile Include="AutoClosingMessageBox.cs" />
     <Compile Include="DBConnection\AbstractConnection.cs" />
     <Compile Include="DBConnection\AbstractTransaction.cs" />
     <Compile Include="Authorization.cs">
