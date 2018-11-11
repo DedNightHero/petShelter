@@ -1497,6 +1497,7 @@ namespace MainForm
         #region Фильтрация таблицы Приход/Расход согласно указанным критериям
         private void SortDebitCredit(object sender, EventArgs e)
         {
+
             psDebitcredit = ibl.getDebitCredit();
             String filter = null;
             if (checkBoxReportsEat.Checked) filter = "CONVERT(GoodsName, 'System.String') LIKE '1'";
@@ -1529,10 +1530,13 @@ namespace MainForm
             }
             if (sortByDate.Checked)
             {
+                string fromDate = dateTimePickerReportsFrom.Value.ToString("#yyyy/MM/dd#");
+                string toDate = dateTimePickerReportsTo.Value.ToString("#yyyy/MM/dd#");
+
                 if (filter != null) filter += " and ";
-                filter += "CONVERT(Date, 'System.String') >= '" + dateTimePickerReportsFrom.Value.Date + "'";
+                filter += "CONVERT(Date, 'System.String') >= " + fromDate + "";
                 filter += " and ";
-                filter += "CONVERT(Date, 'System.String') <= '" + dateTimePickerReportsTo.Value.Date + "'";
+                filter += "CONVERT(Date, 'System.String') <= " + toDate + "";
             }  
 
             if (filter != null)
