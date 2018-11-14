@@ -80,6 +80,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -178,7 +186,7 @@
             "SourcePath" = "8:MySql.Data.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D34B70FE379346FD953025F356E2DB9A"
+            "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -209,7 +217,7 @@
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D34B70FE379346FD953025F356E2DB9A"
+            "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -240,17 +248,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D34B70FE379346FD953025F356E2DB9A"
-                    {
-                    "Name" = "8:Libs"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_41458D061DA14006A51222EB7F2640B4"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_444C6C265F7B4EE7ABB635AF3A9E863E"
@@ -434,7 +431,7 @@
             "Target" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
             "Folder" = "8:_2B8449B1CD93451A96EC312FEA2FB8BD"
             "WorkingFolder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
-            "Icon" = "8:"
+            "Icon" = "8:_CB9B37553D9C4DE5ACF144DEB86C39F5"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F14FDE5309D2438DA6133841A9644210"
@@ -448,7 +445,7 @@
             "Target" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
             "Folder" = "8:_444C6C265F7B4EE7ABB635AF3A9E863E"
             "WorkingFolder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
-            "Icon" = "8:"
+            "Icon" = "8:_CB9B37553D9C4DE5ACF144DEB86C39F5"
             "Feature" = "8:"
             }
         }
