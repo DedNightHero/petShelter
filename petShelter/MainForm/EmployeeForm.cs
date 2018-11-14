@@ -2,6 +2,7 @@
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Configuration;
 using System.Net;
 using System.IO;
 
@@ -718,11 +719,11 @@ namespace MainForm
         #region Загрузка фото на сервер
         private void UploadFileToFTP(string strn, string strp)
         {
-            FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create("ftp://127.0.0.1/"+strn);
+            FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ConfigurationManager.AppSettings["ftpaddress"] + strn);
 
             ftpReq.UseBinary = true;
             ftpReq.Method = WebRequestMethods.Ftp.UploadFile;
-            ftpReq.Credentials = new NetworkCredential("user", "pass");
+            ftpReq.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["ftpUserName"], ConfigurationManager.AppSettings["ftpUserPass"]);
 
             byte[] b = File.ReadAllBytes(strp);
             ftpReq.ContentLength = b.Length;
