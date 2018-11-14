@@ -334,8 +334,6 @@ namespace MainForm
 
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
-
-            
             if (checkBoxPetsNewAnimal.Checked) //Добавить животное в бд
             {
 

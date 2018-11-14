@@ -143,6 +143,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.comboBoxGoodsVolunteer = new System.Windows.Forms.ComboBox();
             this.textBoxDebitCreditComment = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePickerGoods = new System.Windows.Forms.DateTimePicker();
             this.tabReports = new System.Windows.Forms.TabPage();
@@ -269,12 +270,12 @@
             this.tableLayoutPanelAnimalsLeftMain.ColumnCount = 8;
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanelAnimalsLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanelAnimalsLeftMain.Controls.Add(this.label3, 2, 1);
@@ -321,9 +322,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(206, 32);
+            this.label3.Location = new System.Drawing.Point(190, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 46);
+            this.label3.Size = new System.Drawing.Size(74, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Порода";
             // 
@@ -331,29 +332,29 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(439, 32);
+            this.label4.Location = new System.Drawing.Point(412, 43);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 46);
+            this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Кличка";
             // 
             // textBoxPetsSortBreed
             // 
             this.textBoxPetsSortBreed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(281, 40);
+            this.textBoxPetsSortBreed.Location = new System.Drawing.Point(270, 40);
             this.textBoxPetsSortBreed.MaxLength = 30;
             this.textBoxPetsSortBreed.Name = "textBoxPetsSortBreed";
-            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(152, 30);
+            this.textBoxPetsSortBreed.Size = new System.Drawing.Size(136, 30);
             this.textBoxPetsSortBreed.TabIndex = 2;
             this.textBoxPetsSortBreed.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
             // textBoxPetsSortNickName
             // 
             this.textBoxPetsSortNickName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(504, 40);
+            this.textBoxPetsSortNickName.Location = new System.Drawing.Point(492, 40);
             this.textBoxPetsSortNickName.MaxLength = 20;
             this.textBoxPetsSortNickName.Name = "textBoxPetsSortNickName";
-            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(152, 30);
+            this.textBoxPetsSortNickName.Size = new System.Drawing.Size(136, 30);
             this.textBoxPetsSortNickName.TabIndex = 3;
             this.textBoxPetsSortNickName.TextChanged += new System.EventHandler(this.sortPetsTable);
             // 
@@ -361,9 +362,9 @@
             // 
             this.checkBoxPetsIsAtShelter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtShelter.AutoSize = true;
-            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(662, 41);
+            this.checkBoxPetsIsAtShelter.Location = new System.Drawing.Point(634, 41);
             this.checkBoxPetsIsAtShelter.Name = "checkBoxPetsIsAtShelter";
-            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(99, 27);
+            this.checkBoxPetsIsAtShelter.Size = new System.Drawing.Size(114, 27);
             this.checkBoxPetsIsAtShelter.TabIndex = 4;
             this.checkBoxPetsIsAtShelter.Text = "В приюте";
             this.checkBoxPetsIsAtShelter.UseVisualStyleBackColor = true;
@@ -373,9 +374,9 @@
             // 
             this.checkBoxPetsIsAtHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPetsIsAtHome.AutoSize = true;
-            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(767, 41);
+            this.checkBoxPetsIsAtHome.Location = new System.Drawing.Point(754, 41);
             this.checkBoxPetsIsAtHome.Name = "checkBoxPetsIsAtHome";
-            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(80, 27);
+            this.checkBoxPetsIsAtHome.Size = new System.Drawing.Size(93, 27);
             this.checkBoxPetsIsAtHome.TabIndex = 5;
             this.checkBoxPetsIsAtHome.Text = "Дома";
             this.checkBoxPetsIsAtHome.UseVisualStyleBackColor = true;
@@ -411,9 +412,9 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 39);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
-            this.comboBoxSortSpecies.Size = new System.Drawing.Size(152, 31);
+            this.comboBoxSortSpecies.Size = new System.Drawing.Size(136, 31);
             this.comboBoxSortSpecies.TabIndex = 1;
             this.comboBoxSortSpecies.SelectedIndexChanged += new System.EventHandler(this.sortPetsTable);
             // 
@@ -482,7 +483,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 22);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 31);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -491,6 +492,7 @@
             // 
             this.textBoxPetsComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPetsComment.Location = new System.Drawing.Point(195, 3);
+            this.textBoxPetsComment.MaxLength = 500;
             this.textBoxPetsComment.Multiline = true;
             this.textBoxPetsComment.Name = "textBoxPetsComment";
             this.textBoxPetsComment.Size = new System.Drawing.Size(570, 69);
@@ -526,8 +528,11 @@
             // 
             // pictureBoxPetPhoto
             // 
+            this.pictureBoxPetPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxPetPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPetPhoto.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxPetPhoto.ErrorImage")));
             this.pictureBoxPetPhoto.Image = global::MainForm.Properties.Resources.d1;
+            this.pictureBoxPetPhoto.InitialImage = global::MainForm.Properties.Resources.loading;
             this.pictureBoxPetPhoto.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxPetPhoto.Name = "pictureBoxPetPhoto";
             this.pictureBoxPetPhoto.Size = new System.Drawing.Size(325, 141);
@@ -596,55 +601,60 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 34);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 23);
+            this.label7.Size = new System.Drawing.Size(154, 32);
             this.label7.TabIndex = 1;
             this.label7.Text = "Вид животного";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 66);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(3, 62);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 23);
+            this.label8.Size = new System.Drawing.Size(154, 32);
             this.label8.TabIndex = 2;
             this.label8.Text = "Порода";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 98);
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 23);
+            this.label9.Size = new System.Drawing.Size(154, 32);
             this.label9.TabIndex = 3;
             this.label9.Text = "Кличка";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 131);
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(3, 126);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 23);
+            this.label10.Size = new System.Drawing.Size(154, 33);
             this.label10.TabIndex = 4;
             this.label10.Text = "Дата поступления";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dateTimePickerPetsArrivalDate
             // 
+            this.dateTimePickerPetsArrivalDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerPetsArrivalDate.Location = new System.Drawing.Point(163, 129);
             this.dateTimePickerPetsArrivalDate.Name = "dateTimePickerPetsArrivalDate";
-            this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(158, 30);
+            this.dateTimePickerPetsArrivalDate.Size = new System.Drawing.Size(159, 30);
             this.dateTimePickerPetsArrivalDate.TabIndex = 14;
             this.dateTimePickerPetsArrivalDate.ValueChanged += new System.EventHandler(this.setDataChanged);
             // 
             // comboBoxPetsSpecies
             // 
-            this.comboBoxPetsSpecies.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxPetsSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsSpecies.FormattingEnabled = true;
             this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
             this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
@@ -681,53 +691,58 @@
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 3);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 23);
+            this.label11.Size = new System.Drawing.Size(154, 30);
             this.label11.TabIndex = 0;
             this.label11.Text = "Хозяин";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 32);
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(3, 30);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 23);
+            this.label12.Size = new System.Drawing.Size(154, 28);
             this.label12.TabIndex = 1;
             this.label12.Text = "ФИО";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 60);
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(3, 58);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(154, 23);
+            this.label13.Size = new System.Drawing.Size(154, 28);
             this.label13.TabIndex = 2;
             this.label13.Text = "Телефон";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 88);
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Location = new System.Drawing.Point(3, 86);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 23);
+            this.label14.Size = new System.Drawing.Size(154, 28);
             this.label14.TabIndex = 3;
             this.label14.Text = "Адрес";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 118);
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(3, 114);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 23);
+            this.label15.Size = new System.Drawing.Size(154, 31);
             this.label15.TabIndex = 4;
             this.label15.Text = "Дата выдачи";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxPetsFIO
             // 
@@ -761,10 +776,11 @@
             // 
             // dateTimePickerPetsDeliveryDay
             // 
+            this.dateTimePickerPetsDeliveryDay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerPetsDeliveryDay.Enabled = false;
             this.dateTimePickerPetsDeliveryDay.Location = new System.Drawing.Point(163, 117);
             this.dateTimePickerPetsDeliveryDay.Name = "dateTimePickerPetsDeliveryDay";
-            this.dateTimePickerPetsDeliveryDay.Size = new System.Drawing.Size(164, 30);
+            this.dateTimePickerPetsDeliveryDay.Size = new System.Drawing.Size(165, 30);
             this.dateTimePickerPetsDeliveryDay.TabIndex = 19;
             // 
             // checkBoxPetsMaster
@@ -865,13 +881,13 @@
             // tableLayoutPanelLeftMain
             // 
             this.tableLayoutPanelLeftMain.ColumnCount = 7;
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tableLayoutPanelLeftMain.Controls.Add(this.textBoxStaffComment, 0, 6);
             this.tableLayoutPanelLeftMain.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanelLeftMain.Controls.Add(this.label17, 0, 1);
@@ -908,7 +924,7 @@
             this.textBoxStaffComment.MaxLength = 500;
             this.textBoxStaffComment.Multiline = true;
             this.textBoxStaffComment.Name = "textBoxStaffComment";
-            this.textBoxStaffComment.Size = new System.Drawing.Size(642, 68);
+            this.textBoxStaffComment.Size = new System.Drawing.Size(621, 68);
             this.textBoxStaffComment.TabIndex = 7;
             // 
             // label16
@@ -926,9 +942,9 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 30);
+            this.label17.Location = new System.Drawing.Point(3, 38);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 40);
+            this.label17.Size = new System.Drawing.Size(49, 23);
             this.label17.TabIndex = 3;
             this.label17.Text = "ФИО";
             // 
@@ -936,19 +952,19 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(209, 30);
+            this.label18.Location = new System.Drawing.Point(202, 38);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 40);
+            this.label18.Size = new System.Drawing.Size(59, 23);
             this.label18.TabIndex = 4;
-            this.label18.Text = "Login";
+            this.label18.Text = "Логин";
             // 
             // label19
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(415, 38);
+            this.label19.Location = new System.Drawing.Point(411, 38);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 23);
+            this.label19.Size = new System.Drawing.Size(69, 23);
             this.label19.TabIndex = 5;
             this.label19.Text = "Адрес";
             // 
@@ -966,30 +982,30 @@
             // textBoxStaffSortFIO
             // 
             this.textBoxStaffSortFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStaffSortFIO.Location = new System.Drawing.Point(53, 35);
-            this.textBoxStaffSortFIO.MaxLength = 14;
+            this.textBoxStaffSortFIO.Location = new System.Drawing.Point(58, 35);
+            this.textBoxStaffSortFIO.MaxLength = 40;
             this.textBoxStaffSortFIO.Name = "textBoxStaffSortFIO";
-            this.textBoxStaffSortFIO.Size = new System.Drawing.Size(150, 30);
+            this.textBoxStaffSortFIO.Size = new System.Drawing.Size(138, 30);
             this.textBoxStaffSortFIO.TabIndex = 1;
             this.textBoxStaffSortFIO.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // textBoxStafSortfLogin
             // 
             this.textBoxStafSortfLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStafSortfLogin.Location = new System.Drawing.Point(259, 35);
-            this.textBoxStafSortfLogin.MaxLength = 13;
+            this.textBoxStafSortfLogin.Location = new System.Drawing.Point(267, 35);
+            this.textBoxStafSortfLogin.MaxLength = 20;
             this.textBoxStafSortfLogin.Name = "textBoxStafSortfLogin";
-            this.textBoxStafSortfLogin.Size = new System.Drawing.Size(150, 30);
+            this.textBoxStafSortfLogin.Size = new System.Drawing.Size(138, 30);
             this.textBoxStafSortfLogin.TabIndex = 2;
             this.textBoxStafSortfLogin.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
             // textBoxStaffSortAdres
             // 
             this.textBoxStaffSortAdres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStaffSortAdres.Location = new System.Drawing.Point(495, 35);
-            this.textBoxStaffSortAdres.MaxLength = 13;
+            this.textBoxStaffSortAdres.Location = new System.Drawing.Point(486, 35);
+            this.textBoxStaffSortAdres.MaxLength = 80;
             this.textBoxStaffSortAdres.Name = "textBoxStaffSortAdres";
-            this.textBoxStaffSortAdres.Size = new System.Drawing.Size(150, 30);
+            this.textBoxStaffSortAdres.Size = new System.Drawing.Size(138, 30);
             this.textBoxStaffSortAdres.TabIndex = 3;
             this.textBoxStaffSortAdres.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
@@ -997,9 +1013,9 @@
             // 
             this.checkBoxStaffIsOnStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStaffIsOnStaff.AutoSize = true;
-            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(651, 36);
+            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(630, 36);
             this.checkBoxStaffIsOnStaff.Name = "checkBoxStaffIsOnStaff";
-            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(108, 27);
+            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(129, 27);
             this.checkBoxStaffIsOnStaff.TabIndex = 4;
             this.checkBoxStaffIsOnStaff.Text = "Сотрудники";
             this.checkBoxStaffIsOnStaff.UseVisualStyleBackColor = true;
@@ -1060,21 +1076,21 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.buttonStaffOk, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(648, 504);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(627, 504);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(114, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(135, 102);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // buttonStaffOk
             // 
             this.buttonStaffOk.BackgroundImage = global::MainForm.Properties.Resources.ok_btn;
             this.buttonStaffOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonStaffOk.Location = new System.Drawing.Point(27, 21);
+            this.buttonStaffOk.Location = new System.Drawing.Point(38, 21);
             this.buttonStaffOk.Name = "buttonStaffOk";
             this.buttonStaffOk.Size = new System.Drawing.Size(59, 59);
             this.buttonStaffOk.TabIndex = 8;
@@ -1418,13 +1434,13 @@
             // tableLayoutPanelGoodsTopPanel
             // 
             this.tableLayoutPanelGoodsTopPanel.ColumnCount = 7;
-            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelGoodsTopPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.label29, 0, 0);
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.textBoxGoodsSortNameofGoods, 1, 0);
             this.tableLayoutPanelGoodsTopPanel.Controls.Add(this.radioButtonGoodsSortIsCure, 3, 0);
@@ -1444,19 +1460,19 @@
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 0);
+            this.label29.Location = new System.Drawing.Point(3, 8);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 40);
+            this.label29.Size = new System.Drawing.Size(129, 23);
             this.label29.TabIndex = 0;
             this.label29.Text = "Наименование";
             // 
             // textBoxGoodsSortNameofGoods
             // 
             this.textBoxGoodsSortNameofGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxGoodsSortNameofGoods.Location = new System.Drawing.Point(113, 5);
+            this.textBoxGoodsSortNameofGoods.Location = new System.Drawing.Point(138, 5);
             this.textBoxGoodsSortNameofGoods.MaxLength = 30;
             this.textBoxGoodsSortNameofGoods.Name = "textBoxGoodsSortNameofGoods";
-            this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(119, 30);
+            this.textBoxGoodsSortNameofGoods.Size = new System.Drawing.Size(151, 30);
             this.textBoxGoodsSortNameofGoods.TabIndex = 1;
             this.textBoxGoodsSortNameofGoods.TextChanged += new System.EventHandler(this.sortGoodsTable);
             this.textBoxGoodsSortNameofGoods.Validated += new System.EventHandler(this.sortPetsTable);
@@ -1465,9 +1481,9 @@
             // 
             this.radioButtonGoodsSortIsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsCure.AutoSize = true;
-            this.radioButtonGoodsSortIsCure.Location = new System.Drawing.Point(279, 6);
+            this.radioButtonGoodsSortIsCure.Location = new System.Drawing.Point(334, 6);
             this.radioButtonGoodsSortIsCure.Name = "radioButtonGoodsSortIsCure";
-            this.radioButtonGoodsSortIsCure.Size = new System.Drawing.Size(94, 27);
+            this.radioButtonGoodsSortIsCure.Size = new System.Drawing.Size(114, 27);
             this.radioButtonGoodsSortIsCure.TabIndex = 2;
             this.radioButtonGoodsSortIsCure.TabStop = true;
             this.radioButtonGoodsSortIsCure.Text = "Лекарства";
@@ -1478,9 +1494,9 @@
             // 
             this.radioButtonGoodsSortIsEat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsEat.AutoSize = true;
-            this.radioButtonGoodsSortIsEat.Location = new System.Drawing.Point(379, 6);
+            this.radioButtonGoodsSortIsEat.Location = new System.Drawing.Point(454, 6);
             this.radioButtonGoodsSortIsEat.Name = "radioButtonGoodsSortIsEat";
-            this.radioButtonGoodsSortIsEat.Size = new System.Drawing.Size(54, 27);
+            this.radioButtonGoodsSortIsEat.Size = new System.Drawing.Size(59, 27);
             this.radioButtonGoodsSortIsEat.TabIndex = 3;
             this.radioButtonGoodsSortIsEat.TabStop = true;
             this.radioButtonGoodsSortIsEat.Text = "Еда";
@@ -1491,7 +1507,7 @@
             // 
             this.radioButtonGoodsSortIsOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsOther.AutoSize = true;
-            this.radioButtonGoodsSortIsOther.Location = new System.Drawing.Point(439, 6);
+            this.radioButtonGoodsSortIsOther.Location = new System.Drawing.Point(519, 6);
             this.radioButtonGoodsSortIsOther.Name = "radioButtonGoodsSortIsOther";
             this.radioButtonGoodsSortIsOther.Size = new System.Drawing.Size(94, 27);
             this.radioButtonGoodsSortIsOther.TabIndex = 4;
@@ -1504,9 +1520,9 @@
             // 
             this.radioButtonGoodsSortIsAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonGoodsSortIsAll.AutoSize = true;
-            this.radioButtonGoodsSortIsAll.Location = new System.Drawing.Point(539, 6);
+            this.radioButtonGoodsSortIsAll.Location = new System.Drawing.Point(619, 6);
             this.radioButtonGoodsSortIsAll.Name = "radioButtonGoodsSortIsAll";
-            this.radioButtonGoodsSortIsAll.Size = new System.Drawing.Size(663, 27);
+            this.radioButtonGoodsSortIsAll.Size = new System.Drawing.Size(583, 27);
             this.radioButtonGoodsSortIsAll.TabIndex = 5;
             this.radioButtonGoodsSortIsAll.TabStop = true;
             this.radioButtonGoodsSortIsAll.Text = "Все";
@@ -1561,23 +1577,25 @@
             // 
             // label35
             // 
-            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(591, 0);
+            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label35.Location = new System.Drawing.Point(580, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(93, 23);
+            this.label35.Size = new System.Drawing.Size(104, 40);
             this.label35.TabIndex = 13;
             this.label35.Text = "В наличии";
+            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label37
             // 
-            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(896, 0);
+            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label37.Location = new System.Drawing.Point(882, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(110, 23);
+            this.label37.Size = new System.Drawing.Size(124, 40);
             this.label37.TabIndex = 12;
             this.label37.Text = "Необходимо";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxGoodsNeeded
             // 
@@ -1678,13 +1696,17 @@
             // 
             // tableLayoutPanelPickChariter
             // 
-            this.tableLayoutPanelPickChariter.ColumnCount = 3;
-            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.53333F));
-            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.46667F));
+            this.tableLayoutPanelPickChariter.ColumnCount = 6;
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanelPickChariter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelPickChariter.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanelPickChariter.Controls.Add(this.comboBoxGoodsVolunteer, 1, 0);
-            this.tableLayoutPanelPickChariter.Controls.Add(this.textBoxDebitCreditComment, 2, 0);
+            this.tableLayoutPanelPickChariter.Controls.Add(this.textBoxDebitCreditComment, 4, 0);
+            this.tableLayoutPanelPickChariter.Controls.Add(this.label40, 3, 0);
             this.tableLayoutPanelPickChariter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPickChariter.Location = new System.Drawing.Point(25, 431);
             this.tableLayoutPanelPickChariter.Margin = new System.Windows.Forms.Padding(0);
@@ -1698,29 +1720,41 @@
             // 
             this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(3, 0);
+            this.label31.Location = new System.Drawing.Point(3, 8);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(74, 40);
+            this.label31.Size = new System.Drawing.Size(94, 23);
             this.label31.TabIndex = 0;
             this.label31.Text = "Волонтёр";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBoxGoodsVolunteer
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(83, 4);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(103, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
-            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(314, 31);
+            this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(187, 31);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
             // 
             // textBoxDebitCreditComment
             // 
             this.textBoxDebitCreditComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDebitCreditComment.Location = new System.Drawing.Point(403, 5);
+            this.textBoxDebitCreditComment.Location = new System.Drawing.Point(455, 5);
             this.textBoxDebitCreditComment.MaxLength = 150;
             this.textBoxDebitCreditComment.Name = "textBoxDebitCreditComment";
-            this.textBoxDebitCreditComment.Size = new System.Drawing.Size(799, 30);
+            this.textBoxDebitCreditComment.Size = new System.Drawing.Size(669, 30);
             this.textBoxDebitCreditComment.TabIndex = 13;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label40.Location = new System.Drawing.Point(315, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(134, 40);
+            this.label40.TabIndex = 14;
+            this.label40.Text = "Комментарий";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label30
             // 
@@ -2259,5 +2293,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.CheckBox sortByDate;
+        private System.Windows.Forms.Label label40;
     }
 }

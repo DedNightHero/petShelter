@@ -107,7 +107,7 @@
             this.buttonEnterAs.Name = "buttonEnterAs";
             this.buttonEnterAs.Size = new System.Drawing.Size(180, 35);
             this.buttonEnterAs.TabIndex = 7;
-            this.buttonEnterAs.Text = "Войти как волонтёр";
+            this.buttonEnterAs.Text = "Я волонтёр";
             this.buttonEnterAs.UseVisualStyleBackColor = true;
             this.buttonEnterAs.Click += new System.EventHandler(this.buttonEnterAs_Click);
             // 
@@ -175,7 +175,6 @@
             this.Opacity = 0.98D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Приют животных \"Ласка\"  | Вход";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

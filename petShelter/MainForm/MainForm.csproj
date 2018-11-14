@@ -139,7 +139,6 @@
     </Compile>
     <Compile Include="PetShelter.cs">
       <DependentUpon>PetShelter.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PetShelter.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -206,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PetShelterLogo.ico" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\no_image.png" />
+    <None Include="Resources\NoConnection.png" />
     <None Include="Resources\d1.JPG" />
     <None Include="Resources\ok_btn.png" />
   </ItemGroup>

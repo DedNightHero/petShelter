@@ -17,7 +17,6 @@ namespace MainForm
         private static String getConnectionString()
         {
             return ConfigurationManager.AppSettings["ConnectionString"];
-            //return "user=root;server=localhost;database=university;port=3306;";
         }
     }
 }
