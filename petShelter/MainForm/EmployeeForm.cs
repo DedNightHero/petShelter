@@ -532,7 +532,8 @@ namespace MainForm
                     pictureBoxPetPhoto.Image = Properties.Resources.d1;
                 else
                 {
-                    pictureBoxPetPhoto.ImageLocation = psAnimals.animals.FindById_Animals(id)["PetPhoto"].ToString();
+                   pictureBoxPetPhoto.Image = null;
+                   pictureBoxPetPhoto.ImageLocation = psAnimals.animals.FindById_Animals(id)["PetPhoto"].ToString();
                 }
                 if (psAnimals.animals.FindById_Animals(id)["InHere"].ToString() == "0")
                 {
