@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_83B76CF7ACB3C54D469DB18AB9FCD06C"
-        "OwnerKey" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8E0C1768AFFF42E9B88AE8F5279D1350"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB9B37553D9C4DE5ACF144DEB86C39F5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ED9A8572E58BD0EE5A40758B6CFF27E8"
+        "OwnerKey" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,19 +40,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FEA85A4AF69483D1F25FF1D145229483"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_83B76CF7ACB3C54D469DB18AB9FCD06C"
+        "OwnerKey" = "8:_ED9A8572E58BD0EE5A40758B6CFF27E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FEA85A4AF69483D1F25FF1D145229483"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,6 +73,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -89,6 +97,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -118,40 +142,9 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_83B76CF7ACB3C54D469DB18AB9FCD06C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB9B37553D9C4DE5ACF144DEB86C39F5"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_83B76CF7ACB3C54D469DB18AB9FCD06C"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E0C1768AFFF42E9B88AE8F5279D1350"
-            {
-            "SourcePath" = "8:..\\..\\PetShelterLogo.ico"
+            "SourcePath" = "8:..\\..\\pictures\\PetShelterLogo.ico"
             "TargetName" = "8:PetShelterLogo.ico"
             "Tag" = "8:"
             "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
@@ -167,6 +160,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ED9A8572E58BD0EE5A40758B6CFF27E8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_ED9A8572E58BD0EE5A40758B6CFF27E8"
+                    {
+                    "Name" = "8:MySql.Data.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D34B70FE379346FD953025F356E2DB9A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FEA85A4AF69483D1F25FF1D145229483"
@@ -185,7 +209,7 @@
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
+            "Folder" = "8:_D34B70FE379346FD953025F356E2DB9A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -216,6 +240,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D34B70FE379346FD953025F356E2DB9A"
+                    {
+                    "Name" = "8:Libs"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_41458D061DA14006A51222EB7F2640B4"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_444C6C265F7B4EE7ABB635AF3A9E863E"
@@ -266,9 +301,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:PetShelterSetup"
+        "ProductName" = "8:PetShelter"
         "ProductCode" = "8:{B976A1FA-B108-4652-82DB-5504681D871F}"
-        "PackageCode" = "8:{31113CD9-B2B3-487A-A4B9-FAA3937E35CD}"
+        "PackageCode" = "8:{96D5FE66-B410-4DB6-A444-C991A8F84A11}"
         "UpgradeCode" = "8:{893654C9-3662-41EA-84E9-FD333E92D6A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -281,7 +316,7 @@
         "ARPHELPLINK" = "8:"
         "Title" = "8:PetShelterSetup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:DNH"
+        "ARPCONTACT" = "8:FeshchenkoDN"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -399,7 +434,7 @@
             "Target" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
             "Folder" = "8:_2B8449B1CD93451A96EC312FEA2FB8BD"
             "WorkingFolder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
-            "Icon" = "8:_8E0C1768AFFF42E9B88AE8F5279D1350"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F14FDE5309D2438DA6133841A9644210"
@@ -413,7 +448,7 @@
             "Target" = "8:_C77ECAA1ED4C4EAFA4E57E4918608919"
             "Folder" = "8:_444C6C265F7B4EE7ABB635AF3A9E863E"
             "WorkingFolder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
-            "Icon" = "8:_8E0C1768AFFF42E9B88AE8F5279D1350"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -817,7 +852,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C77ECAA1ED4C4EAFA4E57E4918608919"
             {
-            "SourcePath" = "8:..\\MainForm\\obj\\Release\\MainForm.exe"
+            "SourcePath" = "8:..\\MainForm\\obj\\Release\\PetShelter.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_272B2BC4C5174F74B6708AD0F00611AD"
