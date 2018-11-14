@@ -750,7 +750,7 @@ namespace MainForm
             if (openFileDialogAddPetPhoto.ShowDialog() == DialogResult.Cancel)
                 return;
             UploadFileToFTP(openFileDialogAddPetPhoto.SafeFileName, openFileDialogAddPetPhoto.FileName);
-            photoName = "ftp://127.0.0.1/"+openFileDialogAddPetPhoto.SafeFileName;
+            photoName = ConfigurationManager.AppSettings["ftpaddress"] + openFileDialogAddPetPhoto.SafeFileName;
         }
         #endregion
         #endregion
