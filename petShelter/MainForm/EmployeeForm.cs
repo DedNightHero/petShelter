@@ -1592,12 +1592,14 @@ namespace MainForm
             if (checkBoxReportsOutCome.Checked)
             {
                 if (filter != null) filter += " and ";
-                filter += "CONVERT(Credit, 'System.String') LIKE '0'";
+                //filter += "CONVERT(Credit, 'System.String') LIKE '0'";
+                filter += "CONVERT(Debit, 'System.String') > '0'";
             }
             if (checkBoxReportsInCome.Checked)
             {
                 if (filter != null) filter += " and ";
-                filter += "CONVERT(Debit, 'System.String') LIKE '0'";
+                //filter += "CONVERT(Debit, 'System.String') LIKE '0'";
+                filter += "CONVERT(Credit, 'System.String') > '0'";
             }
             if (sortByDate.Checked)
             {
