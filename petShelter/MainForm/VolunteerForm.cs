@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.IO;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MainForm
 {
@@ -49,7 +46,7 @@ namespace MainForm
             textBoxVolunteerFormPhoneNumber.Text = psUsers.users.FindById_Users(userId)[5].ToString();
             textBoxVolunteerFormAddress.Text = psUsers.users.FindById_Users(userId)[6].ToString();
 
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(GoodsName, 'System.String') NOT LIKE '' and Debit = 0");
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and GoodsName IS NOT NULL and Debit = 0");
             dataGridViewVolunteerFormOneCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             dataGridViewVolunteerFormOneCharity.Columns.Add("goodsNameVolunteer", "Предмет");
             FillCharityVolunteer();
@@ -58,6 +55,7 @@ namespace MainForm
             dataGridViewVolunteerFormOneCharity.Columns["Debit"].Visible = false;
             dataGridViewVolunteerFormOneCharity.Columns["PatientId"].Visible = false;
             dataGridViewVolunteerFormOneCharity.Columns["UserId"].Visible = false;
+            dataGridViewVolunteerFormOneCharity.Columns["GoodsType"].Visible = false;
             dataGridViewVolunteerFormOneCharity.Columns["Comment"].HeaderText = "Комментарий";
             dataGridViewVolunteerFormOneCharity.Columns["Date"].HeaderText = "Дата";
             dataGridViewVolunteerFormOneCharity.Columns["Credit"].HeaderText = "Количество";

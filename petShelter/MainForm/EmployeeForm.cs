@@ -23,11 +23,6 @@ namespace MainForm
         private int userLvl;
         private int userId;
         private string photoName = "";
-        bool dataChanged = false;
-        private void setDataChanged(object sender, EventArgs e)
-        {
-            dataChanged = true;
-        }
         #endregion
         #region Создание и загрузка формы
         public EmployeeForm(int lvl, int id)
@@ -208,6 +203,7 @@ namespace MainForm
             dataGridViewPetsHistory.Columns.Add("goodsNameShow", "Препарат");
             dataGridViewPetsAllPets.Columns.Add("speciesShow", "Вид");
             setPetsGridView();
+            setPetsCureHistory(-2);
         }
         #endregion
         #region Обновление окна
@@ -239,6 +235,7 @@ namespace MainForm
             cleanPetsAddArea();
             clearPetsAddCureArea();
             cleanPetsFilterArea();
+            setPetsCureHistory(-2);
         }
         #endregion
         #region Параметры датагрида "Животные"
@@ -337,8 +334,6 @@ namespace MainForm
         {
             if (checkBoxPetsNewAnimal.Checked) //Добавить животное в бд
             {
-
-
                 int i = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
                 string b = textBoxPetsBreed.Text;
                 string nn = textBoxPetsNickName.Text;
@@ -347,10 +342,9 @@ namespace MainForm
 
                 bool f = checkPetsAddArea();
                 if (f)
-                {
-                    
+                {     
                     DateTime ad = dateTimePickerPetsArrivalDate.Value;
-                    //ad = DateTime.Today.Date;
+                    ad = ad.Date;
                     string pp;
                     if (photoName != "")
                         pp = photoName;
@@ -361,7 +355,8 @@ namespace MainForm
                         string fio = textBoxPetsFIO.Text;
                         string pn = textBoxPetsPhoneNumber.Text;
                         string a = textBoxPetsAddress.Text;
-                        DateTime dd = dateTimePickerPetsDeliveryDay.Value;                        
+                        DateTime dd = dateTimePickerPetsDeliveryDay.Value;
+                        dd = dd.Date;                  
                         psAnimals.animals.AddanimalsRow(i, nn, b, ad, 0, fio, pn, a, dd, pp);
                     }
                     else
@@ -381,9 +376,7 @@ namespace MainForm
                     cleanPetsAddArea();
                 }
             }
-            setPetsGridView();
-            dataGridViewPetsAllPets.Refresh();
-            dataGridViewPetsAllPets.ClearSelection();
+            refreshAnimalsTab();
         }
         
         #endregion
@@ -515,6 +508,7 @@ namespace MainForm
             textBoxPetsAddress.Text = "";
             checkBoxPetsNewAnimal.Checked = false;
             photoName = "";
+            pictureBoxPetPhoto.Image= Properties.Resources.d1;
         }
         #endregion
         #region Установка параметров животного для редактирования
@@ -557,7 +551,6 @@ namespace MainForm
         #region Установка истории лечения для животного
         private void setPetsCureHistory(int id)
         {
-            dataChanged = false;
             psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(PatientId, 'System.String') LIKE '" + id + "'");
             dataGridViewPetsHistory.DataSource = psDebitcredit.debitcredit.DefaultView;
 
@@ -569,6 +562,7 @@ namespace MainForm
             dataGridViewPetsHistory.Columns["Credit"].Visible = false;
             dataGridViewPetsHistory.Columns["PatientId"].Visible = false;
             dataGridViewPetsHistory.Columns["UserId"].Visible = false;
+            dataGridViewPetsHistory.Columns["GoodsType"].Visible = false;
             dataGridViewPetsHistory.Columns["goodsNameShow"].HeaderText = "Препарат";
             dataGridViewPetsHistory.Columns["Comment"].HeaderText = "Комментарий";
             dataGridViewPetsHistory.Columns["Date"].HeaderText = "Дата";
@@ -602,6 +596,10 @@ namespace MainForm
                 expression = foundRows[0][1].ToString();
                 dataGridViewPetsHistory.Rows[i].Cells["goodsNameShow"].Value = expression;
             }
+        }
+        private void dataGridViewPetsHistory_Sorted(object sender, EventArgs e)
+        {
+            FillGoods();
         }
         #endregion
         #region Изменение информации о животном в датасете
@@ -662,8 +660,7 @@ namespace MainForm
                 ibl.setAnimals(psAnimals);
                 cleanPetsAddArea();
                 clearPetsAddCureArea();
-                setPetsGridView();
-                dataGridViewPetsAllPets.Refresh();
+                refreshAnimalsTab();
             }    
             else
             {
@@ -776,7 +773,6 @@ namespace MainForm
             dataGridViewStaffAllMembers.DataMember = "users";
             dataGridViewStaffAllMembers.Columns.Add("positionsName", "Должность");
             setStaffGridView();
-
         }
         #endregion
         #region Обновление окна
@@ -793,14 +789,16 @@ namespace MainForm
             comboBoxStaffVacancy.Items.Add("");
             clearStaffFilter();
             cleanStaffAddArea();
+            clearStaffAddMoveArea();
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
             setStaffGridView();
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
+            setStaffCharity();
             dataGridViewStaffAllMembers.Refresh();
             dataGridViewStaffCharity.ClearSelection();
-            dataGridViewStaffAllMembers.ClearSelection();
-
-            
+            dataGridViewStaffAllMembers.ClearSelection();   
         }
         private void sorted(object sender, EventArgs e) //Вызывается при сортировки столбцов
         {
@@ -878,14 +876,21 @@ namespace MainForm
             if (i >= 0)
             {
                 id = Convert.ToInt32(dataGridViewStaffAllMembers.CurrentRow.Cells["Id_Users"].Value);
-                comboBoxStaffVacancy.SelectedItem = psPositions.positions.Rows[Convert.ToInt32(psUsers.users.FindById_Users(id)[4]) - 1][1].ToString();
-                textBoxStaffLogin.Text = psUsers.users.FindById_Users(id)[1].ToString();
-                //textBoxStaffPass.Text =;
-                textBoxStaffLastName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
-                textBoxStaffFirstName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1];
-                textBoxStaffMiddleName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[2];
-                textBoxStaffPhoneNumber.Text = psUsers.users.FindById_Users(id)[5].ToString();
-                textBoxStaffAddress.Text = psUsers.users.FindById_Users(id)[6].ToString();
+                if (id!=1)
+                {
+                    comboBoxStaffVacancy.SelectedItem = psPositions.positions.Rows[Convert.ToInt32(psUsers.users.FindById_Users(id)[4]) - 1][1].ToString();
+                    textBoxStaffLogin.Text = psUsers.users.FindById_Users(id)[1].ToString();
+                    textBoxStaffLastName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    textBoxStaffFirstName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    textBoxStaffMiddleName.Text = psUsers.users.FindById_Users(id)[3].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[2];
+                    textBoxStaffPhoneNumber.Text = psUsers.users.FindById_Users(id)[5].ToString();
+                    textBoxStaffAddress.Text = psUsers.users.FindById_Users(id)[6].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Данного пользователя изменять запрещено", "Ошибка", MessageBoxButtons.OK);
+                    dataGridViewStaffAllMembers.ClearSelection();
+                }
             }
         }
         #endregion
@@ -898,6 +903,7 @@ namespace MainForm
             dataGridViewStaffCharity.Columns[5].Visible = false;
             dataGridViewStaffCharity.Columns[6].Visible = false;
             dataGridViewStaffCharity.Columns[7].Visible = false;
+            dataGridViewStaffCharity.Columns["GoodsType"].Visible = false;
             dataGridViewStaffCharity.Columns[2].HeaderText = "Комментарий";
             dataGridViewStaffCharity.Columns[3].HeaderText = "Дата";
             dataGridViewStaffCharity.Columns[3].DisplayIndex = 0;
@@ -1054,10 +1060,6 @@ namespace MainForm
                         psUsers.users.AddusersRow(l, null, fio, pos, phone, address);
                     }
                     ibl.setUsers(psUsers);
-                    cleanStaffAddArea();
-                    setStaffGridView();
-                    //dataGridViewStaffAllMembers.Refresh();
-                    dataGridViewStaffAllMembers.ClearSelection();
                 }
             }
             else //Редактирование информации о сотруднике
@@ -1066,12 +1068,9 @@ namespace MainForm
                 if (f)
                 {
                     changeStaffInfo();
-                    cleanStaffAddArea();
-                    setStaffGridView();
-                    //dataGridViewStaffAllMembers.Refresh();
-                    dataGridViewStaffAllMembers.ClearSelection();
                 }
             }
+            refreshStaffTab();
         }
         #region Изменение информации о сотруднике в датасете
         private void changeStaffInfo()
@@ -1102,10 +1101,7 @@ namespace MainForm
             {
                 psUsers.users.FindById_Users(id).Delete();
                 ibl.setUsers(psUsers);
-                cleanStaffAddArea();
-                setStaffGridView();
-                //dataGridViewStaffAllMembers.Refresh();
-                dataGridViewStaffAllMembers.ClearSelection();
+                refreshStaffTab();
             }
             else
             {
@@ -1124,6 +1120,9 @@ namespace MainForm
             }
             psDebitcredit.debitcredit.AdddebitcreditRow(-1, textBoxStaffComment.Text, DateTime.Today, 0, 0, -1, userId,-1);
             ibl.setDebitCredit(psDebitcredit);
+            psDebitcredit = ibl.getDebitCredit();
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             clearStaffAddMoveArea();
             setStaffCharity();
             dataGridViewStaffCharity.ClearSelection();
@@ -1150,14 +1149,13 @@ namespace MainForm
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
+            for (int i = 0; i < psGoodstype.goodstype.Rows.Count; i++)
             {
-                comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
+                if(i!=2)
+                    comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
             comboBoxGoodsVolunteer.Items.Add("");
-            //Убираем ДЕНЬГИ из выдачи
-            psGoods.goods.DefaultView.RowFilter = string.Format("CONVERT(Type, 'System.String')  NOT LIKE '3'");
-            dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods;
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
         }
@@ -1176,11 +1174,14 @@ namespace MainForm
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
-            for (int i = 0; i < (psGoodstype.goodstype.Rows.Count); i++)
+            for (int i = 0; i < psGoodstype.goodstype.Rows.Count; i++)
             {
-                comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
+                if (i != 2)
+                    comboBoxGoodsType.Items.Add(psGoodstype.goodstype.Rows[i][1].ToString());
             }
             comboBoxGoodsVolunteer.Items.Add("");
+            dataGridViewGoodsAllGoods.DataSource = psGoods.goods;
+            setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
             clearGoodsFilter();
             cleanGoodsAddArea();
@@ -1225,11 +1226,6 @@ namespace MainForm
                 textBoxGoodsAmount.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[3].Value.ToString();
                 textBoxGoodsNeeded.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[4].Value.ToString();
                 comboBoxGoodsType.SelectedItem = psGoodstype.goodstype.Rows[Convert.ToInt32(psGoods.goods.FindById_Goods(id)[2]) - 1][1].ToString();
-                //Поиск последнего внесения изменения этого товара Не надо этого. Эту дату если что во вкладедке с приходом/расходом смореть будут
-                /*var strExpr = "GoodsName = " + dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
-                DataTable dt = psDebitcredit.debitcredit; // refer to your table of interest within the DataSet
-                dt.Select(strExpr);
-                dateTimePickerGoods.Text = dt.Rows[0]["date"].ToString(); //Получение даты для первого */
             }
         }
         #endregion
@@ -1261,7 +1257,6 @@ namespace MainForm
             if (radioButtonGoodsSortIsEat.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '1'";
             if (radioButtonGoodsSortIsCure.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '2'";
             if (radioButtonGoodsSortIsOther.Checked) filter = "CONVERT(Type, 'System.String')  LIKE '4'";
-            if (filter == null) filter = "";
             if (textBoxGoodsSortNameofGoods.Text != "")
             {
                 if (filter != null) filter += " and ";
@@ -1350,9 +1345,7 @@ namespace MainForm
                 }
 
                 ibl.setDebitCredit(psDebitcredit);
-                dataGridViewGoodsAllGoods.Refresh();
-                dataGridViewGoodsAllGoods.ClearSelection();
-                cleanGoodsAddArea();
+                refreshGoodsTab();
             }
         }
         #endregion
@@ -1364,7 +1357,11 @@ namespace MainForm
                 int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
                 int amountAfter = Convert.ToInt32(textBoxGoodsAmount.Text);
                 psGoods.goods.FindById_Goods(id)[1] = textBoxGoodsName.Text;
-                int goodsType = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                int goodsType;
+                if (comboBoxGoodsType.SelectedIndex != -1)
+                    goodsType = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                else goodsType = 3;
+
                 psGoods.goods.FindById_Goods(id)[2] = goodsType;
                 psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(textBoxGoodsAmount.Text);
                 psGoods.goods.FindById_Goods(id)[4] = Convert.ToInt32(textBoxGoodsNeeded.Text);
@@ -1394,9 +1391,7 @@ namespace MainForm
                     }
                     ibl.setDebitCredit(psDebitcredit);
                 }
-                dataGridViewGoodsAllGoods.Refresh();
-                dataGridViewGoodsAllGoods.ClearSelection();
-                cleanGoodsAddArea();
+                refreshGoodsTab();
             }
             else
             {
@@ -1627,17 +1622,6 @@ namespace MainForm
             //cleanReportsFilterArea();
         }
         #endregion
-
-        private void setDataChanged()
-        {
-
-        }
-
-
-
-
-
-
         #endregion
     }
 }

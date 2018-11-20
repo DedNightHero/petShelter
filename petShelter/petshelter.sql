@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 06 2018 г., 10:22
+-- Время создания: Ноя 20 2018 г., 07:35
 -- Версия сервера: 10.1.25-MariaDB
 -- Версия PHP: 5.6.31
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `petshelter`
 --
+CREATE DATABASE IF NOT EXISTS `petshelter` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `petshelter`;
 
 -- --------------------------------------------------------
 
@@ -42,16 +44,6 @@ CREATE TABLE `animals` (
   `PetPhoto` char(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `animals`
---
-
-INSERT INTO `animals` (`Id_Animals`, `Species`, `NickName`, `Breed`, `ArrivalDate`, `InHere`, `FMLNameOfOwner`, `OwnerPhone`, `OwnerAddress`, `DeliveryDate`, `PetPhoto`) VALUES
-(1, 2, 'Машка', 'Мэйнкун', '2018-10-02', 0, 'Небольсина М.', '8945123546', 'ул. Пожарника, д. 11', '2018-10-03', 'ftp://127.0.0.1/1491574272_003-1.jpg'),
-(2, 1, 'Добби', 'Пинчер', '2018-10-01', 0, 'Роман Е.В.', '8962804300', 'г. Новоалтайск, ул. Партизанская, д. 110, к.10', '2018-10-04', 'ftp://127.0.0.1/doberman_11.jpg'),
-(3, 1, 'Цезарь', 'Дворняга', '2018-10-05', 0, 'Роман Е.В.', '895', 'ыва', '2018-10-04', 'ftp://127.0.0.1/mops_06.jpg'),
-(7, 1, 'Шелдон', 'Лабрадор', '2018-09-26', 1, NULL, NULL, NULL, '0001-01-01', 'ftp://127.0.0.1/labrador-retriver.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -66,44 +58,9 @@ CREATE TABLE `debitcredit` (
   `Debit` tinyint(1) UNSIGNED NOT NULL,
   `Credit` tinyint(1) UNSIGNED NOT NULL,
   `PatientId` int(10) UNSIGNED DEFAULT NULL,
-  `UserId` int(10) UNSIGNED DEFAULT NULL
+  `UserId` int(10) UNSIGNED DEFAULT NULL,
+  `GoodsType` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `debitcredit`
---
-
-INSERT INTO `debitcredit` (`Id_DebitCredit`, `GoodsName`, `Comment`, `Date`, `Debit`, `Credit`, `PatientId`, `UserId`) VALUES
-(1, 1, NULL, '2018-10-16', 0, 0, NULL, NULL),
-(2, 1, NULL, '2018-10-16', 0, 5, NULL, 1),
-(3, 1, NULL, '2018-10-16', 0, 4, NULL, 2),
-(4, 1, NULL, '2018-10-16', 1, 0, NULL, NULL),
-(5, 2, NULL, '2018-10-16', 0, 0, NULL, NULL),
-(6, 2, 'Пожертвование', '2018-10-16', 0, 50, NULL, 1),
-(7, 2, 'На жвачку потратил', '2018-10-16', 10, 0, NULL, 1),
-(8, 2, NULL, '2018-10-16', 0, 20, NULL, NULL),
-(9, 2, 'Собачкам на еду', '2018-10-16', 0, 60, NULL, 2),
-(10, 1, 'В попу', '2018-11-04', 1, 0, 2, 1),
-(11, 3, 'Чтоб было смешно', '2018-11-05', 1, 0, 1, 1),
-(12, 4, 'Чтоб было смешно', '2018-11-05', 1, 0, 1, 1),
-(13, 4, 'Ещё смешнее', '2018-11-05', 1, 0, 1, 1),
-(14, 4, 'АХАХ', '2018-11-05', 1, 0, 1, 1),
-(15, 4, '[f[f', '2018-11-05', 1, 0, 1, 1),
-(16, 4, 'Чтобы было смешно', '2018-11-05', 0, 20, NULL, 3),
-(17, 4, 'От Саши', '2018-11-05', 1, 0, 1, 1),
-(18, NULL, 'Почесал собачек за ушками', '2018-11-05', 0, 0, NULL, 1),
-(19, NULL, 'Почесал кошечек', '2018-11-05', 0, 0, NULL, 1),
-(20, NULL, 'Всех почесал', '2018-11-05', 0, 0, NULL, 1),
-(21, 4, 'Так надо', '2018-11-05', 30, 0, NULL, 1),
-(22, 4, 'За знакомство', '2018-11-06', 1, 0, NULL, 1),
-(23, 4, 'От бешенства', '2018-11-06', 1, 0, 2, 1),
-(24, 3, 'Хобана', '2018-11-06', 1, 0, 2, 1),
-(25, 3, 'Плановая вакцинация', '2018-11-06', 1, 0, 3, 1),
-(26, 3, 'От бешенства', '2018-11-06', 1, 0, 7, 1),
-(28, 3, 'Плановая вакцинация', '2018-11-06', 1, 0, NULL, 1),
-(29, 4, 'фывафыва', '2018-11-06', 1, 0, NULL, 1),
-(31, 3, 'asdf', '2018-11-06', 1, 0, NULL, 1),
-(32, 3, 'Для мишутки', '2018-11-06', 1, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -124,10 +81,7 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`Id_Goods`, `NameOfGoods`, `Type`, `Amount`, `Required`) VALUES
-(1, 'Икра чёрная', 1, 8, 10),
-(2, 'Рубли', 3, 90, 100),
-(3, 'Викодин', 2, 11, 20),
-(4, 'Валерьянка', 2, 16, 20);
+(1, 'Деньги', 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -212,10 +166,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id_Users`, `Login`, `Password`, `FirstMiddleLastName`, `Position`, `Phone`, `Address`) VALUES
-(1, 'DNH', '9FF7FCE8DC408BF90D743A79F825CCDC', 'Фещенко Дмитрий Николаевич', 4, '89628043000', 'г. Барнаул, ул. Некрасова, д.41, к.55'),
-(2, 'REV', NULL, 'Роман Екатерина Валериевна', 1, '89233421816', 'г. Новоалтайск, ул. Партизанская, д.111, к. 10'),
-(3, 'Aldemm', NULL, 'Деменко Александр Михайлович', 1, 'sony', 'пос. Южный, ul. Unknownaya, d. -1'),
-(5, 'asdljk', 'D41D8CD98F00B204E9800998ECF8427E', 'a s d', 2, 'as', 'asd');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 4, '', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -277,17 +228,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_Animals` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `debitcredit`
 --
 ALTER TABLE `debitcredit`
-  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id_DebitCredit` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Goods` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `goodstype`
 --
@@ -307,7 +258,7 @@ ALTER TABLE `species`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
