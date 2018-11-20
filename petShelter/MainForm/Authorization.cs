@@ -151,7 +151,7 @@ namespace MainForm
         private void buttonEnterAs_Click(object sender, EventArgs e)
         {
             psUsers = ibl.getUsers();
-            if (textBoxLogin.Text == "Введите логин" || textBoxLogin.Text == "")
+            if (textBoxLogin.Text == "Введите логин" || textBoxLogin.Text == "" || textBoxLogin.Text =="admin")
             {
                 MessageBox.Show("Нужно ввести логин", "Ошибка", MessageBoxButtons.OK);
                 return;

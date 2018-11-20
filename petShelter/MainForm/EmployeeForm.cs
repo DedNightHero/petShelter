@@ -748,6 +748,14 @@ namespace MainForm
             photoName = ConfigurationManager.AppSettings["ftpaddress"] + openFileDialogAddPetPhoto.SafeFileName;
         }
         #endregion
+        #region Разрешенные символы в поле "телефон"
+        private void textBoxPetsPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+            if (!Char.IsDigit(symbol) && symbol != 8 && symbol != 1 && symbol != 3 && symbol != 22 && symbol != 24 && symbol != 9)
+                e.Handled = true;
+        }
+        #endregion
         #endregion
         #region ОКНО "Персонал"
         #region Инициализация окна
@@ -1130,6 +1138,14 @@ namespace MainForm
         private void clearStaffAddMoveArea()
         {
             textBoxStaffComment.Text = "";
+        }
+        #endregion
+        #region Разрешенные символы в поле "телефон"
+        private void textBoxStaffPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+            if (!Char.IsDigit(symbol) && symbol != 8 && symbol != 1 && symbol != 3 && symbol != 22 && symbol != 24 && symbol != 9)
+                e.Handled = true;
         }
         #endregion
         #endregion
@@ -1620,6 +1636,7 @@ namespace MainForm
             //cleanReportsFilterArea();
         }
         #endregion
+
         #endregion
     }
 }
