@@ -1209,6 +1209,7 @@ namespace MainForm
             dataGridViewGoodsAllGoods.DataSource = psGoods.goods.DefaultView;
             comboBoxGoodsType.Items.Clear();
             comboBoxGoodsVolunteer.Items.Clear();
+            comboBoxGoodsType.Visible = true;
             for (int i = 0; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
