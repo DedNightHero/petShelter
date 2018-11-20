@@ -111,7 +111,7 @@ namespace MainForm
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char symbol = e.KeyChar;
-            if ((symbol < 64 || symbol > 90) && (symbol < 97 || symbol > 122) && symbol != 8 && symbol != 1 && symbol != 3 && symbol != 22 && symbol != 24 && symbol !=9)
+            if ((symbol < 64 || symbol > 90) && (symbol < 97 || symbol > 122) && (symbol < 47 || symbol > 58) && symbol != 8 && symbol != 1 && symbol != 3 && symbol != 22 && symbol != 24 && symbol != 9)
                 e.Handled = true;
         }
         #endregion

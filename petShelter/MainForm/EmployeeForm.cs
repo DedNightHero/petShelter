@@ -1086,7 +1086,7 @@ namespace MainForm
                 {
                     if (ibl.getUsers().users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "' and Position <= " + userLvl).Length == 0)
                     {
-                        MessageBox.Show("Сотрудник с таким логином не существует.\nПопробуйте добавить нового или изменить существуещего.");
+                        MessageBox.Show("Сотрудник с таким логином не существует. Попробуйте добавить нового.\n");
                     }
                     else
                     {
