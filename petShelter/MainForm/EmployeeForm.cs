@@ -1348,7 +1348,8 @@ namespace MainForm
             }
             else if (comboBoxGoodsType.Text == "")
             {
-                MessageBox.Show("Введите тип элемента");
+                if (comboBoxGoodsType.Visible)MessageBox.Show("Введите тип элемента");
+                else MessageBox.Show("Вы пытаетесь добавить еще одни деньги в таблицу. К сожалению сделать этого нельзя.\nВыберите пожалуйста другой предмет в таблице и делайте, что душе угодно.");
                 return false;
             }
             else if (textBoxGoodsAmount.Text == "")
@@ -1458,6 +1459,7 @@ namespace MainForm
                     else
                     {
                         int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                        if (goodsType == 3) gi = 1;
                         psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, -1, goodsType);
                     }
                     ibl.setDebitCredit(psDebitcredit);
