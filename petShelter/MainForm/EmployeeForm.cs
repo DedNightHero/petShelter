@@ -1039,6 +1039,17 @@ namespace MainForm
                 MessageBox.Show("Введите адрес жительства сотрудника");
                 return false;
             }
+           
+
+             /*   PetShelter _psUsers = ibl.getUsers();
+                System.Data.DataRow[] foundRows = _psUsers.users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "' and Position <= " + userLvl);            
+                if (foundRows.Length > 0)
+                {
+                    MessageBox.Show("Вы не можете редактировать данного пользователя.\nВы можете редактировать пользователей с правами вашего уровня и ниже.");
+                    return false;
+                }
+             */
+
             return true;
         }
         #endregion
@@ -1073,7 +1084,14 @@ namespace MainForm
                 bool f = checkStaffAddArea();
                 if (f)
                 {
-                    changeStaffInfo();
+                    if (ibl.getUsers().users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "' and Position <= " + userLvl).Length == 0)
+                    {
+                        MessageBox.Show("Сотрудник с таким логином не существует.\nПопробуйте добавить нового или изменить существуещего.");
+                    }
+                    else
+                    {
+                        changeStaffInfo();
+                    }
                 }
             }
             refreshStaffTab();
@@ -1081,6 +1099,7 @@ namespace MainForm
         #region Изменение информации о сотруднике в датасете
         private void changeStaffInfo()
         {
+
             psUsers.users.FindById_Users(id)[1] = textBoxStaffLogin.Text;
             psUsers.users.FindById_Users(id)[3] = textBoxStaffLastName.Text + ' ' + textBoxStaffFirstName.Text + ' ' + textBoxStaffMiddleName.Text;
             psUsers.users.FindById_Users(id)[4] = Convert.ToInt32(psPositions.positions.Rows[comboBoxStaffVacancy.SelectedIndex][0]);
