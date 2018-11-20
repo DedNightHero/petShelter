@@ -1377,6 +1377,7 @@ namespace MainForm
                 try
                 {
                      t = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                     if (t == 3) t = 4;
                      ga = Convert.ToInt32(textBoxGoodsAmount.Text);
                      gn = Convert.ToInt32(textBoxGoodsNeeded.Text);
                     
@@ -1407,7 +1408,9 @@ namespace MainForm
                         psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
                     }
 
-                    ibl.setDebitCredit(psDebitcredit);
+                    try { ibl.setDebitCredit(psDebitcredit); }
+                    catch (Exception) 
+                    { };
                     refreshGoodsTab();
                   }
         }
@@ -1430,7 +1433,11 @@ namespace MainForm
                 psGoods.goods.FindById_Goods(id)[1] = textBoxGoodsName.Text;
                 int goodsType;
                 if (comboBoxGoodsType.SelectedIndex != -1)
+                {
                     goodsType = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                    if (goodsType == 3)
+                        goodsType = 4;
+                }
                 else goodsType = 3;
                 if (!comboBoxGoodsType.Visible) goodsType = 3;
 
@@ -1450,16 +1457,15 @@ namespace MainForm
                         com = textBoxDebitCreditComment.Text;
                     else
                         com = null;
+                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    if (goodsType == 3) gi = 1;
                     if (comboBoxGoodsVolunteer.Text != "")
                     {
-                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
                         int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
                         psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, ui, goodsType);
                     }
                     else
                     {
-                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                        if (goodsType == 3) gi = 1;
                         psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, d, c, -1, -1, goodsType);
                     }
                     ibl.setDebitCredit(psDebitcredit);
@@ -1496,7 +1502,7 @@ namespace MainForm
             String goodsId;
             int rowCount = dataGridViewReportsMain.RowCount;
             string expression;
-            if (rowCount > 1)
+            if (rowCount >= 1)
             {
 
                 for (int i = 0; i < rowCount; i++)
