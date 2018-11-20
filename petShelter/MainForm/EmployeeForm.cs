@@ -333,16 +333,14 @@ namespace MainForm
         private void buttonPetsSave_Click(object sender, EventArgs e)
         {
             if (checkBoxPetsNewAnimal.Checked) //Добавить животное в бд
-            {
-                int i = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
-                string b = textBoxPetsBreed.Text;
-                string nn = textBoxPetsNickName.Text;
-
-                if (checkIfAnimalExists(i, b, nn)) return;               
-
+            {          
                 bool f = checkPetsAddArea();
                 if (f)
-                {     
+                {
+                    int i = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
+                    string b = textBoxPetsBreed.Text;
+                    string nn = textBoxPetsNickName.Text;
+                    if (checkIfAnimalExists(i, b, nn)) return;
                     DateTime ad = dateTimePickerPetsArrivalDate.Value;
                     ad = ad.Date;
                     string pp;
