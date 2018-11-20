@@ -1223,6 +1223,8 @@ namespace MainForm
             dataGridViewGoodsAllGoods.DataSource = psGoods.goods;
             setGoodsGridView();
             dataGridViewGoodsAllGoods.ClearSelection();
+            if (dataGridViewGoodsAllGoods.RowCount<=1) dataGridViewGoodsAllGoods.Enabled = false;
+            else dataGridViewGoodsAllGoods.Enabled = true;
             clearGoodsFilter();
             cleanGoodsAddArea();
         }

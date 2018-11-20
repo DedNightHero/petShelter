@@ -412,7 +412,7 @@
             // 
             this.comboBoxSortSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortSpecies.FormattingEnabled = true;
-            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 44);
+            this.comboBoxSortSpecies.Location = new System.Drawing.Point(48, 42);
             this.comboBoxSortSpecies.Name = "comboBoxSortSpecies";
             this.comboBoxSortSpecies.Size = new System.Drawing.Size(136, 25);
             this.comboBoxSortSpecies.TabIndex = 1;
@@ -484,7 +484,7 @@
             // 
             this.comboBoxPetsCure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsCure.FormattingEnabled = true;
-            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 27);
+            this.comboBoxPetsCure.Location = new System.Drawing.Point(3, 25);
             this.comboBoxPetsCure.Name = "comboBoxPetsCure";
             this.comboBoxPetsCure.Size = new System.Drawing.Size(186, 25);
             this.comboBoxPetsCure.TabIndex = 8;
@@ -654,7 +654,7 @@
             // 
             this.comboBoxPetsSpecies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPetsSpecies.FormattingEnabled = true;
-            this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 35);
+            this.comboBoxPetsSpecies.Location = new System.Drawing.Point(163, 33);
             this.comboBoxPetsSpecies.Name = "comboBoxPetsSpecies";
             this.comboBoxPetsSpecies.Size = new System.Drawing.Size(159, 25);
             this.comboBoxPetsSpecies.TabIndex = 11;
@@ -885,7 +885,7 @@
             this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanelLeftMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             this.tableLayoutPanelLeftMain.Controls.Add(this.textBoxStaffComment, 0, 6);
             this.tableLayoutPanelLeftMain.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanelLeftMain.Controls.Add(this.label17, 0, 1);
@@ -922,7 +922,7 @@
             this.textBoxStaffComment.MaxLength = 500;
             this.textBoxStaffComment.Multiline = true;
             this.textBoxStaffComment.Name = "textBoxStaffComment";
-            this.textBoxStaffComment.Size = new System.Drawing.Size(609, 68);
+            this.textBoxStaffComment.Size = new System.Drawing.Size(608, 68);
             this.textBoxStaffComment.TabIndex = 7;
             // 
             // label16
@@ -1003,7 +1003,7 @@
             this.textBoxStaffSortAdres.Location = new System.Drawing.Point(478, 37);
             this.textBoxStaffSortAdres.MaxLength = 80;
             this.textBoxStaffSortAdres.Name = "textBoxStaffSortAdres";
-            this.textBoxStaffSortAdres.Size = new System.Drawing.Size(134, 25);
+            this.textBoxStaffSortAdres.Size = new System.Drawing.Size(133, 25);
             this.textBoxStaffSortAdres.TabIndex = 3;
             this.textBoxStaffSortAdres.TextChanged += new System.EventHandler(this.sortStaffTable);
             // 
@@ -1011,9 +1011,9 @@
             // 
             this.checkBoxStaffIsOnStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStaffIsOnStaff.AutoSize = true;
-            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(618, 38);
+            this.checkBoxStaffIsOnStaff.Location = new System.Drawing.Point(617, 38);
             this.checkBoxStaffIsOnStaff.Name = "checkBoxStaffIsOnStaff";
-            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(141, 23);
+            this.checkBoxStaffIsOnStaff.Size = new System.Drawing.Size(142, 23);
             this.checkBoxStaffIsOnStaff.TabIndex = 4;
             this.checkBoxStaffIsOnStaff.Text = "Сотрудники";
             this.checkBoxStaffIsOnStaff.UseVisualStyleBackColor = true;
@@ -1074,14 +1074,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.buttonStaffOk, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(615, 504);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(614, 504);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(147, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(148, 102);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // buttonStaffOk
@@ -1730,7 +1730,7 @@
             // 
             this.comboBoxGoodsVolunteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGoodsVolunteer.FormattingEnabled = true;
-            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(103, 9);
+            this.comboBoxGoodsVolunteer.Location = new System.Drawing.Point(103, 7);
             this.comboBoxGoodsVolunteer.Name = "comboBoxGoodsVolunteer";
             this.comboBoxGoodsVolunteer.Size = new System.Drawing.Size(187, 25);
             this.comboBoxGoodsVolunteer.TabIndex = 12;
