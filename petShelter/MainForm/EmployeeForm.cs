@@ -366,12 +366,17 @@ namespace MainForm
             }
             else //Редактирование информации о животном
             {
+                if (dataGridViewPetsAllPets.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Невозможно изменить животное, если оно не выбрано.\nВыберите животное из таблицы или создайте новое.");
+                    return;
+                }
                 bool f = checkPetsAddArea();
                 if (f)
                 {
-                    changePetInfo();
-                    clearPetsAddCureArea();
-                    cleanPetsAddArea();
+                        changePetInfo();
+                        clearPetsAddCureArea();
+                        cleanPetsAddArea();
                 }
             }
             refreshAnimalsTab();
@@ -603,6 +608,7 @@ namespace MainForm
         #region Изменение информации о животном в датасете
         private void changePetInfo()
         {
+            
             psAnimals.animals.FindById_Animals(id)[1] = Convert.ToInt32(psSpecies.species.Rows[comboBoxPetsSpecies.SelectedIndex][0]);
             psAnimals.animals.FindById_Animals(id)[2] = textBoxPetsNickName.Text;
             psAnimals.animals.FindById_Animals(id)[3] = textBoxPetsBreed.Text;
@@ -1258,7 +1264,18 @@ namespace MainForm
                 textBoxGoodsName.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[1].Value.ToString();
                 textBoxGoodsAmount.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[3].Value.ToString();
                 textBoxGoodsNeeded.Text = dataGridViewGoodsAllGoods.CurrentRow.Cells[4].Value.ToString();
-                comboBoxGoodsType.SelectedItem = psGoodstype.goodstype.Rows[Convert.ToInt32(psGoods.goods.FindById_Goods(id)[2]) - 1][1].ToString();
+                string stype = psGoodstype.goodstype.Rows[Convert.ToInt32(psGoods.goods.FindById_Goods(id)[2]) - 1][1].ToString();
+                if (stype != "Деньги")
+                {
+                    comboBoxGoodsType.SelectedItem = stype;
+                    comboBoxGoodsType.Visible = true;
+                }
+                else
+                {
+                    comboBoxGoodsType.Visible = false;
+                }
+                
+                
             }
         }
         #endregion
@@ -1353,33 +1370,44 @@ namespace MainForm
             if (f)
             {
                 string n = textBoxGoodsName.Text;
-                int t = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
-                int ga = Convert.ToInt32(textBoxGoodsAmount.Text);
-                int gn = Convert.ToInt32(textBoxGoodsNeeded.Text);
+                int t, ga, gn;
+
+                try
+                {
+                     t = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
+                     ga = Convert.ToInt32(textBoxGoodsAmount.Text);
+                     gn = Convert.ToInt32(textBoxGoodsNeeded.Text);
+                    
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Кажется вы ввели неправильные данные.\nПожалуйста првоерьте их.");
+                    return;
+                }
                 DateTime gad = dateTimePickerGoods.Value;
-                string com;
+                    string com;
 
-                psGoods.goods.AddgoodsRow(n, t, ga, gn);
-                ibl.setGoods(psGoods);
-                if (textBoxDebitCreditComment.Text != "")
-                    com = textBoxDebitCreditComment.Text;
-                else
-                    com = null;
-                if (comboBoxGoodsVolunteer.Text != "")
-                {
-                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                    int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui, t);
-                }
-                else
-                {
-                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
-                }
+                    psGoods.goods.AddgoodsRow(n, t, ga, gn);
+                    ibl.setGoods(psGoods);
+                    if (textBoxDebitCreditComment.Text != "")
+                        com = textBoxDebitCreditComment.Text;
+                    else
+                        com = null;
+                    if (comboBoxGoodsVolunteer.Text != "")
+                    {
+                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                        int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui, t);
+                    }
+                    else
+                    {
+                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
+                    }
 
-                ibl.setDebitCredit(psDebitcredit);
-                refreshGoodsTab();
-            }
+                    ibl.setDebitCredit(psDebitcredit);
+                    refreshGoodsTab();
+                  }
         }
         #endregion
         #region Кнопка изменения информации о предмете
@@ -1387,13 +1415,22 @@ namespace MainForm
         {
             if (dataGridViewGoodsAllGoods.SelectedRows.Count > 0)
             {
-                int amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
-                int amountAfter = Convert.ToInt32(textBoxGoodsAmount.Text);
+                int amountBefore, amountAfter;
+                try{
+                    amountBefore = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[3].ToString()); 
+                    amountAfter = Convert.ToInt32(textBoxGoodsAmount.Text);               
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Кажется вы ввели неправильные данные.\nПожалуйста првоверьте их.");
+                    return;
+                }
                 psGoods.goods.FindById_Goods(id)[1] = textBoxGoodsName.Text;
                 int goodsType;
                 if (comboBoxGoodsType.SelectedIndex != -1)
                     goodsType = Convert.ToInt32(psGoodstype.goodstype.Rows[comboBoxGoodsType.SelectedIndex][0]);
                 else goodsType = 3;
+                if (!comboBoxGoodsType.Visible) goodsType = 3;
 
                 psGoods.goods.FindById_Goods(id)[2] = goodsType;
                 psGoods.goods.FindById_Goods(id)[3] = Convert.ToInt32(textBoxGoodsAmount.Text);
