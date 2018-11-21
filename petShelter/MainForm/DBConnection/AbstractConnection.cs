@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace MainForm
 {
     public class AbstractConnection
     {
-        private bool f = false;
         private MySqlConnection connection;
 
         public MySqlConnection Connection
@@ -25,16 +25,13 @@ namespace MainForm
             try
             {
                 connection.Open();
-                f = false;
             }
             catch
             {
                 if (connection != null)
                     connection.Close();
-                if(!f)
-                    MessageBox.Show("Отсутствует соединение с базой данных", "Ошибка", MessageBoxButtons.OK);
-                f = true;
-                Open();
+                MessageBox.Show("Отсутствует соединение с базой данных", "Ошибка", MessageBoxButtons.OK);
+                Process.GetCurrentProcess().Kill();
             }
         }
 
@@ -45,10 +42,10 @@ namespace MainForm
 
         public AbstractTransaction BeginTransaction()
         {
-            MySqlTransaction transaction = connection.BeginTransaction();
-            AbstractTransaction result = new AbstractTransaction();
-            result.Transaction = transaction;
-            return result;
+                MySqlTransaction transaction = connection.BeginTransaction();
+                AbstractTransaction result = new AbstractTransaction();
+                result.Transaction = transaction;
+                return result;
         }
     }
 }

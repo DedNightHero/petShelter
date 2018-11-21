@@ -104,7 +104,7 @@ namespace MainForm
             textBoxLogin.ForeColor = Color.Gray;
             textBoxPass.Text = "Введите пароль";
             textBoxPass.ForeColor = Color.Gray;
-            textBoxPass.UseSystemPasswordChar = false;
+            textBoxPass.PasswordChar = '\0';
         }
         #endregion
         #region Фильтр разрешенных символов

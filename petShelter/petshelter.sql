@@ -55,8 +55,8 @@ CREATE TABLE `debitcredit` (
   `GoodsName` int(10) UNSIGNED DEFAULT NULL,
   `Comment` text,
   `Date` date NOT NULL,
-  `Debit` tinyint(1) UNSIGNED NOT NULL,
-  `Credit` tinyint(1) UNSIGNED NOT NULL,
+  `Debit` int(11) UNSIGNED NOT NULL,
+  `Credit` int(11) UNSIGNED NOT NULL,
   `PatientId` int(10) UNSIGNED DEFAULT NULL,
   `UserId` int(10) UNSIGNED DEFAULT NULL,
   `GoodsType` int(10) UNSIGNED DEFAULT NULL

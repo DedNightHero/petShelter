@@ -388,8 +388,7 @@ namespace MainForm
         {
             comboBoxPetsCure.SelectedIndex=-1;
             textBoxPetsComment.Text = "";
-            dataGridViewPetsHistory.DataSource = 0;
-            dataGridViewPetsHistory.Refresh();
+            setPetsCureHistory(-1);
         }
         #endregion
         #region Очистка фильтра
@@ -777,8 +776,7 @@ namespace MainForm
                 comboBoxStaffVacancy.Items.Add(psPositions.positions.Rows[i][1].ToString());
             }
             comboBoxStaffVacancy.Items.Add("");
-
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0' and Date ='"+DateTime.Today.Date.ToString("dd.MM.yyyy")+"'");
             dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             setStaffCharity();
             dataGridViewStaffAllMembers.DataSource = psUsers;
@@ -805,7 +803,7 @@ namespace MainForm
             dataGridViewStaffAllMembers.DataSource = psUsers;
             dataGridViewStaffAllMembers.DataMember = "users";
             setStaffGridView();
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0' and Date ='" + DateTime.Today.Date.ToString("dd.MM.yyyy") + "'");
             dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             setStaffCharity();
             dataGridViewStaffAllMembers.Refresh();
@@ -856,7 +854,6 @@ namespace MainForm
                 dataGridViewStaffAllMembers.Rows[i].Cells["positionsName"].Value = expression;         
             }
         }
-
         #endregion
         #region Очистка фильтра
         private void clearStaffFilter()
@@ -930,6 +927,7 @@ namespace MainForm
             comboBoxStaffVacancy.SelectedIndex = -1;
             textBoxStaffLogin.Text = "";
             textBoxStaffPass.Text = "";
+            textBoxStaffPass.Enabled = true;
             textBoxStaffLastName.Text = "";
             textBoxStaffFirstName.Text = "";
             textBoxStaffMiddleName.Text = "";
@@ -1090,14 +1088,7 @@ namespace MainForm
                 bool f = checkStaffAddArea();
                 if (f)
                 {
-                    if (ibl.getUsers().users.Select("Login LIKE '" + textBoxStaffLogin.Text.ToString() + "' and Position <= " + userLvl).Length == 0)
-                    {
-                        MessageBox.Show("Сотрудник с таким логином не существует. Попробуйте добавить нового.\n");
-                    }
-                    else
-                    {
-                        changeStaffInfo();
-                    }
+                    changeStaffInfo();
                 }
             }
             refreshStaffTab();
@@ -1152,7 +1143,7 @@ namespace MainForm
             psDebitcredit.debitcredit.AdddebitcreditRow(-1, textBoxStaffComment.Text, DateTime.Today, 0, 0, -1, userId,-1);
             ibl.setDebitCredit(psDebitcredit);
             psDebitcredit = ibl.getDebitCredit();
-            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0'");
+            psDebitcredit.debitcredit.DefaultView.RowFilter = string.Format("CONVERT(UserId, 'System.String') LIKE '" + userId + "' and CONVERT(PatientId, 'System.String') IS NULL and CONVERT(Debit, 'System.String') LIKE '0' and CONVERT(Credit, 'System.String') LIKE '0' and Date ='" + DateTime.Today.Date.ToString("dd.MM.yyyy") + "'");
             dataGridViewStaffCharity.DataSource = psDebitcredit.debitcredit.DefaultView;
             clearStaffAddMoveArea();
             setStaffCharity();
@@ -1173,6 +1164,14 @@ namespace MainForm
                 e.Handled = true;
         }
         #endregion
+        #region Запрет пробелов в поле ввода ФИО
+        private void textBoxesStaffFIO_keypress(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+            if (symbol==(int)Keys.Space || symbol == 22)
+                e.Handled = true;
+        }
+        #endregion
         #endregion
         #region ОКНО "Материальная база"
         #region Инициализация окна
@@ -1184,7 +1183,7 @@ namespace MainForm
             psUsers = ibl.getUsers();
             comboBoxGoodsType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGoodsVolunteer.DropDownStyle = ComboBoxStyle.DropDownList;
-            for (int i = 0; i < psUsers.users.Rows.Count; i++)
+            for (int i = 1; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
@@ -1210,7 +1209,7 @@ namespace MainForm
             comboBoxGoodsType.Items.Clear();
             comboBoxGoodsVolunteer.Items.Clear();
             comboBoxGoodsType.Visible = true;
-            for (int i = 0; i < psUsers.users.Rows.Count; i++)
+            for (int i = 1; i < psUsers.users.Rows.Count; i++)
             {
                 comboBoxGoodsVolunteer.Items.Add(psUsers.users.Rows[i][3].ToString());
             }
@@ -1386,35 +1385,36 @@ namespace MainForm
                 }
                 catch (System.FormatException)
                 {
-                    MessageBox.Show("Кажется вы ввели неправильные данные.\nПожалуйста првоерьте их.");
+                    MessageBox.Show("Кажется вы ввели неправильные данные.\nПожалуйста прoверьте их.");
                     return;
                 }
                 DateTime gad = dateTimePickerGoods.Value;
-                    string com;
+                string com;
 
-                    psGoods.goods.AddgoodsRow(n, t, ga, gn);
-                    ibl.setGoods(psGoods);
-                    if (textBoxDebitCreditComment.Text != "")
-                        com = textBoxDebitCreditComment.Text;
-                    else
-                        com = null;
-                    if (comboBoxGoodsVolunteer.Text != "")
-                    {
-                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                        int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui, t);
-                    }
-                    else
-                    {
-                        int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
-                        psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
-                    }
+                psGoods.goods.AddgoodsRow(n, t, ga, gn);
+                ibl.setGoods(psGoods);
+                psGoods = ibl.getGoods();
+                if (textBoxDebitCreditComment.Text != "")
+                    com = textBoxDebitCreditComment.Text;
+                else
+                    com = null;
+                if (comboBoxGoodsVolunteer.Text != "")
+                {
+                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    int ui = Convert.ToInt32(psUsers.users.Rows[comboBoxGoodsVolunteer.SelectedIndex][0]);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, ui, t);
+                }
+                else
+                {
+                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    psDebitcredit.debitcredit.AdddebitcreditRow(gi, com, gad, 0, ga, -1, -1, t);
+                }
 
-                    try { ibl.setDebitCredit(psDebitcredit); }
-                    catch (Exception) 
-                    { };
-                    refreshGoodsTab();
-                  }
+                try { ibl.setDebitCredit(psDebitcredit); }
+                catch (Exception) 
+                { };
+                refreshGoodsTab();
+            }
         }
         #endregion
         #region Кнопка изменения информации о предмете
@@ -1459,7 +1459,7 @@ namespace MainForm
                         com = textBoxDebitCreditComment.Text;
                     else
                         com = null;
-                    int gi = Convert.ToInt32(psGoods.goods.Rows[psGoods.goods.Count - 1][0]);
+                    int gi = Convert.ToInt32(psGoods.goods.FindById_Goods(id)[0]);
                     if (goodsType == 3) gi = 1;
                     if (comboBoxGoodsVolunteer.Text != "")
                     {
@@ -1703,7 +1703,6 @@ namespace MainForm
             //cleanReportsFilterArea();
         }
         #endregion
-
         #endregion
     }
 }
