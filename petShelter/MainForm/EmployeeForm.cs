@@ -1586,6 +1586,7 @@ namespace MainForm
             checkBoxReportsMoney.Checked = false;
             checkBoxReportsOutCome.Checked = false;
             checkBoxReportsInCome.Checked = false;
+            sortByDate.Checked = false;
             dateTimePickerReportsFrom.Value = DateTime.Today.AddDays(-30);
             dateTimePickerReportsTo.Value = DateTime.Today;
         }
@@ -1681,7 +1682,15 @@ namespace MainForm
             {
                 string fromDate = dateTimePickerReportsFrom.Value.ToString("#yyyy/MM/dd#");
                 string toDate = dateTimePickerReportsTo.Value.ToString("#yyyy/MM/dd#");
-
+                int f = Convert.ToInt32( dateTimePickerReportsFrom.Value.ToString("yyyyMMdd"));
+                int t = Convert.ToInt32(dateTimePickerReportsTo.Value.ToString("yyyyMMdd"));
+                if (t<f)
+                {
+                    MessageBox.Show("Диапазон дат введен не верно", "", MessageBoxButtons.OK);
+                    sortByDate.Checked = false;
+                    return;
+                }
+                
                 if (filter != null) filter += " and ";
                 filter += "CONVERT(Date, 'System.String') >= " + fromDate + "";
                 filter += " and ";
@@ -1701,6 +1710,14 @@ namespace MainForm
             dataGridViewReportsMain.ClearSelection();
             //cleanReportsMoneyControl();
             //cleanReportsFilterArea();
+        }
+        #endregion
+        #region Запрет не цифр в сумме
+        private void textBoxesRep_keypress(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+            if (!Char.IsDigit(symbol) && symbol != 8)
+                e.Handled = true;
         }
         #endregion
         #endregion
